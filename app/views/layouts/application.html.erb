@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OdinFacebook</title>
+    <title>Odin-Facebook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <p><%= flash[:notice] %></p>
+    <p><%= flash[:alert] %></p>
+    <% if user_signed_in? %>
+      <%= render "header" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
