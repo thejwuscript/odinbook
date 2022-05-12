@@ -3,6 +3,7 @@
   <head>
     <title>Odin-Facebook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,10 +12,9 @@
   </head>
 
   <body>
-    <p><%= flash[:notice] %></p>
-    <p><%= flash[:alert] %></p>
+    <%= render "shared/flash" %>
     <% if user_signed_in? %>
-      <%= render "header" %>
+      <%= render "layouts/header" %>
     <% end %>
     <%= yield %>
   </body>

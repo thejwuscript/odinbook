@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     end
   end
   resources :posts
+  resources :friends, only: [:index, :show]
+  resources :friend_requests
 end

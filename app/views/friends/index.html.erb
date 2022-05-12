@@ -1,0 +1,17 @@
+<h2>Friends</h2>
+<ul>
+  <% @friends_list.each do |friend| %>
+    <li>
+      <%= link_to friend.username, friend_path(id: friend.id) %>
+    </li>
+  <% end %>
+</ul>
+<h2>Friends Yet To Be</h2>
+<ul>
+  <% @not_friends_list.each do |user| %>
+    <li>
+      <%= user.username %>
+      <%= button_to "Friend Request", friend_requests_path, form: {style: 'display:inline-block;'}, params: { user: user } %>
+    </li>
+  <% end %>
+</ul>
