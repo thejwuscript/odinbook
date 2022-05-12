@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships
 
+  scope :all_except, ->(user) { where.not(id: user) }
 
   def login
     @login || self.username || self.email
@@ -23,5 +24,9 @@ class User < ApplicationRecord
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  def not_friends
+    User.all_except(self).to_a.difference(self.friends.to_a)
   end
 end
