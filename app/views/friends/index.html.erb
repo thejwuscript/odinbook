@@ -11,7 +11,11 @@
   <% @not_friends_list.each do |user| %>
     <li>
       <%= user.username %>
-      <%= button_to "Friend Request", friend_requests_path, form: {style: 'display:inline-block;'}, params: { user: user } %>
+      <% if @potential_friends.include?(user) %>
+        <%= button_to "Request Sent", {}, form: {style: 'display:inline-block;'}, disabled: true %>
+      <% else %>
+        <%= button_to "Friend Request", friend_requests_path, form: {style: 'display:inline-block;'}, params: { user: user } %>
+      <% end %>
     </li>
   <% end %>
 </ul>
