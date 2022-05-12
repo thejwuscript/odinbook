@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :sent_requests, class_name: "FriendRequest", foreign_key: :requester_id
   has_many :received_requests, class_name: "FriendRequest", foreign_key: :requestee_id
+  has_many :friendships
+  has_many :friends, through: :friendships
 
 
   def login
