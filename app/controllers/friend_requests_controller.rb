@@ -8,4 +8,10 @@ class FriendRequestsController < ApplicationController
       redirect_to users_path, alert: 'Oops, something went wrong.'
     end
   end
+
+  def destroy
+    request = FriendRequest.find(params[:id])
+    request.destroy
+    redirect_to friends_path, status: :see_other, notice: 'Friend request deleted.'
+  end
 end
