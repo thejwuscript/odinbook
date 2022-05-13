@@ -3,9 +3,9 @@
   <% @users.each do |user| %>
     <li>
       <%= user.username %>
-      <% if @potential_friends.include?(user) %>
+      <% if @users_sent_requests_to.include?(user) %>
         <%= button_to "Request Sent", {}, form: {style: 'display:inline-block;'}, disabled: true %>
-      <% else %>
+      <% elsif @not_friends_list.include?(user) && @potential_friends.exclude?(user) %>
         <%= button_to "Friend Request", friend_requests_path, form: {style: 'display:inline-block;'}, params: { user: user } %>
       <% end %>
     </li>

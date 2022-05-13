@@ -8,3 +8,12 @@
 </ul>
 
 <h2>Friend Requests</h2>
+<ul>
+  <% @received_requests.each do |request| %>
+    <li>
+      <%= request.requester.username %>
+      <%= button_to "Confirm", friendships_path, form: { style: "display: inline-block" }, params: { request_id: request, friend_id: request.requester } %>
+      <%= button_to "Delete", {}, form: { style: "display: inline-block" } %>
+    </li>
+  <% end %>
+</ul>
