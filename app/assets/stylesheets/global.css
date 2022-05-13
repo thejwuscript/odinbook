@@ -1,0 +1,19 @@
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+.notice {
+  background-color: #dafbe1;
+}
+
+.alert {
+  background-color: #FFEBE9;
+}
