@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 12px 0;
 }
 
 .topnav ul {
@@ -17,10 +17,54 @@
 .topnav a {
   color: white;
   font-family: 'Helvetica', sans-serif;
-  padding: 20px 18px;
+  padding: 18px;
   font-weight: bolder;
 }
 
 .topnav a:hover {
   background-color: #263b75;
+}
+
+.topnav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-right: 18px;
+}
+
+.notification {
+  background-color: #4267B2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.notification a {
+  padding: 0;
+}
+
+.notification a:hover {
+  background-color: #4267B2;
+}
+
+.mdi-bell {
+  color: white;
+  font-size: 28px;
+}
+
+.notification-badge {
+  background-color: #fa3e3e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  top: -5px;
+  right: -5px;
 }
