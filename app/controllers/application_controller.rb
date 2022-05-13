@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  before_action :count_friend_requests
 
   protected
 
@@ -10,4 +11,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_in, keys: [:login, :password]
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  def count_friend_requests
+    @count = FriendRequest.where(requestee: current_user).count
+  end
+
 end

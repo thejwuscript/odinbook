@@ -7,8 +7,12 @@
     </ul>
     <div class="topnav-right">
       <div class="notification">
-        <a href=""><span class="mdi mdi-bell"></span></a>
-        <span class="notification-badge">29</span>
+        <a href="/friends">
+          <span class="mdi mdi-bell"></span>
+          <% if @count > 0 %>
+            <span class="notification-badge"><%= @count %></span>
+          <% end %>
+        </a>
       </div>
       <%= button_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo: false }, form: { style: "display: inline-block"} %>
     </div>
