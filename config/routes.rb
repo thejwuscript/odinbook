@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       root to: 'devise/sessions#new', as: :root_url
     end
   end
+  resources :users, only: :index
   resources :posts
   resources :friends, only: [:index, :show]
   resources :friend_requests

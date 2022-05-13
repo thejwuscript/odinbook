@@ -3,9 +3,9 @@ class FriendRequestsController < ApplicationController
     request = current_user.sent_requests.build
     request.requestee = User.find(params[:user])
     if request.save
-      redirect_to friends_path, notice: "Friend request sent successfully."
+      redirect_to users_path, notice: 'Friend request sent successfully.'
     else
-      redirect_to friends_path, alert: "Oops, something went wrong."
+      redirect_to users_path, alert: 'Oops, something went wrong.'
     end
   end
 end
