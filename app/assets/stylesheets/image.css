@@ -1,0 +1,7 @@
+.profile-pic-icon {
+  width: 3em;
+  height: 3em;
+  background-color: white;
+  object-fit: cover;
+  border-radius: 50%;
+}
