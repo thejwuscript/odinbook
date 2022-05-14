@@ -2,12 +2,19 @@ body {
   background-color: #E9EBEE;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 ul {
   list-style: none;
 }
 
 a {
   text-decoration: none;
+  font-family: 'Helvetica', sans-serif;
 }
 
 p {

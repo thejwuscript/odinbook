@@ -1,8 +1,6 @@
 <h1>Timeline</h1>
 
-<p>I am <%= current_user.username %>.</p>
-
 <div class="post-container">
   <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
-  <button type="button" class="post-text-placeholder"></button>
+  <a href="" class="post-text-placeholder">What's on your mind, <%= current_user.username.capitalize %>?</a>
 </div>

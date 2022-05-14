@@ -17,6 +17,8 @@
     <% if user_signed_in? %>
       <%= render "layouts/header" %>
     <% end %>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

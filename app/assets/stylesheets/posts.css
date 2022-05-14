@@ -1,0 +1,21 @@
+.post-container {
+  width: 600px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.post-text-placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #E9EBEE;
+  margin: 10px;
+  border-radius: 15px;
+  padding: 10px;
+  color: #596373;
+}
