@@ -3,7 +3,7 @@
     <div class="post-author-container">
       <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
       <%= current_user.username.capitalize %>
-      <a href="/"><span class="mdi mdi-close-circle-outline"></span></a>
+      <a href="/"><span class="mdi mdi-close"></span></a>
     </div>
     <hr>
       <%= render 'form', post: @post %>
