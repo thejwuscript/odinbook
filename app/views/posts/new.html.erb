@@ -1,8 +1,11 @@
-<div class="post-container create">
-  <div class="post-author-container">
-    <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
-    <%= current_user.username.capitalize %>
+<%= turbo_frame_tag "new_post_frame" do %>
+  <div class="post-container new">
+    <div class="post-author-container">
+      <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
+      <%= current_user.username.capitalize %>
+      <a href="/"><span class="mdi mdi-close-circle-outline"></span></a>
+    </div>
+    <hr>
+      <%= render 'form', post: @post %>
   </div>
-  <hr>
-  <%= render 'form', post: @post %>
-</div>
+<% end %>

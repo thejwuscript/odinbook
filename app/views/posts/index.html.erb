@@ -1,6 +1,8 @@
 <h1>Timeline</h1>
 
-<div class="post-container">
-  <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
-  <a href="" class="post-text-placeholder">What's on your mind, <%= current_user.username.capitalize %>?</a>
-</div>
+<%= turbo_frame_tag "new_post_frame" do %>
+  <div class="post-container">
+    <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
+    <a href="posts/new" class="post-text-placeholder">What's on your mind, <%= current_user.username.capitalize %>?</a>
+  </div>
+<% end %>
