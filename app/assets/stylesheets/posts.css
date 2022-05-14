@@ -7,6 +7,21 @@
   padding: 10px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-sizing: border-box;
+}
+
+.post-container.create {
+  flex-direction: column;
+  padding: 24px 48px;
+}
+
+.post-author-container {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .post-text-placeholder {
@@ -18,4 +33,19 @@
   border-radius: 15px;
   padding: 10px;
   color: #596373;
+}
+
+.post-container.create hr {
+  width: 100%;
+}
+
+.post-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+form #post_body {
+  height: 80px;
 }

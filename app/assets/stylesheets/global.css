@@ -1,5 +1,6 @@
 body {
   background-color: #E9EBEE;
+  font-family: 'Helvetica', sans-serif;
 }
 
 main {
@@ -14,7 +15,6 @@ ul {
 
 a {
   text-decoration: none;
-  font-family: 'Helvetica', sans-serif;
 }
 
 p {
@@ -27,4 +27,8 @@ p {
 
 .alert {
   background-color: #FFEBE9;
+}
+
+hr {
+  border: 1px solid grey;
 }
