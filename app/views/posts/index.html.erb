@@ -6,3 +6,10 @@
     <a href="posts/new" class="post-text-placeholder">What's on your mind, <%= current_user.username.capitalize %>?</a>
   </div>
 <% end %>
+
+<% @posts.each do |post| %>
+  <div class="post-container">
+    <h3><%= post.author.username.capitalize %></h3>
+    <p><%= post.body %></p>
+  </div>
+<% end %>
