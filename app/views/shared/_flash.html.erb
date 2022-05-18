@@ -1,8 +1,8 @@
-<div class="flash" data-controller="flash">
+<div class="flash" data-controller="removals">
   <% if flash[:notice] %>
-    <p class="notice"><%= flash[:notice] %><button type="button">Cancel</button></p>
+    <p class="notice"><%= flash[:notice] %><button type="button" data-action="click->removals#remove">X</button></p>
   <% end %>
   <% if flash[:alert] %>
-    <p class="alert"><%= flash[:alert] %><button type="button">Cancel</button></p>
+    <p class="alert"><%= flash[:alert] %><button type="button" data-action="click->removals#remove">X</button></p>
   <% end %>
 </div>
