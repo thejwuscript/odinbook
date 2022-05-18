@@ -13,7 +13,9 @@
   </head>
 
   <body>
-    <%= render "shared/flash" %>
+    <% if flash.any? %>
+      <%= render "shared/flash" %>
+    <% end %>
     <% if user_signed_in? %>
       <%= render "layouts/header" %>
     <% end %>
