@@ -1,6 +1,3 @@
-<h1>Timeline</h1>
-
-
 <%= turbo_frame_tag "new_post_frame" do %>
   <div class="post-container">
     <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
@@ -8,8 +5,8 @@
   </div>
 <% end %>
 
-<% @posts.each do |post| %>
-  <div class="post-container">
+<% @posts.order(created_at: :desc).each do |post| %>
+  <div class="post-container published">
     <h3><%= post.author.username.capitalize %></h3>
     <p><%= post.body %></p>
   </div>

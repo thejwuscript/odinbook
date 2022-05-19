@@ -47,6 +47,11 @@
   gap: 8px;
 }
 
+.post-container.published {
+  flex-direction: column;
+  
+}
+
 form #post_body {
   height: 80px;
 }
