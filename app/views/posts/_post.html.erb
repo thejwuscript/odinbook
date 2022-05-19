@@ -1,4 +1,11 @@
 <div class="post-container published">
-  <h3><%= post.author.username.capitalize %></h3>
+  <div class="post-author-container">
+    <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
+    <div class="user-info">
+      <p class="user-info-name"><%= current_user.username.capitalize %></p>
+      <p class="user-info-date"><%= post.created_at.strftime("%b %d") %></p>
+    </div>
+  </div>
+  <hr>
   <p><%= post.body %></p>
 </div>
