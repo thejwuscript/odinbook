@@ -11,7 +11,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to posts_path, notice: "New post created."
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "New post created." }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end

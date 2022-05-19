@@ -1,13 +1,9 @@
 <%= turbo_frame_tag "new_post_frame" do %>
-  <div class="post-container">
-    <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
-    <a href="posts/new" class="post-text-placeholder">What's on your mind, <%= current_user.username.capitalize %>?</a>
-  </div>
+ <%= render "new_post_placeholder" %>
 <% end %>
 
-<% @posts.order(created_at: :desc).each do |post| %>
-  <div class="post-container published">
-    <h3><%= post.author.username.capitalize %></h3>
-    <p><%= post.body %></p>
-  </div>
+<%= turbo_frame_tag "posts" do %>
+  <% @posts.order(created_at: :desc).each do |post| %>
+    <%= render "post", post: post %>
+  <% end %>
 <% end %>

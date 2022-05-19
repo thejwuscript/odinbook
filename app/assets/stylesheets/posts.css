@@ -36,7 +36,8 @@
   color: #596373;
 }
 
-.post-container.new hr {
+.post-container.new hr,
+.post-container textarea {
   width: 100%;
 }
 
@@ -44,12 +45,12 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 8px;
 }
 
 .post-container.published {
   flex-direction: column;
-  
 }
 
 form #post_body {
@@ -60,4 +61,10 @@ form #post_body {
   color: black;
   margin-left: auto;
   font-size: 24px;
+}
+
+#posts {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
