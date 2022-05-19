@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    current_user_posts = Post.where(author_id: current_user.id)
+    friends_posts = current_user.friends.flat_map do |friend|
+      Post.where(author_id: friend.id)
+    end
+    @timeline_posts = (current_user_posts + friends_posts).sort_by { |post| post.created_at}.reverse
   end
 
   def new

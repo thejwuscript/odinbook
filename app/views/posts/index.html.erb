@@ -3,7 +3,7 @@
 <% end %>
 
 <%= turbo_frame_tag "posts" do %>
-  <% @posts.order(created_at: :desc).each do |post| %>
+  <% @timeline_posts.each do |post| %>
     <%= render "post", post: post %>
   <% end %>
 <% end %>
