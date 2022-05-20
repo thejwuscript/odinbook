@@ -84,3 +84,15 @@ form #post_body {
   font-size: 0.8rem;
   font-weight: 400;
 }
+
+.post-buttons {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.post-buttons form {
+  flex: 0;
+}
+}
