@@ -13,4 +13,16 @@ class LikesController < ApplicationController
       render "/likes/create", status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @post = Post.find(params[:post_id])
+    @like = Like.find(params[:like_id])
+
+    @like.destroy
+
+    respond_to do |format|
+      format.html {}
+      format.turbo_stream
+    end
+  end
 end
