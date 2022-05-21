@@ -1,0 +1,4 @@
+<%= turbo_stream.update "post-likes-#{@post.id}", partial: "posts/like_count_line", locals: { like_count: @post.likes.count } %>
+<%= turbo_stream.replace "like-button-#{@post.id}" do %>
+  <%= button_to "Unlike", like_path(id: @like), form: { id: "like-button-liked-#{@post.id}" } %>
+<% end %>

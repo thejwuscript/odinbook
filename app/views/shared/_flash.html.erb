@@ -1,4 +1,4 @@
-<div class="flash" data-controller="removals">
+<div class="flash", id="flash" data-controller="removals">
   <% if flash[:notice] %>
     <p class="notice"><%= flash[:notice] %><button type="button" data-action="click->removals#remove">X</button></p>
   <% end %>

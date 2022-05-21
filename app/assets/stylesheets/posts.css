@@ -95,3 +95,8 @@ form #post_body {
 .post-buttons form {
   flex: 0;
 }
+
+#like-button-liked {
+  background-color: dodgerblue;
+  color: white;
+}
