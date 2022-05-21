@@ -15,6 +15,6 @@
   <hr>
   <div class="post-buttons">
     <%= button_to "Like", likes_path, params: { id: post }, form: { id: "like-button-#{post.id}" } %>
-    <%= link_to "Comment", new_comment_path  %>
+    <%= link_to "Comment", new_comment_path, id: "link-comment-expand" %>
   </div>
 </div>
