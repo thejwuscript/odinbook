@@ -3,7 +3,7 @@
     <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
     <div class="user-info">
       <p class="user-info-name"><%= post.author.username.capitalize %></p>
-      <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%b %d") %></p>
+      <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%l:%M %p - %b %d, %Y") %></p>
     </div>
   </div>
   <hr>
