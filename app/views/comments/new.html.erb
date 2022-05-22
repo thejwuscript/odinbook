@@ -1,2 +1,14 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<%= turbo_frame_tag "new-comment-button-#{@comment.post.id}" do %>
+  <%= link_to "Back", root_path %>
+
+  <%= turbo_stream.after "post-buttons-#{@comment.post.id}" do %>
+
+    <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
+    <%= form_with model: @comment do |form| %>
+      <%= form.text_area :body %>
+      <%= form.submit %>
+    <% end %>
+
+  <% end %>
+
+<% end %>
