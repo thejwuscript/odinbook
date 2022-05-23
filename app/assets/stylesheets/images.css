@@ -5,3 +5,11 @@
   object-fit: cover;
   border-radius: 50%;
 }
+
+.profile-pic.comment {
+  width: 40px;
+  height: 40px;
+  background-color: whitesmoke;
+  object-fit: cover;
+  border-radius: 50%;
+}
