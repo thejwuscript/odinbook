@@ -15,10 +15,10 @@
   <hr>
   <div class="post-buttons">
     <%= button_to likes_path, params: { id: post }, form: { id: "like-button-#{post.id}" } do %>
-      <span class="mdi mdi-thumb-up-outline">Like</span>
+      <span class="mdi mdi-thumb-up-outline"></span>Like
     <% end %>
-    <%= button_to expand_comments_path do %>
-      <span class="mdi mdi-comment-outline">Comment</span>
+    <%= button_to do %>
+      <span class="mdi mdi-comment-outline"></span>Comment
     <% end %>
   </div>
 </div>
