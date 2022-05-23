@@ -100,3 +100,10 @@ form #post_body {
   background-color: dodgerblue;
   color: white;
 }
+
+.post-buttons form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
