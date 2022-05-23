@@ -9,10 +9,13 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: :index
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:index, :new, :create]
+  end
+
   resources :friends, only: [:index, :show]
   resources :friend_requests, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
-  resources :comments, only: [:new, :create]
+  
 end
