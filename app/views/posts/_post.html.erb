@@ -17,8 +17,9 @@
     <%= button_to likes_path, params: { id: post }, form: { id: "like-button-#{post.id}" } do %>
       <span class="mdi mdi-thumb-up-outline"></span>Like
     <% end %>
-    <%= button_to do %>
+    <%= button_to new_post_comment_path(post), form: { id: "comment-button-#{post.id}" }, data: { turbo_frame: "new-comment-region-#{post.id}" }, method: :get do %>
       <span class="mdi mdi-comment-outline"></span>Comment
     <% end %>
   </div>
+  <%= turbo_frame_tag "new-comment-region-#{post.id}" %>
 </div>

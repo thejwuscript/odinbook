@@ -1,2 +1,13 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<%= turbo_frame_tag "new-comment-region-#{@post.id}" do %>
+  <%= turbo_stream.append "new-comment-region-#{@post.id}" do %>
+    <p>Create new comments here!</p>
+  <% end %>
+  <%= turbo_stream.append "new-comment-region-#{@post.id}" do %>
+    <p>Show all comments here!</p>
+  <% end %>
+  <%= turbo_stream.replace "comment-button-#{@post.id}" do %>
+    <%= button_to minimize_comments_path(@post), form: { id: "minimize-button-#{@post.id}" }, data: { turbo_frame: "new-comment-region-#{@post.id}" }, method: :get do %>
+      <span class="mdi mdi-comment-outline"></span>Comment
+    <% end %>
+  <% end %>
+<% end %>
