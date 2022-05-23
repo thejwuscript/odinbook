@@ -1,4 +1,7 @@
 <%= turbo_frame_tag "new-comment-region-#{@post.id}" do %>
+  <%= turbo_stream.replace "show-comment-region-#{@post.id}" do %>
+    <%= turbo_frame_tag "show-comment-region-#{@post.id}" %>
+  <% end %>
   <%= turbo_stream.replace "minimize-button-#{@post.id}" do %>
     <%= button_to new_post_comment_path(@post), form: { id: "comment-button-#{@post.id}" }, data: { turbo_frame: "new-comment-region-#{@post.id}" }, method: :get do %>
       <span class="mdi mdi-comment-outline"></span>Comment

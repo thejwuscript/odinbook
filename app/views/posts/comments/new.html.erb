@@ -2,7 +2,7 @@
   <%= turbo_stream.append "new-comment-region-#{@post.id}" do %>
     <p>Create new comments here!</p>
   <% end %>
-  <%= turbo_stream.append "new-comment-region-#{@post.id}" do %>
+  <%= turbo_stream.append "show-comment-region-#{@post.id}" do %>
     <p>Show all comments here!</p>
   <% end %>
   <%= turbo_stream.replace "comment-button-#{@post.id}" do %>
