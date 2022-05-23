@@ -13,10 +13,8 @@
     <%= render "like_count_line", like_count: post.likes.count %>
   <% end %>
   <hr>
-  <div class="post-buttons" id="post-buttons-<%= post.id %>">
+  <div class="post-buttons">
     <%= button_to "Like", likes_path, params: { id: post }, form: { id: "like-button-#{post.id}" } %>
-    <%= turbo_frame_tag "new-comment-button-#{post.id}" do %>
-      <%= link_to "Comment", new_comment_path(post_id: post), id: "link-comment-expand-#{post.id}" %>
-    <% end %>
+    <%= link_to "Comment", new_comment_path, id: "link-comment-expand" %>
   </div>
 </div>
