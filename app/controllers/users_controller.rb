@@ -7,4 +7,10 @@ class UsersController < ApplicationController
     @users_received_requests_from = FriendRequest.where(requestee_id: current_user.id).map { |request| request.requester }
     @potential_friends = @users_sent_requests_to + @users_received_requests_from
   end
+
+  def show
+    @user = User.find(params[:id])
+    @profile = Profile.new
+    @profile.user = @user
+  end
 end

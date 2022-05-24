@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       root to: 'devise/sessions#new', as: :root_url
     end
   end
-  resources :users, only: :index
+  resources :users, only: [:index, :show]
   resources :posts do
     resources :comments, only: [:index, :new, :create]
   end
