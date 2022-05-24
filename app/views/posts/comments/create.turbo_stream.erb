@@ -1,0 +1,6 @@
+<%= turbo_stream.prepend "show-comment-region-#{@post.id}" do %>
+  <div>
+    <%= @comment.author.username %>
+    <%= @comment.body %>
+  </div>
+<% end %>

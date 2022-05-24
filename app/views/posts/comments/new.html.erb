@@ -8,7 +8,12 @@
     </div>
   <% end %>
   <%= turbo_stream.append "show-comment-region-#{@post.id}" do %>
-    <p>Show all comments here!</p>
+    <% @post_comments.order(created_at: :desc).each do |comment| %>
+      <div>
+        <%= comment.author.username %>
+        <%= comment.body %>
+      </div>
+    <% end %>
   <% end %>
   <%= turbo_stream.replace "comment-button-#{@post.id}" do %>
     <%= button_to minimize_comments_path(@post), form: { id: "minimize-button-#{@post.id}" }, data: { turbo_frame: "new-comment-region-#{@post.id}" }, method: :get do %>
