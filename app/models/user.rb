@@ -6,13 +6,13 @@ class User < ApplicationRecord
 
   attr_writer :login
 
-  has_many :sent_requests, class_name: "FriendRequest", foreign_key: :requester_id
-  has_many :received_requests, class_name: "FriendRequest", foreign_key: :requestee_id
-  has_many :friendships
+  has_many :sent_requests, class_name: "FriendRequest", foreign_key: :requester_id, dependent: :destroy
+  has_many :received_requests, class_name: "FriendRequest", foreign_key: :requestee_id, dependent: :destroy
+  has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
-  has_many :posts, foreign_key: :author_id
-  has_many :likes
-  has_many :comments, foreign_key: :author_id
+  has_many :posts, foreign_key: :author_id, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
 
   scope :all_except, ->(user) { where.not(id: user) }
 
