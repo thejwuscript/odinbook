@@ -16,3 +16,37 @@ input[name="comment[body]"] {
   color: #596373;
   padding: 4px 8px;
 }
+
+.individual-comment-container {
+  width: 80%;
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
+turbo-frame[id^='show-comment-region'] {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.individual-comment-text-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #E9EBEE;
+  border-radius: 15px;
+  padding: 8px 12px;
+  gap: 2px;
+  box-sizing: border-box;
+}
+
+.comment-author {
+  font-weight: bolder;
+  font-size: 0.8rem;
+}
+
+.comment-body {
+  font-size: 1rem;
+}
