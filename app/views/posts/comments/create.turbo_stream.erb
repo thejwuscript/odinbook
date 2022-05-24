@@ -5,6 +5,8 @@
   </div>
 <% end %>
 
+<% 
+=begin %>
 <turbo-stream action="replace" targets="form[action='/posts/<%= @post.id %>/comments']">
   <template>
     <%= form_with model: @comment = @post.comments.build(author: current_user), url: [@post, @comment] do |form| %>
@@ -12,3 +14,5 @@
     <% end %>
   </template>
 </turbo-stream>
+<%
+=end %>

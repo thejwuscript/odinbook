@@ -7,7 +7,7 @@
       <% end %>
     </div>
   <% end %>
-  <%= turbo_stream.append "show-comment-region-#{@post.id}" do %>
+  <%= turbo_stream.update "show-comment-region-#{@post.id}" do %>
     <% @post_comments.order(created_at: :desc).each do |comment| %>
       <div>
         <%= comment.author.username %>

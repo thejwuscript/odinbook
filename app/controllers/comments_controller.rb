@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         format.html {}
-        format.turbo_stream { render 'posts/comments/create' }
+        format.turbo_stream { redirect_to new_post_comment_path }
       end
     else
       render 'posts/comments/new', status: :unprocessable_entity
