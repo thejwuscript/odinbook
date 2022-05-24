@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :friend_requests, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
+  resource :profile
   
   get 'posts/:post_id/comments/minimize', to: 'comments#minimize', as: :minimize_comments
 end
