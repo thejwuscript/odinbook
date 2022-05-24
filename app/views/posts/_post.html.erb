@@ -14,8 +14,14 @@
   <% end %>
   <hr>
   <div class="post-buttons">
-    <%= button_to likes_path, params: { id: post }, form: { id: "like-button-#{post.id}" } do %>
-      <span class="mdi mdi-thumb-up-outline"></span>Like
+    <% if likes.none? { |like| like.user == current_user } %>
+      <%= button_to likes_path, params: { id: post }, form: { id: "like-button-#{post.id}" } do %>
+        <span class="mdi mdi-thumb-up-outline"></span>Like
+      <% end %>
+    <% else %>
+      <%= button_to like_path(id: likes.where(user_id: current_user.id).first), method: :delete, params: { post_id: post.id, like_id: likes.where(user_id: current_user.id).first.id }, form: { id: "like-button-liked-#{post.id}" } do %>
+        <span class="mdi mdi-thumb-up"></span>Like
+      <% end %>
     <% end %>
     <%= button_to new_post_comment_path(post), form: { id: "comment-button-#{post.id}" }, data: { turbo_frame: "new-comment-region-#{post.id}" }, method: :get do %>
       <span class="mdi mdi-comment-outline"></span>Comment

@@ -4,6 +4,6 @@
 
 <%= turbo_frame_tag "posts" do %>
   <% @timeline_posts.each do |post| %>
-    <%= render "post", post: post %>
+    <%= render partial: "post", locals: { post: post, likes: post.likes.includes(:user) }%>
   <% end %>
 <% end %>
