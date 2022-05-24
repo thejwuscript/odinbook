@@ -4,3 +4,11 @@
     <%= @comment.body %>
   </div>
 <% end %>
+
+<turbo-stream action="replace" targets="form[action='/posts/<%= @post.id %>/comments']">
+  <template>
+    <%= form_with model: @comment = @post.comments.build(author: current_user), url: [@post, @comment] do |form| %>
+      <%= form.text_field :body, placeholder: "Type your comment here" %>
+    <% end %>
+  </template>
+</turbo-stream>
