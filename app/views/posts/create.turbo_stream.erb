@@ -1,2 +1,2 @@
-<%= turbo_stream.prepend "posts", partial: "post", locals: { post: @post } %>
+<%= turbo_stream.prepend "posts", partial: "post", locals: { post: @post, likes: @post.likes.includes(:user) } %>
 <%= turbo_stream.update "new_post_frame", partial: "new_post_placeholder" %>
