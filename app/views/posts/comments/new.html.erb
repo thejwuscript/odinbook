@@ -3,7 +3,7 @@
     <div class="new-comment-container">
       <%= image_tag "black_head_avatar.png", class: "profile-pic comment" %>
       <%= form_with model: @comment, url: [@post, @comment] do |form| %>
-        <%= form.text_field :body %>
+        <%= form.text_field :body, placeholder: "Type your comment here" %>
       <% end %>
     </div>
   <% end %>

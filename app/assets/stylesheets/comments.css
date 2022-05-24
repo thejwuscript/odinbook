@@ -9,3 +9,10 @@ turbo-frame[src$='comments/new'] {
   width: 100%;
   margin-top: 32px;
 }
+
+input[name="comment[body]"] {
+  background-color: #E9EBEE;
+  border-radius: 15px;
+  color: #596373;
+  padding: 4px 8px;
+}
