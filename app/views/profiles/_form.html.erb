@@ -1,4 +1,8 @@
-<%= form_with model: @profile, url: profile_path, data: { turbo: false } do |form| %>
+<%= form_with model: profile, url: profile_path, data: { turbo: false } do |form| %>
+  <% if profile.errors.any? %>
+    <p>Something went wrong.</p>
+  <% end %>
+
   <div>
     <%= form.label :first_name %>
     <%= form.text_field :first_name %>
