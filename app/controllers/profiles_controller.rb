@@ -11,11 +11,26 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @profile = Profile.find_by(user_id: current_user)
+    #include hidden field for user id
   end
 
   def update
+    @profile = Profile.find_by(user_id: current_user)
+
+    if @profile.update(profile_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+  end
+
+  private
+
+  def profile_params
+    params.require(:profile).permit(:first_name, :last_name, :avatar)
   end
 end

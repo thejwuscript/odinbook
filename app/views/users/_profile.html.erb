@@ -5,7 +5,7 @@
 
 <p>Avatar:
   <% if profile.avatar.attached? %>
-    <%= link_to image_tag(profile.avatar), profile.avatar %>
+    <%= link_to image_tag(profile.avatar_as_thumb), profile.avatar %>
   <% else %>
     None available
   <% end %>
