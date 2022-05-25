@@ -1,27 +1,4 @@
 <h1>User Show Page</h1>
 
-<%= form_with model: @profile, url: profile_path do |form| %>
-  <div>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
-    
-  <div>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
+<%= render "profile", profile: @profile %>
 
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  
-  <div>
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>

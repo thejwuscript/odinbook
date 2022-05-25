@@ -1,0 +1,14 @@
+<h2>Profile</h2>
+<p>First Name: <%= profile.first_name %></p>
+<p>Last Name: <%= profile.last_name %></p>
+<p>Location: <%= profile.location %></p>
+
+<p>Avatar:
+  <% if profile.avatar.attached? %>
+    <%= link_to image_tag(profile.avatar), profile.avatar %>
+  <% else %>
+    None available
+  <% end %>
+</p>
+
+<%= link_to "Edit Profile", edit_profile_path %>
