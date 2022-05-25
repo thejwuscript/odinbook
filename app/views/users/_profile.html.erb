@@ -3,7 +3,7 @@
 <p>Last Name: <%= profile.last_name %></p>
 <p>Location: <%= profile.location %></p>
 
-<p>Avatar:
+<p>Profile Picture:
   <% if profile.avatar.attached? %>
     <%= link_to image_tag(profile.avatar_as_thumb), profile.avatar %>
   <% else %>

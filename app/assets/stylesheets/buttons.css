@@ -1,0 +1,23 @@
+input[type="file"] {
+  opacity: 0;
+  width: 0;
+}
+
+form label[for="profile_avatar"] {
+  background-color: #4267B2;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px ridge black;
+  font-size: 0.8rem;
+  font-weight: bold;
+  height: auto;
+}
+
+form label[for="profile_avatar"]:hover {
+  background-color: #263b75;
+}
+
+form label[for="profile_avatar"]:active {
+  background-color: #041a53;
+}
