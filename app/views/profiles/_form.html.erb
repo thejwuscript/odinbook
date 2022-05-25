@@ -18,9 +18,13 @@
   <div></div>
   <div></div>
   
-  <div>
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar, accept: 'image/png,image/jpeg' %>
+  
+  <div data-controller="image-preview">
+    <%= image_tag(profile.avatar, class: "preview-avatar", data: { target: "image-preview.output" }) %>
+    <div>
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar, accept: 'image/png,image/jpeg', data: {target: "image-preview.input", action: "image-preview#readURL"} %>
+    </div>
   </div>
 
   <div>

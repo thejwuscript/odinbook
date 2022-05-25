@@ -13,3 +13,9 @@
   object-fit: cover;
   border-radius: 50%;
 }
+
+.preview-avatar {
+  display: inline-block;
+  max-width: 200px;
+  height: auto;
+}
