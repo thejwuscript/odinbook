@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :count_friend_requests
 
+
   protected
 
   def configure_permitted_parameters
