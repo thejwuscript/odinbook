@@ -20,12 +20,7 @@
   <hr>
   
   <div data-controller="image-preview">
-    <% if profile.avatar.attached? %>
-      Preview:<%= image_tag(profile.avatar, class: "preview-avatar", data: { target: "image-preview.output" }) %>
-    <% else %>
-      Select image to preview
-    <% end %>
-
+    Preview:<%= image_tag(profile.avatar, class: "preview-avatar", data: { target: "image-preview.output" }) %>
     <div>
       <%= form.label :avatar, "Change Photo" %>
       <%= form.file_field :avatar, accept: 'image/png,image/jpeg', data: {target: "image-preview.input", action: "image-preview#readImage"} %>
