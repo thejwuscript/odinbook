@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "new-comment-region-#{@post.id}" do %>
   <%= turbo_stream.append "new-comment-region-#{@post.id}" do %>
     <div class="new-comment-container">
-      <%= image_tag "head_avatar.jpg", class: "profile-pic comment" %>
+      <%= image_tag(current_user.profile.avatar, class: "profile-pic comment") %>
       <%= form_with model: @comment, url: [@post, @comment] do |form| %>
         <%= form.text_field :body, placeholder: "Type your comment here" %>
       <% end %>

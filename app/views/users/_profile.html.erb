@@ -11,4 +11,4 @@
   <% end %>
 </p>
 
-<%= link_to "Edit Profile", edit_profile_path %>
+<%= link_to "Edit Profile", edit_profile_path if profile.user == current_user %>

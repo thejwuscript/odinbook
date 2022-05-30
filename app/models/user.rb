@@ -65,12 +65,18 @@ class User < ApplicationRecord
 
   def name
     profile = Profile.find_by(user_id: self)
-
-    if profile.nil? || profile.first_name.nil?
+    if profile.nil? || profile.first_name.blank?
       username
     else
       profile.first_name
     end
+  end
 
+  def avatar
+    if profile.avatar.attached?
+      profile.avatar
+    else
+      '/app/assets/images/head_avatar.jpg'
+    end
   end
 end
