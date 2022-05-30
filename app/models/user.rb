@@ -1,3 +1,6 @@
+require 'securerandom'
+require 'down'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -38,11 +41,8 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.username = auth.info.name   # assuming the user model has a name
-      user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails, 
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+      user.username = "#{auth.info.email[/^[^@]+/]}-#{SecureRandom.random_number(100)}"
+      user.image = auth.info.image
     end
   end
 
@@ -52,5 +52,25 @@ class User < ApplicationRecord
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def create_profile(auth)
+    profile = Profile.new(user: self)
+    profile.first_name = auth.info.first_name
+    profile.last_name = auth.info.last_name
+    image = Down.download(auth.info.image)
+    profile.avatar.attach(io: image, filename: "avatar")
+    profile.save!
+  end
+
+  def name
+    profile = Profile.find_by(user_id: self)
+
+    if profile.nil? || profile.first_name.nil?
+      username
+    else
+      profile.first_name
+    end
+
   end
 end
