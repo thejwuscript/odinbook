@@ -2,7 +2,7 @@
 <ul>
   <% @users.each do |user| %>
     <li>
-      <%= user.username %>
+      <%= user.name.capitalize %>
       <% if @users_sent_requests_to.include?(user) %>
         <%= button_to "Request Sent", {}, form: {style: 'display:inline-block;'}, disabled: true %>
       <% elsif @not_friends_list.include?(user) && @potential_friends.exclude?(user) %>
