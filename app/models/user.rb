@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_one :profile, dependent: :destroy
 
+  after_create :create_profile
+
   scope :all_except, ->(user) { where.not(id: user) }
 
   def login
@@ -42,7 +44,6 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.username = "#{auth.info.email[/^[^@]+/]}-#{SecureRandom.random_number(100)}"
-      user.image = auth.info.image
     end
   end
 
@@ -54,18 +55,19 @@ class User < ApplicationRecord
     end
   end
 
-  def create_profile(auth)
-    profile = Profile.new(user: self)
+  def create_profile(auth = nil)
+    profile = Profile.create!(user: self)
+    return unless auth
+    
     profile.first_name = auth.info.first_name
     profile.last_name = auth.info.last_name
     image = Down.download(auth.info.image)
     profile.avatar.attach(io: image, filename: "avatar")
-    profile.save!
   end
 
   def name
     profile = Profile.find_by(user_id: self)
-    if profile.nil? || profile.first_name.blank?
+    if (profile.nil? || profile.first_name.blank?)
       username
     else
       profile.first_name
@@ -73,10 +75,10 @@ class User < ApplicationRecord
   end
 
   def avatar
-    if profile.avatar.attached?
+    if profile && profile.avatar.attached?
       profile.avatar
     else
-      '/app/assets/images/head_avatar.jpg'
+      "head_avatar.jpg"
     end
   end
 end
