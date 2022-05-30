@@ -34,3 +34,7 @@ p {
 hr {
   border: 1px solid grey;
 }
+
+input[type="text"] {
+  color: black;
+}
