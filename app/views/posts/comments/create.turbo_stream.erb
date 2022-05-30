@@ -1,6 +1,6 @@
 <%= turbo_stream.prepend "show-comment-region-#{@post.id}" do %>
   <div class="individual-comment-container">
-    <%= image_tag "black_head_avatar.png", class: "profile-pic comment" %>
+    <%= image_tag "head_avatar.jpg", class: "profile-pic comment" %>
     <div class="individual-comment-text-container">
       <p class="comment-author"><%= @comment.author.username.capitalize %></p>
       <p class="comment-body"><%= @comment.body %></p>
