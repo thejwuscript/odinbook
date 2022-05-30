@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_one :profile, dependent: :destroy
 
-  after_create :create_profile
+  after_create :create_profile, :send_welcome_email
 
   scope :all_except, ->(user) { where.not(id: user) }
 
@@ -81,4 +81,11 @@ class User < ApplicationRecord
       "head_avatar.jpg"
     end
   end
+
+  def send_welcome_email
+    return unless persisted?
+    
+    UserMailer.with(user: self).welcome_email.deliver_now
+  end
 end
+
