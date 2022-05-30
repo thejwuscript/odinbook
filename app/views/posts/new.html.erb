@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "new_post_frame" do %>
   <div class="post-container new">
     <div class="post-author-container">
-      <%= image_tag "black_head_avatar.png", class: "profile-pic-icon" %>
+      <%= image_tag current_user.avatar, class: "profile-pic-icon" %>
       <div class="user-info">
         <%= current_user.name.capitalize %>
       </div>
