@@ -66,10 +66,10 @@ form #post_body {
   height: 56px;
 }
 
-.post-container.new a {
+.post-author-container > a {
   color: black;
   margin-left: auto;
-  font-size: 24px;
+  font-size: 1rem;
 }
 
 #posts {
@@ -116,5 +116,15 @@ form #post_body {
 
 .like-count-line {
   font-size: 0.9rem;
+  color:#596373;
+}
+
+.new-post-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attach-image-link {
   color:#596373;
 }

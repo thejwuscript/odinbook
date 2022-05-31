@@ -3,5 +3,10 @@
   <% post.errors.full_messages_for(:body).each do |message| %>
     <div class="error-messages"><%= message %></div>
   <% end %>
-  <%= form.submit "Post" %>
+  <div class="new-post-buttons-container">
+    <p><%= link_to root_path, class: "attach-image-link" do %>
+      <span class="mdi mdi-image"></span> Attach image 
+    <% end %></p>
+    <%= form.submit "Post" %>
+  </div>
 <% end %>
