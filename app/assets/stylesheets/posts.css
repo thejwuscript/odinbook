@@ -13,7 +13,7 @@
 .post-container.new,
 .post-container.published {
   flex-direction: column;
-  padding: 24px 48px;
+  padding: 12px 24px;
 }
 
 .post-author-container {
@@ -24,6 +24,12 @@
   font-size: 1.2rem;
   font-weight: bold;
   width: 100%;
+  margin-bottom: 12px;
+}
+
+.post-body-text {
+  font-size: 1rem;
+  margin-bottom: 8px;
 }
 
 .post-text-placeholder {
@@ -106,4 +112,9 @@ form #post_body {
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+
+.like-count-line {
+  font-size: 0.9rem;
+  color:#596373;
 }

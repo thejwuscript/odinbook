@@ -1,1 +1,4 @@
-<p><%= like_count %> like(s).</p>
+<p class="like-count-line">
+  <b style="color: black"><%= like_count %></b>
+  <%= like_count.between?(0,1) ? "Like" : "Likes" %>
+</p>
