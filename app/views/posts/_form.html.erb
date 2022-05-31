@@ -4,9 +4,9 @@
     <div class="error-messages"><%= message %></div>
   <% end %>
   <div class="new-post-buttons-container">
-    <p><%= link_to root_path, class: "attach-image-link" do %>
-      <span class="mdi mdi-image"></span> Attach image 
-    <% end %></p>
+    <%= link_to root_path, class: "attach-image-link", data: { action: "modal#show" } do %>
+      <span class="mdi mdi-image"></span> Attach image
+    <% end %>
     <%= form.submit "Post" %>
   </div>
 <% end %>

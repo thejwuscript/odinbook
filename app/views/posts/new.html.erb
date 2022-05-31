@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "new_post_frame" do %>
-  <div class="post-container new">
+  <div class="post-container new" data-controller="modal">
     <div class="post-author-container">
       <%= image_tag current_user.avatar, class: "profile-pic-icon" %>
       <div class="user-info">
@@ -8,5 +8,7 @@
       <a href="/"><span class="mdi mdi-close"></span></a>
     </div>
       <%= render 'form', post: @post %>
+      <%= render "attach_image" %>
   </div>
+  
 <% end %>
