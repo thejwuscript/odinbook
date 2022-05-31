@@ -38,3 +38,9 @@ hr {
 input[type="text"] {
   color: black;
 }
+
+textarea,
+textarea:focus-visible {
+  border: none;
+  outline: none;
+}

@@ -1,5 +1,5 @@
 <%= form_with model: post do |form| %>
-  <%= form.text_area :body, required: true %>
+  <%= form.text_area :body, placeholder: "What's on your mind?", required: true %>
   <% post.errors.full_messages_for(:body).each do |message| %>
     <div class="error-messages"><%= message %></div>
   <% end %>
