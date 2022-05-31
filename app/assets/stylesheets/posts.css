@@ -149,3 +149,9 @@ form #post_body {
   border: 1px solid #888;
   width: 24rem;
 }
+
+.mdi.mdi-close:hover,
+.mdi.mdi-close:focus {
+  cursor: pointer;
+  color: red;
+}

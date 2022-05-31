@@ -11,9 +11,9 @@ export default class extends Controller {
   };
 
   close(event) {
-    event.preventDefault();
-    if (event.target.id == 'add-image-modal' || event.target.className == 'mdi mdi-close') {
-      let element = this.modalTarget
+    if (event.target.id == 'add-image-modal' || event.target.className == 'mdi mdi-close modal') {
+      event.preventDefault();
+      let element = this.modalTarget;
       element.style.display = "none";
     };
   }
