@@ -1,0 +1,38 @@
+.modal-top {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+
+}
+
+#add-image-modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 400px;
+}
+
+.modal-title {
+  grid-column: 2 / 3;
+  margin: 0;
+}
+
+.mdi.mdi-close.modal {
+  grid-column: 3 / 4;
+  margin-left: auto;
+}
