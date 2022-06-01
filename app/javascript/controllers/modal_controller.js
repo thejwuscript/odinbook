@@ -2,10 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = [ "modal", "input", "output", "modaldialog" ]
+  static targets = [ "modalcontainer", "input", "output", "modaldialog" ]
 
   show(event) {
-    let element = this.modalTarget;
+    let element = this.modalcontainerTarget;
     event.preventDefault();
     element.style.display = "block";
   };
@@ -13,21 +13,21 @@ export default class extends Controller {
   close(event) {
     if (event.target.id == 'add-image-modal' || event.target.className == 'mdi mdi-close modal') {
       event.preventDefault();
-      let element = this.modalTarget;
+      let element = this.modalcontainerTarget;
       element.style.display = "none";
-      this.modalTarget.setAttribute('data-action', 'mousedown->modal#addClickAction');
+      this.modalcontainerTarget.setAttribute('data-action', 'mousedown->modal#addClickAction');
     };
   }
 
   copy(event) {
     event.preventDefault();
     let url = this.inputTarget.value;
-    this.modalTarget.style.display = "none";
+    this.modalcontainerTarget.style.display = "none";
     this.outputTarget.innerHTML = `<img src=${url} class="preview-avatar">`;
   };
 
   addClickAction() {
-    const element = this.modalTarget
+    const element = this.modalcontainerTarget;
     element.setAttribute('data-action', 'click->modal#close');
   }
 
@@ -36,6 +36,6 @@ export default class extends Controller {
   }
 
   removeClickAction() {
-    this.modalTarget.setAttribute('data-action', 'mousedown->modal#addClickAction');
+    this.modalcontainerTarget.setAttribute('data-action', 'mousedown->modal#addClickAction');
   }
 }
