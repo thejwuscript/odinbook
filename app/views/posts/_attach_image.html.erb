@@ -1,19 +1,18 @@
-<div data-modal-target="modal"  id="add-image-modal" >
-  <div class="modal-content" data-action="click@window->modal#close">  
+<div data-modal-target="modal"  id="add-image-modal" data-action="mousedown->modal#addClickAction">
+  <div class="modal-content" data-modal-target="modaldialog" data-action="mousedown->modal#stopPropagation mouseover->modal#removeClickAction" >
     <div class="modal-top">
       <h3 class="modal-title">Attach Image</h3>
-      <span class="mdi mdi-close modal"></span>
+      <span class="mdi mdi-close modal" data-action="click->modal#close"></span>
     </div>
     <hr>
-
     <%= form_with model: post do |form| %>
       <div>
         <%= form.label :image_url, "One Image URL" %>
-        <%= form.text_field :image_url, data: { target: 'modal.input' } %>
+        <%= form.text_field :image_url, 'data-modal-target' => 'input' %>
       </div>
-      
+  
       <div>
-        <%= form.button "Choose Image" %>
+        <%= form.button "Choose Image", data: { action: "modal#copy" } %>
       </div>
     <% end %>
   </div>
