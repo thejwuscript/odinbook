@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = [ "modalcontainer", "input", "output", "modaldialog", "urlField", "filefrompc", "fileField", "filename" ]
+  static targets = [ "modalcontainer", "input", "output", "modaldialog", "urlField", "filefrompc", "fileField",
+    "filename", "labelButton" ]
 
   show(event) {
     let element = this.modalcontainerTarget;
@@ -64,5 +65,19 @@ export default class extends Controller {
 
   removeClickAction() {
     this.modalcontainerTarget.setAttribute('data-action', 'mousedown->modal#addClickAction');
+  }
+
+  disableFileImage() {
+    this.labelButtonTarget.setAttribute('for', "xpost_image_file");
+    this.filefrompcTarget.disabled = true;
+    this.inputTarget.disabled = false;
+    this.filenameTarget.textContent = "";
+  }
+
+  disableImageURL() {
+    this.labelButtonTarget.setAttribute('for', "post_image_file");
+    this.filefrompcTarget.disabled = false;
+    this.inputTarget.value = "";
+    this.inputTarget.disabled = true;
   }
 }

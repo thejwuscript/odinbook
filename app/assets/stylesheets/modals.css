@@ -38,3 +38,10 @@
   grid-column: 3 / 4;
   margin-left: auto;
 }
+
+.file-field-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}

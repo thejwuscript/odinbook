@@ -7,21 +7,23 @@
     <hr>
     <%= form_with model: post do |form| %>
       <div>
-        <%= form.radio_button :choose_image, "url" %>
+        <%= form.radio_button :choose_image, "url", 'data-action' => 'modal#disableFileImage' %>
         <%= form.label :choose_image_url, 'Image URL' %>
         <%= form.text_field :image_url, size: '40', 'data-modal-target' => 'input' %>
       </div>
       <br>
-      <p>Or</p>
-      <br>
       <div>
-        <%= form.radio_button :choose_image, "file" %>
-        <%= form.label :choose_image_file, 'Select from file' %><br>
-        <%= form.label :image_file, "Choose File" %>
-        <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-action' => 'modal#showFilename' %>
-        <span data-modal-target="filename"></span>
+        <div>
+          <%= form.radio_button :choose_image, "file", 'data-action' => 'modal#disableImageURL' %>
+          <%= form.label :choose_image_file, 'Select from file' %>
+        </div>
+        <div class="file-field-row">
+          <%= form.label :image_file, "Choose File", 'data-modal-target' => 'labelButton' %>
+          <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-action' => 'modal#showFilename' %>
+          <span data-modal-target="filename"></span>
+        </div>
       </div>
-      <br>
+
       <div>
         <%= form.button "Choose Image", data: { action: "modal#copy" } %>
       </div>

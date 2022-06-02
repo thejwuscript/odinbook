@@ -24,3 +24,14 @@ form label[for="profile_avatar"]:active,
 form label[for="post_image_file"]:active {
   background-color: #041a53;
 }
+
+form label[for="xpost_image_file"] {
+  background-color: #b9c2e5;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  height: auto;
+}
