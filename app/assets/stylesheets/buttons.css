@@ -3,7 +3,8 @@ input[type="file"] {
   width: 0;
 }
 
-form label[for="profile_avatar"] {
+form label[for="profile_avatar"],
+form label[for="post_image_file"] {
   background-color: #4267B2;
   color: white;
   padding: 5px 10px;
@@ -14,10 +15,12 @@ form label[for="profile_avatar"] {
   height: auto;
 }
 
-form label[for="profile_avatar"]:hover {
+form label[for="profile_avatar"]:hover,
+form label[for="post_image_file"]:hover {
   background-color: #263b75;
 }
 
-form label[for="profile_avatar"]:active {
+form label[for="profile_avatar"]:active,
+form label[for="post_image_file"]:active {
   background-color: #041a53;
 }

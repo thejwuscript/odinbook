@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = [ "modalcontainer", "input", "output", "modaldialog", "urlField" ]
+  static targets = [ "modalcontainer", "input", "output", "modaldialog", "urlField", "filefrompc", "fileField", "filename" ]
 
   show(event) {
     let element = this.modalcontainerTarget;
@@ -19,13 +19,38 @@ export default class extends Controller {
     };
   }
 
+  showFilename() {
+    let file = this.filefrompcTarget;
+    let display = this.filenameTarget;
+    if (file.files[0]) {
+      display.textContent = file.files[0].name;
+      display.style.whiteSpace = "nowrap";
+      display.style.overflow = "hidden";
+      display.style.textOverflow = "ellipsis";
+      display.style.display = "inline-block";
+      display.style.width = "70%";
+    };
+  }
+
   copy(event) {
     event.preventDefault();
     let url = this.inputTarget.value;
-    this.modalcontainerTarget.style.display = "none";
-    this.outputTarget.innerHTML = `<img src=${url} class="preview-avatar">`;
-    this.urlFieldTarget.value = url;
+    let file = this.filefrompcTarget;
+    let output = this.outputTarget;
 
+    if (file.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        output.innerHTML = `<img src=${reader.result} class="preview-avatar">`;
+      };
+      reader.readAsDataURL(file.files[0]);
+      this.modalcontainerTarget.style.display = "none";
+    };
+    if (url) {
+      this.modalcontainerTarget.style.display = "none";
+      this.outputTarget.innerHTML = `<img src=${url} class="preview-avatar">`;
+      this.urlFieldTarget.value = url;
+    };
   };
 
   addClickAction() {
