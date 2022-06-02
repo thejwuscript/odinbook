@@ -12,7 +12,7 @@
       <div class="individual-comment-container">
         <%= image_tag @post.author.avatar, class: "profile-pic comment" %>
         <div class="individual-comment-text-container">
-          <p class="comment-author"><%= comment.author.username.capitalize %></p>
+          <p class="comment-author"><%= comment.author.name.capitalize %></p>
           <p class="comment-body"><%= comment.body %></p>
         </div>
       </div>
