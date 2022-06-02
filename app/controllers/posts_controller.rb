@@ -1,3 +1,5 @@
+require 'down'
+
 class PostsController < ApplicationController
   def index
     current_user_posts = current_user.posts.includes(:likes)
@@ -13,6 +15,8 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
+      tempfile = Down.download(image_link)
+      @post.image.attach(io: tempfile, filename: "image#{@post.id}.jpg")
       respond_to do |format|
         format.html { redirect_to root_path, notice: "New post created." }
         format.turbo_stream
@@ -25,7 +29,10 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body, :image_url)
+    params.require(:post).permit(:body)
   end
 
+  def image_link
+    params[:post][:image_url]
+  end
 end

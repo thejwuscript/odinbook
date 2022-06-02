@@ -10,8 +10,8 @@
 
   <p class="post-body-text"><%= post.body %></p>
 
-  <% unless post.image_url.blank? %>
-    <div><%= image_tag post.image_url, class: 'post-image' %></div>
+  <% if post.image.attached? %>
+    <div><%= image_tag post.image, class: 'post-image' %></div>
   <% end %>
 
   <hr>
