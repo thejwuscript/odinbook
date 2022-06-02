@@ -1,9 +1,7 @@
 class PostsController < ApplicationController
   def index
-    current_user_posts = Post.where(author_id: current_user.id).includes(:likes, :created_at)
-    friends_posts = current_user.friends.includes(:posts).flat_map do |friend|
-      Post.where(author_id: friend.id).includes(:likes, :created_at)
-    end
+    current_user_posts = current_user.posts.includes(:likes)
+    friends_posts = current_user.friends.includes(:posts).flat_map { |friend| friend.posts.includes(:likes) }
     @timeline_posts = (current_user_posts + friends_posts).sort_by { |post| post.created_at}.reverse
   end
 
