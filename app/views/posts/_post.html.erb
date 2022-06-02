@@ -1,4 +1,5 @@
 <div class="post-container published">
+
   <div class="post-author-container">
     <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
     <div class="user-info">
@@ -8,11 +9,19 @@
   </div>
 
   <p class="post-body-text"><%= post.body %></p>
+
+  <% unless post.image_url.blank? %>
+    <div><%= image_tag post.image_url, class: 'post-image' %></div>
+  <% end %>
+
   <hr>
+
   <%= turbo_frame_tag "post-likes-#{post.id}" do %>
     <%= render "like_count_line", like_count: post.likes.count %>
   <% end %>
+
   <hr>
+
   <div class="post-buttons">
     <% if likes.none? { |like| like.user == current_user } %>
       <%= button_to likes_path, params: { id: post }, form: { id: "like-button-#{post.id}" } do %>

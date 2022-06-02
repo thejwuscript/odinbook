@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = [ "modalcontainer", "input", "output", "modaldialog" ]
+  static targets = [ "modalcontainer", "input", "output", "modaldialog", "urlField" ]
 
   show(event) {
     let element = this.modalcontainerTarget;
@@ -24,6 +24,8 @@ export default class extends Controller {
     let url = this.inputTarget.value;
     this.modalcontainerTarget.style.display = "none";
     this.outputTarget.innerHTML = `<img src=${url} class="preview-avatar">`;
+    this.urlFieldTarget.value = url;
+
   };
 
   addClickAction() {

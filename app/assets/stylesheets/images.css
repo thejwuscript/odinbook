@@ -19,3 +19,8 @@
   max-width: 200px;
   height: auto;
 }
+
+.post-image {
+  max-width: 90%;
+  height: auto;
+}
