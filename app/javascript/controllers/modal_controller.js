@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = [ "modalcontainer", "input", "output", "modaldialog", "urlField", "filefrompc", "fileField",
+  static targets = [ "modalcontainer", "input", "output", "modaldialog", "hiddenField", "filefrompc", "fileField",
     "filename", "labelButton", "imageFileRadioButton", "imageURLRadioButton" ]
 
   show(event) {
@@ -38,18 +38,20 @@ export default class extends Controller {
     let url = this.inputTarget.value;
     let file = this.filefrompcTarget;
     let output = this.outputTarget;
+    let hiddenField = this.hiddenFieldTarget;
 
     if (this.imageFileRadioButtonTarget.checked && file.files[0]) {
       let reader = new FileReader();
       reader.onload = (e) => {
         output.innerHTML = `<img src=${reader.result} class="post-image">`;
+        hiddenField.value = reader.result;
       };
       reader.readAsDataURL(file.files[0]);
       this.modalcontainerTarget.style.display = "none";
     } else if (this.imageURLRadioButtonTarget.checked && url) {
       this.modalcontainerTarget.style.display = "none";
-      this.outputTarget.innerHTML = `<img src=${url} class="post-image">`;
-      this.urlFieldTarget.value = url;
+      output.innerHTML = `<img src=${url} class="post-image">`;
+      hiddenField.value = url;
     };
   };
 
