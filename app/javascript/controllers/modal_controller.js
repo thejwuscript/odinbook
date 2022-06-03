@@ -29,7 +29,7 @@ export default class extends Controller {
       display.style.overflow = "hidden";
       display.style.textOverflow = "ellipsis";
       display.style.display = "inline-block";
-      display.style.width = "70%";
+      display.style.width = "60%";
     };
   }
 
