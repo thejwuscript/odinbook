@@ -13,9 +13,9 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    save_image
 
     if @post.save
-      save_image_from_link unless (post_params[:image] || params[:post][:image_file_or_url].blank?)
 
       respond_to do |format|
         format.html { redirect_to root_path, notice: "New post created." }
@@ -29,11 +29,16 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body, :image)
+    params.require(:post).permit(:body)
   end
 
-  def save_image_from_link
-    tempfile = Down.download(params[:post][:image_file_or_url])
-    @post.image.attach(io: tempfile, filename: "image#{@post.id}.jpg")
+  def save_image
+    if url = params[:post][:image_url].present?
+      tempfile = Down.download(url)
+      @post.image.attach(io: tempfile, filename: "image#{@post.id}.jpg")
+    elsif params[:post][:image_data_url].present?
+      data_url = params[:post][:image_data_url].split(',')[1]
+      @post.image.attach(io: StringIO.new(Base64.decode64(data_url)), filename: "image#{@post.id}.jpg")
+    end
   end
 end

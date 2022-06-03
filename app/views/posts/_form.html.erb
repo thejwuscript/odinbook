@@ -4,7 +4,8 @@
     <div class="error-messages"><%= message %></div>
   <% end %>
   <div class="image-preview" data-modal-target="output"></div>
-  <%= form.hidden_field :image_url, 'data-modal-target' => 'hiddenField' %>
+  <%= form.hidden_field :image_url, 'data-modal-target' => 'hiddenURLField' %>
+  <%= form.hidden_field :image_data_url, 'data-modal-target' => 'hiddenDataURLField' %>
   <div class="new-post-buttons-container">
     <%= link_to root_path, class: "attach-image-link", data: { action: "modal#show" } do %>
       <span class="mdi mdi-image"></span> Attach image
