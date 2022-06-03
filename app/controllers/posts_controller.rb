@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     if @post.save
       respond_to do |format|
         format.html { redirect_to root_path, notice: "New post created." }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "New post created." }
       end
     else
       render :new, status: :unprocessable_entity
