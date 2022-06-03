@@ -11,7 +11,7 @@
   <p class="post-body-text"><%= post.body %></p>
 
   <% if post.image.attached? %>
-    <div><%= image_tag post.image, class: 'post-image' %></div>
+    <%= link_to image_tag(post.image, class: 'post-image'), post.image, data: { turbo_action: 'advance' } %>
   <% end %>
 
   <hr>

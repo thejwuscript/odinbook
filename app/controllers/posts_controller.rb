@@ -16,7 +16,6 @@ class PostsController < ApplicationController
     save_image
 
     if @post.save
-
       respond_to do |format|
         format.html { redirect_to root_path, notice: "New post created." }
         format.turbo_stream
@@ -33,8 +32,8 @@ class PostsController < ApplicationController
   end
 
   def save_image
-    if url = params[:post][:image_url].present?
-      tempfile = Down.download(url)
+    if params[:post][:image_url].present?
+      tempfile = Down.download(params[:post][:image_url])
       @post.image.attach(io: tempfile, filename: "image#{@post.id}.jpg")
     elsif params[:post][:image_data_url].present?
       data_url = params[:post][:image_data_url].split(',')[1]
