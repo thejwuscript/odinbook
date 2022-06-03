@@ -27,7 +27,7 @@ form label[for="post_image_file"]:active {
   background-color: #041a53;
 }
 
-form label[for="xpost_image_file"] {
+form label[for="post_ximage_file"] {
   background-color: #b9c2e5;
   color: white;
   padding: 5px 10px;

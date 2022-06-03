@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="modal"
 export default class extends Controller {
   static targets = [ "modalcontainer", "input", "output", "modaldialog", "urlField", "filefrompc", "fileField",
-    "filename", "labelButton" ]
+    "filename", "labelButton", "imageFileRadioButton", "imageURLRadioButton" ]
 
   show(event) {
     let element = this.modalcontainerTarget;
@@ -39,17 +39,16 @@ export default class extends Controller {
     let file = this.filefrompcTarget;
     let output = this.outputTarget;
 
-    if (file.files[0]) {
+    if (this.imageFileRadioButtonTarget.checked && file.files[0]) {
       let reader = new FileReader();
       reader.onload = (e) => {
-        output.innerHTML = `<img src=${reader.result} class="preview-avatar">`;
+        output.innerHTML = `<img src=${reader.result} class="post-image">`;
       };
       reader.readAsDataURL(file.files[0]);
       this.modalcontainerTarget.style.display = "none";
-    };
-    if (url) {
+    } else if (this.imageURLRadioButtonTarget.checked && url) {
       this.modalcontainerTarget.style.display = "none";
-      this.outputTarget.innerHTML = `<img src=${url} class="preview-avatar">`;
+      this.outputTarget.innerHTML = `<img src=${url} class="post-image">`;
       this.urlFieldTarget.value = url;
     };
   };
@@ -68,8 +67,9 @@ export default class extends Controller {
   }
 
   disableFileImage() {
-    this.labelButtonTarget.setAttribute('for', "xpost_image_file");
+    this.labelButtonTarget.setAttribute('for', "post_ximage_file");
     this.filefrompcTarget.disabled = true;
+    this.filefrompcTarget.value = "";
     this.inputTarget.disabled = false;
     this.filenameTarget.textContent = "";
   }
