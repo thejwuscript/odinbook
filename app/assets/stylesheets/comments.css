@@ -5,13 +5,13 @@
   gap: 16px;
 }
 
-turbo-frame[src$='comments/new'] {
+turbo-frame[src$="comments/new"] {
   width: 100%;
   margin-top: 32px;
 }
 
 input[name="comment[body]"] {
-  background-color: #E9EBEE;
+  background-color: #e9ebee;
   border-radius: 15px;
   color: #596373;
   padding: 4px 8px;
@@ -25,7 +25,7 @@ input[name="comment[body]"] {
   gap: 16px;
 }
 
-turbo-frame[id^='show-comment-region'] {
+turbo-frame[id^="show-comment-region"] {
   margin-top: 12px;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ turbo-frame[id^='show-comment-region'] {
 .individual-comment-text-container {
   display: flex;
   flex-direction: column;
-  background-color: #E9EBEE;
+  background-color: #e9ebee;
   border-radius: 15px;
   padding: 8px 12px;
   gap: 2px;

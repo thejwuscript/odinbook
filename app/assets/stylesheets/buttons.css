@@ -5,7 +5,7 @@ input[type="file"] {
 
 form label[for="profile_avatar"],
 form label[for="post_image_file"] {
-  background-color: #4267B2;
+  background-color: #4267b2;
   color: white;
   padding: 5px 10px;
   border-radius: 5px;

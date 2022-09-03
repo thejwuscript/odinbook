@@ -36,7 +36,7 @@
   flex: 1;
   display: flex;
   align-items: center;
-  background-color: #E9EBEE;
+  background-color: #e9ebee;
   margin: 10px;
   border-radius: 15px;
   padding: 10px;
@@ -116,7 +116,7 @@ form #post_body {
 
 .like-count-line {
   font-size: 0.9rem;
-  color:#596373;
+  color: #596373;
 }
 
 .new-post-buttons-container {
@@ -126,7 +126,7 @@ form #post_body {
 }
 
 .attach-image-link {
-  color:#596373;
+  color: #596373;
 }
 
 .mdi.mdi-close:hover,

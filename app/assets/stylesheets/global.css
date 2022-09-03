@@ -1,6 +1,6 @@
 body {
-  background-color: #E9EBEE;
-  font-family: 'Helvetica', sans-serif;
+  background-color: #e9ebee;
+  font-family: "Helvetica", sans-serif;
 }
 
 main {
@@ -28,7 +28,7 @@ p {
 }
 
 .alert {
-  background-color: #FFEBE9;
+  background-color: #ffebe9;
 }
 
 hr {

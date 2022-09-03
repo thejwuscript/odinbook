@@ -1,10 +1,17 @@
-require 'down'
+require "down"
 
 class PostsController < ApplicationController
   def index
     current_user_posts = current_user.posts.includes(:likes)
-    friends_posts = current_user.friends.includes(:posts).flat_map { |friend| friend.posts.includes(:likes) }
-    @timeline_posts = (current_user_posts + friends_posts).sort_by { |post| post.created_at}.reverse
+    friends_posts =
+      current_user
+        .friends
+        .includes(:posts)
+        .flat_map { |friend| friend.posts.includes(:likes) }
+    @timeline_posts =
+      (current_user_posts + friends_posts)
+        .sort_by { |post| post.created_at }
+        .reverse
   end
 
   def new
@@ -36,8 +43,11 @@ class PostsController < ApplicationController
       tempfile = Down.download(params[:post][:image_url])
       @post.image.attach(io: tempfile, filename: "image#{@post.id}.jpg")
     elsif params[:post][:image_data_url].present?
-      data_url = params[:post][:image_data_url].split(',')[1]
-      @post.image.attach(io: StringIO.new(Base64.decode64(data_url)), filename: "image#{@post.id}.jpg")
+      data_url = params[:post][:image_data_url].split(",")[1]
+      @post.image.attach(
+        io: StringIO.new(Base64.decode64(data_url)),
+        filename: "image#{@post.id}.jpg"
+      )
     end
   end
 end

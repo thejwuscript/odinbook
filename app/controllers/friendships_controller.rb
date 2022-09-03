@@ -7,11 +7,10 @@ class FriendshipsController < ApplicationController
       FriendRequest.find(params[:request_id]).destroy
       redirect_to friends_path, notice: "Great, you've added a new friend!"
     else
-      redirect_to friends_path, alert: 'Oops, something went wrong.'
+      redirect_to friends_path, alert: "Oops, something went wrong."
     end
   end
 
   def destroy
   end
-
 end

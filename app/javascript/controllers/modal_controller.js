@@ -1,23 +1,41 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = [ "modalcontainer", "input", "output", "modaldialog", "hiddenURLField", "hiddenDataURLField", "filefrompc", "fileField",
-    "filename", "labelButton", "imageFileRadioButton", "imageURLRadioButton" ]
+  static targets = [
+    "modalcontainer",
+    "input",
+    "output",
+    "modaldialog",
+    "hiddenURLField",
+    "hiddenDataURLField",
+    "filefrompc",
+    "fileField",
+    "filename",
+    "labelButton",
+    "imageFileRadioButton",
+    "imageURLRadioButton",
+  ];
 
   show(event) {
     let element = this.modalcontainerTarget;
     event.preventDefault();
     element.style.display = "block";
-  };
+  }
 
   close(event) {
-    if (event.target.id == 'add-image-modal' || event.target.className == 'mdi mdi-close modal') {
+    if (
+      event.target.id == "add-image-modal" ||
+      event.target.className == "mdi mdi-close modal"
+    ) {
       event.preventDefault();
       let element = this.modalcontainerTarget;
       element.style.display = "none";
-      this.modalcontainerTarget.setAttribute('data-action', 'mousedown->modal#addClickAction');
-    };
+      this.modalcontainerTarget.setAttribute(
+        "data-action",
+        "mousedown->modal#addClickAction"
+      );
+    }
   }
 
   showFilename() {
@@ -30,7 +48,7 @@ export default class extends Controller {
       display.style.textOverflow = "ellipsis";
       display.style.display = "inline-block";
       display.style.width = "60%";
-    };
+    }
   }
 
   copy(event) {
@@ -53,12 +71,12 @@ export default class extends Controller {
       this.modalcontainerTarget.style.display = "none";
       output.innerHTML = `<img src=${url} class="post-image">`;
       hiddenURLField.value = url;
-    };
-  };
+    }
+  }
 
   addClickAction() {
     const element = this.modalcontainerTarget;
-    element.setAttribute('data-action', 'click->modal#close');
+    element.setAttribute("data-action", "click->modal#close");
   }
 
   stopPropagation(event) {
@@ -66,11 +84,14 @@ export default class extends Controller {
   }
 
   removeClickAction() {
-    this.modalcontainerTarget.setAttribute('data-action', 'mousedown->modal#addClickAction');
+    this.modalcontainerTarget.setAttribute(
+      "data-action",
+      "mousedown->modal#addClickAction"
+    );
   }
 
   disableFileImage() {
-    this.labelButtonTarget.setAttribute('for', "post_ximage_file");
+    this.labelButtonTarget.setAttribute("for", "post_ximage_file");
     this.filefrompcTarget.disabled = true;
     this.filefrompcTarget.value = "";
     this.inputTarget.disabled = false;
@@ -78,7 +99,7 @@ export default class extends Controller {
   }
 
   disableImageURL() {
-    this.labelButtonTarget.setAttribute('for', "post_image_file");
+    this.labelButtonTarget.setAttribute("for", "post_image_file");
     this.filefrompcTarget.disabled = false;
     this.inputTarget.value = "";
     this.inputTarget.disabled = true;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_02_191909) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_03_094510) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_191909) do
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+    t.index %w[record_type record_id name blob_id],
+            name: "index_active_storage_attachments_uniqueness",
+            unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -39,7 +41,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_191909) do
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+    t.index %w[blob_id variation_digest],
+            name: "index_active_storage_variant_records_uniqueness",
+            unique: true
   end
 
   create_table "comments", force: :cascade do |t|
@@ -58,7 +62,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_191909) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["requestee_id"], name: "index_friend_requests_on_requestee_id"
-    t.index ["requester_id", "requestee_id"], name: "index_friend_requests_on_requester_id_and_requestee_id", unique: true
+    t.index %w[requester_id requestee_id],
+            name: "index_friend_requests_on_requester_id_and_requestee_id",
+            unique: true
     t.index ["requester_id"], name: "index_friend_requests_on_requester_id"
   end
 
@@ -68,7 +74,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_191909) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
+    t.index %w[user_id friend_id],
+            name: "index_friendships_on_user_id_and_friend_id",
+            unique: true
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
@@ -90,14 +98,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_191909) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
     t.time "birthday"
     t.string "gender"
     t.string "location"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "display_name"
+    t.text "bio"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -114,12 +122,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_191909) do
     t.string "uid"
     t.integer "received_requests_count"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["reset_password_token"],
+            name: "index_users_on_reset_password_token",
+            unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_attachments",
+                  "active_storage_blobs",
+                  column: "blob_id"
+  add_foreign_key "active_storage_variant_records",
+                  "active_storage_blobs",
+                  column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "friend_requests", "users", column: "requestee_id"
