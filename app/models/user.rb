@@ -85,8 +85,8 @@ class User < ApplicationRecord
   end
 
   def name
-    profile = Profile.find_by(user_id: self)
-    (profile.nil? || profile.first_name.blank?) ? username : profile.first_name
+    #profile = Profile.find_by(user_id: self)
+    profile.nil? || profile.display_name.blank? ? username : profile.display_name
   end
 
   def avatar
