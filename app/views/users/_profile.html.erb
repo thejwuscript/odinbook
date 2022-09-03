@@ -1,7 +1,9 @@
 <h2>Profile</h2>
-<p>First Name: <%= profile.first_name %></p>
-<p>Last Name: <%= profile.last_name %></p>
-<p>Location: <%= profile.location %></p>
+<span>Name: <%= profile.display_name %></span>
+<span>Bio: <%= profile.bio %></span>
+<span>Location: <%= profile.location %></span>
+<span>Gender: <%= profile.gender %></span>
+<span>Birthday: <%= profile.birthday.strftime("%b %-e, %Y") %> </span>
 
 <p>Profile Picture:
   <% if profile.avatar.attached? %>

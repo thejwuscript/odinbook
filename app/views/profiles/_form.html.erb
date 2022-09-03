@@ -4,19 +4,30 @@
   <% end %>
 
   <div>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+    <%= form.label :display_name, "Name" %>
+    <%= form.text_field :display_name %>
   </div>
     
   <div>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+    <%= form.label :bio %>
+    <%= form.text_field :bio %>
   </div>
 
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
+  <div>
+    <%= form.label :gender %>
+    <%= form.text_field :gender %>
+  </div>
+
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday %>
+  </div>
+
   <hr>
   
   <div data-controller="image-preview">
