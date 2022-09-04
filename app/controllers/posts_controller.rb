@@ -2,6 +2,9 @@ require "down"
 
 class PostsController < ApplicationController
   def index
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Tue, 01 Jan 2002 00:00:00 UTC"
     current_user_posts = current_user.posts.includes(:likes)
     friends_posts =
       current_user

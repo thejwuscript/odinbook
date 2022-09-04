@@ -10,7 +10,7 @@
     <%= link_to root_path, class: "attach-image-link", data: { action: "modal#show" } do %>
       <span class="mdi mdi-image"></span> Attach image
     <% end %>
-    <%= form.submit "Post", data: { turbo_action: 'advance' } %>
+    <%= form.submit "Post" %>
   </div>
   <%= render "attach_image", post: @post %>
 <% end %>

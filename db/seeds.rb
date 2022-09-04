@@ -12,3 +12,6 @@ admin = User.create!(username: 'admin', email: 'admin@example.com', password: US
                      password_confirmation: USER_PASSWORD)
 image = Down.download(Faker::Avatar.unique.image(size: '300x300'))
 admin.profile.avatar.attach(io: image, filename: "avatar#{admin.profile.id}#{Time.current.hash}")
+3.times do
+  admin.posts.create(body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4))
+end
