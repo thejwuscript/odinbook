@@ -18,11 +18,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @profile = Profile.find_by(user_id: @user)
-
-    if @profile.nil?
-      @profile = Profile.new(user: @user)
-      @profile.save
-    end
+    @profile = Profile.find_by(user_id: @user) || Profile.create(user: @user)
   end
 end

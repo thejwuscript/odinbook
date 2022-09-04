@@ -3,11 +3,11 @@
 <span>Bio: <%= profile.bio %></span>
 <span>Location: <%= profile.location %></span>
 <span>Gender: <%= profile.gender %></span>
-<span>Birthday: <%= profile.birthday.strftime("%b %-e, %Y") %> </span>
+<span>Birthday: <%= profile.birthday && profile.birthday.strftime("%b %-e, %Y") %> </span>
 
 <p>Profile Picture:
   <% if profile.avatar.attached? %>
-    <%= link_to image_tag(profile.avatar_as_thumb), profile.avatar %>
+    <%= link_to image_tag(profile.avatar.variant(:thumb)), profile.avatar %>
   <% else %>
     None available
   <% end %>
