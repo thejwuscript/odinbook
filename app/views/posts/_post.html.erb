@@ -17,7 +17,7 @@
   <hr>
 
   <%= turbo_frame_tag "post-likes-#{post.id}" do %>
-    <%= render "like_count_line", like_count: post.likes.count %>
+    <%= render "posts/like_count_line", like_count: post.likes.count %>
   <% end %>
 
   <hr>
