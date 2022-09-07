@@ -15,6 +15,7 @@ export default class extends Controller {
     "labelButton",
     "imageFileRadioButton",
     "imageURLRadioButton",
+    "modalFooter",
   ];
 
   show(event) {
@@ -58,8 +59,12 @@ export default class extends Controller {
     let output = this.outputTarget;
     let hiddenURLField = this.hiddenURLFieldTarget;
     let hiddenDataURLField = this.hiddenDataURLFieldTarget;
+    const footer = this.modalFooterTarget;
 
     if (this.imageFileRadioButtonTarget.checked && file.files[0]) {
+      const message = document.createElement('span');
+      message.textContent = "Loading image..."
+      footer.appendChild(message);
       let reader = new FileReader();
       reader.onload = (e) => {
         const image = new Image();
@@ -69,12 +74,16 @@ export default class extends Controller {
           output.appendChild(image);
           output.style.display = "flex";
           this.modalcontainerTarget.style.display = "none";
+          message.remove();
           hiddenDataURLField.value = reader.result;
         };
         // image.onerror  = () => {}
       };
       reader.readAsDataURL(file.files[0]);
     } else if (this.imageURLRadioButtonTarget.checked && url) {
+      const message = document.createElement('span');
+      message.textContent = "Loading image..."
+      footer.appendChild(message);
       const image = new Image();
       image.src = url;
       image.onload = () => {
@@ -82,6 +91,7 @@ export default class extends Controller {
         output.appendChild(image);
         output.style.display = "flex";
         this.modalcontainerTarget.style.display = "none";
+        message.remove();
         hiddenURLField.value = url;
       };
       // image.onerror = () => {}

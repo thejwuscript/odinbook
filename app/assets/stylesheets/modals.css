@@ -66,3 +66,9 @@
   justify-content: center;
   gap: 24px;
 }
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
