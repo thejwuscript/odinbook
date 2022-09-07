@@ -62,15 +62,29 @@ export default class extends Controller {
     if (this.imageFileRadioButtonTarget.checked && file.files[0]) {
       let reader = new FileReader();
       reader.onload = (e) => {
-        output.innerHTML = `<img src=${reader.result} class="post-image">`;
-        hiddenDataURLField.value = reader.result;
+        const image = new Image();
+        image.src = reader.result;
+        image.onload = () => {
+          image.classList.add("post-image");
+          output.appendChild(image);
+          output.style.display = "flex";
+          this.modalcontainerTarget.style.display = "none";
+          hiddenDataURLField.value = reader.result;
+        };
+        // image.onerror  = () => {}
       };
       reader.readAsDataURL(file.files[0]);
-      this.modalcontainerTarget.style.display = "none";
     } else if (this.imageURLRadioButtonTarget.checked && url) {
-      this.modalcontainerTarget.style.display = "none";
-      output.innerHTML = `<img src=${url} class="post-image">`;
-      hiddenURLField.value = url;
+      const image = new Image();
+      image.src = url;
+      image.onload = () => {
+        image.classList.add("post-image");
+        output.appendChild(image);
+        output.style.display = "flex";
+        this.modalcontainerTarget.style.display = "none";
+        hiddenURLField.value = url;
+      };
+      // image.onerror = () => {}
     }
   }
 
