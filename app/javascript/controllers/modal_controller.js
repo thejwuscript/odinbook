@@ -103,7 +103,11 @@ export default class extends Controller {
   }
 
   undoImageAttachment() {
-    console.log("works")
+    document.querySelector('img.post-image').remove();
+    this.outputTarget.style.display = "none"
+    this.hiddenURLFieldTarget.value = ''
+    this.hiddenDataURLFieldTarget.value = ''
+    this.showModalLinkTarget.dataset.action = "click->modal#show"
   }
 
   addClickAction() {
