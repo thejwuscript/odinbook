@@ -16,6 +16,7 @@ export default class extends Controller {
     "imageFileRadioButton",
     "imageURLRadioButton",
     "modalFooter",
+    "showModalLink"
   ];
 
   show(event) {
@@ -60,6 +61,7 @@ export default class extends Controller {
     let hiddenURLField = this.hiddenURLFieldTarget;
     let hiddenDataURLField = this.hiddenDataURLFieldTarget;
     const footer = this.modalFooterTarget;
+    const link = this.showModalLinkTarget;
 
     if (this.imageFileRadioButtonTarget.checked && file.files[0]) {
       const message = document.createElement('span');
@@ -75,6 +77,7 @@ export default class extends Controller {
           output.style.display = "flex";
           this.modalcontainerTarget.style.display = "none";
           message.remove();
+          link.removeAttribute("data-action");
           hiddenDataURLField.value = reader.result;
         };
         // image.onerror  = () => {}
@@ -92,6 +95,7 @@ export default class extends Controller {
         output.style.display = "flex";
         this.modalcontainerTarget.style.display = "none";
         message.remove();
+        link.removeAttribute("data-action");
         hiddenURLField.value = url;
       };
       // image.onerror = () => {}

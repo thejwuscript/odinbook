@@ -11,9 +11,9 @@
   <%= form.hidden_field :image_url, 'data-modal-target' => 'hiddenURLField' %>
   <%= form.hidden_field :image_data_url, 'data-modal-target' => 'hiddenDataURLField' %>
   <div class="new-post-buttons-container">
-    <%= link_to root_path, class: "attach-image-link", data: { action: "modal#show" } do %>
+    <span class="attach-image-link" data-action="click->modal#show" data-modal-target="showModalLink">
       <span class="mdi mdi-image"></span> Attach image
-    <% end %>
+    </span>
     <%= form.submit "Post" %>
   </div>
   <%= render "attach_image", post: @post %>

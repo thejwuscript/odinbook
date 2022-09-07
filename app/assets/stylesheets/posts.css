@@ -127,6 +127,7 @@ form #post_body {
 
 .attach-image-link {
   color: #596373;
+  cursor: pointer;
 }
 
 .mdi.mdi-close:hover,
