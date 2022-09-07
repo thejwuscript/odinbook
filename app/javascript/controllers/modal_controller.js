@@ -102,6 +102,10 @@ export default class extends Controller {
     }
   }
 
+  undoImageAttachment() {
+    console.log("works")
+  }
+
   addClickAction() {
     const element = this.modalcontainerTarget;
     element.setAttribute("data-action", "click->modal#close");

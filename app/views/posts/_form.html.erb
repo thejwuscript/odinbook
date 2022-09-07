@@ -5,7 +5,7 @@
   <% end %>
   <div class="image-preview" data-modal-target="output">
   <div class="overlay">
-    <span class="mdi mdi-close"></span>
+    <span class="mdi mdi-close" data-action="click->modal#undoImageAttachment"></span>
   </div>
   </div>
   <%= form.hidden_field :image_url, 'data-modal-target' => 'hiddenURLField' %>
