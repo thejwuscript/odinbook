@@ -1,17 +1,18 @@
 <header>
   <nav class="topnav">
+    <div class="topnav-left">Placeholder</div>
     <ul>
       <li>
-        <%= link_to tag.span(class: "mdi mdi-home"), root_path %>
+        <%= link_to tag.span(class: "mdi mdi-home-outline"), root_path, title: "Home" %>
       </li>
       <li>
-        <%= link_to tag.span(class: "mdi mdi-account"), "/#{current_user.username}" %>
+        <%= link_to tag.span(class: "mdi mdi-account-outline"), "/#{current_user.username}", title: "Profile" %>
       </li>
       <li>
-        <%= link_to tag.span(class: "mdi mdi-account-multiple"), friends_path %>
+        <%= link_to tag.span(class: "mdi mdi-account-multiple-outline"), friends_path, title: "Friends" %>
       </li>
       <li>
-        <%= link_to tag.span(class: "mdi mdi-account-group"), users_path %>
+        <%= link_to tag.span(class: "mdi mdi-account-group-outline"), users_path, title: "All Users" %>
       </li>
     </ul>
     <div class="topnav-right">
@@ -23,7 +24,8 @@
           <% end %>
         </a>
       </div>
-      <%= button_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo: false }, form: { style: "display: inline-block"} %>
+      <%# button_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo: false }, form: { style: "display: inline-block"} %>
+      <%= image_tag current_user.avatar, class: "profile-pic-icon" %>
     </div>
   </nav>
 </header>
