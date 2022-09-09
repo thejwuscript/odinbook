@@ -17,8 +17,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @profile = Profile.find_by(user_id: @user) || Profile.create(user: @user)
-    @posts = Post.where(author: @user)
+    if params.key?(:username)
+      @user = User.find_by(username: params[:username])
+      @profile = Profile.find_by(user_id: @user) || Profile.create(user: @user)
+      @posts = Post.where(author: @user)
+    else
+      # user not found
+    end
   end
 end

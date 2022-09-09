@@ -1,11 +1,18 @@
 <header>
   <nav class="topnav">
     <ul>
-      <li><%= link_to "Home", root_url %></li>
-      <li><%= link_to "All Users", users_path %></li>
-      <li><%= link_to "Myself", user_path(current_user) %></li>
-      <li><%= link_to "Friends", friends_path %></li>
-      
+      <li>
+        <%= link_to tag.span(class: "mdi mdi-home"), root_path %>
+      </li>
+      <li>
+        <%= link_to tag.span(class: "mdi mdi-account"), "/#{current_user.username}" %>
+      </li>
+      <li>
+        <%= link_to tag.span(class: "mdi mdi-account-multiple"), friends_path %>
+      </li>
+      <li>
+        <%= link_to tag.span(class: "mdi mdi-account-group"), users_path %>
+      </li>
     </ul>
     <div class="topnav-right">
       <div class="notification">
