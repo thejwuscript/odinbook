@@ -17,7 +17,7 @@
     </ul>
     <div class="topnav-right">
       <div class="notification">
-        <a href="/friends">
+        <a href="/friends" title="Notifications">
           <span class="mdi mdi-bell"></span>
           <% if @count > 0 %>
             <span class="notification-badge"><%= @count %></span>
@@ -25,7 +25,7 @@
         </a>
       </div>
       <%# button_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo: false }, form: { style: "display: inline-block"} %>
-      <%= image_tag current_user.avatar, class: "profile-pic-icon" %>
+      <%= image_tag current_user.avatar, class: "profile-pic-icon", title: "Account" %>
     </div>
   </nav>
 </header>

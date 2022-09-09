@@ -97,5 +97,14 @@
 }
 
 .topnav-right > .profile-pic-icon {
-  transform: scale(0.9)
+  transform: scale(0.9);
+  cursor: pointer;
+}
+
+.topnav-right > .profile-pic-icon:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.topnav-right > .profile-pic-icon:active {
+  background-color: rgba(0, 0, 0, 0.3);
 }
