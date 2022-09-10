@@ -1,0 +1,6 @@
+<%# guard clause necessary? %>
+<% if profile.avatar.attached? %>
+  <%= link_to image_tag(profile.avatar.variant(:thumb)), "##", class: "profile-avatar" %>
+<% else %>
+  None available
+<% end %>

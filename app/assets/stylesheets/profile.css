@@ -1,11 +1,13 @@
 .profile {
   display: grid;
-  grid-template-columns: 0.45fr 0.55fr;
+  grid-template-columns: 4.2fr 5.8fr;
+  gap: 32px;
 }
 
 .profile .profile-info {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
 }
 
 .profile .profile-posts {
@@ -14,3 +16,18 @@
   align-items: flex-start;
   gap: 24px;
 }
+
+a.profile-avatar,
+.profile-info img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.profile-info img {
+  background-color: white;
+  object-fit: cover;
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
