@@ -1,14 +1,10 @@
 <div class="profile-info">
   <%= render partial: "profiles/avatar", locals: {profile: profile} %>
 
-  <h2>Profile</h2>
-  <span>Name: <%= profile.display_name %></span>
-  <span>Bio: <%= profile.bio %></span>
-  <span>Location: <%= profile.location %></span>
-  <span>Gender: <%= profile.gender %></span>
-  <span>Birthday: <%= profile.birthday && profile.birthday.strftime("%b %-e, %Y") %> </span>
-  
-  
-  
-  <%= link_to "Edit Profile", edit_profile_path if profile.user == current_user %>
+  <div>
+    <span>Name: <%= profile.display_name %></span>
+    <span>Bio: <%= profile.bio %></span>
+    <span>Location: <%= profile.location %></span>
+    <%= link_to "Edit Profile", edit_profile_path if profile.user == current_user %>
+  </div>
 </div>
