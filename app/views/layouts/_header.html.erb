@@ -4,16 +4,32 @@
     <%# <a href="https://www.flaticon.com/free-icons/alphabet" title="alphabet icons">Alphabet icons created by Freepik - Flaticon</a> %>
     <ul>
       <li>
+      <% if current_page?(root_path) %>
+        <%= link_to tag.span(class: "mdi mdi-home"), root_path, title: "Home" %>
+      <% else %>
         <%= link_to tag.span(class: "mdi mdi-home-outline"), root_path, title: "Home" %>
+      <% end %>
       </li>
       <li>
+      <% if current_page?("/#{current_user.username}") %>
+         <%= link_to tag.span(class: "mdi mdi-account"), "/#{current_user.username}", title: "Profile" %>
+      <% else %>
         <%= link_to tag.span(class: "mdi mdi-account-outline"), "/#{current_user.username}", title: "Profile" %>
+      <% end %>
       </li>
       <li>
+      <% if current_page?(friends_path) %>
+        <%= link_to tag.span(class: "mdi mdi-account-multiple"), friends_path, title: "Friends" %>
+      <% else %>
         <%= link_to tag.span(class: "mdi mdi-account-multiple-outline"), friends_path, title: "Friends" %>
+      <% end %>
       </li>
       <li>
+      <% if current_page?(users_path) %>
+        <%= link_to tag.span(class: "mdi mdi-account-group"), users_path, title: "All Users" %>
+      <% else %>
         <%= link_to tag.span(class: "mdi mdi-account-group-outline"), users_path, title: "All Users" %>
+      <% end %>
       </li>
     </ul>
     <div class="topnav-right">
