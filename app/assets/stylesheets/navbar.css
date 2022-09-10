@@ -46,6 +46,19 @@
   width: 190px;
 }
 
+.topnav-left > span {
+  font-size: 36px;
+  font-family: 'Cherry Swash', cursive;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(70deg, rgb(0, 102, 255), rgb(102, 185, 245));
+  border-radius: 50%;
+}
+
 .topnav-right {
   display: flex;
   align-items: center;
