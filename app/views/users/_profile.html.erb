@@ -1,16 +1,18 @@
-<h2>Profile</h2>
-<span>Name: <%= profile.display_name %></span>
-<span>Bio: <%= profile.bio %></span>
-<span>Location: <%= profile.location %></span>
-<span>Gender: <%= profile.gender %></span>
-<span>Birthday: <%= profile.birthday && profile.birthday.strftime("%b %-e, %Y") %> </span>
-
-<p>Profile Picture:
-  <% if profile.avatar.attached? %>
-    <%= link_to image_tag(profile.avatar.variant(:thumb)), profile.avatar %>
-  <% else %>
-    None available
-  <% end %>
-</p>
-
-<%= link_to "Edit Profile", edit_profile_path if profile.user == current_user %>
+<div class="profile-info">
+  <h2>Profile</h2>
+  <span>Name: <%= profile.display_name %></span>
+  <span>Bio: <%= profile.bio %></span>
+  <span>Location: <%= profile.location %></span>
+  <span>Gender: <%= profile.gender %></span>
+  <span>Birthday: <%= profile.birthday && profile.birthday.strftime("%b %-e, %Y") %> </span>
+  
+  <p>Profile Picture:
+    <% if profile.avatar.attached? %>
+      <%= link_to image_tag(profile.avatar.variant(:thumb)), profile.avatar %>
+    <% else %>
+      None available
+    <% end %>
+  </p>
+  
+  <%= link_to "Edit Profile", edit_profile_path if profile.user == current_user %>
+</div>

@@ -1,8 +1,15 @@
-<%= render "profile", profile: @profile %>
+<div class="profile">
+	<%= render "profile", profile: @profile %>
 
-<% @posts.each do |post| %>
-    <%= render partial: "posts/post", locals: { post: post, likes: post.likes.includes(:user) }%>
-<% end %>
+	<div class="profile-posts">
+		<% if @user == current_user %>
+			<%=render "posts/new_post_placeholder" %>
+		<% end %>
+		<% @posts.each do |post| %>
+			<%= render partial: "posts/post", locals: { post: post, likes: post.likes.includes(:user) }%>
+		<% end %>
+	</div>
+</div>
 
 
 
