@@ -5,28 +5,28 @@
     <ul>
       <li>
       <% if current_page?(root_path) %>
-        <%= link_to tag.span(class: "mdi mdi-home"), root_path, title: "Home" %>
+        <%= link_to tag.span(class: "mdi mdi-home"), root_path, title: "Home", class: "active" %>
       <% else %>
         <%= link_to tag.span(class: "mdi mdi-home-outline"), root_path, title: "Home" %>
       <% end %>
       </li>
       <li>
       <% if current_page?("/#{current_user.username}") %>
-         <%= link_to tag.span(class: "mdi mdi-account"), "/#{current_user.username}", title: "Profile" %>
+         <%= link_to tag.span(class: "mdi mdi-account"), "/#{current_user.username}", title: "Profile", class: "active" %>
       <% else %>
         <%= link_to tag.span(class: "mdi mdi-account-outline"), "/#{current_user.username}", title: "Profile" %>
       <% end %>
       </li>
       <li>
       <% if current_page?(friends_path) %>
-        <%= link_to tag.span(class: "mdi mdi-account-multiple"), friends_path, title: "Friends" %>
+        <%= link_to tag.span(class: "mdi mdi-account-multiple"), friends_path, title: "Friends", class: "active" %>
       <% else %>
         <%= link_to tag.span(class: "mdi mdi-account-multiple-outline"), friends_path, title: "Friends" %>
       <% end %>
       </li>
       <li>
       <% if current_page?(users_path) %>
-        <%= link_to tag.span(class: "mdi mdi-account-group"), users_path, title: "All Users" %>
+        <%= link_to tag.span(class: "mdi mdi-account-group"), users_path, title: "All Users", class: "active" %>
       <% else %>
         <%= link_to tag.span(class: "mdi mdi-account-group-outline"), users_path, title: "All Users" %>
       <% end %>
