@@ -1,6 +1,11 @@
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('NotoSans-Regular.ttf');
+}
+
 .profile {
   display: grid;
-  grid-template-columns: 4.2fr 5.8fr;
+  grid-template-columns: 4fr 6fr;
   gap: 32px;
 }
 
@@ -8,6 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  gap: 24px;
 }
 
 .profile .profile-posts {
@@ -31,3 +37,29 @@ a.profile-avatar,
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.profile-info-details {
+  background-color: white;
+  width: 300px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  color: #596373;
+  font-size: 1.2rem;
+}
+
+a.edit-profile-button {
+  align-self: center;
+  background-color: #e2e3e5;
+  color: black;
+  font-family: 'Noto Sans', Arial, sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  padding: 8px;
+  margin-top: 36px;
+}
