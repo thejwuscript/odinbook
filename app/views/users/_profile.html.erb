@@ -3,10 +3,22 @@
 
   <div class="profile-info-details">
     <%= turbo_frame_tag "profile-details" do %>
-      <span><%= profile.display_name %></span>
-      <span><%= profile.user.username %></span>
-      <span><%= profile.bio %></span>
-      <span><%= profile.location %></span>
+      <%= tag.span profile.display_name, class: "display-name" %>
+      <%= tag.span profile.user.username, class: "username" %>
+      <%= tag.span profile.bio, class: "bio" %>
+
+      <span class="show-company-container">
+        <%= tag.span '', class: "mdi mdi-domain" %>
+        <%= tag.span profile.company, class: "company" %>
+      </span>
+      <span class="show-location-container">
+        <%= tag.span '', class: "mdi mdi-map-marker" %>
+        <%= tag.span profile.location, class: "location" %>
+      </span>
+      <span class="show-email-container">
+        <%= tag.span '', class: "mdi mdi-email" %>
+        <%= tag.span profile.user.email, class: "email" %>
+      </span>
       <% if profile.user == current_user %>
         <%= link_to "Edit Profile", edit_profile_path, class: "edit-profile-button" %>
       <% end %>

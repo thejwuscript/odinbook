@@ -46,7 +46,7 @@
   align-items: flex-start;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 5px;
-  color: #596373;
+  color: black;
   font-size: 1rem;
 }
 
@@ -55,6 +55,23 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  gap: 4px;
+}
+
+.profile-info-details .display-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+}
+
+.profile-info-details .username {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #596373
+}
+
+.profile-info-details .bio {
+  margin: 8px 0;
 }
 
 a.edit-profile-button {
@@ -68,7 +85,7 @@ a.edit-profile-button {
   text-align: center;
   font-size: 1rem;
   padding: 8px;
-  margin-top: 36px;
+  margin-top: 20px;
 }
 
 .profile-info-details > #profile-details > form {
@@ -148,4 +165,14 @@ form > .location-container > input {
   background-color: #f5f6f7;
   border: 1px solid #dbdddf;
   color: black;
+}
+
+.profile-info-details .show-company-container,
+.profile-info-details .show-location-container,
+.profile-info-details .show-email-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin: 2px 0;
 }
