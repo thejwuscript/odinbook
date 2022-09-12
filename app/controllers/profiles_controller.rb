@@ -11,7 +11,6 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find_by(user_id: current_user)
-    #include hidden field for user id
   end
 
   def update
