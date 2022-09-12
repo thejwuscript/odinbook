@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     unauthenticated { root to: "devise/sessions#new", as: :root_url }
   end
   resources :users, only: :index
-  get ':username', to: 'users#show'
+  get ':username', to: 'users#show', as: :user
   resources :posts do
     resources :comments, only: %i[index new create]
   end

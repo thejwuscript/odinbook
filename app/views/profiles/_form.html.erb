@@ -1,0 +1,34 @@
+<%= form_with model: profile, url: profile_path do |form| %>
+  <% if profile.errors.any? %>
+    <p>Something went wrong.</p>
+  <% end %>
+
+  <div class="display-name-container">
+    <%= form.label :display_name, "Name", style: "font-weight: bold" %>
+    <%= form.text_field :display_name %>
+  </div>
+    
+  <div class="bio-container">
+    <%= form.label :bio, style: "font-weight: bold" %>
+    <%= form.text_area :bio, rows: 3, maxlength: 180 %>
+  </div>
+
+  <div class="company-container">
+    <%= form.label :company do %>
+      <span class="mdi mdi-domain"></span>
+    <% end %>
+    <%= form.text_field :company %>
+  </div>
+
+  <div class="location-container">
+    <%= form.label :location do %>
+      <span class="mdi mdi-map-marker"></span>
+    <% end %>
+    <%= form.text_field :location %>
+  </div>
+  <hr>
+  <div class="profile-details-footer">
+    <%= form.submit "Save" %>
+    <%= link_to "Cancel", user_path(username: current_user.username) %>
+  </div>
+<% end %>
