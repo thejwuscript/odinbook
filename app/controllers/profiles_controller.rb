@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by(user_id: current_user)
 
     if @profile.update(profile_params)
-      redirect_to user_path(current_user)
+      redirect_to "/#{@profile.user.username}"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -30,6 +30,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:display_name, :bio, :gender, :location, :birthday, :avatar)
+    params.require(:profile).permit(:display_name, :bio, :location, :avatar)
   end
 end

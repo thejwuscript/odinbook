@@ -1,0 +1,26 @@
+<div data-modal-target="modalcontainer"  id="add-image-modal" data-action="mousedown->modal#addClickAction">
+  <div class="modal-content" data-modal-target="modaldialog" data-action="mousedown->modal#stopPropagation mouseover->modal#removeClickAction" >
+    <div class="modal-top">
+      <h3 class="modal-title">Update profile picture</h3>
+      <span class="mdi mdi-close modal" data-action="click->modal#close"></span>
+    </div>
+    <hr>
+    <%= form_with model: profile do |form| %>
+      <div data-controller="image-preview">
+    <% if profile.avatar.attached? %>
+      Preview:<%= image_tag(profile.avatar, class: "preview-avatar", data: { target: "image-preview.output" }) %>
+    <% else %>
+      <img src='' class="preview-avatar" data-image-preview-target="output" alt='Select image to preview'>
+    <% end %>
+    <div>
+      <%= form.label :avatar, "Change Photo" %>
+      <%= form.file_field :avatar, accept: 'image/png,image/jpeg', data: {target: "image-preview.input", action: "image-preview#readImage"} %>
+    </div>
+  </div>
+      <hr>
+      <div class="modal-footer" data-modal-target="modalFooter">
+        <%= form.button "Save" %>
+      </div>
+    <% end %>
+  </div>
+</div>

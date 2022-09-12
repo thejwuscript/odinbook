@@ -2,12 +2,14 @@
   <%= render partial: "profiles/avatar", locals: {profile: profile} %>
 
   <div class="profile-info-details">
-    <span><%= profile.display_name %></span>
-    <span><%= profile.user.username %></span>
-    <span><%= profile.bio %></span>
-    <span><%= profile.location %></span>
-    <% if profile.user == current_user %>
-      <%= link_to "Edit Profile", edit_profile_path, class: "edit-profile-button" %>
+    <%= turbo_frame_tag "profile-details" do %>
+      <span><%= profile.display_name %></span>
+      <span><%= profile.user.username %></span>
+      <span><%= profile.bio %></span>
+      <span><%= profile.location %></span>
+      <% if profile.user == current_user %>
+        <%= link_to "Edit Profile", edit_profile_path, class: "edit-profile-button" %>
+      <% end %>
     <% end %>
   </div>
 </div>

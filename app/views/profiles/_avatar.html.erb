@@ -1,6 +1,12 @@
 <%# guard clause necessary? %>
-<% if profile.avatar.attached? %>
-  <%= link_to image_tag(profile.avatar.variant(:thumb)), "##", class: "profile-avatar" %>
-<% else %>
-  None available
-<% end %>
+<div data-controller="modal">
+  <% if profile.avatar.attached? && profile.user == current_user %>
+    <%= tag.span image_tag(profile.avatar), class: "profile-avatar own", title: "Change your avatar", data: {action: "click->modal#show"} %>
+  <% elsif profile.avatar.attached? %>
+    <%= tag.span image_tag(profile.avatar), class: "profile-avatar", title: "Avatar" %>
+  <% else %>
+    None available
+  <% end %>
+  
+  <%= render partial: "/profiles/edit_avatar", locals: {profile: profile} %>
+</div>

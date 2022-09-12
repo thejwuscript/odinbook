@@ -23,18 +23,23 @@
   gap: 24px;
 }
 
-a.profile-avatar,
-.profile-info img {
+.profile-info .profile-avatar {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-}
-
-.profile-info img {
   background-color: white;
   object-fit: cover;
   border: 1px solid white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: inline-block;
+}
+
+.profile-info .profile-avatar.own > img {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }
 
 .profile-info-details {
@@ -48,6 +53,13 @@ a.profile-avatar,
   border-radius: 5px;
   color: #596373;
   font-size: 1.2rem;
+}
+
+.profile-info-details > #profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 
 a.edit-profile-button {

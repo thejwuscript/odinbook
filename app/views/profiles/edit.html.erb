@@ -1,3 +1,3 @@
-<h1>Edit Profile</h1>
-
-<%= render "form", profile: @profile %>
+<%=turbo_frame_tag "profile-details" do %>
+  <%= render "form", profile: @profile %>
+<% end %>
