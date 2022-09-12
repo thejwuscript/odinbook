@@ -59,10 +59,10 @@
 
 a.edit-profile-button {
   align-self: center;
-  background-color: #e2e3e5;
+  background-color: #f5f6f7;
   color: black;
   font-family: 'Noto Sans', Arial, sans-serif;
-  font-weight: bold;
+  border: 1px solid #dbdddf;
   border-radius: 5px;
   width: 100%;
   text-align: center;
@@ -96,7 +96,11 @@ a.edit-profile-button {
 
 .profile-info-details > #profile-details > form > div:last-child {
   padding: 0;
-  margin-top: 16px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
 }
 
 form > .display-name-container,
@@ -123,4 +127,25 @@ form > .location-container span {
 form > .company-container > input,
 form > .location-container > input {
   min-width: 0;
+}
+
+.profile-details-footer > .save-button,
+.profile-details-footer > .cancel-button {
+
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-details-footer > .save-button {
+  background-color: #0076ff;
+  color: white;
+  border: 1px solid #0066ff;
+}
+
+.profile-details-footer > .cancel-button {
+  background-color: #f5f6f7;
+  border: 1px solid #dbdddf;
+  color: black;
 }

@@ -28,7 +28,7 @@
   </div>
   <hr>
   <div class="profile-details-footer">
-    <%= form.submit "Save" %>
-    <%= link_to "Cancel", user_path(username: current_user.username) %>
+    <%= form.button "Save", class: "save-button" %>
+    <%= link_to "Cancel", user_path(username: current_user.username), class: "cancel-button" %>
   </div>
 <% end %>
