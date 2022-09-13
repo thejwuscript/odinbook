@@ -24,7 +24,9 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-    puts "called here"
+    @profile = current_user.profile
+    @profile.cover_photo.purge if params[:cover_photo] == 'purge'
+    redirect_to user_path(username: current_user.username)
   end
 
   private
