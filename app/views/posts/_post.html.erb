@@ -3,7 +3,7 @@
   <div class="post-author-container">
     <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
     <div class="user-info">
-      <p class="user-info-name"><%= post.author.name.capitalize %></p>
+      <p class="user-info-name"><%= post.author.name %></p>
       <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%l:%M %p - %b %d, %Y") %></p>
     </div>
   </div>
