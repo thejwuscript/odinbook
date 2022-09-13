@@ -11,11 +11,11 @@
 
 	<div class="profile-posts">
 
-		<div class="edit-cover-photo-container">
-			<%= button_tag type: "button", class: "add-cover-photo-button" do %>
+		<div class="edit-cover-photo-container" data-controller="cover-photo">
+			<%= button_tag type: "button", class: "add-cover-photo-button", data: {action: "click->cover-photo#toggle"} do %>
 				<span class="mdi mdi-camera"></span><span>Edit</span>
 			<% end %>
-			<div class="edit-cover-photo-selection">
+			<div class="edit-cover-photo-selection" data-cover-photo-target="menu">
 				<div><span class="mdi mdi-upload-outline"></span>Upload Photo</div>
 				<div><span class="mdi mdi-delete-outline"></span>Remove</div>
 			</div>
