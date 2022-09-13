@@ -3,6 +3,7 @@ class Profile < ApplicationRecord
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_limit: [300, 300]
   end
+  has_one_attached :cover_photo
   validate :avatar_format
   validates :user, uniqueness: true
 

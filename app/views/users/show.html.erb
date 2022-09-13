@@ -1,8 +1,15 @@
 <div class="profile">
-	<div class="cover-photo-container"><%= image_tag "" %></div>
+	<div class="cover-photo-container">
+		
+		<%= image_tag "" %>
+	</div>
+
 	<%= render "profile", profile: @profile %>
 
 	<div class="profile-posts">
+		<%= button_tag type: "button", class: "add-cover-photo-button" do %>
+			<span class="mdi mdi-camera"></span>Edit
+		<% end %>
 		<% if @user == current_user %>
 			<%= render "posts/new_post_placeholder" %>
 		<% end %>
@@ -11,6 +18,3 @@
 		<% end %>
 	</div>
 </div>
-
-
-
