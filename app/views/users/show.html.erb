@@ -16,8 +16,16 @@
 				<span class="mdi mdi-camera"></span><span>Edit</span>
 			<% end %>
 			<div class="edit-cover-photo-selection" data-cover-photo-target="menu">
-				<div><span class="mdi mdi-upload-outline"></span>Upload Photo</div>
-				<div><span class="mdi mdi-delete-outline"></span>Remove</div>
+
+				<%= form_with model: @profile, data: {turbo: false} do |form| %>
+					<%= form.label 'cover_photo' do %>
+						<span class="mdi mdi-upload-outline"></span>Upload Photo
+						<%= form.file_field 'cover_photo', onchange: "this.form.submit()" %>
+					<% end %>
+				<% end %>
+				<%= button_to profile_path, method: :delete, form: {data: {turbo_confirm: "Are you sure you want to remove your cover photo?"}} do %>
+					<span class="mdi mdi-delete-outline"></span>Remove
+				<% end %>
 			</div>
 		</div>
 

@@ -58,7 +58,7 @@
   box-shadow: 0 2px 16px grey;
 }
 
-.edit-cover-photo-selection > div {
+.edit-cover-photo-selection > form {
   padding: 10px 12px;
   cursor: pointer;
   display: flex;
@@ -66,12 +66,32 @@
   gap: 8px;
 }
 
-.edit-cover-photo-selection > div > span.mdi {
+.edit-cover-photo-selection > form > label > span.mdi,
+.edit-cover-photo-selection > form > button > span.mdi {
   font-size: 1.2rem;
 }  
 
-.edit-cover-photo-selection > div:hover {
+.edit-cover-photo-selection > form:hover {
   background-color: #f5f6f7;
+}
+
+.edit-cover-photo-selection > form > label,
+.edit-cover-photo-selection > form > button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.edit-cover-photo-selection > form > label > input {
+  display: none;
+}
+
+.edit-cover-photo-selection > form > button {
+  border: none;
+  background-color: transparent;
 }
 
 .cover-photo-placeholder {

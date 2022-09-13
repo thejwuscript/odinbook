@@ -24,6 +24,7 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
+    puts "called here"
   end
 
   private
