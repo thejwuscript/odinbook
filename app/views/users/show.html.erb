@@ -1,7 +1,10 @@
 <div class="profile">
 	<div class="cover-photo-container">
-		
-		<%= image_tag "" %>
+		<% if @profile.cover_photo.attached? %>
+			<%= image_tag "" %>
+		<% else %>
+			<div class="cover-photo-placeholder"></div>
+		<% end %>
 	</div>
 
 	<%= render "profile", profile: @profile %>
