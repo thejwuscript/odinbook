@@ -10,9 +10,18 @@
 	<%= render "profile", profile: @profile %>
 
 	<div class="profile-posts">
-		<%= button_tag type: "button", class: "add-cover-photo-button" do %>
-			<span class="mdi mdi-camera"></span>Edit
-		<% end %>
+
+		<div class="edit-cover-photo-container">
+			<%= button_tag type: "button", class: "add-cover-photo-button" do %>
+				<span class="mdi mdi-camera"></span><span>Edit</span>
+			<% end %>
+			<div class="edit-cover-photo-selection">
+				<div><span class="mdi mdi-upload-outline"></span>Upload Photo</div>
+				<div><span class="mdi mdi-delete-outline"></span>Remove</div>
+			</div>
+		</div>
+
+
 		<% if @user == current_user %>
 			<%= render "posts/new_post_placeholder" %>
 		<% end %>
