@@ -106,4 +106,5 @@ textarea,
 textarea:focus-visible {
   border: none;
   outline: none;
+  resize: vertical;
 }
