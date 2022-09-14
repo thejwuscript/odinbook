@@ -26,12 +26,15 @@ input[name="comment[body]"] {
 }
 
 turbo-frame[id^="show-comment-region"] {
-  margin-top: 12px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
   width: 100%;
+}
+
+.individual-comment-container:first-child {
+  margin-top: 12px;
 }
 
 .individual-comment-text-container {
