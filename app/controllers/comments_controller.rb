@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
   def new
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(author: current_user)
-    @post_comments = @post.comments.all
+    @post_comments = @post.comments.all.order(created_at: :desc)
+    @avatar = current_user.avatar
     render "posts/comments/new"
   end
 

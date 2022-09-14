@@ -7,7 +7,7 @@
 
 turbo-frame[src$="comments/new"] {
   width: 100%;
-  margin-top: 32px;
+  margin: 16px 0;
 }
 
 input[name="comment[body]"] {
@@ -26,6 +26,7 @@ input[name="comment[body]"] {
 }
 
 turbo-frame[id^="show-comment-region"] {
+  margin-top: -16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
