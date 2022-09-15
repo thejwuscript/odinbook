@@ -5,6 +5,7 @@ export default class extends Controller {
   connect() {}
 
   something(e) {
+    e.target.dataset.action = "click->comments#removeCommentsSection"
     const postId = e.target.dataset.postid;
     const postContainer = e.target.closest(".post-container.published");
 
@@ -84,6 +85,7 @@ export default class extends Controller {
     const buildCommentSection = async (data) => {
       const div = document.createElement('div');
       div.classList.add('comments-section');
+      div.id = `comments-section-${postId}`;
       const newCommentContainer = await buildNewCommentContainer(data);
       const postCommentsContainer = await buildPostCommentsContainer(data);
       div.appendChild(newCommentContainer);
@@ -97,8 +99,14 @@ export default class extends Controller {
       },
     })
       .then((res) => res.json())
-      //.then(data => console.log(data))
       .then((data) => buildCommentSection(data))
       .then((commentSection) => postContainer.appendChild(commentSection))
   }
+
+  removeCommentsSection(e) {
+    const postId = e.target.dataset.postid;
+    document.getElementById(`comments-section-${postId}`).remove();
+    e.target.dataset.action = "click->comments#something"
+  }
 }
+
