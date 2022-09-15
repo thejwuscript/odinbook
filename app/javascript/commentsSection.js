@@ -81,9 +81,13 @@ function showComments(e) {
     div.classList.add('comments-section');
     div.id = `comments-section-${postId}`;
     const newCommentContainer = await buildNewCommentContainer(data);
-    const postCommentsContainer = await buildPostCommentsContainer(data);
     div.appendChild(newCommentContainer);
-    div.appendChild(postCommentsContainer);
+
+    if (data.postComments.length > 0) {
+      const postCommentsContainer = await buildPostCommentsContainer(data);
+      div.appendChild(postCommentsContainer);
+    };
+    
     return div;
   }
 

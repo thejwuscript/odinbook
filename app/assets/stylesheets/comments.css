@@ -68,5 +68,8 @@ turbo-frame[id^="show-comment-region"] {
 
 .comments-section {
   margin-top: 8px;
+  margin-bottom: 14px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
