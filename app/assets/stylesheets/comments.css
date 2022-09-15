@@ -56,3 +56,17 @@ turbo-frame[id^="show-comment-region"] {
 .comment-body {
   font-size: 1rem;
 }
+
+.show-comment-region {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.comments-section {
+  margin-top: 8px;
+  width: 100%;
+}

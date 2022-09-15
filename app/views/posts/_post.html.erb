@@ -1,4 +1,4 @@
-<div class="post-container published">
+<div class="post-container published" data-controller="comments">
 
   <div class="post-author-container">
     <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
@@ -32,10 +32,8 @@
         <span class="mdi mdi-thumb-up"></span>Like
       <% end %>
     <% end %>
-    <%= button_to new_post_comment_path(post), form: { id: "comment-button-#{post.id}" }, data: { turbo_frame: "new-comment-region-#{post.id}" }, method: :get do %>
+    <%= tag.div data: {action: "click->comments#something", postid: "#{post.id}"} do %>
       <span class="mdi mdi-comment-outline"></span>Comment
     <% end %>
   </div>
-  <%= turbo_frame_tag "new-comment-region-#{post.id}" %>
-  <%= turbo_frame_tag "show-comment-region-#{post.id}" %>
 </div>
