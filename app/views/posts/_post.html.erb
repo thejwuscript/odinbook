@@ -15,9 +15,10 @@
   <% end %>
 
   <hr>
-
-  <%= turbo_frame_tag "post-likes-#{post.id}" do %>
-    <%= render "posts/like_count_line", like_count: post.likes.count %>
+  <%= tag.div class: "counts-container" do %>
+    <%= turbo_frame_tag "post-likes-#{post.id}" do %>
+      <%= render "posts/like_count_line", like_count: post.likes.count %>
+    <% end %>
   <% end %>
 
   <hr>
@@ -32,7 +33,7 @@
         <span class="mdi mdi-thumb-up"></span>Like
       <% end %>
     <% end %>
-    <%= tag.div class: "comment-button", data: {postId: post.id} do %>
+    <%= tag.div class: "comment-button", 'data-postid' => post.id do %>
       <span class="mdi mdi-comment-outline"></span>Comment
     <% end %>
   </div>

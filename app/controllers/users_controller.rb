@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if params.key?(:username)
       @user = User.find_by(username: params[:username])
       @profile = Profile.find_by(user_id: @user) || Profile.create(user: @user)
-      @posts = Post.where(author: @user)
+      @posts = Post.where(author: @user).order(created_at: :desc)
     else
       # user not found
     end
