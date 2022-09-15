@@ -129,6 +129,7 @@ form #post_body {
 .like-count-line {
   font-size: 0.9rem;
   color: #596373;
+  padding: 2px 0;
 }
 
 .new-post-buttons-container {
@@ -164,7 +165,6 @@ form #post_body {
   flex: 1;
   gap: 8px;
   padding: 8px 0;
-  /* background-color: lightgrey; */
   border-radius: 5px;
 }
 
