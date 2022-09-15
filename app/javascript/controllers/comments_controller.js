@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   connect() {}
 
-  something(e) {
+  showComments(e) {
     e.target.dataset.action = "click->comments#removeCommentsSection"
     const postId = e.target.dataset.postid;
     const postContainer = e.target.closest(".post-container.published");
@@ -106,7 +106,7 @@ export default class extends Controller {
   removeCommentsSection(e) {
     const postId = e.target.dataset.postid;
     document.getElementById(`comments-section-${postId}`).remove();
-    e.target.dataset.action = "click->comments#something"
+    e.target.dataset.action = "click->comments#showComments"
   }
 }
 
