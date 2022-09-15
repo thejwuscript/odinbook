@@ -3,5 +3,6 @@ import "@hotwired/turbo-rails";
 import "controllers";
 import attachHandlersToCommentButton from './commentsSection';
 
-attachHandlersToCommentButton();
+document.addEventListener('turbo:load', attachHandlersToCommentButton);
+document.addEventListener('load', attachHandlersToCommentButton);
 

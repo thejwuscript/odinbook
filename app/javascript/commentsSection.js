@@ -1,4 +1,5 @@
 function showComments(e) {
+  e.target.addEventListener('click', removeCommentsSection, {once: true})
   const postId = e.target.dataset.postid;
   const postContainer = e.target.closest(".post-container.published");
 
@@ -85,7 +86,7 @@ function showComments(e) {
     div.appendChild(postCommentsContainer);
     return div;
   }
-  
+
   fetch(`/posts/${postId}/comments/new`, {
     headers: {
       "Content-Type": "application/json",
@@ -94,8 +95,6 @@ function showComments(e) {
     .then((res) => res.json())
     .then((data) => buildCommentSection(data))
     .then((commentSection) => postContainer.appendChild(commentSection))
-
-  e.target.addEventListener('click', removeCommentsSection, {once: true})
 };
 
 function removeCommentsSection(e) {
