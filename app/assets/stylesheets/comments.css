@@ -14,7 +14,8 @@ input[name="comment[body]"] {
   background-color: #e9ebee;
   border-radius: 15px;
   color: #596373;
-  padding: 4px 8px;
+  padding: 8px 10px;
+  border: none;
 }
 
 .individual-comment-container {

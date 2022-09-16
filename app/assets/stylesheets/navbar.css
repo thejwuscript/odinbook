@@ -54,8 +54,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(70deg, #0066ff, #66b9f5);
   border-radius: 50%;
 }
@@ -78,7 +78,8 @@
 }
 
 .notification a {
-  height: min-content;
+  width: 40px;
+  height: 40px;
   padding: 8px 10px;
   border-radius: 50%;
   background-color: #e9ebee;
@@ -91,7 +92,7 @@
 
 .mdi-bell {
   color: #1C1C1C;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .notification-badge {
@@ -111,7 +112,8 @@
 }
 
 .topnav-right > .profile-pic-icon {
-  transform: scale(0.9);
+  height: 40px;
+  width: 40px;
   cursor: pointer;
 }
 

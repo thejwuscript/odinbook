@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 10px 8px 24px;
+  padding: 8px 16px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   box-sizing: border-box;
@@ -13,7 +13,7 @@
 .post-container.new,
 .post-container.published {
   flex-direction: column;
-  padding: 12px 24px 0 24px;
+  padding: 12px 16px 0 16px;
 }
 
 .post-author-container {
