@@ -1,5 +1,6 @@
 function showComments(e) {
-  e.target.addEventListener('click', removeCommentsSection, {once: true})
+  e.target.addEventListener('click', removeCommentsSection);
+  e.target.removeEventListener('click', showComments)
   const postId = e.target.dataset.postid;
   const postContainer = e.target.closest(".post-container.published");
 
@@ -104,12 +105,13 @@ function showComments(e) {
 function removeCommentsSection(e) {
   const postId = e.target.dataset.postid;
   document.getElementById(`comments-section-${postId}`).remove();
-  e.target.addEventListener('click', showComments, {once: true})
+  e.target.addEventListener('click', showComments)
+  e.target.removeEventListener('click', removeCommentsSection)
 };
 
 function attachHandlers() {
   for (const button of document.querySelectorAll(".comment-button")) {
-    button.addEventListener('click', showComments, {once: true})
+    button.addEventListener('click', showComments)
   }
 }
 
