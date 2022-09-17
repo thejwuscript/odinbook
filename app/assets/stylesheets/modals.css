@@ -25,8 +25,11 @@
   padding: 20px;
   border: 1px solid #888;
   border-radius: 5px;
-  width: 400px;
+  width: 500px;
   z-index: 9;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .modal-title {
@@ -55,9 +58,14 @@
 .modal-selection-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
   gap: 8px;
+  width: 100%;
+}
+
+.modal-selection-container > input[type="text"] {
+  padding: 4px 8px;
 }
 
 .modal-middle {
