@@ -5,9 +5,10 @@
       <div class="user-info">
         <%= current_user.name %>
       </div>
-      <a href="/"><span class="mdi mdi-close"></span></a>
+      <%= link_to root_path do %>
+        <span class="mdi mdi-close"></span>
+      <% end %>
     </div>
       <%= render 'form', post: @post %>
   </div>
-  
 <% end %>

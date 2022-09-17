@@ -33,10 +33,14 @@
 
 
 		<% if @user == current_user %>
-			<%= render "posts/new_post_placeholder" %>
+			<%= turbo_frame_tag "new_post_frame" do %>
+  			<%= render "posts/new_post_placeholder" %>
+			<% end %>
 		<% end %>
-		<% @posts.each do |post| %>
-			<%= render partial: "posts/post", locals: { post: post, likes: post.likes.includes(:user) }%>
+		<%= turbo_frame_tag "posts" do %>
+			<% @posts.each do |post| %>
+				<%= render partial: "posts/post", locals: { post: post, likes: post.likes.includes(:user) }%>
+			<% end %>
 		<% end %>
 	</div>
 </div>
