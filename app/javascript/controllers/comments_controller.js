@@ -3,11 +3,13 @@ import { showComments } from "../commentsSection"
 
 // Connects to data-controller="comments"
 export default class extends Controller {
-  connect() {
-    console.log("connected")
+  static targets = [ "commentsButton" ];
+
+  commentsButtonTargetConnected(target) {
+    target.addEventListener('click', showComments)
   }
 
-  show(e) {
-    showComments(e);
+  connect() {
   }
+
 }

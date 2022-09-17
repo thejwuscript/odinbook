@@ -33,7 +33,7 @@
         <span class="mdi mdi-thumb-up"></span>Like
       <% end %>
     <% end %>
-    <%= tag.div class: "comment-button", 'data-postid' => post.id, data: {action: "click->comments#show:once"} do %>
+    <%= tag.div class: "comment-button", 'data-postid' => post.id, 'data-comments-target' => 'commentsButton' do %>
       <span class="mdi mdi-comment-outline"></span>Comment
     <% end %>
   </div>
