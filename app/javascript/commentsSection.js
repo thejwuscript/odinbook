@@ -2,6 +2,7 @@ function showComments(e) {
   e.target.addEventListener('click', removeCommentsSection);
   e.target.removeEventListener('click', showComments);
   const postId = e.target.dataset.postid;
+  console.log([e.target, postId]);
   const postContainer = e.target.closest(".post-container.published");
   const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
 
@@ -134,4 +135,4 @@ function attachHandlers() {
   };
 };
 
-export default attachHandlers;
+export {attachHandlers, showComments};

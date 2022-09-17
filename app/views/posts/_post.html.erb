@@ -1,4 +1,4 @@
-<div class="post-container published">
+<div class="post-container published" data-controller="comments">
 
   <div class="post-author-container">
     <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
@@ -33,7 +33,7 @@
         <span class="mdi mdi-thumb-up"></span>Like
       <% end %>
     <% end %>
-    <%= tag.div class: "comment-button", 'data-postid' => post.id do %>
+    <%= tag.div class: "comment-button", 'data-postid' => post.id, data: {action: "click->comments#show:once"} do %>
       <span class="mdi mdi-comment-outline"></span>Comment
     <% end %>
   </div>
