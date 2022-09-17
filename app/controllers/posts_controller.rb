@@ -3,16 +3,20 @@ require "down"
 class PostsController < ApplicationController
   def index
     set_no_cache_headers
-    current_user_posts = current_user.posts.includes(:likes)
-    friends_posts =
-      current_user
-        .friends
-        .includes(:posts)
-        .flat_map { |friend| friend.posts.includes(:likes) }
-    @timeline_posts =
-      (current_user_posts + friends_posts)
-        .sort_by { |post| post.created_at }
-        .reverse
+    if turbo_frame_request_id == 'new_post_frame'
+      render partial: 'posts/new_post_placeholder'
+    else
+      current_user_posts = current_user.posts.includes(:likes)
+      friends_posts =
+        current_user
+          .friends
+          .includes(:posts)
+          .flat_map { |friend| friend.posts.includes(:likes) }
+      @timeline_posts =
+        (current_user_posts + friends_posts)
+          .sort_by { |post| post.created_at }
+          .reverse
+    end
   end
 
   def new

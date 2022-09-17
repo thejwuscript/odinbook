@@ -1,6 +1,4 @@
-<%= turbo_frame_tag "new_post_frame" do %>
-  <%= render "posts/new_post_placeholder" %>
-<% end %>
+<%= render "posts/new_post_placeholder" %>
 
 <%= turbo_frame_tag "posts" do %>
   <% @timeline_posts.each do |post| %>

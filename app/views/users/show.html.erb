@@ -33,9 +33,7 @@
 
 
 		<% if @user == current_user %>
-			<%= turbo_frame_tag "new_post_frame" do %>
-  			<%= render "posts/new_post_placeholder" %>
-			<% end %>
+  		<%= render "posts/new_post_placeholder" %>
 		<% end %>
 		<%= turbo_frame_tag "posts" do %>
 			<% @posts.each do |post| %>
