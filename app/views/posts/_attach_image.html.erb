@@ -21,7 +21,7 @@
           </div>
           <div class="file-field-row">
             <%= form.label :ximage_file, "Choose File", 'data-modal-target' => 'labelButton' %>
-            <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-action' => 'modal#showFilename', disabled: true %>
+            <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-action' => 'change->modal#showFilename', disabled: true %>
             <span data-modal-target="filename"></span>
           </div>
         </div>
