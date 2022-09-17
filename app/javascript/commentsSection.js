@@ -1,23 +1,42 @@
 function showComments(e) {
   e.target.addEventListener('click', removeCommentsSection);
-  e.target.removeEventListener('click', showComments)
+  e.target.removeEventListener('click', showComments);
   const postId = e.target.dataset.postid;
   const postContainer = e.target.closest(".post-container.published");
+  const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
 
-  const buildNewCommentForm = () => {
+  const buildNewCommentForm = (data) => {
     const form = document.createElement('form');
+    form.dataset.turbo = "false"
     form.action = `/posts/${postId}/comments`;
     form.method = 'post';
+    form.addEventListener('submit', async (e) => {
+      const commentsSection = e.target.closest('.comments-section');
+      const newComment = await buildIndividualComment({author: data.name, body: form.elements['comment_body'].value}, data);
+      let showCommentRegion = commentsSection.querySelector('.show-comment-region');
+      if (showCommentRegion === null) {
+        showCommentRegion = await buildPostCommentsContainer(data);
+        commentsSection.appendChild(showCommentRegion);
+      };
+      showCommentRegion.appendChild(newComment);
+      form.reset();
+    })
 
     const input = document.createElement('input');
     input.placeholder = "Type your comment here";
     input.type = "text";
     input.name = "comment[body]";
     input.id = "comment_body";
-
     form.appendChild(input);
+
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = "hidden";
+    hiddenInput.name = "authenticity_token";
+    hiddenInput.value = csrfToken;
+    form.appendChild(hiddenInput);
+
     return form;
-  }
+  };
 
   const commentAvatar = (data) => {
     return new Promise((resolve, reject) => {
@@ -44,7 +63,7 @@ function showComments(e) {
     div.classList.add('show-comment-region');
     for (const comment of data.postComments) {
       let individualComment = await buildIndividualComment(comment, data);
-      div.appendChild(individualComment);
+      div.prepend(individualComment);
     }
     return div;
   }
@@ -58,7 +77,7 @@ function showComments(e) {
     div.appendChild(avatar);
     div.appendChild(textContainer);
     return div;
-  }
+  };
 
   const individualCommentText = (comment) => {
     const div = document.createElement('div');
@@ -90,7 +109,7 @@ function showComments(e) {
     };
     
     return div;
-  }
+  };
 
   fetch(`/posts/${postId}/comments/new`, {
     headers: {
@@ -112,7 +131,7 @@ function removeCommentsSection(e) {
 function attachHandlers() {
   for (const button of document.querySelectorAll(".comment-button")) {
     button.addEventListener('click', showComments)
-  }
-}
+  };
+};
 
 export default attachHandlers;
