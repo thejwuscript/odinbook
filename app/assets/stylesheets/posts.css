@@ -4,13 +4,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: 12px 16px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   box-sizing: border-box;
 }
 
-.post-container.new,
+.post-container.placeholder {
+  gap: 12px;
+}
+
+.post-container.new {
+  flex-direction: column;
+  padding: 12px 16px;
+}
+
 .post-container.published {
   flex-direction: column;
   padding: 12px 16px 0 16px;
@@ -37,7 +45,6 @@
   display: flex;
   align-items: center;
   background-color: #e9ebee;
-  margin: 10px;
   border-radius: 15px;
   padding: 10px;
   color: #596373;

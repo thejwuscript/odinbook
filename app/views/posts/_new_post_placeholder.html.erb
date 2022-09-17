@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "new_post_frame" do %>
-  <div class="post-container">
+  <div class="post-container placeholder">
     <%= image_tag current_user.avatar, class: "profile-pic-icon" %>
     <a href="posts/new" class="post-text-placeholder">What's on your mind, <%= current_user.name %>?</a>
   </div>
