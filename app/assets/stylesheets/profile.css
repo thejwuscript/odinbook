@@ -142,6 +142,7 @@
   height: 300px;
   object-fit: cover;
   border: none;
+  background-color: white;
 }
 
 .profile-info-details {
