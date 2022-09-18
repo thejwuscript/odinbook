@@ -47,6 +47,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Cherry Swash';
+  src: url('CherrySwash-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cherry Swash';
+  src: url('CherrySwash-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

@@ -27,7 +27,7 @@
   justify-content: center;
 }
 
-.topnav a {
+.topnav > ul a {
   color: #65676B;
   font-weight: bolder;
   width: 95%;
@@ -38,7 +38,7 @@
   border-radius: 0;
 }
 
-.topnav a:hover {
+.topnav > ul a:hover {
   background-color: #F5F6F7;
   border-radius: 5px;
 }
@@ -47,7 +47,7 @@
   width: 190px;
 }
 
-.topnav-left > span {
+.topnav-left > .logo {
   font-size: 36px;
   font-family: 'Cherry Swash', cursive;
   color: white;
