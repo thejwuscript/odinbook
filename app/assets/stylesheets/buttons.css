@@ -44,3 +44,15 @@ form label[for="post_ximage_file"] {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.modal-footer > button[name="cancel"] {
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #dbdddf;
+  background-color: #f5f6f7;
+}
+
+.modal-footer > button[name="cancel"]:hover {
+  background-color: #e9ecec;
+}

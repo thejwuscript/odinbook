@@ -29,6 +29,7 @@
       <hr>
       <div class="modal-footer" data-modal-target="modalFooter">
         <%= form.button "Select Image", data: { action: "modal#copy" } %>
+        <%= button_tag "Cancel", name: "cancel", type: "button", data: {action: 'modal#close'} %>
       </div>
     <% end %>
   </div>
