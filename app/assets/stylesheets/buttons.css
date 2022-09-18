@@ -5,39 +5,35 @@ input[type="file"] {
 
 form label[for="profile_avatar"],
 form label[for="post_image_file"] {
-  background-color: #4267b2;
-  color: white;
-  padding: 5px 10px;
+  background-color: #f5f6f7;
+  color: black;
+  font-family: 'Noto Sans', Arial, sans-serif;
+  border: 1px solid #dbdddf;
   border-radius: 5px;
-  border: 1px ridge black;
-  font-size: 0.8rem;
-  font-weight: bold;
-  height: auto;
-  white-space: nowrap;
-  box-sizing: border-box;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 8px;
 }
 
 form label[for="profile_avatar"]:hover,
 form label[for="post_image_file"]:hover {
-  background-color: #263b75;
+  background-color: #e6e7e7;
 }
 
 form label[for="profile_avatar"]:active,
 form label[for="post_image_file"]:active {
-  background-color: #041a53;
+  background-color: #d4d6d6
 }
 
 form label[for="post_ximage_file"] {
-  background-color: #b9c2e5;
-  color: white;
-  padding: 5px 10px;
+  background-color: #f5f6f7;
+  color: grey;
+  font-family: 'Noto Sans', Arial, sans-serif;
+  border: 1px solid #dbdddf;
   border-radius: 5px;
-  border: 1px solid #b9c2e5;
-  font-size: 0.8rem;
-  font-weight: bold;
-  height: auto;
-  white-space: nowrap;
-  box-sizing: border-box;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 8px;
 }
 
 .modal-footer > button[type="submit"] {
