@@ -11,6 +11,7 @@
   cursor: pointer;
   padding: 8px 12px;
   display: flex;
+
   align-items: center;
   align-self: flex-end;
   gap: 4px;
@@ -58,6 +59,10 @@
   display: none;
   flex-direction: column;
   box-shadow: 0 2px 16px grey;
+}
+
+.edit-cover-photo-selection.visible {
+  display: flex;
 }
 
 .edit-cover-photo-selection > form {

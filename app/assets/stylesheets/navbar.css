@@ -153,6 +153,7 @@ a.active:hover {
   flex-direction: row;
   align-items: flex-start;
   padding: 2px;
+  z-index: 2;
 }
 
 .account-menu.visible > form {
@@ -162,7 +163,7 @@ a.active:hover {
 
 .account-menu.visible > form > button {
   flex: 1;
-  height: 48px;
+  height: 44px;
   padding: 4px 8px;
   gap: 8px;
   background-color: white;
