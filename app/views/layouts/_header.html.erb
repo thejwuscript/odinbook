@@ -45,7 +45,11 @@
       </div>
       <%# button_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo: false }, form: { style: "display: inline-block"} %>
       <%= image_tag current_user.avatar, class: "profile-pic-icon", title: "Account", data: {action: "click->account#toggleMenu"} %>
-      <div class="account-menu" data-account-target="menu"></div>
+      <div class="account-menu" data-account-target="menu">
+        <%= button_to destroy_user_session_path, method: :delete, class: "logout", form: {  data: { turbo: :false, action: "click->account#toggleMenu" } } do %>
+          <span class="mdi mdi-logout"></span>Log Out
+        <% end %>
+      </div>
     </div>
   </nav>
 </header>

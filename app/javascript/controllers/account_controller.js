@@ -7,7 +7,13 @@ export default class extends Controller {
   connect() {
   }
 
-  toggleMenu() {
+  toggleMenu(e) {
+    e.stopPropagation();
     this.menuTarget.classList.toggle("visible");
+    if (this.menuTarget.classList.contains("visible")) {
+      document.body.addEventListener('click', () => {
+        this.menuTarget.classList.remove('visible');
+      })
+    }
   }
 }

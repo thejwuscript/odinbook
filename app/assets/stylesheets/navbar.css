@@ -139,7 +139,6 @@ a.active:hover {
 
 .account-menu {
   width: 180px;
-  height: 100px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 2px 16px grey;
@@ -151,4 +150,31 @@ a.active:hover {
 
 .account-menu.visible {
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 2px;
+}
+
+.account-menu.visible > form {
+  flex: 1;
+  display: flex;
+}
+
+.account-menu.visible > form > button {
+  flex: 1;
+  height: 48px;
+  padding: 4px 8px;
+  gap: 8px;
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+  border-radius: 5px;
+}
+
+.account-menu.visible > form > button:hover {
+  background-color: #f5f6f7;
+  cursor: pointer;
 }
