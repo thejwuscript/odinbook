@@ -26,18 +26,11 @@ export default class extends Controller {
   }
 
   close(event) {
-    if (
-      event.target.id == "add-image-modal" ||
-      event.target.className == "mdi mdi-close modal"
-    ) {
       event.preventDefault();
       let element = this.modalcontainerTarget;
       element.style.display = "none";
-      this.modalcontainerTarget.setAttribute(
-        "data-action",
-        "mousedown->modal#addClickAction"
-      );
-    }
+      this.filenameTarget.textContent = '';
+      this.inputTarget.value = '';
   }
 
   showFilename() {
@@ -79,6 +72,8 @@ export default class extends Controller {
           message.remove();
           link.removeAttribute("data-action");
           hiddenDataURLField.value = reader.result;
+          this.filenameTarget.textContent = '';
+          this.inputTarget.value = '';
         };
         // image.onerror  = () => {}
       };
@@ -97,6 +92,8 @@ export default class extends Controller {
         message.remove();
         link.removeAttribute("data-action");
         hiddenURLField.value = url;
+        this.filenameTarget.textContent = '';
+        this.inputTarget.value = '';
       };
       // image.onerror = () => {}
     }
@@ -110,21 +107,10 @@ export default class extends Controller {
     this.showModalLinkTarget.dataset.action = "click->modal#show"
   }
 
-  addClickAction() {
-    const element = this.modalcontainerTarget;
-    element.setAttribute("data-action", "click->modal#close");
-  }
-
   stopPropagation(event) {
     event.stopPropagation();
   }
 
-  removeClickAction() {
-    this.modalcontainerTarget.setAttribute(
-      "data-action",
-      "mousedown->modal#addClickAction"
-    );
-  }
 
   disableFileImage() {
     this.labelButtonTarget.setAttribute("for", "post_ximage_file");
