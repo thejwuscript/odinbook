@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     response.headers["Expires"] = "Tue, 01 Jan 2002 00:00:00 UTC"
   end
 
-  def after_sign_up_path_for(resource)
+  def after_sign_in_path_for(resource)
     root_url if resource.is_a?(User)
   end
 end

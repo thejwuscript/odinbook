@@ -29,7 +29,8 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_one :profile, dependent: :destroy
 
-  after_create :create_profile, :send_welcome_email
+  after_create :create_profile, unless: :facebook_provider?
+  #after_create :send_welcome_email
 
   scope :all_except, ->(user) { where.not(id: user) }
 
@@ -57,6 +58,7 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      p auth
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.username =
@@ -74,18 +76,20 @@ class User < ApplicationRecord
     end
   end
 
-  def create_profile(auth = nil)
-    profile = Profile.create!(user: self)
-    return unless auth
+  def facebook_provider?
+    provider == 'facebook'
+  end
 
-    profile.first_name = auth.info.first_name
-    profile.last_name = auth.info.last_name
-    image = Down.download(auth.info.image)
-    profile.avatar.attach(io: image, filename: "avatar")
+  def create_profile
+    profile = Profile.create!(user: self)
+    profile.avatar.attach(
+      io: File.open("#{Rails.root}/app/assets/images/head_avatar.jpg"),
+      filename: "avatar#{profile.id}#{Time.current.hash}",
+      content_type: 'image/jpeg'
+    )
   end
 
   def name
-    #profile = Profile.find_by(user_id: self)
     profile.nil? || profile.display_name.blank? ? username : profile.display_name
   end
 
