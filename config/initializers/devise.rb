@@ -278,6 +278,7 @@ Devise.setup do |config|
                   ENV["FACEBOOK_APP_ID"],
                   ENV["FACEBOOK_APP_SECRET"],
                   scope: 'email, public_profile',
+                  info_fields: 'email,name,first_name',
                   image_size: { width: '300', height: '300' }
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

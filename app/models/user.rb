@@ -62,7 +62,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.username =
         "#{auth.info.email[/^[^@]+/]}-#{SecureRandom.random_number(100)}"
-      user.create_profile(Down.download(auth.info.image))
+      user.create_profile(Down.download(auth.info.image), auth.info.first_name)
     end
   end
 
@@ -80,8 +80,8 @@ class User < ApplicationRecord
     provider == 'facebook'
   end
 
-  def create_profile(avatar_file = nil)
-    profile = Profile.create!(user: self)
+  def create_profile(avatar_file = nil, display_name = nil)
+    profile = Profile.create!(user: self, display_name:)
     profile.avatar.attach(
       io: (avatar_file || File.open("#{Rails.root}/app/assets/images/head_avatar.jpg")),
       filename: "avatar#{profile.id}#{Time.current.hash}",
