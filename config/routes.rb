@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     unauthenticated { root to: "devise/sessions#new", as: :root_url }
   end
   resources :users, only: :index
-  get ':username', to: 'users#show', as: :user
+  
   resources :posts do
     resources :comments, only: %i[index new create]
   end
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :friendships, only: %i[create destroy]
   resources :likes, only: %i[create destroy]
   resource :profile
+  get ':username', to: 'users#show', as: :user
 
   get "posts/:post_id/comments/minimize",
       to: "comments#minimize",

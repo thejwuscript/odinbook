@@ -3,7 +3,7 @@
   <% @friends_list.each do |friend| %>
     <li>
       <%= image_tag friend.avatar, class: "profile-pic-icon" %>
-      <%= link_to friend.username, user_path(id: friend.id) %>
+      <%= link_to friend.name, user_path(username: friend.username) %>
     </li>
   <% end %>
 </ul>
