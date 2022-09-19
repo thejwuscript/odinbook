@@ -58,11 +58,11 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      p auth
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.username =
         "#{auth.info.email[/^[^@]+/]}-#{SecureRandom.random_number(100)}"
+      user.create_profile(Down.download(auth.info.image))
     end
   end
 
@@ -80,10 +80,10 @@ class User < ApplicationRecord
     provider == 'facebook'
   end
 
-  def create_profile
+  def create_profile(avatar_file = nil)
     profile = Profile.create!(user: self)
     profile.avatar.attach(
-      io: File.open("#{Rails.root}/app/assets/images/head_avatar.jpg"),
+      io: (avatar_file || File.open("#{Rails.root}/app/assets/images/head_avatar.jpg")),
       filename: "avatar#{profile.id}#{Time.current.hash}",
       content_type: 'image/jpeg'
     )
