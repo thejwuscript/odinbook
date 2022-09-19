@@ -2,10 +2,8 @@
 <div data-controller="modal">
   <% if profile.avatar.attached? && profile.user == current_user %>
     <%= tag.span image_tag(profile.avatar), class: "profile-avatar own", title: "Change your avatar", data: {action: "click->modal#show"} %>
-  <% elsif profile.avatar.attached? %>
-    <%= tag.span image_tag(profile.avatar), class: "profile-avatar", title: "Avatar" %>
   <% else %>
-    None available
+    <%= tag.span image_tag(profile.avatar), class: "profile-avatar", title: "Avatar" %>
   <% end %>
   
   <%= render partial: "users/edit_avatar", locals: {profile: profile} %>
