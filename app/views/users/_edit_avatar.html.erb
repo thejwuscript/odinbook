@@ -1,17 +1,13 @@
 <div data-modal-target="modalcontainer"  id="add-image-modal" data-action="mousedown->modal#addClickAction">
-  <div class="modal-content" data-modal-target="modaldialog" data-action="mousedown->modal#stopPropagation mouseover->modal#removeClickAction" >
+  <div class="modal-content" data-modal-target="modaldialog" data-action="mousedown->modal#stopPropagation">
     <div class="modal-top">
       <h3 class="modal-title">Update profile picture</h3>
       <span class="mdi mdi-close modal" data-action="click->modal#close"></span>
     </div>
     <hr>
     <%= form_with model: profile do |form| %>
-      <div data-controller="image-preview">
-    <% if profile.avatar.attached? %>
-      Preview:<%= image_tag(profile.avatar, class: "preview-avatar", "data-image-preview-target" => "output") %>
-    <% else %>
-      <img src='' class="preview-avatar" data-image-preview-target="output" alt='Select image to preview'>
-    <% end %>
+      <div class="modal-middle" data-controller="image-preview">
+      <div class="image-preview-window">Preview:<%= image_tag(profile.avatar, class: "preview-avatar", "data-image-preview-target" => "output") %></div>
     <div>
       <%= form.label :avatar, "Change Photo" %>
       <%= form.file_field :avatar, accept: 'image/png,image/jpeg', data: {"image-preview-target" => "input", action: "image-preview#readImage"} %>
