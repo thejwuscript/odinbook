@@ -3,7 +3,7 @@
   <% @users.each do |user| %>
     <li>
       <%= image_tag user.avatar, class: "profile-pic-icon" %>
-      <%= link_to user.name.capitalize, user_path %>
+      <%= link_to user.name.capitalize, user_path(username: user.username) %>
       <% if @users_sent_requests_to.include?(user) %>
         <%= button_to "Request Sent", {}, form: {style: 'display:inline-block;'}, disabled: true %>
       <% elsif @not_friends_list.include?(user) && @potential_friends.exclude?(user) %>
