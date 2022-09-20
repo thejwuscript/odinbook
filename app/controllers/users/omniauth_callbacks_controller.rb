@@ -3,6 +3,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
+    if request.env["omniauth.auth"].info.email.blank?
+      flash[:alert] = "Please allow access to email address to sign in with Facebook."
+      failure
+      return # be sure to include an return if there is code after this otherwise it will be executed
+    end
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
     if @user.persisted?
