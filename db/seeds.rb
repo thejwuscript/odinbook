@@ -1,9 +1,9 @@
 USER_PASSWORD = 'password'.freeze
 
-6.times do
+2.times do
   user = User.create!(Faker::Internet.unique.user.merge({ password: USER_PASSWORD,
                                                           password_confirmation: USER_PASSWORD }))
-  image = Down.download(Faker::Avatar.unique.image(size: '300x300'))
+  image = File.open("#{Rails.root}/app/assets/images/head_avatar.jpg")
   user.profile.avatar.attach(io: image, filename: "avatar#{user.profile.id}#{Time.current.hash}")
   user.profile.update!(display_name: Faker::Name.unique.name)
   3.times do
