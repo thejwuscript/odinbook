@@ -67,3 +67,10 @@
   border-bottom: 1px solid grey;
   margin: auto;
 }
+
+.login-logo {
+  font-family: 'Cherry Swash', cursive;
+  font-size: 4rem;
+  font-weight: bolder;
+  color: #0076ff;
+}

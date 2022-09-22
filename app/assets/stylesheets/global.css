@@ -80,14 +80,6 @@ header {
   box-shadow: 0 1px 8px lightgrey
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 48px 0;
-  gap: 24px;
-}
-
 ul {
   list-style: none;
 }

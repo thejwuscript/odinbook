@@ -59,7 +59,7 @@ form label[for="post_ximage_file"] {
 
 .fb-login-button,
 .signup-button,
-.login-container > form input[type="submit"] {
+.login-container form input[type="submit"] {
   background-color: #0076ff;
   color: white;
   border: 1px solid #0066ff;
