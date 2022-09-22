@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { showComments } from "../commentsSection"
+import { showComments } from "commentsSection"
 
 // Connects to data-controller="comments"
 export default class extends Controller {
