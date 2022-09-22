@@ -81,14 +81,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_10_234719) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.text "description"
-    t.bigint "post_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_photos_on_post_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "author_id", null: false
@@ -135,7 +127,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_10_234719) do
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
-  add_foreign_key "photos", "posts"
   add_foreign_key "posts", "users", column: "author_id"
   add_foreign_key "profiles", "users"
 end

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :friendships, only: %i[create destroy]
   resources :likes, only: %i[create destroy]
   resource :profile
-  get ':username', to: 'users#show', as: :user
+  get ':username', to: 'users#show', constraints: { username: /[^\/]+/ }, as: :user
 
   get "posts/:post_id/comments/minimize",
       to: "comments#minimize",

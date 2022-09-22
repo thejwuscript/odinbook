@@ -1,6 +1,6 @@
 USER_PASSWORD = 'password'.freeze
 
-2.times do
+10.times do
   user = User.create!(Faker::Internet.unique.user.merge({ password: USER_PASSWORD,
                                                           password_confirmation: USER_PASSWORD }))
   image = File.open("#{Rails.root}/app/assets/images/head_avatar.jpg")
