@@ -132,7 +132,7 @@
   color: #0066ff;
 }
 
-a.active:hover {
+.topnav > ul a.active:hover {
   background-color: transparent;
   border-radius: 0;
 }

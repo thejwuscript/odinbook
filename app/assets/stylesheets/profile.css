@@ -130,19 +130,20 @@
 }
 
 .profile-info .profile-avatar {
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   background-color: transparent;
   object-fit: cover;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: inline-block;
+  margin-right: 10px;
 }
 
 .profile-info .profile-avatar > img {
   border-radius: 50%;
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   object-fit: cover;
   border: none;
   background-color: white;
