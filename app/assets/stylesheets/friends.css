@@ -41,3 +41,15 @@
 .friends-page-sidebar > a > .icon-container > .mdi {
   font-size: 1.5rem;
 }
+
+.content-title-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.content-title-container > .mdi {
+  font-size: 1.5rem;
+  color: black;
+  margin-top: 2px;
+}
