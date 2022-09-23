@@ -17,7 +17,7 @@ class FriendRequestsController < ApplicationController
   def destroy
     request = FriendRequest.find(params[:id])
     request.destroy
-    redirect_to friends_path,
+    redirect_to friend_requests_path,
                 status: :see_other,
                 notice: "Friend request deleted."
   end

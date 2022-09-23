@@ -73,7 +73,8 @@
   z-index: 2;
 }
 
-.friends-page .profile-pic {
+.friends-page .profile-pic,
+.friend-requests-page .profile-pic {
   width: 100px;
   height: 100px;
   border-radius: 50%;

@@ -20,7 +20,7 @@
       <% end %>
       </li>
       <li>
-      <% if current_page?(friends_path) %>
+      <% if current_page?(friends_path) || current_page?(friend_requests_path) %>
         <%= link_to tag.span(class: "mdi mdi-account-multiple"), friends_path, title: "Friends", class: "active" %>
       <% else %>
         <%= link_to tag.span(class: "mdi mdi-account-multiple-outline"), friends_path, title: "Friends" %>
