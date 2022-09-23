@@ -1,17 +1,17 @@
 <div class="friends-page-sidebar">
 
-  <%= link_to friends_path, class: ("active" if current_page?) do %>
+  <%= link_to friends_path, class: ("active" if current_page?(controller: 'friends', action: 'index')) do %>
     <div class="icon-container">
       <span class="mdi mdi-account-multiple"></span>
     </div>
     Friends
   <% end %>
 
-  <div>
+  <%= link_to friend_requests_path, class: ("active" if current_page?(controller: 'friend_requests', action: 'index')) do %>
     <div class="icon-container">
       <span class="mdi mdi-account-arrow-right"></span>
     </div>
     Friend Requests
-  </div>
+  <% end %>
   
 </div>
