@@ -1,11 +1,11 @@
 <div class="friends-page-sidebar">
 
-  <div>
+  <%= link_to friends_path, class: ("active" if current_page?) do %>
     <div class="icon-container">
       <span class="mdi mdi-account-multiple"></span>
     </div>
     Friends
-  </div>
+  <% end %>
 
   <div>
     <div class="icon-container">
