@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     resources :comments, only: %i[index new create]
   end
 
-  resources :friends, only: %i[index show]
-  resources :friend_requests, only: %i[create destroy]
+  resources :friends, only: :index
+  resources :friend_requests, only: %i[index create destroy]
   resources :friendships, only: %i[create destroy]
   resources :likes, only: %i[create destroy]
   resource :profile

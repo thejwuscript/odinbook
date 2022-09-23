@@ -1,4 +1,9 @@
 class FriendRequestsController < ApplicationController
+  def index
+    @received_requests =
+      current_user.received_requests.includes(:requester, :requestee)
+  end
+  
   def create
     request = current_user.sent_requests.build
     request.requestee = User.find(params[:user])

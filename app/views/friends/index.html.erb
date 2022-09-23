@@ -1,20 +1,13 @@
-<h2>All Friends</h2>
-<ul>
-  <% @friends_list.each do |friend| %>
-    <li>
-      <%= image_tag friend.avatar, class: "profile-pic-icon" %>
-      <%= link_to friend.name, user_path(username: friend.username) %>
-    </li>
-  <% end %>
-</ul>
+<div class="friends-page">
+  <%= render "sidebar" %>
+  <%= render partial: "content", locals: {friends_list: @friends_list} %>
+</div>
 
-<h2>Friend Requests</h2>
-<ul>
-  <% @received_requests.each do |request| %>
-    <li>
-      <%= request.requester.username %>
-      <%= button_to "Confirm", friendships_path, form: { style: "display: inline-block" }, params: { request_id: request, friend_id: request.requester } %>
-      <%= button_to "Delete", friend_request_path(request), method: :delete, form: { style: "display: inline-block" } %>
-    </li>
-  <% end %>
-</ul>
+
+
+
+
+
+
+
+
