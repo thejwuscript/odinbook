@@ -19,8 +19,6 @@
  background-color: #e5e4e27d;
 }
 
-
-
 .friends-page-sidebar > a.active > .icon-container {
   color: white;
   background-color: #1877F2;
@@ -52,4 +50,31 @@
   font-size: 1.5rem;
   color: black;
   margin-top: 2px;
+}
+
+ul.friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+li.friend-card-item {
+  background-color: white;
+  padding: 16px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+li.friend-card-item > a {
+  text-decoration: none;
+  color: #4267B2;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+li.friend-card-item > a:hover {
+  text-decoration: underline;
 }

@@ -3,10 +3,10 @@
     <span class="mdi mdi-account-multiple"></span>
     <h2>Friends</h2>
   </div>
-  <ul>
+  <ul class="friends-list">
     <% friends_list.each do |friend| %>
-      <li>
-        <%= image_tag friend.avatar, class: "profile-pic-icon" %>
+      <li class="friend-card-item">
+        <%= image_tag friend.avatar, class: "profile-pic" %>
         <%= link_to friend.name, user_path(username: friend.username) %>
       </li>
     <% end %>
