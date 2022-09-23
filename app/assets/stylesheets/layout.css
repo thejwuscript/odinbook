@@ -21,8 +21,7 @@
 
 .friends-page-sidebar {
   background-color: white;
-  z-index: -1;
-  padding: 18px 8px;
+  padding: 8px;
 }
 
 .friends-page-content {

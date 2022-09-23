@@ -78,6 +78,7 @@ header {
   height: 56px;
   color: #65676B;
   box-shadow: 0 1px 8px lightgrey;
+  position: relative;
 }
 
 ul {
