@@ -1,0 +1,40 @@
+ul.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+li.user-card-item {
+  background-color: white;
+  padding: 16px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+li.user-card-item > .card-item-middle {
+  width: 520px;
+}
+
+li.user-card-item > .card-item-middle .mdi {
+  margin-left: 12px;
+  font-size: 1.1rem;
+  color: #000000c4;
+}
+
+li.user-card-item > .card-item-right {
+  flex: 1;
+}
+
+li.user-card-item > div > a {
+  text-decoration: none;
+  color: #000000c4;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+li.user-card-item > a:hover {
+  text-decoration: underline;
+}

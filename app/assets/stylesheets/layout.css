@@ -13,7 +13,8 @@
 }
 
 .friends-page,
-.friend-requests-page {
+.friend-requests-page,
+.users-page {
   display: grid;
   grid-template-columns: 360px 1fr;
   grid-template-rows: 1fr;
@@ -27,6 +28,7 @@
 }
 
 .friends-page-content,
-.friend-requests-page-content {
+.friend-requests-page-content,
+.users-page-content {
   padding: 14px;
 }

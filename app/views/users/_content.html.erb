@@ -1,0 +1,28 @@
+<div class="users-page-content">
+    <h2 class="content-title-container">
+      <span class="mdi mdi-account-group"></span>
+      All Users
+    </h2>
+    <ul class="users-list">
+      <% users.each do |user| %>
+        <li class="user-card-item">
+          <%= image_tag user.avatar, class: "profile-pic-icon" %>
+          <div class="card-item-middle">
+            <%= link_to user.name, user_path(username: user.username) %>
+            <%= tag.span class: "mdi mdi-account-multiple" if current_user.friends.include?(user)%>
+          </div>
+          <div class="card-item-right">
+            <% if users_sent_requests_to.include?(user) %>
+              <%= button_to '', class: "add-friend", form: {style: 'display:inline-block;'}, disabled: true do %>
+                <span class="mdi mdi-account-plus"></span>Request Sent
+              <% end %>
+            <% elsif not_friends_list.include?(user) && potential_friends.exclude?(user) %>
+              <%= button_to friend_requests_path, class: "add-friend", form: {style: 'display:inline-block;'}, params: { user: user } do %>
+                <span class="mdi mdi-account-plus"></span>Add Friend
+              <% end %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>

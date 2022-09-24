@@ -80,14 +80,28 @@ form label[for="post_ximage_file"] {
   margin-top: 12px;
 }
 
-.confirm {
-  background-color: rgb(0, 118, 255);
+.confirm,
+.add-friend {
+  background-color: #0076ff;
   color: white;
   border: 1px solid #0066ff;
   padding: 6px 12px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-friend {
+  padding: 6px 12px 6px 10px;
+}
+
+button.add-friend:disabled {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.6) 0 0);
+  padding: 7px 13px 7px 11px;
+  border: none;
 }
 
 .confirm:hover {
