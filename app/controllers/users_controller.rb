@@ -3,17 +3,14 @@ class UsersController < ApplicationController
     @users = User.all_except(current_user).order(:username)
     @friends_list = current_user.friends
     @not_friends_list = current_user.not_friends
-    @users_sent_requests_to =
+    @sent_requests_users =
       FriendRequest
         .where(requester_id: current_user.id)
         .includes(:requestee)
         .map { |request| request.requestee }
-    @users_received_requests_from =
-      FriendRequest
-        .where(requestee_id: current_user.id)
-        .includes(:requester)
-        .map { |request| request.requester }
-    @potential_friends = @users_sent_requests_to + @users_received_requests_from
+    @received_requests = FriendRequest.where(requestee_id: current_user.id).includes(:requester)
+    @received_requests_users = @received_requests.map { |request| request.requester }
+    @potential_friends = @sent_requests_users + @received_requests_users
   end
 
   def show

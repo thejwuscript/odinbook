@@ -3,12 +3,17 @@
     <span class="mdi mdi-account-multiple"></span>
     <h2>Friends</h2>
   </div>
-  <ul class="friends-list">
-    <% friends_list.each do |friend| %>
-      <li class="friend-card-item">
-        <%= image_tag friend.avatar, class: "profile-pic" %>
-        <%= link_to friend.name, user_path(username: friend.username) %>
-      </li>
-    <% end %>
-  </ul>
+
+  <% if friends_list.empty? %>
+    <p>No friends to show.</p>
+  <% else %>
+    <ul class="friends-list">
+      <% friends_list.each do |friend| %>
+        <li class="friend-card-item">
+          <%= image_tag friend.avatar, class: "profile-pic" %>
+          <%= link_to friend.name, user_path(username: friend.username) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

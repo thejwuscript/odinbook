@@ -92,6 +92,7 @@ form label[for="post_ximage_file"] {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .add-friend {
@@ -108,7 +109,8 @@ button.add-friend:disabled {
   background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0);
 }
 
-.delete {
+.delete,
+.cancel-request {
   padding: 6px 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -117,6 +119,9 @@ button.add-friend:disabled {
   font-weight: 500;
 }
 
-.delete:hover {
+.delete:hover,
+.cancel-request:hover {
   background-color: #e9ecec;
 }
+
+

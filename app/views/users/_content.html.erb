@@ -12,11 +12,7 @@
             <%= tag.span class: "mdi mdi-account-multiple" if current_user.friends.include?(user)%>
           </div>
           <div class="card-item-right">
-            <% if users_sent_requests_to.include?(user) %>
-              <%= button_to '', class: "add-friend", form: {style: 'display:inline-block;'}, disabled: true do %>
-                <span class="mdi mdi-account-plus"></span>Request Sent
-              <% end %>
-            <% elsif not_friends_list.include?(user) && potential_friends.exclude?(user) %>
+            <% if not_friends_list.include?(user) && potential_friends.exclude?(user) %>
               <%= button_to friend_requests_path, class: "add-friend", form: {style: 'display:inline-block;'}, params: { user: user } do %>
                 <span class="mdi mdi-account-plus"></span>Add Friend
               <% end %>

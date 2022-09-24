@@ -2,6 +2,8 @@ class FriendRequestsController < ApplicationController
   def index
     @received_requests =
       current_user.received_requests.includes(:requester, :requestee)
+    @sent_requests =
+      current_user.sent_requests.includes(:requester, :requestee)
   end
   
   def create

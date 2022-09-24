@@ -26,6 +26,9 @@ li.user-card-item > .card-item-middle .mdi {
 
 li.user-card-item > .card-item-right {
   flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 li.user-card-item > div > a {

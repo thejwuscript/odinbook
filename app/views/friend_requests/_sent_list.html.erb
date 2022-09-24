@@ -1,0 +1,23 @@
+<div class="sent-requests-container">
+
+  <h3>Sent Requests</h3>
+  <hr>
+  
+  <% if sent_requests.empty? %>
+    <p>No requests to show.</p>
+  <% else %>
+    <ul class="friend-requests-list">
+      <% sent_requests.each do |request| %>
+        <li class="friend-request-card-item">
+          <%= image_tag request.requestee.avatar, class: "profile-pic-icon" %>
+          <div class="card-item-middle">
+            <%= link_to request.requestee.name, user_path(username: request.requestee.username) %>
+          </div>
+          <div class="card-item-right">
+            <%= button_to "Cancel Request", friend_request_path(request), method: :delete, class: "cancel-request", form: {style: 'display:inline-block;'} %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

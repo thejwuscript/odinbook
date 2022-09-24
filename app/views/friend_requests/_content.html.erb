@@ -1,16 +1,11 @@
 <div class="friend-requests-page-content">
+
   <div class="content-title-container">
     <span class="mdi mdi-account-arrow-right"></span>
     <h2>Friend Requests</h2>
   </div>
-  <ul class="friend-requests-list">
-    <% @received_requests.each do |request| %>
-      <li class="friend-request-card-item">
-        <%= image_tag request.requester.avatar, class: "profile-pic" %>
-        <%= link_to request.requester.name, user_path(username: request.requester.username) %>
-        <%= button_to "Confirm", friendships_path, class: "confirm", form: { style: "display: inline-block" }, params: { request_id: request, friend_id: request.requester } %>
-        <%= button_to "Delete", friend_request_path(request), class: "delete", method: :delete, form: { style: "display: inline-block" } %>
-      </li>
-    <% end %>
-  </ul>
+
+  <%= render partial: "received_list", locals: {received_requests: @received_requests} %>
+  <%= render partial: "sent_list", locals: {sent_requests: @sent_requests} %>
+ 
 </div>

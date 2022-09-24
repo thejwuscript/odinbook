@@ -44,6 +44,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  margin-bottom: 24px;
 }
 
 .content-title-container > .mdi {
@@ -57,7 +58,11 @@ ul.friend-requests-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 20px;
+  margin: 20px 0;
+}
+
+ul.friend-requests-list > h3 {
+  align-self: center;
 }
 
 li.friend-card-item,
@@ -71,14 +76,35 @@ li.friend-request-card-item {
 }
 
 li.friend-card-item > a,
-li.friend-request-card-item > a {
+li.friend-request-card-item > div > a {
   text-decoration: none;
   color: #000000c4;
   font-size: 1.1rem;
   font-weight: 700;
 }
 
+li.friend-request-card-item > .card-item-middle {
+  width: 520px;
+}
+
+li.friend-request-card-item > .card-item-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 li.friend-card-item > a:hover,
-li.friend-request-card-item > a:hover {
+li.friend-request-card-item > div > a:hover {
   text-decoration: underline;
+}
+
+.received-requests-container {
+  margin-bottom: 24px;
+}
+
+.received-requests-container p, 
+.sent-requests-container p {
+  margin-top: 12px;
+  font-weight: 400;
 }
