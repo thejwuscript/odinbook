@@ -92,7 +92,7 @@ form label[for="post_ximage_file"] {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: nowrap;
+  width: max-content;
 }
 
 .add-friend {
@@ -117,6 +117,7 @@ button.add-friend:disabled {
   border: 1px solid #dbdddf;
   background-color: #f5f6f7;
   font-weight: 500;
+  width: max-content;
 }
 
 .delete:hover,
