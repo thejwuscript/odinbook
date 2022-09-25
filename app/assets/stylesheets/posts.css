@@ -188,3 +188,44 @@ form #post_body {
 .counts-container {
   margin: 4px 0;
 }
+
+.sidebar-item {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 5px;
+  padding: 8px 12px;
+}
+
+.sidebar-item:hover {
+  background-color: #dbdddf;
+}
+
+.sidebar-item > .item-label {
+  flex: 1;
+}
+
+.sidebar-item > span.mdi {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-item > span.mdi.mdi-account-multiple {
+  background-image: linear-gradient(to right, #0051ff, #3af8ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 1.6rem;
+}
+
+.sidebar-item > span.mdi.mdi-account-group {
+  color: white;
+  background: linear-gradient(to right top, #0051ff, #3ad1ff);
+  border-radius: 50%;
+  font-size: 1.3rem;
+}

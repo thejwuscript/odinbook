@@ -1,15 +1,24 @@
 .main-homepage {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 2.5fr 1fr;
   justify-content: center;
   padding: 24px 0;
 }
 
+.main-homepage-sidebar {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  padding: 0 8px;
+}
+
 .main-homepage-center {
   grid-column: 2 / 3;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  
 }
 
 .friends-page,

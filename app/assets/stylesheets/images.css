@@ -80,3 +80,8 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.profile-pic-icon.homepage-sidebar{
+  width: 30px;
+  height: 30px;
+}
