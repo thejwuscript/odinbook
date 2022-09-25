@@ -1,18 +1,18 @@
   <div class="main-homepage-sidebar">
 
-    <div class="sidebar-item">
+    <%= link_to user_path(username: current_user.username), class: "sidebar-item" do %>
       <%= image_tag current_user.avatar, class: "profile-pic-icon homepage-sidebar" %>
       <%= tag.span current_user.name, class: "item-label" %>
-    </div>
+    <% end %>
 
-    <div class="sidebar-item">
+    <%= link_to friends_path, class: "sidebar-item" do %>
       <span class="mdi mdi-account-multiple"></span>
       <span class="item-label">Friends</span>
-    </div>
+    <% end  %>
 
-    <div class="sidebar-item">
+    <%= link_to users_path, class: "sidebar-item" do %>
       <span class="mdi mdi-account-group"></span>
       <span class="item-label">All Users</span>
-    </div>
-    
+    <% end %>
+
   </div>

@@ -6,6 +6,12 @@
       <p class="user-info-name"><%= post.author.name %></p>
       <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%l:%M %p - %b %d, %Y") %></p>
     </div>
+    <div class="ellipsis-container">
+      <span class="mdi mdi-dots-horizontal"></span>
+      <div class="ellipsis-dropdown-container hidden">
+        <div class="item"><span class="mdi mdi-trash-can-outline"></span>Delete Post</div>
+      </div>
+    </div>
   </div>
 
   <p class="post-body-text"><%= post.body %></p>

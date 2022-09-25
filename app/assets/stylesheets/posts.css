@@ -196,10 +196,13 @@ form #post_body {
   gap: 12px;
   border-radius: 5px;
   padding: 8px 12px;
+  text-decoration: none;
+  color: black;
 }
 
 .sidebar-item:hover {
   background-color: #dbdddf;
+  cursor: pointer;
 }
 
 .sidebar-item > .item-label {
@@ -220,7 +223,7 @@ form #post_body {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
 }
 
 .sidebar-item > span.mdi.mdi-account-group {
@@ -228,4 +231,52 @@ form #post_body {
   background: linear-gradient(to right top, #0051ff, #3ad1ff);
   border-radius: 50%;
   font-size: 1.3rem;
+}
+
+.ellipsis-container {
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.ellipsis-container:hover {
+  cursor: pointer;
+  background-color: #eeedec;
+}
+
+.ellipsis-container:active {
+  background-color: #e2e1e0;
+}
+
+.ellipsis-dropdown-container {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  width: 140px;
+  padding: 1px;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 5px;
+  box-shadow: 0 2px 16px grey;
+  background-color: white;
+}
+
+/* .hidden {
+  display: none;
+} */
+
+.ellipsis-dropdown-container > .item {
+  padding: 10px 12px;
+  background-color: #eeedec;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
