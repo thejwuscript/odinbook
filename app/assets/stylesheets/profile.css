@@ -4,6 +4,7 @@
   grid-template-columns: 4fr 6fr;
   gap: 32px;
   position: relative;
+  padding-bottom: 24px;
 }
 
 .add-cover-photo-button {
