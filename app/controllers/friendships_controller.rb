@@ -9,9 +9,9 @@ class FriendshipsController < ApplicationController
     friendship_b = friend.friendships.build(friend: current_user)
     if friendship_a.save && friendship_b.save
       FriendRequest.find(params[:request_id]).destroy
-      redirect_to friendships_path, notice: "Great, you've added a new friend!"
+      redirect_to friends_path, notice: "Great, you've added a new friend!"
     else
-      redirect_to friendships_path, alert: "Oops, something went wrong."
+      redirect_to friends_path, alert: "Oops, something went wrong."
     end
   end
 

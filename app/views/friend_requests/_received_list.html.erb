@@ -14,8 +14,8 @@
             <%= link_to request.requester.name, user_path(username: request.requester.username) %>
           </div>
           <div class="card-item-right">
-            <%= button_to "Confirm", friendships_path, class: "confirm", form: { style: "display: inline-block" }, params: { request_id: request, friend_id: request.requester } %>
-            <%= button_to "Delete", friend_request_path(request), class: "delete", method: :delete, form: { style: "display: inline-block" } %>
+            <%= button_to "Confirm", friendships_path, class: "confirm", form: { style: "display: inline-block", data: {turbo: false} }, params: { request_id: request, friend_id: request.requester } %>
+            <%= button_to "Delete", friend_request_path(request), class: "delete", method: :delete, form: { style: "display: inline-block", data: {turbo: false} } %>
           </div>
         </li>
       <% end %>
