@@ -57,7 +57,7 @@ ul.friends-list,
 ul.friend-requests-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   margin: 20px 0;
 }
 
@@ -73,6 +73,7 @@ li.friend-request-card-item {
   display: flex;
   align-items: center;
   gap: 24px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 li.friend-card-item > a,

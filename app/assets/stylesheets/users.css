@@ -1,7 +1,7 @@
 ul.users-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   margin-top: 20px;
 }
 
@@ -12,6 +12,7 @@ li.user-card-item {
   display: flex;
   align-items: center;
   gap: 24px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 li.user-card-item > .card-item-middle {
