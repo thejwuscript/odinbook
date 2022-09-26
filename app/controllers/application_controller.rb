@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+
+  include Pundit::Authorization
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   before_action :count_friend_requests, if: :user_signed_in?
@@ -25,5 +30,20 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     root_url if resource.is_a?(User)
+  end
+
+  private
+
+  def user_not_authorized
+    respond_to do |format|
+      format.turbo_stream do
+        flash.now[:alert] = 'You are not authorized to perform this action.'
+        render turbo_stream: turbo_stream.prepend('body', partial: 'shared/flash')
+      end
+      format.html do
+        flash[:alert] = 'You are not authorized to perform this action.'
+        redirect_back(fallback_location: root_path)
+      end
+    end
   end
 end
