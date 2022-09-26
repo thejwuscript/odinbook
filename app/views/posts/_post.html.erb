@@ -6,7 +6,7 @@
       <p class="user-info-name"><%= post.author.name %></p>
       <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%l:%M %p - %b %d, %Y") %></p>
     </div>
-    <%= render partial: "posts/options", locals: {post: post}%>
+    <%= render partial: "posts/options", locals: {post: post} if post.author == current_user %>
   </div>
 
   <p class="post-body-text"><%= post.body %></p>

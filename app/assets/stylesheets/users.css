@@ -39,6 +39,6 @@ li.user-card-item > div > a {
   font-weight: 700;
 }
 
-li.user-card-item > a:hover {
+li.user-card-item > div > a:hover {
   text-decoration: underline;
 }

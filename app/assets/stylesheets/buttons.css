@@ -110,7 +110,8 @@ button.add-friend:disabled {
 }
 
 .delete,
-.cancel-request {
+.cancel-request,
+.unfriend {
   padding: 6px 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -121,7 +122,8 @@ button.add-friend:disabled {
 }
 
 .delete:hover,
-.cancel-request:hover {
+.cancel-request:hover,
+.unfriend:hover {
   background-color: #e9ecec;
 }
 

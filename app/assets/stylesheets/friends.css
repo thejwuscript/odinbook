@@ -76,12 +76,16 @@ li.friend-request-card-item {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-li.friend-card-item > a,
+li.friend-card-item a,
 li.friend-request-card-item > div > a {
   text-decoration: none;
   color: #000000c4;
   font-size: 1.1rem;
   font-weight: 700;
+}
+
+.friend-card-item-middle {
+  width: 520px;
 }
 
 li.friend-request-card-item > .card-item-middle {
@@ -95,7 +99,7 @@ li.friend-request-card-item > .card-item-right {
   gap: 18px;
 }
 
-li.friend-card-item > a:hover,
+li.friend-card-item a:hover,
 li.friend-request-card-item > div > a:hover {
   text-decoration: underline;
 }

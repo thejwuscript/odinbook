@@ -10,9 +10,9 @@
     <ul class="friends-list">
       <% friendships.each do |friendship| %>
         <li class="friend-card-item">
-          <%= image_tag friendship.friend.avatar, class: "profile-pic" %>
-          <%= link_to friendship.friend.name, user_path(username: friendship.friend.username) %>
-          <%= button_to "Unfriend", friendship_path(friendship), method: :delete, form: {data: {turbo: false}} %>
+          <%= image_tag friendship.friend.avatar, class: "profile-pic-icon" %>
+          <div class="friend-card-item-middle"><%= link_to friendship.friend.name, user_path(username: friendship.friend.username) %></div>
+          <div class="friend-card-item-right"><%= button_to "Unfriend", friendship_path(friendship), method: :delete, class: "unfriend", form: {data: {turbo: false}} %></div>
         </li>
       <% end %>
     </ul>
