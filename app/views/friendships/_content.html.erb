@@ -12,7 +12,7 @@
         <li class="friend-card-item">
           <%= image_tag friendship.friend.avatar, class: "profile-pic" %>
           <%= link_to friendship.friend.name, user_path(username: friendship.friend.username) %>
-          <%# button_to friendship %>
+          <%= button_to "Unfriend", friendship_path(friendship), method: :delete, form: {data: {turbo: false}} %>
         </li>
       <% end %>
     </ul>
