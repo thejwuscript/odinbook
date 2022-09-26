@@ -42,7 +42,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Post was deleted successfully.' }
+      format.html { redirect_to root_path, status: :see_other, notice: 'Post was deleted successfully.' }
       format.turbo_stream { flash.now[:notice] = 'Post was deleted successfully.' }
     end
   end
