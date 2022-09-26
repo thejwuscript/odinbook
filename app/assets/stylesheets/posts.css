@@ -251,10 +251,6 @@ form #post_body {
   background-color: #eeedec;
 }
 
-.ellipsis-container:active {
-  background-color: #e2e1e0;
-}
-
 .ellipsis-dropdown-container {
   position: absolute;
   top: 36px;
@@ -266,17 +262,29 @@ form #post_body {
   border-radius: 5px;
   box-shadow: 0 2px 16px grey;
   background-color: white;
+  display: none;
+}
+
+.ellipsis-dropdown-container.visible {
+  display: flex;
+  flex-direction: column;
 }
 
 /* .hidden {
   display: none;
 } */
 
-.ellipsis-dropdown-container > .item {
+.ellipsis-dropdown-container .item {
   padding: 10px 12px;
-  background-color: #eeedec;
   border-radius: 5px;
   display: flex;
   align-items: center;
   gap: 4px;
+  background-color: white;
+  border: none;
+}
+
+.ellipsis-dropdown-container .item:hover {
+  background-color: #f5f6f7;
+  cursor: pointer;
 }

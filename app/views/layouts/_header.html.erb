@@ -34,7 +34,7 @@
       <% end %>
       </li>
     </ul>
-    <div class="topnav-right" data-controller="account">
+    <div class="topnav-right" data-controller="menu">
       <div class="notification">
         <a href="/friends" title="Notifications">
           <span class="mdi mdi-bell"></span>
@@ -44,9 +44,9 @@
         </a>
       </div>
       <%# button_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo: false }, form: { style: "display: inline-block"} %>
-      <%= image_tag current_user.avatar, class: "profile-pic-icon", title: "Account", data: {action: "click->account#toggleMenu"} %>
-      <div class="account-menu" data-account-target="menu">
-        <%= button_to destroy_user_session_path, method: :delete, class: "logout", form: {  data: { turbo: :false, action: "click->account#toggleMenu" } } do %>
+      <%= image_tag current_user.avatar, class: "profile-pic-icon", title: "Account", data: {action: "click->menu#toggleMenu"} %>
+      <div class="account-menu" data-menu-target="menu">
+        <%= button_to destroy_user_session_path, method: :delete, class: "logout", form: {  data: { turbo: :false } } do %>
           <span class="mdi mdi-logout"></span>Log Out
         <% end %>
       </div>

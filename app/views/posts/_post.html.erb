@@ -1,4 +1,4 @@
-<div class="post-container published" data-controller="comments">
+<%= tag.div class: "post-container published", data: {controller: "comments"}, id: dom_id(post) do %>
 
   <div class="post-author-container">
     <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
@@ -6,10 +6,12 @@
       <p class="user-info-name"><%= post.author.name %></p>
       <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%l:%M %p - %b %d, %Y") %></p>
     </div>
-    <div class="ellipsis-container">
-      <span class="mdi mdi-dots-horizontal"></span>
-      <div class="ellipsis-dropdown-container hidden">
-        <div class="item"><span class="mdi mdi-trash-can-outline"></span>Delete Post</div>
+    <div class="ellipsis-container" data-controller="menu">
+      <span class="mdi mdi-dots-horizontal" data-action="click->menu#toggleMenu"></span>
+      <div class="ellipsis-dropdown-container" data-menu-target="menu">
+        <%= button_to post_path(post), method: :delete, class: "item" do %>
+          <span class="mdi mdi-trash-can-outline"></span>Delete Post
+        <% end %>
       </div>
     </div>
   </div>
@@ -43,4 +45,4 @@
       <span class="mdi mdi-comment-outline"></span>Comment
     <% end %>
   </div>
-</div>
+<% end %>
