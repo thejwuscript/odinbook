@@ -4,14 +4,15 @@
     <h2>Friends</h2>
   </div>
 
-  <% if friends_list.empty? %>
+  <% if friendships.empty? %>
     <p>No friends to show.</p>
   <% else %>
     <ul class="friends-list">
-      <% friends_list.each do |friend| %>
+      <% friendships.each do |friendship| %>
         <li class="friend-card-item">
-          <%= image_tag friend.avatar, class: "profile-pic" %>
-          <%= link_to friend.name, user_path(username: friend.username) %>
+          <%= image_tag friendship.friend.avatar, class: "profile-pic" %>
+          <%= link_to friendship.friend.name, user_path(username: friendship.friend.username) %>
+          <%# button_to friendship %>
         </li>
       <% end %>
     </ul>

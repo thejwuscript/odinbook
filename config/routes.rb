@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     resources :comments, only: %i[index new create]
   end
 
-  resources :friends, only: :index
   resources :friend_requests, only: %i[index create destroy]
   resources :friendships, only: %i[create destroy]
+  get 'friends', to: 'friendships#index', as: :friends
   resources :likes, only: %i[create destroy]
   resource :profile
   get ':username', to: 'users#show', constraints: { username: /[^\/]+/ }, as: :user
