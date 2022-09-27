@@ -1,4 +1,5 @@
 require "down"
+require 'news-api'
 
 class PostsController < ApplicationController
   def index
@@ -16,6 +17,8 @@ class PostsController < ApplicationController
         (current_user_posts + friends_posts)
           .sort_by { |post| post.created_at }
           .reverse
+      news = News.new(ENV['NEWS_API_KEY'])
+      @headlines = news.get_top_headlines(country: 'jp', category: 'general')
     end
   end
 

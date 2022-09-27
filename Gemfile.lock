@@ -175,6 +175,7 @@ GEM
       digest
       net-protocol
       timeout
+    news-api (0.2.0)
     nio4r (2.5.8)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
@@ -316,6 +317,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   letter_opener
+  news-api
   normalize-rails (~> 8.0, >= 8.0.1)
   omniauth-facebook
   omniauth-rails_csrf_protection
