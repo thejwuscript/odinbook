@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
   belongs_to :author, class_name: "User"
   belongs_to :post
-  has_many :notifications, as: :notifiable
+  has_one :notification, as: :notifiable, dependent: :destroy
 end
