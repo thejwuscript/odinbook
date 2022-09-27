@@ -1,0 +1,14 @@
+<div class="whats-happening-container">
+  <h3>What's happening</h3>
+  <div class="headlines-container">
+  <% @headlines.each do |headline| %>
+    <%= link_to headline.url, class: "headline-item", target: :_blank do %>
+      <div>
+        <%= tag.span headline.name, class: "name" %>
+        <%= tag.span headline.title, class: "title" %>
+      </div>
+      <%= image_tag headline.url_to_image %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
