@@ -17,12 +17,9 @@ class PostsController < ApplicationController
         (current_user_posts + friends_posts)
           .sort_by { |post| post.created_at }
           .reverse
-      if Headline.first && ((Time.current - Headline.first.updated_at) / 1.hour).round < 12
-        @headlines = Headline.all
-      else
+      unless Headline.first && ((Time.current - Headline.first.updated_at) / 1.hour).round < 12
         news = News.new(ENV['NEWS_API_KEY'])
-        @headlines = news.get_top_headlines(country: 'jp')
-        @headlines.each do |headline|
+        news.get_top_headlines(country: 'jp').each do |headline|
           Headline.create(
             name: headline.name,
             title: headline.title,
@@ -33,6 +30,7 @@ class PostsController < ApplicationController
           break if Headline.count >= 3
         end
       end
+      @headlines = Headline.all
     end
   end
 
