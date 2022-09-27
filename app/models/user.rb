@@ -27,7 +27,8 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: :author_id, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, foreign_key: :author_id, dependent: :destroy
-  has_many :notifications, dependent: :destroy
+  has_many :sent_notifications, foreign_key: 'sender_id', class_name: 'Notification', dependent: :destroy
+  has_many :received_notifications, foreign_key: 'receiver_id', class_name: 'Notification', dependent: :destroy
   has_one :profile, dependent: :destroy
 
   after_create :create_profile, unless: :facebook_provider?
