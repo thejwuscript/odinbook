@@ -7,14 +7,5 @@ class FriendRequest < ApplicationRecord
 
   validates :requester, uniqueness: { scope: :requestee }
 
-  after_create -> { send_notification }
-
-  private
-
-  def send_notification
-    n = build_notification
-    message = "#{requester.name} sent you a friend request."
-    n.save_notification(requester, requestee, message)
-  end
-
+  after_create -> { create_notification(sender: requester, receiver: requestee) }
 end
