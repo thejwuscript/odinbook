@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   resources :likes, only: %i[create destroy]
   resource :profile
   scope ':username' do
-    resources :notifications, only: %i[index create destroy]
+    resources :notifications, only: %i[index create update destroy] do
+      patch :read_all, on: :collection
+    end
   end
   get ':username', to: 'users#show', constraints: { username: /[^\/]+/ }, as: :user
 

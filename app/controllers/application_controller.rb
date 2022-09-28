@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
 
   def load_notifications
     @notifications = current_user.received_notifications
-    @unread_count = @notifications.where(user_read: false).count
+    @unread_notifications = @notifications.where(user_read: false)
+    @unread_ids = @unread_notifications.map(&:id)
   end
 
   def set_no_cache_headers

@@ -35,15 +35,7 @@
       </li>
     </ul>
     <div class="topnav-right" data-controller="menu">
-      <div class="notification">
-        <a href="/friends" title="Notifications">
-          <span class="mdi mdi-bell"></span>
-          <% if @count > 0 %>
-            <span class="notification-badge"><%= @count %></span>
-          <% end %>
-        </a>
-      </div>
-      <%# button_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo: false }, form: { style: "display: inline-block"} %>
+      <%= render partial: "shared/notification", locals: {unread_notifications: @unread_notifications, unread_ids: @unread_ids} %>
       <%= image_tag current_user.avatar, class: "profile-pic-icon", title: "Account", data: {action: "click->menu#toggleMenu"} %>
       <div class="account-menu" data-menu-target="menu">
         <%= button_to destroy_user_session_path, method: :delete, class: "logout", form: {  data: { turbo: :false } } do %>
