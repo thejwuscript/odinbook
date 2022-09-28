@@ -35,7 +35,7 @@
       </li>
     </ul>
     <div class="topnav-right" data-controller="menu">
-      <%= render partial: "shared/notification", locals: {unread_notifications: @unread_notifications, unread_ids: @unread_ids} %>
+      <%= render partial: "shared/notification", locals: {unread_count: @unread_count, notifications: @notifications} %>
       <%= image_tag current_user.avatar, class: "profile-pic-icon", title: "Account", data: {action: "click->menu#toggleMenu"} %>
       <div class="account-menu" data-menu-target="menu">
         <%= button_to destroy_user_session_path, method: :delete, class: "logout", form: {  data: { turbo: :false } } do %>

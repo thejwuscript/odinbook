@@ -1,8 +1,8 @@
 <div class="notification" id="notification">
-  <%= button_to read_all_notifications_path(username: current_user.username), method: :patch, title: "Notifications", params: {unread_ids: unread_ids} do %>
+  <%= button_to read_all_notifications_path(username: current_user.username), method: :patch, title: "Notifications", params: {ids: notifications.pluck(:id)} do %>
     <span class="mdi mdi-bell"></span>
-    <% if unread_notifications.size > 0 %>
-      <span class="notification-badge"><%= unread_notifications.size %></span>
+    <% if unread_count > 0 %>
+      <span class="notification-badge"><%= unread_count %></span>
     <% end %>
   <% end %>
 </div>
