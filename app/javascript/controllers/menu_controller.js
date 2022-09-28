@@ -8,9 +8,10 @@ export default class extends Controller {
   }
 
   notificationMenuTargetConnected(element) {
-    document.body.addEventListener('click', () => {
+    document.body.addEventListener('click', (e) => {
+      e.preventDefault();
       element.remove();
-    })
+    }, {once: true})
   }
 
   toggleMenu(e) {
