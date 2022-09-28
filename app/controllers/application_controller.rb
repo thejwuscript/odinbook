@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
-  before_action :count_unread_notifications, if: :user_signed_in?
+  before_action :load_notifications, if: :user_signed_in?
 
   protected
 
@@ -17,8 +17,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
-  def count_unread_notifications
-    @count = current_user.received_notifications.where(user_read: false).count
+  def load_notifications
+    @notifications = current_user.received_notifications
+    @unread_count = @notifications.where(user_read: false).count
   end
 
   def set_no_cache_headers
