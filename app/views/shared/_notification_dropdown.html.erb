@@ -6,7 +6,7 @@
   <div class="notifications-list">
   <% notifications.each do |notification| %>
     <div class="notifications-list-item">
-      <%= image_tag notification.sender.profile.avatar, class: "profile-pic-icon" %>
+      <%= image_tag notification.sender.profile.avatar, width: 45, height: 45, class: "profile-pic-icon" %>
       <p><%= notification.message %></p>
       <span class="mdi mdi-close"></span>
     </div>
