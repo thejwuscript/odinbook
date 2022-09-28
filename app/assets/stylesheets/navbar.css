@@ -108,8 +108,8 @@
   font-size: 12px;
   font-weight: bold;
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: 1px;
+  right: -6px;
 }
 
 .topnav-right > .profile-pic-icon {

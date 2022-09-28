@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
-  before_action :count_friend_requests, if: :user_signed_in?
+  before_action :count_unread_notifications, if: :user_signed_in?
 
   protected
 
@@ -17,9 +17,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
-  def count_friend_requests
-    #@count = FriendRequest.where(requestee: current_user).count
-    @count = current_user.received_requests.size
+  def count_unread_notifications
+    @count = current_user.received_notifications.where(user_read: false).count
   end
 
   def set_no_cache_headers
