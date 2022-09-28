@@ -70,48 +70,6 @@
   position: relative;
 }
 
-.notification {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 100%;
-}
-
-.notification a {
-  width: 40px;
-  height: 40px;
-  padding: 8px 10px;
-  border-radius: 50%;
-  background-color: #e9ebee;
-}
-
-.notification a:hover {
-  background-color: #dbdddf;
-  border-radius: 50%;
-}
-
-.mdi-bell {
-  color: #1C1C1C;
-  font-size: 20px;
-}
-
-.notification-badge {
-  background-color: #fa3e3e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  color: white;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  font-weight: bold;
-  position: absolute;
-  top: 1px;
-  right: -6px;
-}
-
 .topnav-right > .profile-pic-icon {
   height: 40px;
   width: 40px;
