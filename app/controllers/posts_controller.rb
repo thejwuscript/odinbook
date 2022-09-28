@@ -18,6 +18,7 @@ class PostsController < ApplicationController
           .sort_by { |post| post.created_at }
           .reverse
       unless Headline.first && ((Time.current - Headline.first.updated_at) / 1.hour).round < 12
+        Headline.destroy_all
         news = News.new(ENV['NEWS_API_KEY'])
         news.get_top_headlines(country: 'jp').each do |headline|
           Headline.create(
