@@ -1,0 +1,28 @@
+.notification-dropdown-container {
+  position: absolute;
+  background-color: white;
+  top: 50px;
+  right: 0;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: black;
+  box-shadow: 0 2px 16px grey;
+  border-radius: 5px;
+  padding: 16px;
+}
+
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.notifications-list-item {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  gap: 12px;
+  height: 80px;
+}

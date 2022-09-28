@@ -1,3 +1,14 @@
 <div class="notification-dropdown-container">
+  <h3>Notifications</h3>
+  <div class="notifications-list">
+  <% notifications.each do |notification| %>
+    <div class="notifications-list-item">
+      <%= image_tag notification.sender.profile.avatar, class: "profile-pic-icon" %>
+      <p><%= notification.message %></p>
+      <span class="mdi mdi-close"></span>
+    </div>
+  <% end %>
+  </div>
+
 
 </div>
