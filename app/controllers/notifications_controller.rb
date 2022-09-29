@@ -6,6 +6,7 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
+    puts "destroy!!!!"
   end
 
   def read_all

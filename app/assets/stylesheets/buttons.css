@@ -127,4 +127,8 @@ button.add-friend:disabled {
   background-color: #e9ecec;
 }
 
+.notifications-list-item form button {
+  border: none;
+  background-color: white;
+}
 

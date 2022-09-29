@@ -7,11 +7,23 @@ export default class extends Controller {
   connect() {
   }
 
+  preventDefault(event) {
+    event.preventDefault()
+  }
+
   notificationMenuTargetConnected(element) {
-    document.body.addEventListener('click', (e) => {
-      e.preventDefault();
-      element.remove();
-    }, {once: true})
+    const notificationButton = document.querySelector('.notification > form > button')
+    notificationButton.addEventListener('click', this.preventDefault)
+    document.addEventListener('click', (event) => {
+      if (!element.contains(event.target)) {
+        element.remove();
+      };
+    });
+  };
+
+  notificationMenuTargetDisconnected() {
+    const notificationButton = document.querySelector('.notification > form > button');
+    notificationButton.removeEventListener('click', this.preventDefault)
   }
 
   toggleMenu(e) {
