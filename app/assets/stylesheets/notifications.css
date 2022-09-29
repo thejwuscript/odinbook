@@ -63,6 +63,15 @@
   justify-content: space-between;
 }
 
+.notification-dropdown-header form button {
+  border: none;
+  background-color: transparent;
+}
+
+.notification-dropdown-header form button:hover {
+  cursor: pointer;
+}
+
 .notification-dropdown-header .clear-all {
   font-size: 0.9rem;
 }

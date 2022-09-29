@@ -16,7 +16,12 @@ class NotificationsController < ApplicationController
   end
 
   def clear_all_loaded
-    puts "called"
+    @notifications = Notification.where(id: params[:ids])
+    @notifications.destroy_all
+
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   def read_all
