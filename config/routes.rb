@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   scope ':username' do
     resources :notifications, only: %i[index create update destroy] do
       patch :read_all, on: :collection
+      delete :clear_all_loaded, on: :collection
     end
   end
   get ':username', to: 'users#show', constraints: { username: /[^\/]+/ }, as: :user

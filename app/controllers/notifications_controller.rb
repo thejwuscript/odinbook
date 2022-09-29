@@ -15,6 +15,10 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def clear_all_loaded
+    puts "called"
+  end
+
   def read_all
     @notifications = Notification.where(id: params[:ids])
     @notifications.where(user_read: false).update_all(user_read: true)
