@@ -3,15 +3,15 @@
     <h3>Notifications</h3>
     <span class="clear-all">Clear All</span>
   </div>
-  <div class="notifications-list">
+  <div class="notifications-list" id="notifications-list">
   <% notifications.each do |notification| %>
-    <div class="notifications-list-item">
+    <%= tag.div class: "notifications-list-item", id: dom_id(notification) do %>
       <%= image_tag notification.sender.profile.avatar, width: 45, height: 45, class: "profile-pic-icon" %>
       <p><%= notification.message %></p>
-      <%= button_to notification_path(username: current_user.username, id: notification.id), method: :delete do %>
+      <%= button_to notification_path(username: current_user.username, id: notification.id), method: :delete, params: { ids: notifications.pluck(:id) } do %>
         <span class="mdi mdi-close"></span>
       <% end %>
-    </div>
+    <% end %>
   <% end %>
   </div>
 </div>

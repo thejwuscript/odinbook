@@ -1,2 +1,5 @@
 <%= turbo_stream.append "notification", partial: "shared/notification_dropdown", locals: {notifications: @notifications} %>
+<% if @notifications.all?(&:destroyed?) %>
+  <%= turbo_stream.append "notifications-list", "No notifications to show." %>
+<% end %>
 <%= turbo_stream.remove "notification-badge" %>

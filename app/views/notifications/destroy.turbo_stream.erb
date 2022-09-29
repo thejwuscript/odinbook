@@ -1,0 +1,4 @@
+<%= turbo_stream.remove @notification %>
+<% if @notifications.all?(&:destroyed?) %>
+  <%= turbo_stream.append "notifications-list", "No notifications to show." %>
+<% end %>
