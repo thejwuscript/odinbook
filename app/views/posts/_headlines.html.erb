@@ -7,7 +7,8 @@
         <%= tag.span headline.name, class: "name" %>
         <%= tag.span headline.title, class: "title" %>
       </div>
-      <%= image_tag headline.url_to_image %>
+      <%= image_tag headline.url_to_image, onerror: "this.onerror=null;this.src='#{image_path('no_image_icon.png')}'" %>
+      <%# <a href="https://www.freeiconspng.com/img/23483">Simple No Png</a> %>
     <% end %>
   <% end %>
   </div>
