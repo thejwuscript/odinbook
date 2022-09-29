@@ -2,8 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="menu"
 export default class extends Controller {
-  static targets = ["menu", "notificationMenu"];
-  notificationButton = document.querySelector('.notification > form > button')
+  static targets = ["menu", "notificationMenu", "notificationButton"];
 
   connect() {
   }
@@ -13,16 +12,14 @@ export default class extends Controller {
   }
 
   notificationMenuTargetConnected(element) {
-    this.notificationButton.addEventListener('click', this.preventDefault)
+    this.notificationButtonTarget.addEventListener('click', this.preventDefault)
     document.addEventListener('click', (event) => {
-      if (!element.contains(event.target)) {
-        element.remove();
-      };
+      if (!element.contains(event.target)) element.remove();
     });
   };
 
   notificationMenuTargetDisconnected() {
-    this.notificationButton.removeEventListener('click', this.preventDefault)
+    this.notificationButtonTarget.removeEventListener('click', this.preventDefault)
   }
 
   toggleMenu(e) {

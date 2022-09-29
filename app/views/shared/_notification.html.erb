@@ -1,5 +1,5 @@
-<div class="notification" id="notification">
-  <%= button_to read_all_notifications_path(username: current_user.username), method: :patch, title: "Notifications", params: {ids: notifications.pluck(:id)} do %>
+<div class="notification" id="notification" data-controller="menu">
+  <%= button_to read_all_notifications_path(username: current_user.username), method: :patch, 'data-menu-target' => 'notificationButton', title: "Notifications", params: {ids: notifications.pluck(:id)} do %>
     <span class="mdi mdi-bell"></span>
     <% if unread_count > 0 %>
       <span class="notification-badge" id="notification-badge"><%= unread_count %></span>
