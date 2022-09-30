@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'friends', to: 'friendships#index', as: :friends
   resources :likes, only: %i[create destroy]
   resource :profile
-  scope ':username' do
+  scope ':username', constraints: { username: /[^\/]+/ } do
     resources :notifications, only: %i[index create update destroy] do
       patch :read_all, on: :collection
       delete :clear_all_loaded, on: :collection
