@@ -16,7 +16,6 @@
 .sign-up-container > .sign-up-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   width: 360px;
   height: max-content;
   background-color: white;
@@ -99,5 +98,9 @@
 
 .sign-up-form-header {
   line-height: normal;
+  margin-bottom: 12px;
+}
 
+.forgot-password-link {
+  margin-top: 12px;
 }
