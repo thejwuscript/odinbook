@@ -3,7 +3,7 @@ class FriendRequest < ApplicationRecord
   belongs_to :requestee,
              class_name: "User",
              counter_cache: :received_requests_count
-  has_one :notification, as: :notifiable, dependent: :destroy
+  has_one :notification, as: :notifiable
 
   validates :requester, uniqueness: { scope: :requestee }
 
