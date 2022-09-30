@@ -5,6 +5,27 @@
   height: 100vh;
 }
 
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.sign-up-container > .sign-up-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 360px;
+  height: max-content;
+  background-color: white;
+  padding: 14px 16px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
 .login-left {
   min-width: 360px;
   background-color: white;
@@ -17,7 +38,8 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.login-left > form {
+.login-left > form,
+.sign-up-container form {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -73,4 +95,9 @@
   font-size: 4rem;
   font-weight: bolder;
   color: #0076ff;
+}
+
+.sign-up-form-header {
+  line-height: normal;
+
 }

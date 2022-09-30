@@ -76,6 +76,7 @@ form label[for="post_ximage_file"] {
 
 .signup-button {
   background-color: #42b72a;
+  border: 1px solid #42b72a;
   text-align: center;
   margin-top: 12px;
 }
