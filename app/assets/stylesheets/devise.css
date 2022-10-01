@@ -6,7 +6,8 @@
   height: 100vh;
 }
 
-.sign-up-page {
+.sign-up-page,
+.change-password-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +16,8 @@
 }
 
 .sign-up-form,
-.forgot-password-form-container {
+.forgot-password-form-container,
+.change-password-form-container {
   display: flex;
   flex-direction: column;
   width: 360px;
@@ -41,7 +43,8 @@
 
 .login-left > form,
 .sign-up-page form,
-.forgot-password-page form {
+.forgot-password-page form,
+.change-password-page form {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -49,7 +52,8 @@
   border-radius: 5px;
 }
 
-.forgot-password-page form {
+.forgot-password-page form,
+.change-password-page form {
   gap: 12px;
 }
 
@@ -60,7 +64,8 @@
 
 .field {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .field > input {
@@ -76,6 +81,7 @@
 }
 
 .remember-me.field {
+  flex-direction: row;
   gap: 8px;
   margin: 8px 0;
 }
@@ -104,7 +110,8 @@
 }
 
 .sign-up-form-header,
-.forgot-password-form-header {
+.forgot-password-form-header,
+.change-password-form-header {
   line-height: normal;
   margin-bottom: 12px;
 }

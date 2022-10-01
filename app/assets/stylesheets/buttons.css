@@ -60,7 +60,8 @@ form label[for="post_ximage_file"] {
 .fb-login-button,
 .signup-button,
 .login-page form input[type="submit"],
-.reset-password {
+.reset-password,
+.change-password {
   background-color: #0076ff;
   color: white;
   border: 1px solid #0066ff;
