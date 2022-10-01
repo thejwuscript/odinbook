@@ -19,6 +19,7 @@
     
       <div class="field">
         <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password" %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
       </div>
     
       <div class="field">
