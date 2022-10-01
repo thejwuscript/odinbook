@@ -9,10 +9,10 @@ class Notification < ApplicationRecord
 
   def specify_message
     case notifiable_type
-    when "FriendRequest"
+    when 'FriendRequest'
       self.message = "#{sender.name} sent you a friend request."
-    when ''
-    else
+    when 'Friendship'
+      self.message = "#{sender.name} accepted your friend request."
     end
   end
 end

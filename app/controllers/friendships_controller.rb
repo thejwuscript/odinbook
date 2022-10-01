@@ -5,9 +5,11 @@ class FriendshipsController < ApplicationController
   
   def create
     friend = User.find(params[:friend_id])
-    friendship_a = current_user.friendships.build(friend: friend)
+    friendship_a = current_user.friendships.build(friend:)
     friendship_b = friend.friendships.build(friend: current_user)
+
     if friendship_a.save && friendship_b.save
+      friendship_a.create_notification(sender: current_user, receiver: friend)
       FriendRequest.find(params[:request_id]).destroy
       redirect_to friends_path, notice: "Great, you've added a new friend!"
     else

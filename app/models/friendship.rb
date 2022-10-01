@@ -8,9 +8,4 @@ class Friendship < ApplicationRecord
   has_one :notification, as: :notifiable, dependent: :destroy
 
   validates :friend, uniqueness: { scope: :user }
-
-  #def destroy
-  #  list = Friendship.where(user_id: user.id).or(Friendship.where(friend_id: user.id))
-  #  list.delete_all
-  #end
 end
