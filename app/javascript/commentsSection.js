@@ -74,10 +74,24 @@ function showComments(e) {
     const div = document.createElement('div');
     div.classList.add('individual-comment-container')
     const avatar = await commentAvatar(data);
+
+    const commentDetails = document.createElement('div');
+    commentDetails.classList.add('comment-details');
+
     const textContainer = individualCommentText(comment);
 
+    commentDetails.appendChild(textContainer);
+
+    const time = document.createElement('span');
+    time.classList.add('comment-elapsed-time');
+    const createdAt = parseISO(comment.createdAt)
+    const elapsedTime = differenceInMinutes(new Date(), createdAt) + 'm';
+    time.textContent = elapsedTime;
+
+    commentDetails.appendChild(time);
+
     div.appendChild(avatar);
-    div.appendChild(textContainer);
+    div.appendChild(commentDetails);
     return div;
   };
 
@@ -85,21 +99,15 @@ function showComments(e) {
     const div = document.createElement('div');
     div.classList.add('individual-comment-text-container');
 
-    const author = document.createElement('p');
+    const author = document.createElement('span');
     author.classList.add('comment-author');
     author.textContent = comment.author;
-
-    const time = document.createElement('span');
-    const createdAt = parseISO(comment.createdAt)
-    const elapsedTime = differenceInMinutes(new Date(), createdAt) + 'm';
-    time.textContent = elapsedTime;
 
     const body = document.createElement('p');
     body.classList.add('comment-body');
     body.textContent = comment.body;
 
     div.appendChild(author);
-    div.appendChild(time);
     div.appendChild(body);
     return div;
   };

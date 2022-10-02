@@ -74,3 +74,15 @@ turbo-frame[id^="show-comment-region"] {
   display: flex;
   flex-direction: column;
 }
+
+.comment-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-elapsed-time {
+  margin-left: 24px;
+  font-size: 0.75rem;
+  color: #65676b;
+  align-self: flex-end;
+}
