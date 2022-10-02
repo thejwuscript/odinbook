@@ -81,7 +81,6 @@ turbo-frame[id^="show-comment-region"] {
 }
 
 .comment-elapsed-time {
-  margin-left: 24px;
   font-size: 0.75rem;
   color: #65676b;
   align-self: flex-end;

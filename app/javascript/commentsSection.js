@@ -14,7 +14,7 @@ function showComments(e) {
     form.method = 'post';
     form.addEventListener('submit', async (e) => {
       const commentsSection = e.target.closest('.comments-section');
-      const newComment = await buildIndividualComment({author: data.name, body: form.elements['comment_body'].value}, data);
+      const newComment = await buildIndividualComment({author: data.name, body: form.elements['comment_body'].value, createdAt: "now"}, data);
       let showCommentRegion = commentsSection.querySelector('.show-comment-region');
       if (showCommentRegion === null) {
         showCommentRegion = await buildPostCommentsContainer(data);
@@ -84,8 +84,7 @@ function showComments(e) {
 
     const time = document.createElement('span');
     time.classList.add('comment-elapsed-time');
-    const createdAt = parseISO(comment.createdAt)
-    const elapsedTime = differenceInMinutes(new Date(), createdAt) + 'm';
+    const elapsedTime = displayableTime(comment.createdAt);
     time.textContent = elapsedTime;
 
     commentDetails.appendChild(time);
@@ -94,6 +93,22 @@ function showComments(e) {
     div.appendChild(commentDetails);
     return div;
   };
+
+  const displayableTime = (commentTimeInString) => {
+    if (commentTimeInString === "now") return "now";
+    const earlierTime = parseISO(commentTimeInString);
+    const presentTime = new Date().getTime();
+    const diff = Math.floor(Math.abs(presentTime - earlierTime) / 1000);
+    if (diff < 60) {
+      return diff + 's';
+    } else if (diff < 3600) {
+      return Math.floor(diff / 60) + 'm';
+    } else if (diff < 86400) {
+      return Math.floor(diff / 3600) + 'h';
+    } else {
+      return Math.floor(diff / 86400) + 'd';
+    }
+  }
 
   const individualCommentText = (comment) => {
     const div = document.createElement('div');
