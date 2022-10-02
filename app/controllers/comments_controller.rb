@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  skip_before_action :count_friend_requests
+  skip_before_action :load_notifications
 
   def index
   end
