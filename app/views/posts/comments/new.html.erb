@@ -12,7 +12,10 @@
       <div class="individual-comment-container">
         <%= image_tag @avatar, class: "profile-pic comment" %>
         <div class="individual-comment-text-container">
-          <p class="comment-author"><%= comment.author.name %></p>
+          <div>
+            <p class="comment-author"><%= comment.author.name %></p>
+            <%= tag.span comment.display_time_elapsed %>
+          </div>
           <p class="comment-body"><%= comment.body %></p>
         </div>
       </div>

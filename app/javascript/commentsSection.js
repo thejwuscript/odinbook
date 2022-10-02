@@ -1,3 +1,5 @@
+import { parseISO, differenceInMinutes } from "date-fns";
+
 function showComments(e) {
   e.target.addEventListener('click', removeCommentsSection);
   e.target.removeEventListener('click', showComments);
@@ -87,11 +89,17 @@ function showComments(e) {
     author.classList.add('comment-author');
     author.textContent = comment.author;
 
+    const time = document.createElement('span');
+    const createdAt = parseISO(comment.createdAt)
+    const elapsedTime = differenceInMinutes(new Date(), createdAt) + 'm';
+    time.textContent = elapsedTime;
+
     const body = document.createElement('p');
     body.classList.add('comment-body');
     body.textContent = comment.body;
 
     div.appendChild(author);
+    div.appendChild(time);
     div.appendChild(body);
     return div;
   };
