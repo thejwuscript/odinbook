@@ -1,8 +1,8 @@
 <div class="login-page">
-  <div class="login-right">
+  <div class="login-logo-container">
     <span class="login-logo">Odinbook</span>
   </div>
-    <div class="login-left">
+    <div class="login-form-container">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
         <div class="field">
           <%= f.text_field :login, autofocus: true %>

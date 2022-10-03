@@ -117,3 +117,9 @@ textarea:focus-visible {
   outline: none;
   resize: vertical;
 }
+
+@media (max-width: 768px) {
+  body {
+    background-color: white;
+  }
+}
