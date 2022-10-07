@@ -32,7 +32,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
 
   after_create :create_profile, unless: :facebook_provider?
-  after_create :send_welcome_email
+  #after_create :send_welcome_email
 
   scope :all_except, ->(user) { where.not(id: user) }
 
