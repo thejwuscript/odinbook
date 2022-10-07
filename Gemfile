@@ -60,8 +60,6 @@ gem "omniauth-rails_csrf_protection"
 
 gem "down", "~> 5.0"
 
-gem "faker"
-
 gem "prettier"
 
 gem "aws-sdk-s3", require: false
@@ -69,6 +67,11 @@ gem "aws-sdk-s3", require: false
 gem 'news-api'
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'webdrivers'
+  gem 'faker'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
 end
