@@ -31,6 +31,20 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:received_notifications).class_name(:Notification).dependent(:destroy) }
   end
 
+  context 'after a user is created' do
+    subject(:user) { build(:user) }
+
+    it 'calls #create_profile' do
+      expect(user).to receive(:create_profile).once
+      user.save
+    end
+
+    it 'calls #send_welcome_email' do
+      expect(user).to receive(:send_welcome_email).once
+      user.save
+    end
+  end
+
   describe '#create_profile' do
     subject(:user) { create(:user) }
 

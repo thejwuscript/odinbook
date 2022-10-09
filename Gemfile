@@ -51,20 +51,14 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 
 gem "devise"
-
 gem "normalize-rails", "~> 8.0", ">= 8.0.1"
-
 gem "omniauth-facebook"
-
 gem "omniauth-rails_csrf_protection"
-
 gem "down", "~> 5.0"
-
 gem "prettier"
-
 gem "aws-sdk-s3", require: false
-
 gem 'news-api'
+gem "pundit", "~> 2.2"
 
 group :development, :test do
   gem 'rspec-rails'
@@ -91,11 +85,9 @@ group :development do
   # gem "spring"
 
   gem "letter_opener"
-
   gem "better_errors"
-  
   gem "binding_of_caller"
-
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
-
-gem "pundit", "~> 2.2"
