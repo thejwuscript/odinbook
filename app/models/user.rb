@@ -31,7 +31,8 @@ class User < ApplicationRecord
   has_many :received_notifications, foreign_key: 'receiver_id', class_name: 'Notification', dependent: :destroy
   has_one :profile, dependent: :destroy
 
-  validates :username, uniqueness: true, presence: true
+  validates :username, length: { maximum: 50 }, uniqueness: true, presence: true
+  validates :email, length: { maximum: 50 }
 
   after_create :create_profile, unless: :facebook_provider?
   after_create :send_welcome_email
