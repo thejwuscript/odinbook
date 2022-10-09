@@ -30,4 +30,28 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:sent_notifications).class_name(:Notification).dependent(:destroy) }
     it { is_expected.to have_many(:received_notifications).class_name(:Notification).dependent(:destroy) }
   end
+
+  describe '#create_profile' do
+    subject(:user) { create(:user) }
+
+    it 'creates a profile for the user' do
+      expect(user.profile).to be_present
+    end
+  end
+
+  describe '#send_welcome_email' do
+    subject(:user) { create(:user) }
+    let(:mail) { instance_double(ActionMailer::MessageDelivery) }
+
+    before do
+      allow(UserMailer).to receive(:with).and_return(UserMailer)
+      allow(UserMailer).to receive(:welcome_email).and_return(mail)
+      allow(mail).to receive(:deliver_now)
+    end
+
+    it 'sends a message welcome_email to UserMailer' do
+      expect(UserMailer).to receive(:welcome_email)
+      user.send_welcome_email
+    end
+  end
 end
