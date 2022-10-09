@@ -55,6 +55,7 @@ RSpec.describe User, type: :model do
 
   describe '#send_welcome_email' do
     subject(:user) { create(:user) }
+
     let(:mail) { instance_double(ActionMailer::MessageDelivery) }
 
     before do
@@ -66,6 +67,19 @@ RSpec.describe User, type: :model do
     it 'sends a message welcome_email to UserMailer' do
       expect(UserMailer).to receive(:welcome_email)
       user.send_welcome_email
+    end
+  end
+
+  describe '.all_except' do
+    subject(:user) { create(:user) }
+
+    let!(:user1) { create(:user) }
+    let!(:user2) { create(:user) }
+
+    it 'returns a list of all users except for the specified user', :aggregate_failures do
+      list = described_class.all_except(user)
+      expect(list).to include(user1, user2)
+      expect(list).not_to include(user)
     end
   end
 end
