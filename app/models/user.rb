@@ -97,10 +97,6 @@ class User < ApplicationRecord
     profile.nil? || profile.display_name.blank? ? username : profile.display_name
   end
 
-  # def avatar
-  #   profile && profile.avatar.attached? ? profile.avatar : "head_avatar.jpg"
-  # end
-
   def send_welcome_email
     return unless persisted?
 
