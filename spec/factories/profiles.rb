@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :profile do
-    display_name { Faker::Name.name }
+    display_name { Faker::Name.unique.name }
 
-    association :user
+    user
   end
 end
