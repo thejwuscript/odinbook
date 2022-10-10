@@ -29,6 +29,7 @@ class User < ApplicationRecord
   has_many :sent_notifications, foreign_key: 'sender_id', class_name: 'Notification', dependent: :destroy
   has_many :received_notifications, foreign_key: 'receiver_id', class_name: 'Notification', dependent: :destroy
   has_one :profile, dependent: :destroy
+  delegate :avatar, to: :profile
 
   validates :username, length: { maximum: 50 }, uniqueness: true, presence: true
   validates :email, length: { maximum: 50 }
@@ -96,9 +97,9 @@ class User < ApplicationRecord
     profile.nil? || profile.display_name.blank? ? username : profile.display_name
   end
 
-  def avatar
-    profile && profile.avatar.attached? ? profile.avatar : "head_avatar.jpg"
-  end
+  # def avatar
+  #   profile && profile.avatar.attached? ? profile.avatar : "head_avatar.jpg"
+  # end
 
   def send_welcome_email
     return unless persisted?
