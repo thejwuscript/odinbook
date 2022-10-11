@@ -18,13 +18,26 @@ RSpec.describe Profile, type: :model do
     end
   end
 
-  # context 'when an avatar is attached but not in the accepted format' do
-  #   subject(:profile) { create(:profile) }
+  context 'when trying to attach an avatar in a non-acceptable format' do
+    subject(:profile) { create(:profile) }
 
-  #   it 'adds an error message' do
-  #     file = double('image_file', size: 0.2.megabytes, content_type: :pdf, original_filename: "some_file")
-  #     allow(profile).to receive(:avatar).and_return(file)
-  #     expect(profile.errors.messages).to be true
-  #   end
-  # end
+    before do
+      file = Rails.root.join('spec/support/assets/texts.md')
+      blob = ActiveStorage::Blob.create_and_upload!(
+        io: File.open(file),
+        filename: 'texts.md',
+        content_type: 'text/markdown'
+      ).signed_id
+      profile.avatar.attach(blob)
+    end
+
+    it 'adds an error message to the Profile instance' do
+      message = profile.errors.messages_for(:avatar).first
+      expect(message).to eq('Needs to be an image in .jpeg or .png format')
+    end
+
+    it 'does not complete the attachment' do
+      expect(profile.avatar.attached?).to be false
+    end
+  end
 end
