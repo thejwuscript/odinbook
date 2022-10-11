@@ -22,12 +22,11 @@ RSpec.describe Profile, type: :model do
 
     before do
       file = Rails.root.join('spec/support/assets/texts.md')
-      blob = ActiveStorage::Blob.create_and_upload!(
+      profile.avatar.attach(
         io: File.open(file),
         filename: 'texts.md',
         content_type: 'text/markdown'
-      ).signed_id
-      profile.avatar.attach(blob)
+      )
     end
 
     it 'adds an error message to the Profile instance' do
@@ -46,12 +45,11 @@ RSpec.describe Profile, type: :model do
     before do
       # image from https://www.freeiconspng.com/img/23485
       file = Rails.root.join('spec/support/assets/generic_image.png')
-      blob = ActiveStorage::Blob.create_and_upload!(
+      profile.avatar.attach(
         io: File.open(file),
         filename: 'generic_image.png',
         content_type: 'image/png'
-      ).signed_id
-      profile.avatar.attach(blob)
+      )
     end
 
     it 'completes the attachment' do
