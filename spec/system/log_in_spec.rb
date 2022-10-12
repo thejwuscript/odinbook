@@ -17,13 +17,27 @@ RSpec.describe 'Log in', type: :system do
   end
 
   context 'when the user fills in the wrong credentials' do
-    it 'displays an error flash message on the same page', :aggregate_failures do
+    before do
       visit root_path
       fill_in 'user_login', with: 'kiekdos'
       fill_in 'user_password', with: 'aaaaaaaa'
       click_on 'Log in'
+    end
+
+    it 'displays an error flash message on the same page', :aggregate_failures do
       expect(page).to have_current_path(new_user_session_path)
       expect(page).to have_content('The provided login credentials were invalid.')
+    end
+  end
+
+  context 'when the user tries to visit a page that requires authetication' do
+    before do
+      visit users_path
+    end
+
+    it 'prevents the visit and prompts the user to sign in or sign up', :aggregate_failures do
+      expect(page).to have_content('You need to sign in or sign up before continuing.')
+      expect(page).to have_current_path(new_user_session_path)
     end
   end
 end
