@@ -18,7 +18,11 @@
       <%= render "shared/flash" %>
     <% end %>
     <% if user_signed_in? %>
-      <%= render "shared/header" %>
+      <% if browser.device.mobile? %>
+        <%= render "shared/header_mobile" %>
+      <% else %>
+        <%= render "shared/header" %>
+      <% end %>
     <% end %>
     <main>
       <%= yield %>

@@ -1,19 +1,23 @@
 <div class="main-homepage">
 
-  <%= render "sidebar" %>
+  <%= render "sidebar" unless browser.device.mobile? %>
 
   <div class="main-homepage-center">
     <%= render "posts/new_post_placeholder" %>
     
-    <%= turbo_frame_tag "posts" do %>
-      <% @timeline_posts.each do |post| %>
-        <%= render partial: "post", locals: { post: post, likes: post.likes.includes(:user) }%>
+    <% unless browser.device.mobile? %>
+      <%= turbo_frame_tag "posts" do %>
+        <% @timeline_posts.each do |post| %>
+          <%= render partial: "post", locals: { post: post, likes: post.likes.includes(:user) }%>
+        <% end %>
       <% end %>
     <% end %>
   </div>
 
-  <div class="main-homepage-right">
-    <%= render partial: "posts/headlines", locals: {headlines: @headlines} %>
-  </div>
+  <% unless browser.device.mobile? %>
+    <div class="main-homepage-right">
+      <%= render partial: "posts/headlines", locals: {headlines: @headlines} %>
+    </div>
+  <% end %>
 
 </div>

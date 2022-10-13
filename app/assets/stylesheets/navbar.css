@@ -137,3 +137,34 @@
   background-color: #f5f6f7;
   cursor: pointer;
 }
+
+
+
+@media (max-width: 768px) {
+  .mdi-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    font-size: 1.5rem;
+    background-color: #e9ebee;
+    border-radius: 50%;
+  }
+
+  .logo-container .logo {
+    text-decoration: none;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 1.6rem;
+    font-weight: bolder;
+    color: #0076ff;
+  }
+
+  .topnav {
+    padding: 12px 0 0 0;
+  }
+
+  .topnav ul {
+    font-size: 1.6rem;
+  }
+}

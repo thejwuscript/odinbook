@@ -40,3 +40,14 @@
 .users-page-content {
   padding: 14px;
 }
+
+@media (max-width: 768px) {
+  .main-homepage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-homepage-right {
+    display: none;
+  }
+}

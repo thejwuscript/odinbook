@@ -59,6 +59,7 @@ gem "prettier"
 gem "aws-sdk-s3", require: false
 gem 'news-api'
 gem "pundit", "~> 2.2"
+gem 'browser'
 
 group :development, :test do
   gem 'rspec-rails'
