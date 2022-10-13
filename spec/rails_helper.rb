@@ -11,6 +11,7 @@ require 'support/time_helpers.rb'
 require 'support/capybara.rb'
 require 'support/webmock.rb'
 require 'support/vcr.rb'
+require 'support/devise.rb'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

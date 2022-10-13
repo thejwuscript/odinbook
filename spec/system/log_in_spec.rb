@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Log in', type: :system do
   let!(:user) { create(:user) }
 
+  before do
+    allow_any_instance_of(Headline).to receive(:url_to_image).and_return('generic_image.png')
+  end
+
   context 'when the user fills in the correct credentials' do
     it 'logs in user and redirects to homepage', :aggregate_failures do
       VCR.use_cassette 'news headlines' do
