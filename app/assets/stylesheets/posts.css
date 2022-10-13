@@ -301,4 +301,13 @@ form #post_body {
   .post-container.placeholder {
     margin: 2px 0 0 0;
   }
+
+  .post-container.published {
+    padding: 10px 8px 0 8px;
+  }
+
+  #posts {
+    gap: 8px;
+    margin-top: 8px;
+  }
 }

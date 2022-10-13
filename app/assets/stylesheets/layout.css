@@ -52,6 +52,10 @@
     display: none;
   }
 
+  .main-homepage-center {
+    gap: 0;
+  }
+
   main {
     background-color: #C0C0C0;
   }

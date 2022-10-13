@@ -1,10 +1,10 @@
 import { parseISO, differenceInMinutes } from "date-fns";
 
 function showComments(e) {
-  e.target.addEventListener('click', removeCommentsSection);
-  e.target.removeEventListener('click', showComments);
-  const postId = e.target.dataset.postid;
-  const postContainer = e.target.closest(".post-container.published");
+  e.currentTarget.addEventListener('click', removeCommentsSection);
+  e.currentTarget.removeEventListener('click', showComments);
+  const postId = e.currentTarget.dataset.postid;
+  const postContainer = e.currentTarget.closest(".post-container.published");
   const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
 
   const buildNewCommentForm = (data) => {
@@ -13,7 +13,7 @@ function showComments(e) {
     form.action = `/posts/${postId}/comments`;
     form.method = 'post';
     form.addEventListener('submit', async (e) => {
-      const commentsSection = e.target.closest('.comments-section');
+      const commentsSection = e.currentTarget.closest('.comments-section');
       const newComment = await buildIndividualComment({author: data.name, body: form.elements['comment_body'].value, createdAt: "now"}, data);
       let showCommentRegion = commentsSection.querySelector('.show-comment-region');
       if (showCommentRegion === null) {
@@ -153,10 +153,10 @@ function showComments(e) {
 };
 
 function removeCommentsSection(e) {
-  const postId = e.target.dataset.postid;
+  const postId = e.currentTarget.dataset.postid;
   document.getElementById(`comments-section-${postId}`).remove();
-  e.target.addEventListener('click', showComments)
-  e.target.removeEventListener('click', removeCommentsSection)
+  e.currentTarget.addEventListener('click', showComments)
+  e.currentTarget.removeEventListener('click', removeCommentsSection)
 };
 
 function attachHandlers() {

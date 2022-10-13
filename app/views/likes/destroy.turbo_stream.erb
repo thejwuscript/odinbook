@@ -1,6 +1,10 @@
 <%= turbo_stream.update "post-likes-#{@post.id}", partial: "posts/like_count_line", locals: { like_count: @post.likes.count } %>
 <%= turbo_stream.replace "like-button-liked-#{@post.id}" do %>
   <%= button_to likes_path, params: { id: @post.id }, form: { id: "like-button-#{@post.id}" } do %>
-    <span class="mdi mdi-thumb-up-outline"></span>Like
+    <% if browser.device.mobile? %>
+      <span class="mdi mdi-thumb-up-outline"></span>
+    <% else %>
+      <span class="mdi mdi-thumb-up-outline"></span>Like
+    <% end %>
   <% end %>
 <% end %>
