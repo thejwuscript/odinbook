@@ -167,4 +167,8 @@
   .topnav ul {
     font-size: 1.6rem;
   }
+
+  .topnav > ul a.active {
+    border: none;
+  }
 }

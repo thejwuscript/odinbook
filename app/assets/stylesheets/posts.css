@@ -292,5 +292,13 @@ form #post_body {
 @media (max-width: 768px) {
   .post-container {
     max-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 10px 8px;
+    
+  }
+
+  .post-container.placeholder {
+    margin: 2px 0 0 0;
   }
 }
