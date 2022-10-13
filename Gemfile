@@ -51,32 +51,36 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 
 gem "devise"
-
 gem "normalize-rails", "~> 8.0", ">= 8.0.1"
-
 gem "omniauth-facebook"
-
 gem "omniauth-rails_csrf_protection"
-
 gem "down", "~> 5.0"
-
-gem "faker"
-
 gem "prettier"
-
 gem "aws-sdk-s3", require: false
-
 gem 'news-api'
+gem "pundit", "~> 2.2"
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'webdrivers'
+  gem 'faker'
+  gem 'webmock'
+  gem 'vcr'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
+  gem "guard"
+  gem 'guard-rspec', require: false
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -84,11 +88,9 @@ group :development do
   # gem "spring"
 
   gem "letter_opener"
-
   gem "better_errors"
-  
   gem "binding_of_caller"
-
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
-
-gem "pundit", "~> 2.2"

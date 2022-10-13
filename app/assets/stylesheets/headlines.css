@@ -21,6 +21,7 @@
   padding: 8px;
   gap: 8px;
   align-items: flex-start;
+  justify-content: space-between;
   border-radius: 5px;
   height: 116px;
 }

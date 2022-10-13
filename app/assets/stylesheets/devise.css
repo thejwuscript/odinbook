@@ -68,12 +68,31 @@
   align-items: stretch;
 }
 
-.field > input {
+.field input {
   flex: 1;
   padding: 12px;
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid lightgrey;
+}
+
+.field_with_errors {
+  display: flex;
+}
+
+#error_explanation {
+  border: 4px solid indianred;
+  background-color: #ffb6c140;
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.field_with_errors input {
+  border: 1px solid red;
+}
+
+.field_with_errors input:focus-visible {
+  outline: 1px solid red;
 }
 
 .field > input[type="checkbox"] {
@@ -117,6 +136,10 @@
 }
 
 .forgot-password-link {
+  font-size: 0.9rem;
+}
+
+.field em {
   font-size: 0.9rem;
 }
 

@@ -13,6 +13,7 @@ class Profile < ApplicationRecord
     return unless avatar.attached?
     return if avatar.content_type.in?(%w[image/jpeg image/png])
 
+    avatar.purge
     errors.add(:avatar, "Needs to be an image in .jpeg or .png format")
   end
 end

@@ -14,7 +14,7 @@ USER_PASSWORD = 'password'.freeze
   image = Down.download("https://xsgames.co/randomusers/avatar.php?g=#{gender}")
   user.profile.avatar.attach(io: image, filename: "avatar#{user.profile.id}#{Time.current.hash}")
   user.profile.update!(display_name: "#{first_name} #{last_name}")
-  4.times do
+  5.times do
     user.posts.create(body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4))
   end
 end
@@ -23,6 +23,6 @@ admin = User.create!(username: 'admin', email: 'admin@example.com', password: US
                      password_confirmation: USER_PASSWORD)
 image = Down.download("https://xsgames.co/randomusers/avatar.php?g=male")
 admin.profile.avatar.attach(io: image, filename: "avatar#{admin.profile.id}#{Time.current.hash}")
-4.times do
+10.times do
   admin.posts.create(body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4))
 end

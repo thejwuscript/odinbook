@@ -4,6 +4,7 @@
   background-color: whitesmoke;
   object-fit: cover;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .profile-pic.comment {
