@@ -2,11 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Notifications', type: :system, js: true do
   let!(:notification) { create(:notification) }
+  let(:headline1) { create(:headline) }
+  let(:headline2) { create(:headline) }
+  let(:headline3) { create(:headline) }
 
   before do
-    allow_any_instance_of(Headline).to receive(:url_to_image).and_return('generic_image.png')
+    allow(Headline).to receive(:create).and_return(headline1, headline2, headline3)
   end
-
+  
   context 'when notifications are unread' do
     before do
       VCR.use_cassette 'news headlines' do

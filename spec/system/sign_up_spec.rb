@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'Sign up', type: :system do
+  let(:headline1) { create(:headline) }
+  let(:headline2) { create(:headline) }
+  let(:headline3) { create(:headline) }
+
   before do
-    allow_any_instance_of(Headline).to receive(:url_to_image).and_return('generic_image.png')
+    allow(Headline).to receive(:create).and_return(headline1, headline2, headline3)
   end
-  
+
   context 'when the user enters and submits valid credentials' do
     before do
       VCR.use_cassette 'news headlines' do
