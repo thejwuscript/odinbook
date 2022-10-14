@@ -113,8 +113,12 @@ input[type="text"] {
 }
 
 input:focus-visible {
-  outline: 1px solid black;
   color: black;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 0 0 0 1px black;
 }
 
 button:focus-visible {
