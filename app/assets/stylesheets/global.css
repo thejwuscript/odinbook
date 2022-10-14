@@ -113,8 +113,12 @@ input[type="text"] {
 }
 
 input:focus-visible {
-  outline: none;
+  outline: 1px solid black;
   color: black;
+}
+
+button:focus-visible {
+  outline: 1px solid black;
 }
 
 textarea,
@@ -122,6 +126,10 @@ textarea:focus-visible {
   border: none;
   outline: none;
   resize: vertical;
+}
+
+a:focus-visible {
+  outline: 1px solid black;
 }
 
 @media (max-width: 768px) {

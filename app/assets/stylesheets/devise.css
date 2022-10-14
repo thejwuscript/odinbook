@@ -113,12 +113,23 @@
 
 .field > input[type="checkbox"] {
   flex: 0;
+  appearance: auto;
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  box-shadow: none;
+}
+
+.field > input[type="checkbox"]:focus-visible {
+  outline: 1px solid black;
 }
 
 .remember-me.field {
+  display: flex;
   flex-direction: row;
   gap: 8px;
   margin: 8px 0;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .separation-line-with-words {
