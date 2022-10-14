@@ -1,6 +1,9 @@
 import { parseISO, differenceInMinutes } from "date-fns";
 
 function showComments(e) {
+  const icon = e.currentTarget.querySelector('.mdi');
+  e.currentTarget.replaceChild(toggleCommentIcon(icon), icon)
+ 
   e.currentTarget.addEventListener('click', removeCommentsSection);
   e.currentTarget.removeEventListener('click', showComments);
   const postId = e.currentTarget.dataset.postid;
@@ -153,6 +156,8 @@ function showComments(e) {
 };
 
 function removeCommentsSection(e) {
+  const icon = e.currentTarget.querySelector('.mdi');
+  e.currentTarget.replaceChild(toggleCommentIcon(icon), icon);
   const postId = e.currentTarget.dataset.postid;
   document.getElementById(`comments-section-${postId}`).remove();
   e.currentTarget.addEventListener('click', showComments)
@@ -164,5 +169,16 @@ function attachHandlers() {
     button.addEventListener('click', showComments)
   };
 };
+
+function toggleCommentIcon(iconElement) {
+  console.log(iconElement);
+  const span = document.createElement('span');
+  if (iconElement.classList.contains('mdi-comment-outline')) {
+    span.classList.add('mdi', 'mdi-comment')
+  } else {
+    span.classList.add('mdi', 'mdi-comment-outline');
+  }
+  return span;
+}
 
 export {attachHandlers, showComments};
