@@ -113,7 +113,7 @@ input[type="text"] {
 }
 
 input:focus-visible {
-  outline: 1px solid black;
+  outline: none;
 }
 
 textarea,

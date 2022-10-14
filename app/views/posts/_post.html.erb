@@ -25,8 +25,9 @@
   <hr>
 
   <div class="post-buttons">
+
     <% if likes.none? { |like| like.user == current_user } %>
-      <%= button_to likes_path, params: { id: post }, form: { id: "like-button-#{post.id}" } do %>
+      <%= button_to likes_path, params: { id: post }, form: { data: {turbo: true}, id: "like-button-#{post.id}" } do %>
         <% if browser.device.mobile? %>
           <span class="mdi mdi-thumb-up-outline"></span>
         <% else %>
@@ -36,12 +37,13 @@
     <% else %>
       <%= button_to like_path(id: likes.where(user_id: current_user.id).first), method: :delete, params: { post_id: post.id, like_id: likes.where(user_id: current_user.id).first.id }, form: { id: "like-button-liked-#{post.id}" } do %>
         <% if browser.device.mobile? %>
-        <span class="mdi mdi-thumb-up"></span>
+          <span class="mdi mdi-thumb-up"></span>
         <% else %>
           <span class="mdi mdi-thumb-up"></span>Like
         <% end %>
       <% end %>
     <% end %>
+
     <%= tag.div class: "comment-button", 'data-postid' => post.id, 'data-comments-target' => 'commentsButton' do %>
       <% if browser.device.mobile? %>
         <span class="mdi mdi-comment-outline"></span>
