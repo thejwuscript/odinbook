@@ -162,6 +162,8 @@
 
   .topnav {
     padding: 12px 0 0 0;
+    background-color: white;
+    justify-content: center;
   }
 
   .topnav ul {

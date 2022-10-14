@@ -1,5 +1,5 @@
 .post-container {
-  width: 600px;
+  max-width: 600px;
   background-color: white;
   display: flex;
   align-items: center;

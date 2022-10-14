@@ -3,6 +3,11 @@ input[type="file"] {
   width: 0;
 }
 
+button {
+  color: black;
+  font-weight: normal;
+}
+
 form label[for="profile_avatar"],
 form label[for="post_image_file"] {
   background-color: #f5f6f7;

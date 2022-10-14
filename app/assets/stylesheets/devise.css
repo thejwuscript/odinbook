@@ -113,6 +113,7 @@
 
 .field > input[type="checkbox"] {
   flex: 0;
+  padding: 8px;
   appearance: auto;
   -webkit-appearance: checkbox;
   -moz-appearance: checkbox;
