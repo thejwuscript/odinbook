@@ -74,6 +74,11 @@
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid lightgrey;
+  color: black;
+}
+
+.field input:focus-visible {
+  box-shadow: 0 0 0 1pt black;
 }
 
 .field_with_errors {
@@ -89,10 +94,12 @@
 
 .field_with_errors input {
   border: 1px solid red;
+  outline: none;
 }
 
 .field_with_errors input:focus-visible {
-  outline: 1px solid red;
+  box-shadow: 0 0 0 1px red;
+  outline: none;
 }
 
 .field > input[type="checkbox"] {
