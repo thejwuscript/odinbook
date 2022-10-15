@@ -18,8 +18,10 @@
 
 .preview-avatar {
   display: inline-block;
-  max-width: 200px;
-  height: auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .image-preview {
@@ -85,4 +87,11 @@
 .profile-pic-icon.homepage-sidebar{
   width: 30px;
   height: 30px;
+}
+
+@media (max-width: 768px) {
+  .preview-avatar {
+    width: 140px;
+    height: 140px;
+  }
 }

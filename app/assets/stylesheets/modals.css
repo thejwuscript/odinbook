@@ -93,3 +93,16 @@
   align-items: center;
   gap: 12px;
 }
+
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 100%;
+    border-radius: 0;
+    border: none;
+  }
+
+  .image-preview-window > div {
+    width: 140px;
+    height: 140px;
+  }
+}

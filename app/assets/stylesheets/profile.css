@@ -302,6 +302,7 @@ form > .location-container > input {
     flex-direction: column;
     align-items: stretch;
     padding: 0;
+    gap: 0;
   }
 
   .cover-photo-container {
@@ -360,7 +361,7 @@ form > .location-container > input {
   .edit-cover-photo-container {
     top: 190px;
     left: 40%;
-    z-index: 2;
+    z-index: 1;
   }
 
   .add-cover-photo-button {

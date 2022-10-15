@@ -5,7 +5,6 @@
 		<% else %>
 			<div class="cover-photo-placeholder"></div>
 		<% end %>
-		<%= render partial: "users/edit_cover_photo", locals: { profile: @profile } if browser.device.mobile? %>
 	</div>
 
 	<%= render "profile", profile: @profile %>

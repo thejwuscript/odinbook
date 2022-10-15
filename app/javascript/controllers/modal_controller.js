@@ -29,7 +29,7 @@ export default class extends Controller {
       event.preventDefault();
       let element = this.modalcontainerTarget;
       element.style.display = "none";
-      this.filenameTarget.textContent = '';
+      if (this.filenameTarget) this.filenameTarget.textContent = '';
       this.inputTarget.value = '';
   }
 
