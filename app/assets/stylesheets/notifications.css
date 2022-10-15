@@ -96,4 +96,14 @@
     height: 34px;
     padding: 0;
   }
+
+  .notification-dropdown-container {
+    width: 310px;
+    right: -52px;
+  }
+
+  .notification-badge {
+    top: -2px;
+    right: -8px;
+  }
 }
