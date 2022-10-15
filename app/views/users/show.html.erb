@@ -5,45 +5,29 @@
 		<% else %>
 			<div class="cover-photo-placeholder"></div>
 		<% end %>
+		<%= render partial: "users/edit_cover_photo", locals: { profile: @profile } if browser.device.mobile? %>
 	</div>
-
-	<% if false %>
 
 	<%= render "profile", profile: @profile %>
 
 	<div class="profile-posts">
-	<% if @user == current_user %>
-		<div class="edit-cover-photo-container" data-controller="cover-photo">
-			<%= button_tag type: "button", class: "add-cover-photo-button", data: {action: "click->cover-photo#toggle"} do %>
-				<span class="mdi mdi-camera"></span><span>Edit</span>
-			<% end %>
-			<div class="edit-cover-photo-selection" data-cover-photo-target="menu">
-				<%= form_with model: @profile, data: {turbo: false} do |form| %>
-					<%= form.label 'cover_photo' do %>
-						<span class="mdi mdi-upload-outline"></span>Upload Photo
-						<%= form.file_field 'cover_photo', onchange: "this.form.submit()" %>
-					<% end %>
-				<% end %>
-			<% if @profile.cover_photo.attached? %>
-				<%= button_to profile_path, method: :delete, name: "cover_photo", value: "purge", form: {data: {turbo_confirm: "Are you sure you want to remove your cover photo?"}} do %>
-					<span class="mdi mdi-delete-outline"></span>Remove
-				<% end %>
-			<% end %>
-			</div>
-		</div>
+	<% if @user == current_user && !browser.device.mobile? %>
+		<%= render partial: "users/edit_cover_photo", locals: { profile: @profile } %>
 	<% end %>
+
+	<% if false %>
 	
-		<% if @user == current_user %>
-  		<%= render "posts/new_post_placeholder" %>
+	<% if @user == current_user %>
+		<%= render "posts/new_post_placeholder" %>
+	<% end %>
+	<%= turbo_frame_tag "posts" do %>
+		<% if @posts.empty? && @user != current_user %>
+			<div class="post-container empty">No posts to show.</div>
 		<% end %>
-		<%= turbo_frame_tag "posts" do %>
-			<% if @posts.empty? && @user != current_user %>
-				<div class="post-container empty">No posts to show.</div>
-			<% end %>
-			<% @posts.each do |post| %>
-				<%= render partial: "posts/post", locals: { post: post, likes: post.likes.includes(:user) }%>
-			<% end %>
+		<% @posts.each do |post| %>
+			<%= render partial: "posts/post", locals: { post: post, likes: post.likes.includes(:user) }%>
 		<% end %>
+	<% end %>
 	</div>
 
 	<% end %>

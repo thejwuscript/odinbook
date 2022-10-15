@@ -308,9 +308,63 @@ form > .location-container > input {
     padding: 12px;
     background-color: white;
     height: 175px;
+    overflow: visible;
+  }
+
+  .cover-photo-container > img {
+    border-radius: 5px;
   }
 
   .cover-photo-placeholder {
     border-radius: 5px;
+  }
+
+  .profile .profile-info {
+    align-items: center;
+    margin-top: 85px;
+    gap: 12px;
+  }
+
+  .profile-info .profile-avatar {
+    margin: 0;
+    height: 140px;
+    width: 140px;
+  }
+
+  .profile-info .profile-avatar > img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .profile-info-details {
+    box-shadow: none;
+    border: none;
+    padding: 0 0 16px 0;
+  }
+
+  .profile-info-details .display-name,
+  .profile-info-details .username {
+    align-self: center;
+    font-weight: bold;
+    color: black;
+  }
+
+  .edit-profile-button {
+    color: black;
+  }
+
+  .profile .profile-posts {
+    margin: 0;
+  }
+
+  .edit-cover-photo-container {
+    top: 190px;
+    left: 40%;
+    z-index: 2;
+  }
+
+  .add-cover-photo-button {
+    border-radius: 50%;
+    padding: 10px 12px;
   }
 }

@@ -3,8 +3,16 @@
 
   <div class="profile-info-details">
     <%= turbo_frame_tag "profile-details" do %>
-      <%= tag.span profile.display_name, class: "display-name" %>
-      <%= tag.span profile.user.username, class: "username" %>
+      <% if browser.device.mobile? %>
+        <% if profile.display_name.present? %>
+          <%= tag.span profile.display_name, class: "display-name" %>
+        <% else %>
+          <%= tag.span profile.user.username, class: "username" %>
+        <% end %>
+      <% else %>
+        <%= tag.span profile.display_name, class: "display-name" %>
+        <%= tag.span profile.user.username, class: "username" %>
+      <% end %>
       <%= tag.span profile.bio, class: "bio" %>
 
       <span class="show-company-container">
