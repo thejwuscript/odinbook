@@ -13,6 +13,6 @@ export default class extends Controller {
   remove() {
     this.element.remove();
     const header = document.querySelector('header');
-    if (header) header.style.position = 'static';
+    if (header) header.style.top = 0;
   }
 }
