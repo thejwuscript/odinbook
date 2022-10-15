@@ -5,7 +5,6 @@
   </div>
 
   <div>
-    <%= link_to tag.span(class: "mdi mdi-account"), "/#{current_user.username}", title: "Profile", class: "profile-link" %>
     <div data-controller="menu">
       <%= render partial: "shared/notification", locals: {unread_count: @unread_count, notifications: @notifications} %>
     </div>

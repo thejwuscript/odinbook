@@ -141,8 +141,7 @@
 
 
 @media (max-width: 768px) {
-  .mdi-menu,
-  header .mdi-account {
+  .mdi-menu {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,8 +152,7 @@
     border-radius: 50%;
   }
 
-  .menu-link,
-  .profile-link {
+  .menu-link {
     text-decoration: none;
     color: black;
     border-radius: 50%;
