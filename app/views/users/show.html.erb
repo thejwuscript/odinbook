@@ -14,11 +14,12 @@
 		<%= render partial: "users/edit_cover_photo", locals: { profile: @profile } %>
 	<% end %>
 
-	<% if false %>
-	
 	<% if @user == current_user %>
 		<%= render "posts/new_post_placeholder" %>
 	<% end %>
+
+	<% if false %>
+
 	<%= turbo_frame_tag "posts" do %>
 		<% if @posts.empty? && @user != current_user %>
 			<div class="post-container empty">No posts to show.</div>
