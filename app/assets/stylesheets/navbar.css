@@ -152,6 +152,12 @@
     border-radius: 50%;
   }
 
+  .menu-link {
+    text-decoration: none;
+    color: black;
+    border-radius: 50%;
+  }
+
   .logo-container .logo {
     text-decoration: none;
     font-family: 'Cherry Swash', cursive;
@@ -161,7 +167,7 @@
   }
 
   .topnav {
-    padding: 12px 0 0 0;
+    padding: 6px 0 0 0;
     background-color: white;
     justify-content: center;
   }
