@@ -148,6 +148,6 @@ li.friend-request-card-item > div > a:hover {
 
   .friends-page-sidebar .mdi.mdi-logout {
     font-size: 1.2rem;
-    transform: translateX(2px);
+    transform: translateX(1px);
   }
 }
