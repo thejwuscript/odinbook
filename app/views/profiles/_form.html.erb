@@ -5,7 +5,7 @@
 
   <div class="display-name-container">
     <%= form.label :display_name, "Name", style: "font-weight: bold" %>
-    <%= form.text_field :display_name, maxlength: 30 %>
+    <%= form.text_field :display_name, maxlength: 30, placeholder: "Name" %>
   </div>
     
   <div class="bio-container">
@@ -17,14 +17,14 @@
     <%= form.label :company do %>
       <span class="mdi mdi-domain"></span>
     <% end %>
-    <%= form.text_field :company, maxlength: 30 %>
+    <%= form.text_field :company, maxlength: 30, placeholder: "Company" %>
   </div>
 
   <div class="location-container">
     <%= form.label :location do %>
       <span class="mdi mdi-map-marker"></span>
     <% end %>
-    <%= form.text_field :location, maxlength: 30 %>
+    <%= form.text_field :location, maxlength: 30, placeholder: "Location" %>
   </div>
   <hr>
   <div class="profile-details-footer">
