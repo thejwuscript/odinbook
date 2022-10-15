@@ -197,4 +197,17 @@
     max-width: 400px;
     box-shadow: none;
   }
+
+  .forgot-password-page,
+  .change-password-page {
+    align-items: flex-start;
+    height: auto;
+    margin-top: 200px;
+  }
+
+  .forgot-password-form-container,
+  .change-password-form-container {
+    box-shadow: none;
+    border-radius: 0;
+  }
 }
