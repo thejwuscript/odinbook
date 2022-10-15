@@ -224,6 +224,7 @@ a.edit-profile-button {
   border: 1px solid #BDBDBD;
   border-radius: 5px;
   padding: 6px 12px;
+  flex: 1;
 }
 
 .profile-info-details > #profile-details > form > div > textarea {
