@@ -8,11 +8,12 @@
     <div data-controller="menu">
       <%= render partial: "shared/notification", locals: {unread_count: @unread_count, notifications: @notifications} %>
     </div>
-    <span class="mdi mdi-menu"></span>
+    <%= link_to menu_path, class: 'menu-link' do %>
+      <span class="mdi mdi-menu"></span>
+    <% end %>
   </div>
 
 </header>
-
 
 <nav class="topnav">
   <ul>
