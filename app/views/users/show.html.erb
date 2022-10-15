@@ -18,8 +18,6 @@
 		<%= render "posts/new_post_placeholder" %>
 	<% end %>
 
-	<% if false %>
-
 	<%= turbo_frame_tag "posts" do %>
 		<% if @posts.empty? && @user != current_user %>
 			<div class="post-container empty">No posts to show.</div>
@@ -29,6 +27,4 @@
 		<% end %>
 	<% end %>
 	</div>
-
-	<% end %>
 </div>

@@ -55,10 +55,10 @@
 
   .main-homepage-center {
     gap: 0;
-    padding-bottom: 64px;
   }
 
   main {
     background-color: white;
+    margin-bottom: 64px;
   }
 }
