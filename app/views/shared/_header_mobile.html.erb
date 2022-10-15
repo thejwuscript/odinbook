@@ -5,6 +5,7 @@
   </div>
 
   <div>
+    <%= link_to tag.span(class: "mdi mdi-account"), "/#{current_user.username}", title: "Profile", class: "profile-link" %>
     <div data-controller="menu">
       <%= render partial: "shared/notification", locals: {unread_count: @unread_count, notifications: @notifications} %>
     </div>
@@ -32,11 +33,18 @@
     <% end %>
     </li>
     <li>
-    <% if current_page?(friends_path) || current_page?(friend_requests_path) %>
+    <% if current_page?(friends_path) %>
       <%= link_to tag.span(class: "mdi mdi-account-multiple"), friends_path, title: "Friends", class: "active" %>
     <% else %>
       <%= link_to tag.span(class: "mdi mdi-account-multiple-outline"), friends_path, title: "Friends" %>
     <% end %>
+    </li>
+    <li>
+      <% if current_page?(friend_requests_path) %>
+        <%= link_to tag.span(class: "mdi mdi-account-arrow-right"), friend_requests_path, title: "Friend Request", class: "active" %>
+      <% else %>
+        <%= link_to tag.span(class: "mdi mdi-account-arrow-right-outline"), friend_requests_path, title: "Friend Request" %>
+      <% end %>  
     </li>
     <li>
     <% if current_page?(users_path) %>

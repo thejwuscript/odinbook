@@ -1,4 +1,4 @@
 <div class="friend-requests-page">
-  <%= render "shared/sidebar" %>
+  <%= render "shared/sidebar" unless browser.device.mobile? %>
   <%= render "content" %>
 </div>
