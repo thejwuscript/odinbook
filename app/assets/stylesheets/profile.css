@@ -295,3 +295,22 @@ form > .location-container > input {
   gap: 8px;
   margin: 2px 0;
 }
+
+@media (max-width: 768px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .cover-photo-container {
+    padding: 12px;
+    background-color: white;
+    height: 175px;
+  }
+
+  .cover-photo-placeholder {
+    border-radius: 5px;
+  }
+}
