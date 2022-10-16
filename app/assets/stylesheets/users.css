@@ -16,7 +16,16 @@ li.user-card-item {
 }
 
 li.user-card-item .card-item-middle {
-  /* width: 520px; */
+  flex: 1;
+}
+
+li.user-card-item > .card-item-details,
+.friend-card-item-details {
+  flex: 1;
+  max-width: 550px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 li.user-card-item .card-item-middle .mdi {
@@ -26,7 +35,6 @@ li.user-card-item .card-item-middle .mdi {
 }
 
 li.user-card-item .card-item-right {
-  flex: 1;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -64,6 +72,7 @@ li.user-card-item > div > div > a:hover {
   .friend-card-item-details {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     align-self: center;
     gap: 14px;
   }
