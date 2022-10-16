@@ -151,6 +151,11 @@ a:focus-visible {
   outline: 1px solid black;
 }
 
+body > div {
+  background-color: white;
+  min-height: 100vh;
+}
+
 @media (max-width: 768px) {
   
   body {
