@@ -1,5 +1,5 @@
 <div class="profile-info">
-  <%= render partial: "users/edit_cover_photo", locals: { profile: @profile } if browser.device.mobile? %>
+  <%= render partial: "users/edit_cover_photo_mobile", locals: { profile: @profile } if browser.device.mobile? %>
   <%= render partial: "users/avatar", locals: {profile: profile} %>
 
   <div class="profile-info-details">

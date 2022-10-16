@@ -1,10 +1,10 @@
-<header>
+<header class="header-mobile">
 
   <div class="logo-container">
     <%= link_to "Odinbook", root_path, class: "logo" %>
   </div>
 
-  <div>
+  <div class="header-right">
     <div data-controller="menu">
       <%= render partial: "shared/notification", locals: {unread_count: @unread_count, notifications: @notifications} %>
     </div>
@@ -15,7 +15,7 @@
 
 </header>
 
-<nav class="topnav">
+<nav class="topnav topnav-mobile">
   <ul>
     <li>
     <% if current_page?(root_path) %>

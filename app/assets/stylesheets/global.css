@@ -75,6 +75,9 @@ body {
 }
 
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: white;
   height: 56px;
   color: #65676B;
@@ -82,6 +85,18 @@ header {
   position: sticky;
   z-index: 2;
   top: 0;
+}
+
+.header-mobile {
+  height: fit-content;
+  box-shadow: none;
+  padding: 6px 12px 6px 12px;
+}
+
+header > div.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 ul {
@@ -140,20 +155,5 @@ a:focus-visible {
   
   body {
     background-color: #d5d8db;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: fit-content;
-    box-shadow: none;
-    padding: 6px 12px 6px 12px;
-    background-color: white;
-  }
-
-  header > div {
-    display: flex;
-    gap: 12px;
   }
 }

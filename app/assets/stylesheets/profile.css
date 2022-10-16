@@ -47,6 +47,8 @@
   gap: 1px;
 }
 
+
+
 .edit-cover-photo-selection {
   flex: 1;
   padding: 4px;
@@ -297,6 +299,25 @@ form > .location-container > input {
   margin: 2px 0;
 }
 
+.edit-cover-photo-container-mobile {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  top: 320px;
+  right: 24px;
+  margin-top: -72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: transparent;
+  gap: 1px;
+}
+
+.edit-cover-photo-container-mobile .add-cover-photo-button {
+  border-radius: 50%;
+  padding: 10px 11px;
+}
+
 @media (max-width: 768px) {
   .profile {
     display: flex;
@@ -307,7 +328,7 @@ form > .location-container > input {
   }
 
   .cover-photo-container {
-    padding: 12px;
+    padding: 0 12px;
     background-color: white;
     height: 175px;
     overflow: visible;
@@ -361,13 +382,8 @@ form > .location-container > input {
     gap: 0;
   }
 
-  .profile-info .edit-cover-photo-container {
+  .profile-info .edit-cover-photo-container-mobile {
     top: 190px;
     right: 20px;
-  }
-
-  .add-cover-photo-button {
-    border-radius: 50%;
-    padding: 10px 11px;
   }
 }
