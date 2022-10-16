@@ -94,4 +94,9 @@
     width: 140px;
     height: 140px;
   }
+
+  .profile-pic-icon {
+    width: 65px;
+    height: 65px;
+  }
 }

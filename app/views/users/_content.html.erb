@@ -7,15 +7,17 @@
       <% users.each do |user| %>
         <li class="user-card-item">
           <%= image_tag user.avatar, class: "profile-pic-icon" %>
-          <div class="card-item-middle">
-            <%= link_to user.name, user_path(username: user.username) %>
-            <%= tag.span class: "mdi mdi-account-multiple" if current_user.friends.include?(user)%>
-          </div>
-          <div class="card-item-right">
+          <div class="card-item-details">
+            <div class="card-item-middle">
+              <%= link_to user.name, user_path(username: user.username) %>
+              <%= tag.span class: "mdi mdi-account-multiple" if current_user.friends.include?(user)%>
+            </div>
             <% if not_friends_list.include?(user) && potential_friends.exclude?(user) %>
-              <%= button_to friend_requests_path, class: "add-friend", form: {style: 'display:inline-block;'}, params: { user: user } do %>
-                <span class="mdi mdi-account-plus"></span>Add Friend
-              <% end %>
+              <div class="card-item-right">
+                <%= button_to friend_requests_path, class: "add-friend", form: {style: 'display:inline-block;'}, params: { user: user } do %>
+                  <span class="mdi mdi-account-plus"></span>Add Friend
+                <% end %>
+              </div>
             <% end %>
           </div>
         </li>

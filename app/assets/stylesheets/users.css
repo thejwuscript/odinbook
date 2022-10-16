@@ -15,30 +15,65 @@ li.user-card-item {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-li.user-card-item > .card-item-middle {
-  width: 520px;
+li.user-card-item .card-item-middle {
+  /* width: 520px; */
 }
 
-li.user-card-item > .card-item-middle .mdi {
+li.user-card-item .card-item-middle .mdi {
   margin-left: 12px;
   font-size: 1.1rem;
   color: #000000c4;
 }
 
-li.user-card-item > .card-item-right {
+li.user-card-item .card-item-right {
   flex: 1;
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
-li.user-card-item > div > a {
+li.user-card-item > div > div > a {
   text-decoration: none;
   color: #000000c4;
   font-size: 1.1rem;
   font-weight: 700;
 }
 
-li.user-card-item > div > a:hover {
+li.user-card-item > div > div > a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .users-page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.users-page-content {
+    padding: 14px 0;
+  }
+
+  li.user-card-item {
+    align-items: flex-start;
+    box-shadow: none;
+    padding: 16px 14px;
+    border-radius: 0;
+  }
+
+  li.user-card-item > .card-item-details {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 14px;
+  }
+
+  h2.content-title-container {
+    padding: 0 16px;
+    gap: 14px;
+  }
+
+  ul.users-list {
+    gap: 4px;
+    background-color: #d5d8db;
+  }
 }
