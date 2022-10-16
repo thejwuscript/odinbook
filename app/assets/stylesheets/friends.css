@@ -115,6 +115,36 @@ li.friend-request-card-item > div > a:hover {
   font-weight: 400;
 }
 
+.friends-page-sidebar form button.logout {
+  background-color: white;
+  flex: 1;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+}
+
+.friends-page-sidebar button:active {
+  background-color: #e5e4e27d;
+}
+
+.friends-page-sidebar .mdi.mdi-logout {
+  font-size: 1.2rem;
+  transform: translateX(1px);
+}
+
+.friends-page-sidebar form {
+  display: flex;
+  align-items: stretch;
+  border-radius: 5px;
+  height: 52px;
+  color: black;
+  margin-top: 36px;
+}
+
 @media (max-width: 768px) {
   main .friends-page {
     display: flex;
@@ -124,37 +154,6 @@ li.friend-request-card-item > div > a:hover {
   
   main .friends-page-sidebar {
     border: none;
-    margin-top: 2px;
-  }
-
-  .friends-page-sidebar form {
-    display: flex;
-    align-items: stretch;
-    border-radius: 5px;
-    height: 52px;
-    color: black;
-    margin-top: 36px;
-  }
-
-  .friends-page-sidebar form button {
-    background-color: white;
-    flex: 1;
-    border: none;
-    border-radius: 5px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 12px;
-    padding: 8px;
-  }
-
-  .friends-page-sidebar button:active {
-    background-color: #e5e4e27d;
-  }
-
-  .friends-page-sidebar .mdi.mdi-logout {
-    font-size: 1.2rem;
-    transform: translateX(1px);
   }
 
   main .friends-page-content {
