@@ -145,6 +145,24 @@ button.add-friend:disabled {
   color: black;
 }
 
+.add-cover-photo-button {
+  cursor: pointer;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  gap: 4px;
+  font-size: 0.9rem;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.add-cover-photo-button:hover {
+  background-color: #f5f6f7;
+}
+
 @media (max-width: 768px) {
   .unfriend {
     border-radius: 50%;
