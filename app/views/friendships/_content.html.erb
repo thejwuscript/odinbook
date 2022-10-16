@@ -12,7 +12,15 @@
         <li class="friend-card-item">
           <%= image_tag friendship.friend.avatar, class: "profile-pic-icon" %>
           <div class="friend-card-item-middle"><%= link_to friendship.friend.name, user_path(username: friendship.friend.username) %></div>
-          <div class="friend-card-item-right"><%= button_to "Unfriend", friendship_path(friendship), method: :delete, class: "unfriend", form: {data: {turbo: false}} %></div>
+          <div class="friend-card-item-right">
+            <%= button_to friendship_path(friendship), method: :delete, class: "unfriend", form: {data: { turbo_confirm: "Are you sure you want to unfriend #{friendship.friend.name}?" }} do %>
+              <% if browser.device.mobile? %>
+                <span class="mdi mdi-account-minus"></span>
+              <% else %>
+                Unfriend
+              <% end %>
+            <% end %>
+          </div>  
         </li>
       <% end %>
     </ul>

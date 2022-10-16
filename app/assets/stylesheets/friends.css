@@ -116,6 +116,12 @@ li.friend-request-card-item > div > a:hover {
 }
 
 @media (max-width: 768px) {
+  main .friends-page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  
   main .friends-page-sidebar {
     border: none;
     margin-top: 2px;
@@ -149,5 +155,32 @@ li.friend-request-card-item > div > a:hover {
   .friends-page-sidebar .mdi.mdi-logout {
     font-size: 1.2rem;
     transform: translateX(1px);
+  }
+
+  main .friends-page-content {
+    padding: 0;
+  }
+
+  main .friends-page-content .content-title-container {
+    margin: 14px 14px 24px;
+  }
+
+  div.friend-card-item-middle > a,
+  .friend-request-card-item > .card-item-middle > a {
+    font-size: 1rem;
+  }
+
+  main li.friend-card-item,
+  main li.friend-request-card-item {
+    box-shadow: none;
+    gap: 12px;
+  }
+
+  ul.friends-list {
+    gap: 0;
+  }
+
+  .friends-page-content > p {
+    margin: 14px 14px 24px;
   }
 }
