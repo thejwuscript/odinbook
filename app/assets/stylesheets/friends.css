@@ -45,7 +45,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  margin-bottom: 24px;
+  margin: 14px 20px;
 }
 
 .content-title-container > .mdi {
@@ -69,7 +69,7 @@ ul.friend-requests-list > h3 {
 li.friend-card-item,
 li.friend-request-card-item {
   background-color: white;
-  padding: 16px;
+  padding: 16px 14px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -160,19 +160,14 @@ li.friend-request-card-item > div > a:hover {
     padding: 0;
   }
 
-  main .friends-page-content .content-title-container {
-    margin: 14px 14px 24px;
-  }
-
-  div.friend-card-item-middle > a,
+  /* div.friend-card-item-middle > a,
   .friend-request-card-item > .card-item-middle > a {
     font-size: 1rem;
-  }
+  } */
 
   main li.friend-card-item,
   main li.friend-request-card-item {
     box-shadow: none;
-    gap: 12px;
   }
 
   ul.friends-list {

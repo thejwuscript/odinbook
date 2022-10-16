@@ -121,13 +121,16 @@ button.add-friend:disabled {
 .delete,
 .cancel-request,
 .unfriend {
-  padding: 6px 12px;
+  padding: 6px 12px 6px 10px;
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid #dbdddf;
   background-color: #f5f6f7;
   font-weight: 500;
   width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .delete:hover,
@@ -164,12 +167,12 @@ button.add-friend:disabled {
 }
 
 @media (max-width: 768px) {
-  .unfriend {
+  /* .unfriend {
     border-radius: 50%;
     border: none;
     background-color: transparent;
     padding: 2px 4px;
-  }
+  } */
 
   .unfriend > .mdi {
     font-size: 1.2rem;

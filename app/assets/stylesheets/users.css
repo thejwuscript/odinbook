@@ -50,7 +50,7 @@ li.user-card-item > div > div > a:hover {
   }
 
   div.users-page-content {
-    padding: 14px 0;
+    padding: 0;
   }
 
   li.user-card-item {
@@ -60,7 +60,8 @@ li.user-card-item > div > div > a:hover {
     border-radius: 0;
   }
 
-  li.user-card-item > .card-item-details {
+  li.user-card-item > .card-item-details,
+  .friend-card-item-details {
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -68,13 +69,11 @@ li.user-card-item > div > div > a:hover {
   }
 
   h2.content-title-container {
-    padding: 0 16px;
     gap: 14px;
-    margin-bottom: 0;
   }
 
   ul.users-list {
-    gap: 4px;
-    background-color: #d5d8db;
+    gap: 0;
+    background-color: white;
   }
 }
