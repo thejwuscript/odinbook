@@ -70,6 +70,7 @@ li.user-card-item > div > div > a:hover {
   h2.content-title-container {
     padding: 0 16px;
     gap: 14px;
+    margin-bottom: 0;
   }
 
   ul.users-list {

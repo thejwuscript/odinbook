@@ -14,18 +14,20 @@
   </head>
 
   <body id="body">
-    <% if flash.any? %>
-      <%= render "shared/flash" %>
-    <% end %>
-    <% if user_signed_in? %>
-      <% if browser.device.mobile? %>
-        <%= render "shared/header_mobile" %>
-      <% else %>
-        <%= render "shared/header" %>
+    <div style="background-color: white;">
+      <% if flash.any? %>
+        <%= render "shared/flash" %>
       <% end %>
-    <% end %>
-    <main>
-      <%= yield %>
-    </main>
+      <% if user_signed_in? %>
+        <% if browser.device.mobile? %>
+          <%= render "shared/header_mobile" %>
+        <% else %>
+          <%= render "shared/header" %>
+        <% end %>
+      <% end %>
+      <main>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

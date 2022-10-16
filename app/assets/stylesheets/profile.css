@@ -327,6 +327,7 @@ form > .location-container > input {
   .profile .profile-info {
     align-items: center;
     margin-top: 90px;
+    margin-left: 0;
     gap: 12px;
   }
 
@@ -360,9 +361,11 @@ form > .location-container > input {
 
   .profile .profile-posts {
     margin: 0;
+    padding-bottom: 64px;
     background-color: #d5d8db;
     gap: 0;
     position: static;
+
   }
 
   .profile-info .edit-cover-photo-container-mobile {

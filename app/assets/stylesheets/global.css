@@ -154,7 +154,6 @@ a:focus-visible {
 @media (max-width: 768px) {
   
   body {
-    /* background-color: #d5d8db; */
-    background-color: white;
+    background-color: #d5d8db;
   }
 }
