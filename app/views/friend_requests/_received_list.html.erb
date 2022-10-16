@@ -1,7 +1,9 @@
 <div class="received-requests-container">
 
-  <h3>Received Requests</h3>
-  <hr>
+  <div class="friend-requests-heading">
+    <h3>Received Requests</h3>
+    <hr>
+  </div>
   
   <% if received_requests.empty? %>
     <p>No requests to show.</p>
@@ -10,13 +12,15 @@
       <% received_requests.each do |request| %>
         <li class="friend-request-card-item">
           <%= image_tag request.requester.avatar, class: "profile-pic-icon" %>
-          <div class="card-item-middle">
-            <%= link_to request.requester.name, user_path(username: request.requester.username) %>
-          </div>
-          <div class="card-item-right">
-            <%= button_to "Confirm", friendships_path, class: "confirm", form: { style: "display: inline-block", data: {turbo: false} }, params: { request_id: request, friend_id: request.requester } %>
-            <%= button_to "Delete", friend_request_path(request), class: "delete", method: :delete, form: { style: "display: inline-block", data: {turbo: false} } %>
-          </div>
+            <div class="friend-request-card-item-details">
+              <div class="card-item-middle">
+                <%= link_to request.requester.name, user_path(username: request.requester.username) %>
+              </div>
+              <div class="card-item-right">
+                <%= button_to "Confirm", friendships_path, class: "confirm", form: { style: "display: inline-block", data: {turbo: false} }, params: { request_id: request, friend_id: request.requester } %>
+                <%= button_to "Delete", friend_request_path(request), class: "delete", method: :delete, form: { style: "display: inline-block", data: {turbo: false} } %>
+              </div>
+            </div>
         </li>
       <% end %>
     </ul>

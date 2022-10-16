@@ -72,13 +72,12 @@ li.friend-request-card-item {
   padding: 16px 14px;
   border-radius: 5px;
   display: flex;
-  align-items: center;
   gap: 24px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 li.friend-card-item a,
-li.friend-request-card-item > div > a {
+li.friend-request-card-item > div > div > a {
   text-decoration: none;
   color: #000000c4;
   font-size: 1.1rem;
@@ -89,11 +88,11 @@ li.friend-request-card-item > div > a {
   width: 520px;
 }
 
-li.friend-request-card-item > .card-item-middle {
+li.friend-request-card-item .card-item-middle {
   width: 520px;
 }
 
-li.friend-request-card-item > .card-item-right {
+li.friend-request-card-item .card-item-right {
   flex: 1;
   display: flex;
   align-items: center;
@@ -101,7 +100,7 @@ li.friend-request-card-item > .card-item-right {
 }
 
 li.friend-card-item a:hover,
-li.friend-request-card-item > div > a:hover {
+li.friend-request-card-item > div > div > a:hover {
   text-decoration: underline;
 }
 
@@ -156,14 +155,10 @@ li.friend-request-card-item > div > a:hover {
     border: none;
   }
 
-  main .friends-page-content {
+  main .friends-page-content,
+  main .friend-requests-page-content {
     padding: 0;
   }
-
-  /* div.friend-card-item-middle > a,
-  .friend-request-card-item > .card-item-middle > a {
-    font-size: 1rem;
-  } */
 
   main li.friend-card-item,
   main li.friend-request-card-item {
@@ -176,5 +171,14 @@ li.friend-request-card-item > div > a:hover {
 
   .friends-page-content > p {
     margin: 14px 14px 24px;
+  }
+
+  .friend-requests-heading,
+  .friend-requests-heading + p {
+    margin: 0 16px;
+  }
+
+  .friend-requests-heading + p {
+    margin-top: 14px;
   }
 }

@@ -1,4 +1,4 @@
-<div class="friend-requests-page">
+<%= tag.div class: browser.device.mobile? ? "friend-requests-page-mobile" : "friend-requests-page" do %>
   <%= render "shared/sidebar" unless browser.device.mobile? %>
   <%= render "content" %>
-</div>
+<% end %>

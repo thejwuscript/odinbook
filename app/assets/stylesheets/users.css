@@ -20,7 +20,8 @@ li.user-card-item .card-item-middle {
 }
 
 li.user-card-item > .card-item-details,
-.friend-card-item-details {
+.friend-card-item-details,
+.friend-request-card-item-details {
   flex: 1;
   max-width: 550px;
   display: flex;
@@ -69,7 +70,8 @@ li.user-card-item > div > div > a:hover {
   }
 
   li.user-card-item > .card-item-details,
-  .friend-card-item-details {
+  .friend-card-item-details,
+  .friend-request-card-item-details {
     display: flex;
     flex-direction: column;
     align-items: flex-start;

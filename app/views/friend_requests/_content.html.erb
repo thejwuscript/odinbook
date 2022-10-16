@@ -5,7 +5,9 @@
     <h2>Friend Requests</h2>
   </div>
 
-  <%= render partial: "received_list", locals: {received_requests: @received_requests} %>
-  <%= render partial: "sent_list", locals: {sent_requests: @sent_requests} %>
+  <div>
+    <%= render partial: "received_list", locals: {received_requests: @received_requests} %>
+    <%= render partial: "sent_list", locals: {sent_requests: @sent_requests} %>
+  </div>
  
 </div>
