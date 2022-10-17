@@ -289,6 +289,13 @@ form #post_body {
   cursor: pointer;
 }
 
+.comment-form-validation-error-message {
+  font-size: 0.8rem;
+  color: maroon;
+  margin-top: -10px;
+  margin-left: 10px;
+}
+
 @media (max-width: 768px) {
   .post-container {
     max-width: 100%;
@@ -312,6 +319,6 @@ form #post_body {
   #posts {
     gap: 8px;
     margin-top: 8px;
-    padding-bottom: 64px;
+    padding-bottom: 72px;
   }
 }
