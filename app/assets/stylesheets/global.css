@@ -161,4 +161,9 @@ body > div {
   body {
     background-color: #d5d8db;
   }
+
+  body > div {
+    background-color: white;
+    min-height:fit-content;
+  }
 }

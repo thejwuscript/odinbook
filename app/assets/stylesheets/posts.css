@@ -270,10 +270,6 @@ form #post_body {
   flex-direction: column;
 }
 
-/* .hidden {
-  display: none;
-} */
-
 .ellipsis-dropdown-container .item {
   padding: 10px 12px;
   border-radius: 5px;
@@ -323,7 +319,11 @@ form #post_body {
   #posts {
     gap: 8px;
     margin-top: 8px;
-    padding-bottom: 4px;
-    border-bottom: 72px solid white;
+    /* padding-bottom: 4px; */
+    /* border-bottom: 72px solid white; */
+  }
+
+  .post-container.published:last-child {
+    margin-bottom: 64px;
   }
 }

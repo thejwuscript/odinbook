@@ -99,4 +99,9 @@
     width: 65px;
     height: 65px;
   }
+
+  .post-container .profile-pic-icon {
+    width: 45px;
+    height: 45px;
+  }
 }
