@@ -41,6 +41,7 @@
 .friend-requests-page-content,
 .users-page-content {
   background-color: #e9ebee;
+  min-height: 100vh;
   padding: 14px;
 }
 
