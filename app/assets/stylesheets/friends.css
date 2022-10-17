@@ -87,7 +87,8 @@ li.friend-request-card-item > div > div > a {
 .friend-card-item-middle,
 li.friend-request-card-item .card-item-middle,
 .card-item-details, .card-item-middle {
-  width: 450px;
+  flex: 1;
+  max-width: 450px;
 }
 
 li.friend-request-card-item .card-item-right {
@@ -155,7 +156,8 @@ li.friend-request-card-item > div > div > a:hover {
 
   main .friends-page-content,
   main .friend-requests-page-content {
-    padding: 0;
+    background-color: white;
+    padding: 0 0 24px 0;
   }
 
   main li.friend-card-item,

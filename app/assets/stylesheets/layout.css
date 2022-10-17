@@ -1,4 +1,5 @@
 .main-homepage {
+  background-color: #e9ebee;
   display: grid;
   grid-template-columns: 1fr 2.5fr 1fr;
   justify-content: center;
@@ -24,12 +25,14 @@
 .friend-requests-page,
 .users-page {
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: clamp(200px, 30%, 360px) 1fr;
   grid-template-rows: 1fr;
   height: calc(100vh - 56px);
 }
 
 .friends-page-sidebar {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   padding: 8px;
 }
@@ -37,7 +40,18 @@
 .friends-page-content,
 .friend-requests-page-content,
 .users-page-content {
+  background-color: #e9ebee;
   padding: 14px;
+}
+
+.profile {
+  background-color: #e9ebee;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 4fr 6fr;
+  gap: 32px;
+  position: relative;
+  padding-bottom: 24px;
 }
 
 @media (max-width: 768px) {
@@ -56,7 +70,29 @@
     gap: 0;
   }
 
+  .main-homepage-sidebar {
+    background-color: white;
+  }
+
   main {
     background-color: white;
+  }
+
+  .profile {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: 0;
+  }
+
+  .friend-requests-page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main .friends-page-sidebar {
+    border-bottom: 4px solid #d5d8db;
   }
 }

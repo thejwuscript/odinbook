@@ -4,6 +4,7 @@
   justify-content: space-evenly;
   align-items: center;
   height: 100vh;
+  background-color: #e9ebee;
 }
 
 .sign-up-page,
@@ -13,6 +14,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #e9ebee;
 }
 
 .sign-up-form,
@@ -172,6 +174,14 @@
 }
 
 @media (max-width: 768px) {
+  .login-page,
+  .sign-up-page,
+  .forgot-password-page,
+  .change-password-page {
+    background-color: white;
+  }
+  
+  
   .login-page,
   .sign-up-page {
     display: flex;

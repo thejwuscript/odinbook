@@ -54,7 +54,8 @@ li.user-card-item > div > div > a:hover {
   }
 
   div.users-page-content {
-    padding: 0;
+    background-color: white;
+    padding: 0 0 24px 0;
   }
 
   li.user-card-item {

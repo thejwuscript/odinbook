@@ -1,11 +1,3 @@
-.profile {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 4fr 6fr;
-  gap: 32px;
-  position: relative;
-  padding-bottom: 24px;
-}
 
 .cover-photo-container {
   position: absolute;
@@ -301,14 +293,6 @@ form > .location-container > input {
 }
 
 @media (max-width: 768px) {
-  .profile {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-    gap: 0;
-  }
-
   .cover-photo-container {
     padding: 0 12px;
     background-color: white;
@@ -365,7 +349,7 @@ form > .location-container > input {
     background-color: #d5d8db;
     gap: 0;
     position: static;
-
+    z-index: 1;
   }
 
   .profile-info .edit-cover-photo-container-mobile {
