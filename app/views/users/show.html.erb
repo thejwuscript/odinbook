@@ -1,4 +1,4 @@
-<div class="profile">
+<%= tag.div class: browser.device.mobile? ? "profile mobile" : "profile" do %>
 	<div class="cover-photo-container">
 		<% if @profile.cover_photo.attached? %>
 			<%= image_tag @profile.cover_photo %>
@@ -29,4 +29,4 @@
 		<% end %>
 	<% end %>
 	</div>
-</div>
+<% end %>

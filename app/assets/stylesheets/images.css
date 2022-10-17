@@ -35,12 +35,14 @@
   background-color: transparent;
 }
 
+.post-container.published > a {
+  margin-bottom: 8px;
+}
 
 .post-image {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
-  margin-bottom: 12px;
 }
 
 .overlay {

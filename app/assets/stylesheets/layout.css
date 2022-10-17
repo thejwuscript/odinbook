@@ -55,6 +55,10 @@
   padding-bottom: 24px;
 }
 
+.profile.mobile {
+  margin-bottom: 72px;
+}
+
 main .friends-page-sidebar.mobile {
   border-bottom: none;
 }
