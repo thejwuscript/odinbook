@@ -1,3 +1,3 @@
 <%= turbo_stream.prepend "posts", partial: "post", locals: { post: @post, likes: @post.likes.includes(:user) } %>
 <%= turbo_stream.replace "new_post_frame", partial: "new_post_placeholder" %>
-<%= turbo_stream.prepend "body", partial: "shared/flash" %>
+<%= turbo_stream.prepend "root", partial: "shared/flash" %>
