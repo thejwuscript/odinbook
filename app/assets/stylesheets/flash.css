@@ -12,3 +12,9 @@
   align-items: center;
   padding: 8px 12px;
 }
+
+.flash p .mdi {
+  flex-shrink: 0;
+  padding-left: 4px;
+  color: black;
+}

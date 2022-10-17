@@ -316,9 +316,14 @@ form #post_body {
     padding: 10px 10px 0;
   }
 
+  .sidebar-item:hover {
+    background-color: #F5F6F7;
+  }
+
   #posts {
     gap: 8px;
     margin-top: 8px;
-    padding-bottom: 72px;
+    padding-bottom: 4px;
+    border-bottom: 72px solid white;
   }
 }

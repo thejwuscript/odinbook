@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.turbo_stream do
         flash.now[:alert] = 'You are not authorized to perform this action.'
-        render turbo_stream: turbo_stream.prepend('body', partial: 'shared/flash')
+        render turbo_stream: turbo_stream.prepend('root', partial: 'shared/flash')
       end
       format.html do
         flash[:alert] = 'You are not authorized to perform this action.'

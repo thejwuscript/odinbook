@@ -1,4 +1,4 @@
-<div class="friends-page-sidebar">
+<%= tag.div class: browser.device.mobile? ? "friends-page-sidebar mobile" : "friends-page-sidebar" do %>
 
   <%= link_to friends_path, class: ("active" if current_page?(controller: 'friendships', action: 'index')) do %>
     <div class="icon-container">
@@ -26,4 +26,4 @@
       <div class="icon-container"><span class="mdi mdi-logout"></span></div>Log Out
     <% end %>
   <% end %>
-</div>
+<% end %>
