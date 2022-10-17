@@ -16,22 +16,48 @@ function showComments(e) {
     form.action = `/posts/${postId}/comments`;
     form.method = 'post';
     form.addEventListener('submit', async (e) => {
-      const commentsSection = e.currentTarget.closest('.comments-section');
-      const newComment = await buildIndividualComment({author: data.name, body: form.elements['comment_body'].value, createdAt: "now"}, data);
-      let showCommentRegion = commentsSection.querySelector('.show-comment-region');
-      if (showCommentRegion === null) {
-        showCommentRegion = await buildPostCommentsContainer(data);
-        commentsSection.appendChild(showCommentRegion);
-      };
-      showCommentRegion.appendChild(newComment);
-      form.reset();
-    })
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(async res => {
+        if (res.ok) {
+          const commentsSection = e.target.closest('.comments-section');
+          const newComment = await buildIndividualComment({author: data.name, body: form.elements['comment_body'].value, createdAt: "now"}, data);
+          let showCommentRegion = commentsSection.querySelector('.show-comment-region');
+          if (showCommentRegion === null) {
+            showCommentRegion = await buildPostCommentsContainer(data);
+            commentsSection.appendChild(showCommentRegion);
+          };
+          showCommentRegion.appendChild(newComment);
+          form.reset();
+        } else if (res.status == 422) {
+          res.json().then(data => {
+            if (form.querySelector('.comment-form-validation-error-message')) return;
+
+            let errorText = "Comment " + data.body[0];
+            const errorDisplay = document.createElement('span');
+            errorDisplay.textContent = errorText;
+            errorDisplay.classList.add('comment-form-validation-error-message');
+            form.appendChild(errorDisplay);
+          })
+        }
+      }).catch(error => console.log(error))
+    });
 
     const input = document.createElement('input');
     input.placeholder = "Type your comment here";
     input.type = "text";
     input.name = "comment[body]";
     input.id = "comment_body";
+    input.addEventListener('input', () => {
+      const errorMsg = form.querySelector('.comment-form-validation-error-message');
+      if (errorMsg) errorMsg.remove();
+    })
     form.appendChild(input);
 
     const hiddenInput = document.createElement('input');
@@ -171,7 +197,6 @@ function attachHandlers() {
 };
 
 function toggleCommentIcon(iconElement) {
-  console.log(iconElement);
   const span = document.createElement('span');
   if (iconElement.classList.contains('mdi-comment-outline')) {
     span.classList.add('mdi', 'mdi-comment')
