@@ -30,11 +30,11 @@ class CommentsController < ApplicationController
 
     if @comment.save
       respond_to do |format|
-        format.html {}
-        format.turbo_stream { render "posts/comments/create" }
+        format.json { head :ok }
+        # format.turbo_stream { render "posts/comments/create" }
       end
     else
-      render "posts/comments/new", status: :unprocessable_entity
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
