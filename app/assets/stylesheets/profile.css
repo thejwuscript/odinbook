@@ -345,7 +345,6 @@ form > .location-container > input {
 
   .profile .profile-posts {
     margin: 0;
-    padding-bottom: 64px;
     background-color: #d5d8db;
     gap: 0;
     position: static;
