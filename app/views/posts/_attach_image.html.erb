@@ -23,7 +23,7 @@
             <%= form.label :ximage_file, "Choose File", 'data-modal-target' => 'labelButton' %>
             <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-action' => 'change->modal#showCropper', disabled: true %>
           </div>
-          <div data-modal-target="cropperContainer" data-image-preview-target="cropperContainer"></div>
+          <div class="cropperContainer" data-modal-target="cropperContainer" data-image-preview-target="cropperContainer"></div>
         </div>
       </div>
       <hr>
