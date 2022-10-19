@@ -1,4 +1,4 @@
-<div data-modal-target="modalcontainer"  id="add-image-modal">
+<div data-modal-target="modalcontainer"  id="add-image-modal" data-controller="image-preview">
   <div class="modal-content" data-modal-target="modaldialog">
     <div class="modal-top">
       <h3 class="modal-title">Attach Image</h3>
@@ -19,11 +19,11 @@
             <%= form.radio_button :choose_image, "file", 'data-action' => 'modal#disableImageURL', 'data-modal-target' => 'imageFileRadioButton' %>
             <%= form.label :choose_image_file, 'Select from file' %>
           </div>
-          <div class="file-field-row">
+          <div class="file-field-row" data-image-preview-target="fileFieldRow">
             <%= form.label :ximage_file, "Choose File", 'data-modal-target' => 'labelButton' %>
-            <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-action' => 'change->modal#showFilename', disabled: true %>
-            <span data-modal-target="filename"></span>
+            <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-action' => 'change->modal#showCropper', disabled: true %>
           </div>
+          <div data-modal-target="cropperContainer" data-image-preview-target="cropperContainer"></div>
         </div>
       </div>
       <hr>

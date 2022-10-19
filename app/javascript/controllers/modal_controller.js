@@ -11,12 +11,12 @@ export default class extends Controller {
     "hiddenDataURLField",
     "filefrompc",
     "fileField",
-    "filename",
     "labelButton",
     "imageFileRadioButton",
     "imageURLRadioButton",
     "modalFooter",
-    "showModalLink"
+    "showModalLink",
+    "cropperContainer"
   ];
 
   show(event) {
@@ -29,21 +29,7 @@ export default class extends Controller {
       event.preventDefault();
       let element = this.modalcontainerTarget;
       element.style.display = "none";
-      if (this.filenameTarget) this.filenameTarget.textContent = '';
       this.inputTarget.value = '';
-  }
-
-  showFilename() {
-    let file = this.filefrompcTarget;
-    let display = this.filenameTarget;
-    if (file.files[0]) {
-      display.textContent = file.files[0].name;
-      display.style.whiteSpace = "nowrap";
-      display.style.overflow = "hidden";
-      display.style.textOverflow = "ellipsis";
-      display.style.display = "inline-block";
-      display.style.width = "60%";
-    }
   }
 
   copy(event) {
@@ -66,13 +52,14 @@ export default class extends Controller {
         image.src = reader.result;
         image.onload = () => {
           image.classList.add("post-image");
+          image.id = "preview-image";
+          image.setAttribute("data-image-preview-target", "newPostImage");
           output.appendChild(image);
-          output.style.display = "flex";
+          output.style.display = "block";
           this.modalcontainerTarget.style.display = "none";
           message.remove();
           link.removeAttribute("data-action");
           hiddenDataURLField.value = reader.result;
-          this.filenameTarget.textContent = '';
           this.inputTarget.value = '';
         };
         // image.onerror  = () => {}
@@ -92,7 +79,6 @@ export default class extends Controller {
         message.remove();
         link.removeAttribute("data-action");
         hiddenURLField.value = url;
-        this.filenameTarget.textContent = '';
         this.inputTarget.value = '';
       };
       // image.onerror = () => {}
@@ -117,7 +103,6 @@ export default class extends Controller {
     this.filefrompcTarget.disabled = true;
     this.filefrompcTarget.value = "";
     this.inputTarget.disabled = false;
-    this.filenameTarget.textContent = "";
   }
 
   disableImageURL() {
@@ -125,5 +110,21 @@ export default class extends Controller {
     this.filefrompcTarget.disabled = false;
     this.inputTarget.value = "";
     this.inputTarget.disabled = true;
+  }
+
+  showCropper(e) {
+    const file = this.filefrompcTarget;
+    const container = this.cropperContainerTarget;
+
+    let reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.src = reader.result;
+      img.classList.add('post-image-preview');
+      img.setAttribute('data-image-preview-target', 'newPostImage');
+      container.textContent = '';
+      container.appendChild(img);
+    }
+    reader.readAsDataURL(file.files[0]);
   }
 }

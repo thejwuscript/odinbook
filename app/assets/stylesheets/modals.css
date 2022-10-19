@@ -18,7 +18,7 @@
 
 .modal-content {
   position: absolute;
-  top: 20%;
+  top: 0;
   left: 50%;
   transform: translate(-50%);
   background-color: #fefefe;
@@ -92,6 +92,22 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.mdi-rotate-right {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: white;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+}
+.mdi-rotate-right:hover {
+  color: red;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

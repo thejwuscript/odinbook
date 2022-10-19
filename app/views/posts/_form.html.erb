@@ -3,11 +3,7 @@
   <% post.errors.full_messages_for(:body).each do |message| %>
     <div class="error-messages"><%= message %></div>
   <% end %>
-  <div class="image-preview" data-modal-target="output">
-  <div class="overlay">
-    <span class="mdi mdi-close" data-action="click->modal#undoImageAttachment"></span>
-  </div>
-  </div>
+  <div class="image-preview" data-controller="image-preview" data-modal-target="output"></div>
   <%= form.hidden_field :image_url, 'data-modal-target' => 'hiddenURLField' %>
   <%= form.hidden_field :image_data_url, 'data-modal-target' => 'hiddenDataURLField' %>
   <div class="new-post-buttons-container">
