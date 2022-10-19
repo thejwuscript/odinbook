@@ -22,6 +22,20 @@ export default class extends Controller {
   }
 
   newPostImageTargetConnected(element) {
+    let container = this.cropperContainerTarget;
+    element.onload = () => {
+      let width = element.naturalWidth;
+      let height = element.naturalHeight;
+      if ((width > 240) || (height > 240)) {
+        container.style.width = "240px";
+        container.style.height = "240px";
+      } else {
+        let length = Math.max(width, height);
+        container.style.width = Math.max(200, length) + 'px';
+        container.style.height = length + 'px';
+      }
+    }
+    
     const cropper = new Cropper(element, {
       dragMode: 'none',
       modal: false,
@@ -38,11 +52,10 @@ export default class extends Controller {
       },
     });
 
-    this.appendRotateButton(cropper)
+    this.appendRotateButton(cropper, element)
   }
 
-  appendRotateButton(cropper) {
-    const fileFieldRow = this.fileFieldRowTarget;
+  appendRotateButton(cropper, image) {
     const container = this.cropperContainerTarget;
     container.style.position = "relative";
     const button = document.createElement('span');

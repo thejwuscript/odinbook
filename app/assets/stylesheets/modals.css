@@ -110,11 +110,6 @@
   cursor: pointer;
 }
 
-.cropperContainer {
-  max-width: 300px;
-  min-height: 300px;
-}
-
 @media (max-width: 768px) {
   .modal-content {
     max-width: 100%;

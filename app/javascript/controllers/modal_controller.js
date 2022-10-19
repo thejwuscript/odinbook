@@ -123,6 +123,8 @@ export default class extends Controller {
       img.classList.add('post-image-preview');
       img.setAttribute('data-image-preview-target', 'newPostImage');
       container.textContent = '';
+      container.style.width = '';
+      container.style.height = '';
       container.appendChild(img);
     }
     reader.readAsDataURL(file.files[0]);
