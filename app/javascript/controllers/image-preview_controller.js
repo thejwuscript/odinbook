@@ -5,7 +5,7 @@ export default class extends Controller {
     "output",
     "input",
     "newPostImage",
-    "cropperContainer",
+    "imagePreviewContainer",
     "submitBtn",
     "filefrompc",
     "output",
@@ -76,7 +76,7 @@ export default class extends Controller {
   }
 
   appendRotateButton(cropper) {
-    const container = this.cropperContainerTarget;
+    const container = this.imagePreviewContainerTarget;
     container.style.position = "relative";
     const button = document.createElement("span");
     button.classList.add("mdi", "mdi-rotate-right");

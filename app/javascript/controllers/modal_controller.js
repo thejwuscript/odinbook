@@ -16,7 +16,7 @@ export default class extends Controller {
     "imageURLRadioButton",
     "modalFooter",
     "showModalLink",
-    "cropperContainer",
+    "imagePreviewContainer",
     "submitBtn"
   ];
 
@@ -76,20 +76,16 @@ export default class extends Controller {
     event.stopPropagation();
   }
 
-
   disableFileImage() {
     this.labelButtonTarget.setAttribute("for", "post_ximage_file");
     this.filefrompcTarget.disabled = true;
     this.filefrompcTarget.value = "";
     this.imageUrlTarget.disabled = false;
-    // reset the event listener on the submit button
     this.submitBtnTarget.onclick = (e) => e.preventDefault();
-    // remove every child nodes of cropperContainer
-    const cropperContainer = this.cropperContainerTarget;
-    cropperContainer.textContent = '';
-    // zero out the container size
-    cropperContainer.style.width = 0;
-    cropperContainer.style.height = 0;
+    const imagePreviewContainer = this.imagePreviewContainerTarget;
+    imagePreviewContainer.textContent = '';
+    imagePreviewContainer.style.width = 0;
+    imagePreviewContainer.style.height = 0;
   }
 
   disableImageURL() {
@@ -101,7 +97,7 @@ export default class extends Controller {
 
   showCropper(e) {
     const file = this.filefrompcTarget;
-    const container = this.cropperContainerTarget;
+    const container = this.imagePreviewContainerTarget;
 
     let reader = new FileReader();
     reader.onload = () => {
@@ -116,4 +112,12 @@ export default class extends Controller {
     }
     reader.readAsDataURL(file.files[0]);
   }
+
+  // loadImagePreview(e) {
+  //   const img = new Image();
+  //   img.onload = () => {
+
+  //   }
+  //   img.src = e.target.value;
+  // }
 }

@@ -116,7 +116,7 @@
   color: red;
 }
 
-.cropperContainer {
+.image-preview-container {
   max-width: 200px;
   max-height: 200px;
   display: flex;
