@@ -42,30 +42,7 @@ export default class extends Controller {
     const footer = this.modalFooterTarget;
     const link = this.showModalLinkTarget;
 
-    if (this.imageFileRadioButtonTarget.checked && file.files[0]) {
-      const message = document.createElement('span');
-      message.textContent = "Loading image..."
-      footer.appendChild(message);
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        const image = new Image();
-        image.src = reader.result;
-        image.onload = () => {
-          image.classList.add("post-image");
-          image.id = "preview-image";
-          image.setAttribute("data-image-preview-target", "newPostImage");
-          output.appendChild(image);
-          output.style.display = "block";
-          this.modalcontainerTarget.style.display = "none";
-          message.remove();
-          link.removeAttribute("data-action");
-          hiddenDataURLField.value = reader.result;
-          this.imageUrlTarget.value = '';
-        };
-        // image.onerror  = () => {}
-      };
-      reader.readAsDataURL(file.files[0]);
-    } else if (this.imageURLRadioButtonTarget.checked && url) {
+    if (this.imageURLRadioButtonTarget.checked && url) {
       const message = document.createElement('span');
       message.textContent = "Loading image..."
       footer.appendChild(message);
@@ -81,7 +58,7 @@ export default class extends Controller {
         hiddenURLField.value = url;
         this.imageUrlTarget.value = '';
       };
-      // image.onerror = () => {}
+      // image.onerror
     }
   }
 
