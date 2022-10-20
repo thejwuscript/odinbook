@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import Cropper from "cropper";
 export default class extends Controller {
-  static targets = ["output", "input", "newPostImage", "fileFieldRow", "cropperContainer"];
+  static targets = ["output", "input", "newPostImage", "cropperContainer"];
 
   connect() {
   }
