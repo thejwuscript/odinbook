@@ -12,7 +12,7 @@
             <%= form.radio_button :choose_image, "url", 'data-action' => 'modal#disableFileImage', 'data-modal-target' => 'imageURLRadioButton' %>
             <%= form.label :choose_image_url, 'Image URL' %>
           </div>
-          <%= form.text_field :image_url, 'data-modal-target' => 'input', disabled: true %>
+          <%= form.text_field :image_url, 'data-action' => 'modal#showCropper', 'data-modal-target' => 'imageUrl', disabled: true %>
         </div>
         <div class="modal-selection-container">
           <div class="modal-radio-labels">

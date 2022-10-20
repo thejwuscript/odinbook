@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = [
     "modalcontainer",
-    "input",
+    "imageUrl",
     "output",
     "modaldialog",
     "hiddenURLField",
@@ -29,12 +29,12 @@ export default class extends Controller {
       event.preventDefault();
       let element = this.modalcontainerTarget;
       element.style.display = "none";
-      this.inputTarget.value = '';
+      this.imageUrlTarget.value = '';
   }
 
   copy(event) {
     event.preventDefault();
-    let url = this.inputTarget.value;
+    let url = this.imageUrlTarget.value;
     let file = this.filefrompcTarget;
     let output = this.outputTarget;
     let hiddenURLField = this.hiddenURLFieldTarget;
@@ -60,7 +60,7 @@ export default class extends Controller {
           message.remove();
           link.removeAttribute("data-action");
           hiddenDataURLField.value = reader.result;
-          this.inputTarget.value = '';
+          this.imageUrlTarget.value = '';
         };
         // image.onerror  = () => {}
       };
@@ -79,7 +79,7 @@ export default class extends Controller {
         message.remove();
         link.removeAttribute("data-action");
         hiddenURLField.value = url;
-        this.inputTarget.value = '';
+        this.imageUrlTarget.value = '';
       };
       // image.onerror = () => {}
     }
@@ -103,14 +103,14 @@ export default class extends Controller {
     this.labelButtonTarget.setAttribute("for", "post_ximage_file");
     this.filefrompcTarget.disabled = true;
     this.filefrompcTarget.value = "";
-    this.inputTarget.disabled = false;
+    this.imageUrlTarget.disabled = false;
   }
 
   disableImageURL() {
     this.labelButtonTarget.setAttribute("for", "post_image_file");
     this.filefrompcTarget.disabled = false;
-    this.inputTarget.value = "";
-    this.inputTarget.disabled = true;
+    this.imageUrlTarget.value = "";
+    this.imageUrlTarget.disabled = true;
   }
 
   showCropper(e) {
