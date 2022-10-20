@@ -43,8 +43,9 @@
 
 .post-image-preview {
   display: block;
-  max-width: 240px;
-  max-height: 240px;
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: scale-down;
 }
 
 .overlay {

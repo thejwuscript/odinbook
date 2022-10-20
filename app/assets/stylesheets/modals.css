@@ -104,10 +104,25 @@
   height: 24px;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px 1px gray;
 }
 .mdi-rotate-right:hover {
   color: red;
   cursor: pointer;
+  box-shadow: 0 2px 2px 1px gray;
+}
+
+.mdi-rotate-right:hover {
+  box-shadow: none;
+}
+
+.cropperContainer {
+  max-width: 200px;
+  max-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
