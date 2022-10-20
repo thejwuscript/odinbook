@@ -42,11 +42,11 @@
 .post-image {
   display: block;
   max-width: 300px;
-  height: auto;
+  max-height: 300px;
   border-radius: 5px;
 }
 
-.post-image-preview {
+.cropper-image-preview {
   display: block;
   max-width: 200px;
   max-height: 200px;

@@ -121,7 +121,7 @@ export default class extends Controller {
     reader.onload = () => {
       const img = new Image();
       img.src = reader.result;
-      img.classList.add('post-image-preview');
+      img.classList.add('cropper-image-preview');
       img.setAttribute('data-image-preview-target', 'newPostImage');
       container.textContent = '';
       container.style.width = "200px";
