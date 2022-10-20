@@ -16,7 +16,8 @@ export default class extends Controller {
     "imageURLRadioButton",
     "modalFooter",
     "showModalLink",
-    "cropperContainer"
+    "cropperContainer",
+    "submitBtn"
   ];
 
   show(event) {
@@ -81,6 +82,14 @@ export default class extends Controller {
     this.filefrompcTarget.disabled = true;
     this.filefrompcTarget.value = "";
     this.imageUrlTarget.disabled = false;
+    // reset the event listener on the submit button
+    this.submitBtnTarget.onclick = (e) => e.preventDefault();
+    // remove every child nodes of cropperContainer
+    const cropperContainer = this.cropperContainerTarget;
+    cropperContainer.textContent = '';
+    // zero out the container size
+    cropperContainer.style.width = 0;
+    cropperContainer.style.height = 0;
   }
 
   disableImageURL() {
