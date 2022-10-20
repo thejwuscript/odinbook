@@ -84,15 +84,19 @@ export default class extends Controller {
     this.submitBtnTarget.onclick = (e) => e.preventDefault();
     const imagePreviewContainer = this.imagePreviewContainerTarget;
     imagePreviewContainer.textContent = '';
-    imagePreviewContainer.style.width = 0;
-    imagePreviewContainer.style.height = 0;
+    imagePreviewContainer.style.width = "auto";
+    imagePreviewContainer.style.height = "auto";
   }
 
   disableImageURL() {
+    const imagePreviewContainer = this.imagePreviewContainerTarget;
     this.labelButtonTarget.setAttribute("for", "post_image_file");
     this.filefrompcTarget.disabled = false;
     this.imageUrlTarget.value = "";
     this.imageUrlTarget.disabled = true;
+    imagePreviewContainer.textContent = '';
+    imagePreviewContainer.style.width = "auto";
+    imagePreviewContainer.style.height = "auto";
   }
 
   showCropper(e) {
@@ -113,11 +117,36 @@ export default class extends Controller {
     reader.readAsDataURL(file.files[0]);
   }
 
-  // loadImagePreview(e) {
-  //   const img = new Image();
-  //   img.onload = () => {
-
-  //   }
-  //   img.src = e.target.value;
-  // }
+  loadImagePreview(e) {
+    const container = this.imagePreviewContainerTarget;
+    container.textContent = '';
+    let url;
+    try {
+      url = new URL(e.target.value).toString();
+    } catch {
+      return;
+    }
+    const img = new Image();
+    img.onload = () => {
+      img.classList.add('cropper-image-preview');
+      container.textContent = '';
+      container.style.width = "200px";
+      container.style.height = "200px";
+      container.appendChild(img);
+    };
+    img.onerror = () => {
+      const div = document.createElement('div');
+      div.style.cssText = `
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        border: 2px dashed grey;
+      `;
+      div.textContent = "No image available.";
+      container.appendChild(div);
+    }
+    img.src = url;
+  }
 }
