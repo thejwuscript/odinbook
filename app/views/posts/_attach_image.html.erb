@@ -19,7 +19,7 @@
             <%= form.radio_button :choose_image, "file", 'data-action' => 'modal#disableImageURL', 'data-modal-target' => 'imageFileRadioButton' %>
             <%= form.label :choose_image_file, 'Select from file' %>
           </div>
-          <div class="file-field-row" data-image-preview-target="fileFieldRow">
+          <div class="file-field-row">
             <%= form.label :ximage_file, "Choose File", 'data-modal-target' => 'labelButton' %>
             <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-action' => 'change->modal#showCropper', disabled: true %>
           </div>
