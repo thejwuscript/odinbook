@@ -39,6 +39,8 @@ export default class extends Controller {
       toggleDragModeOnDblclick: false,
       minContainerWidth: 0,
       minContainerHeight: 0,
+      restore: false,
+      responsive: false,
       ready() {
         const imageData = this.cropper.getImageData();
         if (imageData.naturalWidth < 200 && imageData.naturalHeight < 200) this.cropper.zoomTo(1);
@@ -48,13 +50,9 @@ export default class extends Controller {
 
     this.submitBtnTarget.onclick = (e) => {
       e.preventDefault();
-      //get DataURL from canvas
-      debugger;
       let dataURL = cropper.getCroppedCanvas().toDataURL();
-      // create img
       let img = new Image();
       img.classList.add('post-image');
-      //img's source is the dataURL
       img.onload = () => {
         output.querySelectorAll('img').forEach(element => element.remove());
         modal.style.display = "none";
@@ -62,10 +60,6 @@ export default class extends Controller {
         output.style.display = "block";
       }
       img.src = dataURL;
-      // show loading message
-      // on load, append to the new post container image preview container
-      //reset form
-      //close modal
     }
   }
 
