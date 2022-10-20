@@ -32,6 +32,7 @@ export default class extends Controller {
 
   newPostImageTargetConnected(element) {
     const output = this.outputTarget;
+    const hiddendataURLField = this.hiddenDataURLFieldTarget;
     const modal = this.modalContainerTarget;
     const imageType = this.filefrompcTarget.files[0].type;
     const cropper = new Cropper(element, {
@@ -68,7 +69,7 @@ export default class extends Controller {
         modal.style.display = "none";
         output.appendChild(img);
         output.style.display = "block";
-        this.hiddenDataURLFieldTarget.value = dataURL;
+        hiddendataURLField.value = dataURL;
       };
       img.src = dataURL;
     };
