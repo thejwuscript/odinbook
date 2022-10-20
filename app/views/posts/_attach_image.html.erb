@@ -1,4 +1,4 @@
-<div data-modal-target="modalcontainer"  id="add-image-modal" data-controller="image-preview">
+<div data-modal-target="modalcontainer" data-image-preview-target="modalContainer" id="add-image-modal">
   <div class="modal-content" data-modal-target="modaldialog">
     <div class="modal-top">
       <h3 class="modal-title">Attach Image</h3>
@@ -21,14 +21,14 @@
           </div>
           <div class="file-field-row">
             <%= form.label :ximage_file, "Choose File", 'data-modal-target' => 'labelButton' %>
-            <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-action' => 'change->modal#showCropper', disabled: true %>
+            <%= form.file_field :image_file, accept: 'image/png,image/jpeg', 'data-modal-target' => 'filefrompc', 'data-image-preview-target' => 'filefrompc', 'data-action' => 'change->modal#showCropper', disabled: true %>
           </div>
           <div class="cropperContainer" data-modal-target="cropperContainer" data-image-preview-target="cropperContainer"></div>
         </div>
       </div>
       <hr>
       <div class="modal-footer" data-modal-target="modalFooter">
-        <%= form.button "Select Image", data: { action: "modal#copy" } %>
+        <%= form.button "Select Image", 'data-image-preview-target' => 'submitBtn' %>
         <%= button_tag "Cancel", name: "cancel", type: "button", data: {action: 'modal#close'} %>
       </div>
     <% end %>

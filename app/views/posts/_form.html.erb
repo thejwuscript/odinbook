@@ -1,9 +1,9 @@
-<%= form_with model: post, data: { controller: 'modal' } do |form| %>
+<%= form_with model: post, data: { controller: 'modal image-preview' } do |form| %>
   <%= form.text_area :body, placeholder: "What's on your mind?", required: true %>
   <% post.errors.full_messages_for(:body).each do |message| %>
     <div class="error-messages"><%= message %></div>
   <% end %>
-  <div class="image-preview" data-modal-target="output">
+  <div class="image-preview" data-modal-target="output" data-image-preview-target="output">
     <div class="overlay">
       <span class="mdi mdi-close" data-action="click->modal#undoImageAttachment"></span>
     </div>

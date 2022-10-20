@@ -86,11 +86,12 @@ export default class extends Controller {
   }
 
   undoImageAttachment() {
-    document.querySelector('img.post-image').remove();
-    this.outputTarget.style.display = "none"
+    const output = this.outputTarget;
+    output.querySelector('img').remove();
+    output.style.display = "none";
     this.hiddenURLFieldTarget.value = ''
     this.hiddenDataURLFieldTarget.value = ''
-    this.showModalLinkTarget.dataset.action = "click->modal#show"
+    // this.showModalLinkTarget.dataset.action = "click->modal#show"
   }
 
   stopPropagation(event) {
