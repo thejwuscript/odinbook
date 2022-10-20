@@ -292,6 +292,10 @@ form #post_body {
   margin-left: 10px;
 }
 
+.post-body-text {
+  margin-bottom: 24px;
+}
+
 @media (max-width: 768px) {
   .post-container {
     max-width: 100%;
