@@ -1,10 +1,19 @@
 import { Controller } from "@hotwired/stimulus";
 import Cropper from "cropper";
 export default class extends Controller {
-  static targets = ["output", "input", "newPostImage", "cropperContainer", "submitBtn", "filefrompc", "output", "modalContainer"];
+  static targets = [
+    "output",
+    "input",
+    "newPostImage",
+    "cropperContainer",
+    "submitBtn",
+    "filefrompc",
+    "output",
+    "modalContainer",
+    "hiddenDataURLField",
+  ];
 
-  connect() {
-  }
+  connect() {}
 
   readImage() {
     let input = this.inputTarget;
@@ -26,7 +35,7 @@ export default class extends Controller {
     const modal = this.modalContainerTarget;
     const imageType = this.filefrompcTarget.files[0].type;
     const cropper = new Cropper(element, {
-      dragMode: 'none',
+      dragMode: "none",
       modal: false,
       guides: false,
       center: false,
@@ -43,34 +52,36 @@ export default class extends Controller {
       responsive: false,
       ready() {
         const imageData = this.cropper.getImageData();
-        if (imageData.naturalWidth < 200 && imageData.naturalHeight < 200) this.cropper.zoomTo(1);
+        if (imageData.naturalWidth < 200 && imageData.naturalHeight < 200)
+          this.cropper.zoomTo(1);
       },
     });
-    this.appendRotateButton(cropper, element)
+    this.appendRotateButton(cropper, element);
 
     this.submitBtnTarget.onclick = (e) => {
       e.preventDefault();
       let dataURL = cropper.getCroppedCanvas().toDataURL();
       let img = new Image();
-      img.classList.add('post-image');
+      img.classList.add("post-image");
       img.onload = () => {
-        output.querySelectorAll('img').forEach(element => element.remove());
+        output.querySelectorAll("img").forEach((element) => element.remove());
         modal.style.display = "none";
         output.appendChild(img);
         output.style.display = "block";
-      }
+        this.hiddenDataURLFieldTarget.value = dataURL;
+      };
       img.src = dataURL;
-    }
+    };
   }
 
   appendRotateButton(cropper) {
     const container = this.cropperContainerTarget;
     container.style.position = "relative";
-    const button = document.createElement('span');
-    button.classList.add('mdi', 'mdi-rotate-right');
-    button.addEventListener('click', () => {
+    const button = document.createElement("span");
+    button.classList.add("mdi", "mdi-rotate-right");
+    button.addEventListener("click", () => {
       cropper.rotate(90);
-    })
+    });
     container.appendChild(button);
   }
 }
