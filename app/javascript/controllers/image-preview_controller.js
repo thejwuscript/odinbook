@@ -51,7 +51,7 @@ export default class extends Controller {
       restore: false,
       responsive: false,
       ready() {
-        const imageData = this.cropper.getImageData();
+        const imageData = this.cropper.getImageData(imageType);
         if (imageData.naturalWidth < 200 && imageData.naturalHeight < 200)
           this.cropper.zoomTo(1);
       },
