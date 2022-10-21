@@ -103,6 +103,17 @@ header > div.header-right {
   gap: 12px;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 ul {
   list-style: none;
 }
