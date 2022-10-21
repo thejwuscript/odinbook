@@ -20,6 +20,18 @@ export default class extends Controller {
     "submitBtn"
   ];
 
+  imageUrlTargetConnected(element) {
+    const submitBtn = this.submitBtnTarget;
+    let timerId;
+    element.addEventListener('input', (e) => {
+      submitBtn.onclick = (e) => e.preventDefault();
+      clearTimeout(timerId);
+      timerId = setTimeout(() => {
+        this.loadImagePreview();
+      }, 600)
+    })
+  }
+
   show(event) {
     let element = this.modalcontainerTarget;
     event.preventDefault();
@@ -33,7 +45,7 @@ export default class extends Controller {
       this.imageUrlTarget.value = '';
   }
 
-  copy(event) {
+  selectImage(event) {
     event.preventDefault();
     let url = this.imageUrlTarget.value;
     let file = this.filefrompcTarget;
@@ -44,22 +56,31 @@ export default class extends Controller {
     const link = this.showModalLinkTarget;
 
     if (this.imageURLRadioButtonTarget.checked && url) {
-      const message = document.createElement('span');
+      const message = footer.querySelector('span') || document.createElement('span');
+      message.style.color = "black";
       message.textContent = "Loading image..."
       footer.appendChild(message);
       const image = new Image();
       image.src = url;
       image.onload = () => {
+        const oldImg = output.querySelector('img');
+        if (oldImg) {
+          oldImg.replaceWith(image);
+        } else {
+          output.appendChild(image);
+        }
         image.classList.add("post-image");
-        output.appendChild(image);
         output.style.display = "flex";
         this.modalcontainerTarget.style.display = "none";
         message.remove();
-        link.removeAttribute("data-action");
+        //link.removeAttribute("data-action");
         hiddenURLField.value = url;
-        this.imageUrlTarget.value = '';
+        //this.imageUrlTarget.value = '';
       };
-      // image.onerror
+      image.onerror = () => {
+        message.textContent = "Unable to load image";
+        message.color.style = "maroon";
+      }
     }
   }
 
@@ -69,7 +90,7 @@ export default class extends Controller {
     output.style.display = "none";
     this.hiddenURLFieldTarget.value = ''
     this.hiddenDataURLFieldTarget.value = ''
-    // this.showModalLinkTarget.dataset.action = "click->modal#show"
+    this.showModalLinkTarget.dataset.action = "click->modal#show"
   }
 
   stopPropagation(event) {
@@ -117,12 +138,16 @@ export default class extends Controller {
     reader.readAsDataURL(file.files[0]);
   }
 
-  loadImagePreview(e) {
+  clearImagePreviewContainer() {
+    this.imagePreviewContainerTarget.textContent = '';
+  }
+
+  loadImagePreview() {
     const container = this.imagePreviewContainerTarget;
-    container.textContent = '';
+    const imageUrl = this.imageUrlTarget.value;
     let url;
     try {
-      url = new URL(e.target.value).toString();
+      url = new URL(imageUrl).toString();
     } catch {
       return;
     }
@@ -133,8 +158,13 @@ export default class extends Controller {
       container.style.width = "200px";
       container.style.height = "200px";
       container.appendChild(img);
+      this.submitBtnTarget.onclick = (e) => {
+        e.preventDefault();
+        this.selectImage(e);
+      }
     };
     img.onerror = () => {
+      container.textContent = '';
       const div = document.createElement('div');
       div.style.cssText = `
         width: 100px;
@@ -144,7 +174,7 @@ export default class extends Controller {
         text-align: center;
         border: 2px dashed grey;
       `;
-      div.textContent = "No image available.";
+      div.textContent = "No image available";
       container.appendChild(div);
     }
     img.src = url;
