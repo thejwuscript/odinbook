@@ -18,7 +18,7 @@
 
 .modal-content {
   position: absolute;
-  top: 0;
+  top: 10%;
   left: 50%;
   transform: translate(-50%);
   background-color: #fefefe;
@@ -30,6 +30,9 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .modal-content > form {

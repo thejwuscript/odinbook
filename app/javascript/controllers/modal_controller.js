@@ -36,13 +36,16 @@ export default class extends Controller {
     let element = this.modalcontainerTarget;
     event.preventDefault();
     element.style.display = "block";
+    document.body.classList.add('no-scroll');
   }
 
   close(event) {
       event.preventDefault();
+      document.body.classList.remove('no-scroll');
       let element = this.modalcontainerTarget;
       element.style.display = "none";
-      this.imageUrlTarget.value = '';
+      if (this.imageUrlTarget) this.imageUrlTarget.value = '';
+      
   }
 
   selectImage(event) {
