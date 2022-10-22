@@ -70,6 +70,17 @@
   border-radius: 5px;
 }
 
+.page.overlay {
+  position: fixed;
+  display: none;
+  background-color: white;
+  opacity: 0.5;
+  padding: 0;
+  z-index: 8;
+  justify-content: center;
+  align-items: center;
+}
+
 .image-preview > .overlay > .mdi.mdi-close {
   display: none;
 }

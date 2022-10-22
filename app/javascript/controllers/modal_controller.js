@@ -189,4 +189,18 @@ export default class extends Controller {
     loading.classList.add('loading');
     container.appendChild(loading);
   }
+
+  showPageSpinner(e) {
+    console.log("triggered");
+    const overlay = document.createElement('div');
+    overlay.classList.add('page', 'overlay');
+    overlay.id = 'page-overlay';
+    overlay.style.display = "flex";
+    
+    const loading = document.createElement('div');
+    loading.classList.add('big', 'loading');
+    overlay.appendChild(loading);
+
+    document.body.appendChild(overlay);
+  }
 }

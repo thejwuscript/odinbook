@@ -14,7 +14,7 @@
     <span class="attach-image-link" data-action="click->modal#show" data-modal-target="showModalLink">
       <span class="mdi mdi-image"></span> Attach image
     </span>
-    <%= form.submit "Post" %>
+    <%= form.submit "Post", 'data-action' => 'click->modal#showPageSpinner' %>
   </div>
   <%= render "attach_image", post: @post %>
 <% end %>
