@@ -76,9 +76,7 @@ export default class extends Controller {
         output.style.display = "flex";
         this.modalcontainerTarget.style.display = "none";
         message.remove();
-        //link.removeAttribute("data-action");
         hiddenURLField.value = url;
-        //this.imageUrlTarget.value = '';
       };
       image.onerror = () => {
         message.textContent = "Unable to load image";
@@ -124,6 +122,8 @@ export default class extends Controller {
   }
 
   showCropper(e) {
+    if (e.target.value == '') return;
+
     const file = this.filefrompcTarget;
     const container = this.imagePreviewContainerTarget;
     this.appendSpinner(container);
@@ -191,7 +191,6 @@ export default class extends Controller {
   }
 
   showPageSpinner(e) {
-    console.log("triggered");
     const overlay = document.createElement('div');
     overlay.classList.add('page', 'overlay');
     overlay.id = 'page-overlay';

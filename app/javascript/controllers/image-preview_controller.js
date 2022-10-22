@@ -11,6 +11,7 @@ export default class extends Controller {
     "output",
     "modalContainer",
     "hiddenDataURLField",
+    "modalFooter"
   ];
 
   connect() {}
@@ -34,6 +35,7 @@ export default class extends Controller {
     const output = this.outputTarget;
     const hiddendataURLField = this.hiddenDataURLFieldTarget;
     const modal = this.modalContainerTarget;
+    const footer = this.modalFooterTarget;
     const imageType = this.filefrompcTarget.files[0].type;
     const cropper = new Cropper(element, {
       dragMode: "none",
@@ -61,10 +63,15 @@ export default class extends Controller {
 
     this.submitBtnTarget.onclick = (e) => {
       e.preventDefault();
+      const message = footer.querySelector('span') || document.createElement('span');
+      message.style.color = "black";
+      message.textContent = "Loading image..."
+      footer.appendChild(message);
       let dataURL = cropper.getCroppedCanvas().toDataURL();
       let img = new Image();
       img.classList.add("post-image");
       img.onload = () => {
+        message.remove();
         output.querySelectorAll("img").forEach((element) => element.remove());
         modal.style.display = "none";
         output.appendChild(img);

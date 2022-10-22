@@ -27,7 +27,7 @@
         </div>
       </div>
       <hr>
-      <div class="modal-footer" data-modal-target="modalFooter">
+      <div class="modal-footer" data-modal-target="modalFooter" data-image-preview-target="modalFooter">
         <%= form.button "Select Image", 'data-modal-target' => 'submitBtn', 'data-image-preview-target' => 'submitBtn', onClick: "event.preventDefault();" %>
         <%= button_tag "Cancel", name: "cancel", type: "button", data: {action: 'modal#close'} %>
       </div>
