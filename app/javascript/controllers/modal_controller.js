@@ -126,7 +126,7 @@ export default class extends Controller {
   showCropper(e) {
     const file = this.filefrompcTarget;
     const container = this.imagePreviewContainerTarget;
-
+    this.appendSpinner(container);
     let reader = new FileReader();
     reader.onload = () => {
       const img = new Image();
@@ -154,6 +154,7 @@ export default class extends Controller {
     } catch {
       return;
     }
+    this.appendSpinner(container);
     const img = new Image();
     img.onload = () => {
       img.classList.add('cropper-image-preview');
@@ -181,5 +182,11 @@ export default class extends Controller {
       container.appendChild(div);
     }
     img.src = url;
+  }
+
+  appendSpinner(container) {
+    const loading = document.createElement('div');
+    loading.classList.add('loading');
+    container.appendChild(loading);
   }
 }
