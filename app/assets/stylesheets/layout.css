@@ -4,6 +4,7 @@
   grid-template-columns: 1fr 2.5fr 1fr;
   justify-content: center;
   padding: 24px 0;
+  flex: 1;
 }
 
 .main-homepage-sidebar {
@@ -15,7 +16,7 @@
 
 .main-homepage-center {
   grid-column: 2 / 3;
-  justify-self: center;
+  justify-self: stretch;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -56,7 +57,7 @@
 }
 
 .profile.mobile {
-  margin-bottom: 72px;
+  /* margin-bottom: 72px; */
 }
 
 main .friends-page-sidebar.mobile {

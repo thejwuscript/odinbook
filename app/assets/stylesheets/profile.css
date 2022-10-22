@@ -107,6 +107,12 @@
   position: relative;
 }
 
+.profile-posts #new_post_frame,
+.profile-posts #posts {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .profile-info .profile-avatar {
   width: 280px;
   height: 280px;
