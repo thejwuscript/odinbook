@@ -48,6 +48,7 @@ form label[for="post_ximage_file"] {
   padding: 6px 12px;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .modal-footer > button[name="cancel"] {

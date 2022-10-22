@@ -176,6 +176,7 @@ form #post_body {
   padding: 6px 12px;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .comment-button {
