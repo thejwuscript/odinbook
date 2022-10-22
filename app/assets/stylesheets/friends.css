@@ -86,7 +86,7 @@ li.friend-request-card-item > div > div > a {
 
 .friend-card-item-middle,
 li.friend-request-card-item .card-item-middle,
-.card-item-details, .card-item-middle {
+.card-item-middle {
   flex: 1;
   max-width: 450px;
 }

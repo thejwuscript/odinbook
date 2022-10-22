@@ -28,7 +28,7 @@
   display: grid;
   grid-template-columns: clamp(200px, 30%, 360px) 1fr;
   grid-template-rows: 1fr;
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
 }
 
 .friends-page-sidebar {
