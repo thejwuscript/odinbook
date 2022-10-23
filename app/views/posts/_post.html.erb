@@ -1,3 +1,4 @@
+<%= turbo_frame_tag post, class: "turbo-frame-post" do %>
 <%= tag.div class: "post-container published", data: {controller: "comments"}, id: dom_id(post) do %>
 
   <div class="post-author-container">
@@ -62,4 +63,5 @@
       <% end %>
     <% end %>
   </div>
+<% end %>
 <% end %>

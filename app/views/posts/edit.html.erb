@@ -1,0 +1,14 @@
+<%= turbo_frame_tag @post do %>
+  <div class="post-container edit">
+    <div class="post-author-container">
+      <%= image_tag current_user.avatar, class: "profile-pic-icon" %>
+      <div class="user-info">
+        <%= current_user.name %>
+      </div>
+      <%= link_to root_path do %>
+        <span class="mdi mdi-close"></span>
+      <% end %>
+    </div>
+      <%= render 'form', post: @post %>
+  </div>
+<% end %>

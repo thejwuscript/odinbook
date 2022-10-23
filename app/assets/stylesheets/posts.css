@@ -15,7 +15,8 @@
   flex: 1;
 }
 
-.post-container.new {
+.post-container.new,
+.post-container.edit {
   flex-direction: column;
   padding: 12px 16px;
   flex: 1;
@@ -322,6 +323,12 @@ form #post_body {
 
 .post-body-text {
   margin-bottom: 24px;
+}
+
+.turbo-frame-post {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
