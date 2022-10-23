@@ -57,6 +57,21 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      save_image
+
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "Post was successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Post was successfully updated." }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @post = Post.find(params[:id])
     authorize @post

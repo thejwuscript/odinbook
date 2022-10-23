@@ -1,0 +1,3 @@
+<%= turbo_stream.remove "page-overlay" %>
+<%= turbo_stream.replace @post, partial: "post", locals: { post: @post, likes: @post.likes.includes(:user) } %>
+<%= turbo_stream.prepend "root", partial: "shared/flash" %>

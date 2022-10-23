@@ -77,6 +77,7 @@ export default class extends Controller {
         this.modalcontainerTarget.style.display = "none";
         message.remove();
         hiddenURLField.value = url;
+        document.body.classList.remove('no-scroll');
       };
       image.onerror = () => {
         message.textContent = "Unable to load image";

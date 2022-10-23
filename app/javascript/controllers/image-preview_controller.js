@@ -77,6 +77,7 @@ export default class extends Controller {
         output.appendChild(img);
         output.style.display = "block";
         hiddendataURLField.value = dataURL;
+        document.body.classList.remove('no-scroll');
       };
       img.src = dataURL;
     };
