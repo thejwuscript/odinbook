@@ -183,18 +183,12 @@ function showComments(e) {
 
 function removeCommentsSection(e) {
   const icon = e.currentTarget.querySelector('.mdi');
-  e.currentTarget.replaceChild(toggleCommentIcon(icon), icon);
+  icon && e.currentTarget.replaceChild(toggleCommentIcon(icon), icon);
   const postId = e.currentTarget.dataset.postid;
   document.getElementById(`comments-section-${postId}`).remove();
   e.currentTarget.addEventListener('click', showComments)
   e.currentTarget.removeEventListener('click', removeCommentsSection)
 };
-
-// function attachHandlers() {
-//   for (const button of document.querySelectorAll(".comment-button")) {
-//     button.addEventListener('click', showComments)
-//   };
-// };
 
 function toggleCommentIcon(iconElement) {
   const span = document.createElement('span');
