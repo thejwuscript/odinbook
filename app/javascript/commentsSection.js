@@ -1,66 +1,85 @@
 import { parseISO } from "date-fns";
 
 function showComments(e) {
-  const icon = e.currentTarget.querySelector('.mdi');
+  const icon = e.currentTarget.querySelector(".mdi");
   icon && e.currentTarget.replaceChild(toggleCommentIcon(icon), icon);
- 
-  e.currentTarget.addEventListener('click', removeCommentsSection);
-  e.currentTarget.removeEventListener('click', showComments);
+
+  e.currentTarget.addEventListener("click", removeCommentsSection);
+  e.currentTarget.removeEventListener("click", showComments);
   const postId = e.currentTarget.dataset.postid;
   const postContainer = e.currentTarget.closest(".post-container.published");
-  const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
+  const csrfToken = document
+    .querySelector("meta[name='csrf-token']")
+    .getAttribute("content");
 
   const buildNewCommentForm = (data) => {
-    const form = document.createElement('form');
-    form.dataset.turbo = "false"
+    const form = document.createElement("form");
+    form.dataset.turbo = "false";
     form.action = `/posts/${postId}/comments`;
-    form.method = 'post';
-    form.addEventListener('submit', async (e) => {
+    form.method = "post";
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
       fetch(form.action, {
         method: form.method,
         body: formData,
         headers: {
-          'Accept': 'application/json'
-        }
-      }).then(async res => {
-        if (res.ok) {
-          const commentsSection = e.target.closest('.comments-section');
-          const newComment = await buildIndividualComment({author: data.name, body: form.elements['comment_body'].value, createdAt: "now"}, data);
-          let showCommentRegion = commentsSection.querySelector('.show-comment-region');
-          if (showCommentRegion === null) {
-            showCommentRegion = await buildPostCommentsContainer(data);
-            commentsSection.appendChild(showCommentRegion);
-          };
-          showCommentRegion.appendChild(newComment);
-          form.reset();
-        } else if (res.status == 422) {
-          res.json().then(data => {
-            if (form.querySelector('.comment-form-validation-error-message')) return;
+          Accept: "application/json",
+        },
+      })
+        .then(async (res) => {
+          if (res.ok) {
+            const commentsSection = e.target.closest(".comments-section");
+            const newComment = await buildIndividualComment(
+              {
+                author: data.name,
+                body: form.elements["comment_body"].value,
+                createdAt: "now",
+              },
+              data
+            );
+            let showCommentRegion = commentsSection.querySelector(
+              ".show-comment-region"
+            );
+            if (showCommentRegion === null) {
+              showCommentRegion = await buildPostCommentsContainer(data);
+              commentsSection.appendChild(showCommentRegion);
+            }
+            showCommentRegion.appendChild(newComment);
+            updateCommentCount(postId, postContainer);
+            form.reset();
+          } else if (res.status == 422) {
+            res.json().then((data) => {
+              if (form.querySelector(".comment-form-validation-error-message"))
+                return;
 
-            let errorText = "Comment " + data.body[0];
-            const errorDisplay = document.createElement('span');
-            errorDisplay.textContent = errorText;
-            errorDisplay.classList.add('comment-form-validation-error-message');
-            form.appendChild(errorDisplay);
-          })
-        }
-      }).catch(error => console.log(error))
+              let errorText = "Comment " + data.body[0];
+              const errorDisplay = document.createElement("span");
+              errorDisplay.textContent = errorText;
+              errorDisplay.classList.add(
+                "comment-form-validation-error-message"
+              );
+              form.appendChild(errorDisplay);
+            });
+          }
+        })
+        .catch((error) => console.log(error));
     });
 
-    const input = document.createElement('input');
+    const input = document.createElement("input");
     input.placeholder = "Type your comment here";
     input.type = "text";
     input.name = "comment[body]";
     input.id = "comment_body";
-    input.addEventListener('input', () => {
-      const errorMsg = form.querySelector('.comment-form-validation-error-message');
+    input.addEventListener("input", () => {
+      const errorMsg = form.querySelector(
+        ".comment-form-validation-error-message"
+      );
       if (errorMsg) errorMsg.remove();
-    })
+    });
     form.appendChild(input);
 
-    const hiddenInput = document.createElement('input');
+    const hiddenInput = document.createElement("input");
     hiddenInput.type = "hidden";
     hiddenInput.name = "authenticity_token";
     hiddenInput.value = csrfToken;
@@ -73,14 +92,14 @@ function showComments(e) {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.classList.add("profile-pic", "comment");
-      img.onload = () => resolve(img)
-      img.onerror = reject
+      img.onload = () => resolve(img);
+      img.onerror = reject;
       img.src = data.imageUrl;
     });
   };
 
   const buildNewCommentContainer = async (data) => {
-    const div = document.createElement('div');
+    const div = document.createElement("div");
     div.classList.add("new-comment-container");
     const form = buildNewCommentForm(data);
     const avatar = await commentAvatar(data);
@@ -90,29 +109,29 @@ function showComments(e) {
   };
 
   const buildPostCommentsContainer = async (data) => {
-    const div = document.createElement('div');
-    div.classList.add('show-comment-region');
+    const div = document.createElement("div");
+    div.classList.add("show-comment-region");
     for (const comment of data.postComments) {
       let individualComment = await buildIndividualComment(comment, data);
       div.prepend(individualComment);
     }
     return div;
-  }
+  };
 
   const buildIndividualComment = async (comment, data) => {
-    const div = document.createElement('div');
-    div.classList.add('individual-comment-container')
+    const div = document.createElement("div");
+    div.classList.add("individual-comment-container");
     const avatar = await commentAvatar(data);
 
-    const commentDetails = document.createElement('div');
-    commentDetails.classList.add('comment-details');
+    const commentDetails = document.createElement("div");
+    commentDetails.classList.add("comment-details");
 
     const textContainer = individualCommentText(comment);
 
     commentDetails.appendChild(textContainer);
 
-    const time = document.createElement('span');
-    time.classList.add('comment-elapsed-time');
+    const time = document.createElement("span");
+    time.classList.add("comment-elapsed-time");
     const elapsedTime = displayableTime(comment.createdAt);
     time.textContent = elapsedTime;
 
@@ -129,26 +148,26 @@ function showComments(e) {
     const presentTime = new Date().getTime();
     const diff = Math.floor(Math.abs(presentTime - earlierTime) / 1000);
     if (diff < 60) {
-      return diff + 's';
+      return diff + "s";
     } else if (diff < 3600) {
-      return Math.floor(diff / 60) + 'm';
+      return Math.floor(diff / 60) + "m";
     } else if (diff < 86400) {
-      return Math.floor(diff / 3600) + 'h';
+      return Math.floor(diff / 3600) + "h";
     } else {
-      return Math.floor(diff / 86400) + 'd';
+      return Math.floor(diff / 86400) + "d";
     }
-  }
+  };
 
   const individualCommentText = (comment) => {
-    const div = document.createElement('div');
-    div.classList.add('individual-comment-text-container');
+    const div = document.createElement("div");
+    div.classList.add("individual-comment-text-container");
 
-    const author = document.createElement('span');
-    author.classList.add('comment-author');
+    const author = document.createElement("span");
+    author.classList.add("comment-author");
     author.textContent = comment.author;
 
-    const body = document.createElement('p');
-    body.classList.add('comment-body');
+    const body = document.createElement("p");
+    body.classList.add("comment-body");
     body.textContent = comment.body;
 
     div.appendChild(author);
@@ -157,8 +176,8 @@ function showComments(e) {
   };
 
   const buildCommentSection = async (data) => {
-    const div = document.createElement('div');
-    div.classList.add('comments-section');
+    const div = document.createElement("div");
+    div.classList.add("comments-section");
     div.id = `comments-section-${postId}`;
     const newCommentContainer = await buildNewCommentContainer(data);
     div.appendChild(newCommentContainer);
@@ -166,8 +185,8 @@ function showComments(e) {
     if (data.postComments.length > 0) {
       const postCommentsContainer = await buildPostCommentsContainer(data);
       div.appendChild(postCommentsContainer);
-    };
-    
+    }
+
     return div;
   };
 
@@ -178,26 +197,50 @@ function showComments(e) {
   })
     .then((res) => res.json())
     .then((data) => buildCommentSection(data))
-    .then((commentSection) => postContainer.appendChild(commentSection))
-};
+    .then((commentSection) => postContainer.appendChild(commentSection));
+}
 
 function removeCommentsSection(e) {
-  const icon = e.currentTarget.querySelector('.mdi');
+  const icon = e.currentTarget.querySelector(".mdi");
   icon && e.currentTarget.replaceChild(toggleCommentIcon(icon), icon);
   const postId = e.currentTarget.dataset.postid;
   document.getElementById(`comments-section-${postId}`).remove();
-  e.currentTarget.addEventListener('click', showComments)
-  e.currentTarget.removeEventListener('click', removeCommentsSection)
-};
+  e.currentTarget.addEventListener("click", showComments);
+  e.currentTarget.removeEventListener("click", removeCommentsSection);
+}
 
 function toggleCommentIcon(iconElement) {
-  const span = document.createElement('span');
-  if (iconElement.classList.contains('mdi-comment-outline')) {
-    span.classList.add('mdi', 'mdi-comment')
+  const span = document.createElement("span");
+  if (iconElement.classList.contains("mdi-comment-outline")) {
+    span.classList.add("mdi", "mdi-comment");
   } else {
-    span.classList.add('mdi', 'mdi-comment-outline');
+    span.classList.add("mdi", "mdi-comment-outline");
   }
   return span;
 }
 
-export {showComments};
+function updateCommentCount(id, postContainer) {
+  const commentCountContainer = postContainer.querySelector(
+    ".comment-count-line"
+  );
+  fetch(`/posts/${id}/comments`)
+    .then((res) => res.json())
+    .then((data) => {
+      let count = data.length;
+      if (count == 0) commentCountContainer.remove();
+      else if (count == 1 && !commentCountContainer)
+        initiateCommentCountContainer(postContainer);
+      else if (count == 1) commentCountContainer.textContent = "1 Comment";
+      else commentCountContainer.textContent = `${count} Comments`;
+    });
+}
+
+function initiateCommentCountContainer(postContainer) {
+  const countsContainer = postContainer.querySelector(".counts-container");
+  const span = document.createElement("span");
+  span.classList.add("comment-count-line");
+  span.textContent = "1 Comment";
+  countsContainer.appendChild(span);
+}
+
+export { showComments };
