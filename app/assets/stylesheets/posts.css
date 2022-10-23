@@ -1,5 +1,5 @@
 .post-container {
-  max-width: 600px;
+  max-width: 530px;
   background-color: white;
   display: flex;
   align-items: center;
@@ -299,7 +299,7 @@ form #post_body {
   border-radius: 5px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   background-color: white;
   border: none;
 }
@@ -307,6 +307,10 @@ form #post_body {
 .ellipsis-dropdown-container .item:hover {
   background-color: #f5f6f7;
   cursor: pointer;
+}
+
+.edit-post-link {
+  color: black;
 }
 
 .comment-form-validation-error-message {

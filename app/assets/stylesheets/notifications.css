@@ -77,8 +77,12 @@
   cursor: pointer;
 }
 
-.notification-dropdown-header .clear-all {
+.clear-all {
   font-size: 0.9rem;
+}
+
+.clear-all:active {
+  color: red;
 }
 
 .notifications-list {
