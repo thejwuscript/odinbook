@@ -20,6 +20,13 @@
     <%= turbo_frame_tag "post-likes-#{post.id}" do %>
       <%= render "posts/like_count_line", like_count: post.likes.count %>
     <% end %>
+    <% if post.comments.present? %>
+      <% if post.comments.size == 1 %>
+        <%= tag.span "1 Comment", class: "comment-count-line", data: {postid: post.id} %>
+      <% else %>
+        <%= tag.span "#{post.comments.size} Comments", class: "comment-count-line", data: {postid: post.id} %>
+      <% end %>
+    <% end %>
   <% end %>
 
   <hr>
