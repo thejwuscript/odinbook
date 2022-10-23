@@ -146,10 +146,15 @@ form #post_body {
   border-radius: 5px;
 }
 
-.like-count-line {
+.like-count-line,
+.comment-count-line {
   font-size: 0.9rem;
   color: #596373;
   padding: 2px 0;
+}
+
+.comment-count-line:hover {
+  text-decoration: underline;
 }
 
 .new-post-buttons-container {
@@ -197,6 +202,10 @@ form #post_body {
 
 .counts-container {
   margin: 4px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .sidebar-item {

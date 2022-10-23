@@ -2,6 +2,11 @@ class CommentsController < ApplicationController
   skip_before_action :load_notifications
 
   def index
+    @comments = Comment.where(post_id: params[:post_id])
+
+    respond_to do |format|
+      format.json { render json: @comments }
+    end
   end
 
   def new

@@ -1,8 +1,8 @@
-import { parseISO, differenceInMinutes } from "date-fns";
+import { parseISO } from "date-fns";
 
 function showComments(e) {
   const icon = e.currentTarget.querySelector('.mdi');
-  e.currentTarget.replaceChild(toggleCommentIcon(icon), icon)
+  icon && e.currentTarget.replaceChild(toggleCommentIcon(icon), icon);
  
   e.currentTarget.addEventListener('click', removeCommentsSection);
   e.currentTarget.removeEventListener('click', showComments);
@@ -190,11 +190,11 @@ function removeCommentsSection(e) {
   e.currentTarget.removeEventListener('click', removeCommentsSection)
 };
 
-function attachHandlers() {
-  for (const button of document.querySelectorAll(".comment-button")) {
-    button.addEventListener('click', showComments)
-  };
-};
+// function attachHandlers() {
+//   for (const button of document.querySelectorAll(".comment-button")) {
+//     button.addEventListener('click', showComments)
+//   };
+// };
 
 function toggleCommentIcon(iconElement) {
   const span = document.createElement('span');
@@ -206,4 +206,4 @@ function toggleCommentIcon(iconElement) {
   return span;
 }
 
-export {attachHandlers, showComments};
+export {showComments};
