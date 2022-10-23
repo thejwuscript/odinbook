@@ -1,17 +1,22 @@
 import { parseISO } from "date-fns";
 
 function showComments(e) {
-  const icon = e.currentTarget.querySelector(".mdi");
-  icon && e.currentTarget.replaceChild(toggleCommentIcon(icon), icon);
-
-  e.currentTarget.addEventListener("click", removeCommentsSection);
-  e.currentTarget.removeEventListener("click", showComments);
-  const postId = e.currentTarget.dataset.postid;
   const postContainer = e.currentTarget.closest(".post-container.published");
+  // const commentsSection = postContainer.querySelector('.comments-section');
+  const postId = e.currentTarget.dataset.postid;
+  const commentCount = postContainer.querySelector('.comment-count-line');
+  const commentButton = postContainer.querySelector('.comment-button');
+  // const icon = e.currentTarget.querySelector(".mdi");
   const csrfToken = document
     .querySelector("meta[name='csrf-token']")
     .getAttribute("content");
 
+  // icon && e.currentTarget.replaceChild(toggleCommentIcon(commentsSection), icon);
+  commentCount.removeEventListener('click', showComments);
+  commentCount.addEventListener('click', removeCommentsSection);
+  commentButton.removeEventListener('click', showComments);
+  commentButton.addEventListener('click', removeCommentsSection);
+  
   const buildNewCommentForm = (data) => {
     const form = document.createElement("form");
     form.dataset.turbo = "false";
@@ -201,22 +206,20 @@ function showComments(e) {
 }
 
 function removeCommentsSection(e) {
-  const icon = e.currentTarget.querySelector(".mdi");
-  icon && e.currentTarget.replaceChild(toggleCommentIcon(icon), icon);
   const postId = e.currentTarget.dataset.postid;
-  document.getElementById(`comments-section-${postId}`).remove();
-  e.currentTarget.addEventListener("click", showComments);
-  e.currentTarget.removeEventListener("click", removeCommentsSection);
-}
+  const commentsSection = document.getElementById(`comments-section-${postId}`);
+  // icon && e.currentTarget.replaceChild(toggleCommentIcon(commentsSection), icon);
+ 
+  commentsSection.remove();
 
-function toggleCommentIcon(iconElement) {
-  const span = document.createElement("span");
-  if (iconElement.classList.contains("mdi-comment-outline")) {
-    span.classList.add("mdi", "mdi-comment");
-  } else {
-    span.classList.add("mdi", "mdi-comment-outline");
-  }
-  return span;
+  const postContainer = e.currentTarget.closest(".post-container.published");
+
+  const commentCount = postContainer.querySelector('.comment-count-line');
+  const commentButton = postContainer.querySelector('.comment-button');
+  commentCount.removeEventListener('click', removeCommentsSection);
+  commentCount.addEventListener('click', showComments);
+  commentButton.removeEventListener('click', removeCommentsSection);
+  commentButton.addEventListener('click', showComments);
 }
 
 function updateCommentCount(id, postContainer) {
@@ -229,16 +232,18 @@ function updateCommentCount(id, postContainer) {
       let count = data.length;
       if (count == 0) commentCountContainer.remove();
       else if (count == 1 && !commentCountContainer)
-        initiateCommentCountContainer(postContainer);
+        initiateCommentCountContainer(id, postContainer);
       else if (count == 1) commentCountContainer.textContent = "1 Comment";
       else commentCountContainer.textContent = `${count} Comments`;
     });
 }
 
-function initiateCommentCountContainer(postContainer) {
+function initiateCommentCountContainer(id, postContainer) {
   const countsContainer = postContainer.querySelector(".counts-container");
   const span = document.createElement("span");
   span.classList.add("comment-count-line");
+  span.dataset.commentsTarget = 'commentCount';
+  span.dataset.postid = id;
   span.textContent = "1 Comment";
   countsContainer.appendChild(span);
 }

@@ -3,14 +3,17 @@ import { showComments } from "commentsSection"
 
 // Connects to data-controller="comments"
 export default class extends Controller {
-  static targets = [ "commentsButton", "publishedPost" ];
+  static targets = [ "commentsButton", "commentCount" ];
 
   commentsButtonTargetConnected(target) {
     target.addEventListener('click', showComments);
   };
 
-  publishedPostTargetConnected(target) {
-    const commentCountLine = target.querySelector('.comment-count-line');
-    commentCountLine && commentCountLine.addEventListener('click', showComments);
+  commentCountTargetConnected(target) {
+    target.addEventListener('click', showComments);
   };
+
+  commentCountTargetDisconnected(target) {
+    target.removeEventListener('click', showComments);
+  }
 };

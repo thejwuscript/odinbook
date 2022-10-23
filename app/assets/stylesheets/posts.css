@@ -200,6 +200,11 @@ form #post_body {
   cursor: pointer;
 }
 
+.comment-button:active,
+.post-buttons form button:active {
+  background: #eaecee;
+}
+
 .counts-container {
   padding: 4px;
   display: flex;

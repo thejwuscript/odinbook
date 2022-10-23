@@ -1,4 +1,4 @@
-<%= tag.div class: "post-container published", data: {controller: "comments", 'comments-target' => 'publishedPost'}, id: dom_id(post) do %>
+<%= tag.div class: "post-container published", data: {controller: "comments"}, id: dom_id(post) do %>
 
   <div class="post-author-container">
     <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
@@ -22,9 +22,9 @@
     <% end %>
     <% if post.comments.present? %>
       <% if post.comments.size == 1 %>
-        <%= tag.span "1 Comment", class: "comment-count-line", data: {postid: post.id} %>
+        <%= tag.span "1 Comment", class: "comment-count-line", data: {postid: post.id, 'comments-target' => 'commentCount'} %>
       <% else %>
-        <%= tag.span "#{post.comments.size} Comments", class: "comment-count-line", data: {postid: post.id} %>
+        <%= tag.span "#{post.comments.size} Comments", class: "comment-count-line", data: {postid: post.id, 'comments-target' => 'commentCount'} %>
       <% end %>
     <% end %>
   <% end %>
