@@ -3,12 +3,14 @@
   <% post.errors.full_messages_for(:body).each do |message| %>
     <div class="error-messages"><%= message %></div>
   <% end %>
-  <div class="image-preview" data-modal-target="output" data-image-preview-target="output" style=<%= "display:block;" if post.image.attached? || post.image_url %>>
+  <div class="image-preview" data-modal-target="output" data-image-preview-target="output" style=<%= "display:block;" if post.image.attached? || post.image_url.present? %>>
     <div class="overlay">
       <span class="mdi mdi-close" data-action="click->modal#undoImageAttachment"></span>
     </div>
-    <% if post.image.attached? || post.image_url %>
-      <%= image_tag post.image || post.image_url, class: "post-image", alt: "post image" %>
+    <% if post.image.attached? %>
+      <%= image_tag post.image, class: "post-image", alt: "post image" %>
+    <% elsif post.image_url.present? %>
+      <%= image_tag post.image_url, class: "post-image", alt: "post image" %>
     <% end %>
   </div>
   <%= form.hidden_field :image_url, 'data-modal-target' => 'hiddenURLField' %>

@@ -12,7 +12,9 @@
 
   <p class="post-body-text"><%= post.body %></p>
 
-  <% if post.image.attached? %>
+   <% if post.image_url.present? %>
+    <%= link_to image_tag(post.image_url, class: 'post-image'), post.image_url, data: {turbo_action: 'advance'} %>
+  <% elsif post.image.attached? %>
     <%= link_to image_tag(post.image, class: 'post-image'), post.image, data: { turbo_action: 'advance' } %>
   <% end %>
 

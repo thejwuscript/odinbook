@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    save_image
+    process_image_attachment
 
     if @post.save
       respond_to do |format|
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update(post_params)
-      save_image
+      process_image_attachment
 
       respond_to do |format|
         format.html { redirect_to root_path, notice: "Post was successfully updated." }
@@ -89,16 +89,23 @@ class PostsController < ApplicationController
     params.require(:post).permit(:body, :image_url, :image_data_url)
   end
 
-  def save_image
-    if params[:post][:image_url].present?
-      tempfile = Down.download(params[:post][:image_url])
-      @post.image.attach(io: tempfile, filename: "image#{@post.id}.jpg")
-    elsif params[:post][:image_data_url].present?
-      data_url = params[:post][:image_data_url].split(",")[1]
-      @post.image.attach(
-        io: StringIO.new(Base64.decode64(data_url)),
-        filename: "image#{@post.id}.jpg"
-      )
+  def process_image_attachment
+    if params[:post][:image_data_url].present?
+      create_or_update_image_attachment
+    elsif params[:post][:image_data_url].empty?
+      delete_image_attachment
     end
+  end
+
+  def create_or_update_image_attachment
+    data_url = params[:post][:image_data_url].split(',')[1]
+    @post.image.attach(
+      io: StringIO.new(Base64.decode64(data_url)),
+      filename: "image#{@post.id}.jpg"
+    )
+  end
+
+  def delete_image_attachment
+    @post.image.purge
   end
 end
