@@ -11,7 +11,9 @@ export default class extends Controller {
     "output",
     "modalContainer",
     "hiddenDataURLField",
-    "modalFooter"
+    "modalFooter",
+    "showModalLink",
+    "imageFileRadioButton"
   ];
 
   connect() {}
@@ -33,7 +35,11 @@ export default class extends Controller {
 
   newPostImageTargetConnected(element) {
     const output = this.outputTarget;
+    const showModalLink = this.showModalLinkTarget;
     const hiddendataURLField = this.hiddenDataURLFieldTarget;
+    const imageFileRadioButton = this.imageFileRadioButtonTarget;
+    const imagePreviewContainer = this.imagePreviewContainerTarget;
+    const submitBtn = this.submitBtnTarget;
     const modal = this.modalContainerTarget;
     const footer = this.modalFooterTarget;
     const imageType = this.filefrompcTarget.files[0].type;
@@ -61,7 +67,7 @@ export default class extends Controller {
     });
     this.appendRotateButton(cropper, element);
 
-    this.submitBtnTarget.onclick = (e) => {
+    submitBtn.onclick = (e) => {
       e.preventDefault();
       const message = footer.querySelector('span') || document.createElement('span');
       message.style.color = "black";
@@ -71,17 +77,24 @@ export default class extends Controller {
       let img = new Image();
       img.classList.add("post-image");
       img.onload = () => {
+        cropper.destroy();
+        submitBtn.onclick = (e) => e.preventDefault();
         message.remove();
+        imagePreviewContainer.textContent = '';
+        imagePreviewContainer.style.width = 'auto';
+        imagePreviewContainer.style.height = 'auto';
+        imageFileRadioButton.checked = false;
         output.querySelectorAll("img").forEach((element) => element.remove());
-        modal.style.display = "none";
         output.appendChild(img);
         output.style.display = "block";
         hiddendataURLField.value = dataURL;
         document.body.classList.remove('no-scroll');
+        modal.style.display = "none";
+        // showModalLink.removeAttribute('data-action');
       };
       img.src = dataURL;
     };
-  }
+  };
 
   appendRotateButton(cropper) {
     const container = this.imagePreviewContainerTarget;

@@ -86,7 +86,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body, :image_url, :image_data_url, :choose_image)
+    params.require(:post).permit(:body, :image_url, :image_data_url)
   end
 
   def save_image

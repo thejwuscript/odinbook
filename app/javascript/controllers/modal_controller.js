@@ -45,7 +45,8 @@ export default class extends Controller {
       let element = this.modalcontainerTarget;
       element.style.display = "none";
       if (this.imageUrlTarget) this.imageUrlTarget.value = '';
-      
+      this.disableImageURL();
+      this.disableFileImage();
   }
 
   selectImage(event) {
@@ -55,10 +56,12 @@ export default class extends Controller {
     let output = this.outputTarget;
     let hiddenURLField = this.hiddenURLFieldTarget;
     let hiddenDataURLField = this.hiddenDataURLFieldTarget;
+    const imageURLRadioButton = this.imageURLRadioButtonTarget;
+    const imagePreviewContainer = this.imagePreviewContainerTarget;
     const footer = this.modalFooterTarget;
     const link = this.showModalLinkTarget;
 
-    if (this.imageURLRadioButtonTarget.checked && url) {
+    if (imageURLRadioButton.checked && url) {
       const message = footer.querySelector('span') || document.createElement('span');
       message.style.color = "black";
       message.textContent = "Loading image..."
@@ -73,11 +76,14 @@ export default class extends Controller {
           output.appendChild(image);
         }
         image.classList.add("post-image");
+        imagePreviewContainer.textContent = '';
         output.style.display = "flex";
-        this.modalcontainerTarget.style.display = "none";
         message.remove();
         hiddenURLField.value = url;
         document.body.classList.remove('no-scroll');
+        this.disableImageURL();
+        this.modalcontainerTarget.style.display = "none";
+        // link.removeAttribute('data-action');
       };
       image.onerror = () => {
         message.textContent = "Unable to load image";
@@ -101,6 +107,7 @@ export default class extends Controller {
 
   disableFileImage() {
     this.labelButtonTarget.setAttribute("for", "post_ximage_file");
+    this.imageFileRadioButtonTarget.checked = false;
     this.filefrompcTarget.disabled = true;
     this.filefrompcTarget.value = "";
     this.imageUrlTarget.disabled = false;
@@ -113,6 +120,8 @@ export default class extends Controller {
 
   disableImageURL() {
     const imagePreviewContainer = this.imagePreviewContainerTarget;
+    const imageURLRadioButton = this.imageURLRadioButtonTarget;
+    imageURLRadioButton.checked = false;
     this.labelButtonTarget.setAttribute("for", "post_image_file");
     this.filefrompcTarget.disabled = false;
     this.imageUrlTarget.value = "";

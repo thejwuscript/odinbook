@@ -16,7 +16,7 @@
         </div>
         <div class="modal-selection-container">
           <div class="modal-radio-labels">
-            <%= form.radio_button :choose_image, "file", 'data-action' => 'modal#disableImageURL', 'data-modal-target' => 'imageFileRadioButton' %>
+            <%= form.radio_button :choose_image, "file", 'data-action' => 'modal#disableImageURL', 'data-modal-target' => 'imageFileRadioButton', 'data-image-preview-target' => 'imageFileRadioButton' %>
             <%= form.label :choose_image_file, 'Select from file' %>
           </div>
           <div class="file-field-row">
