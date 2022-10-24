@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: :index
   
   resources :posts do
-    resources :comments, only: %i[index new create]
+    resources :comments
   end
 
   resources :friend_requests, only: %i[index create destroy]
