@@ -16,8 +16,6 @@ export default class extends Controller {
     "imageFileRadioButton"
   ];
 
-  connect() {}
-
   readImage() {
     let input = this.inputTarget;
     let output = this.outputTarget;
@@ -90,7 +88,6 @@ export default class extends Controller {
         hiddendataURLField.value = dataURL;
         document.body.classList.remove('no-scroll');
         modal.style.display = "none";
-        // showModalLink.removeAttribute('data-action');
       };
       img.src = dataURL;
     };

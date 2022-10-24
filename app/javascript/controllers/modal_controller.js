@@ -83,7 +83,6 @@ export default class extends Controller {
         document.body.classList.remove('no-scroll');
         this.disableImageURL();
         this.modalcontainerTarget.style.display = "none";
-        // link.removeAttribute('data-action');
       };
       image.onerror = () => {
         message.textContent = "Unable to load image";
