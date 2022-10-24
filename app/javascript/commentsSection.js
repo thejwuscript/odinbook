@@ -12,8 +12,8 @@ function showComments(e) {
     .getAttribute("content");
 
   // icon && e.currentTarget.replaceChild(toggleCommentIcon(commentsSection), icon);
-  commentCount.removeEventListener('click', showComments);
-  commentCount.addEventListener('click', removeCommentsSection);
+  commentCount && commentCount.removeEventListener('click', showComments);
+  commentCount && commentCount.addEventListener('click', removeCommentsSection);
   commentButton.removeEventListener('click', showComments);
   commentButton.addEventListener('click', removeCommentsSection);
   
@@ -216,8 +216,8 @@ function removeCommentsSection(e) {
 
   const commentCount = postContainer.querySelector('.comment-count-line');
   const commentButton = postContainer.querySelector('.comment-button');
-  commentCount.removeEventListener('click', removeCommentsSection);
-  commentCount.addEventListener('click', showComments);
+  commentCount && commentCount.removeEventListener('click', removeCommentsSection);
+  commentCount && commentCount.addEventListener('click', showComments);
   commentButton.removeEventListener('click', removeCommentsSection);
   commentButton.addEventListener('click', showComments);
 }
