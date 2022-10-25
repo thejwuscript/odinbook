@@ -1,11 +1,11 @@
 <div class="ellipsis-container" data-controller="menu">
-      <span class="mdi mdi-dots-horizontal" data-action="click->menu#toggleMenu"></span>
-      <div class="ellipsis-dropdown-container" data-menu-target="menu">
-        <%= link_to edit_post_path(post), class: "item edit-post-link" do %>
-          <span class="mdi mdi-lead-pencil"></span>Edit Post
-        <% end %>
-        <%= button_to post_path(post), method: :delete, class: "item" do %>
-          <span class="mdi mdi-trash-can-outline"></span>Delete Post
-        <% end %>
-      </div>
-    </div>
+  <span class="mdi mdi-dots-horizontal" data-action="click->menu#toggleMenu"></span>
+  <div class="ellipsis-dropdown-container" data-menu-target="menu">
+    <%= link_to edit_post_path(post), class: "item edit-post-link" do %>
+      <span class="mdi mdi-lead-pencil"></span>Edit Post
+    <% end %>
+    <%= button_to post_path(post), method: :delete, class: "item" do %>
+      <span class="mdi mdi-trash-can-outline"></span>Delete Post
+    <% end %>
+  </div>
+</div>
