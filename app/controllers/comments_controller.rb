@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comments = Comment.where(post_id: params[:post_id])
 
     respond_to do |format|
-      format.json { render json: @comments }
+      format.json { render json: { currentUserId: current_user.id, comments: @comments } }
     end
   end
 
