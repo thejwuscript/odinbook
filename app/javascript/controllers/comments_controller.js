@@ -3,7 +3,7 @@ import { showComments, removeCommentsSection } from "commentsSection"
 
 // Connects to data-controller="comments"
 export default class extends Controller {
-  static targets = [ "commentsButton", "commentCount", "publishedPost" ];
+  static targets = [ "commentsButton", "commentCount", "publishedPost", "editCommentContainer", "commentForm" ];
 
   commentsButtonTargetConnected(target) {
     target.addEventListener('click', showComments);
@@ -22,4 +22,15 @@ export default class extends Controller {
   commentCountTargetDisconnected(target) {
     target.removeEventListener('click', showComments);
   }
+
+  commentFormTargetConnected(target) {
+    const input = target.querySelector("input[type='text']");
+    console.log(input);
+    input.addEventListener('input', () => {
+      const errorMsg = target.querySelector(
+        ".comment-form-validation-error-message"
+      );
+      if (errorMsg) errorMsg.remove();
+    });
+  };
 };
