@@ -1,4 +1,5 @@
-.new-comment-container {
+.new-comment-container,
+.edit-comment-container {
   width: 80%;
   display: flex;
   align-items: flex-start;
@@ -99,4 +100,16 @@ turbo-frame[id^="show-comment-region"] {
 
 .new-comment-container form {
   align-self: center;
+}
+
+.cancel-edit-comment {
+  color: dimgrey;
+  font-size: 0.8rem;
+  margin-left: 10px;
+  margin-top: -8px;
+  width: fit-content;
+}
+
+.edit-comment-container .cancel-edit-comment {
+  
 }

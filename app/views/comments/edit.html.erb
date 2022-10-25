@@ -1,11 +1,12 @@
 <%= turbo_frame_tag @comment do %>
-  <div class="new-comment-container">
+  <div class="edit-comment-container">
     <%= image_tag(@avatar, class: "profile-pic comment") %>
     <%= form_with model: @comment, url: [@post, @comment], data: {comments_target: "commentForm"}, id: "#{dom_id(@comment)}_form" do |form| %>
       <%= form.text_field :body, placeholder: "Type your comment here", autofocus: true %>
       <% @comment.errors.messages_for(:body).each do |message| %>
         <span class="comment-form-validation-error-message">Comment <%= message %></span>
       <% end %>
+      <%= link_to "Cancel", post_comment_path(@comment), class: "cancel-edit-comment" %>
     <% end %>
   </div>
 <% end %>

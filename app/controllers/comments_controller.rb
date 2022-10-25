@@ -9,6 +9,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @avatar = current_user.avatar
+  end
+
   def new
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(author: current_user)

@@ -1,0 +1,18 @@
+<%= turbo_frame_tag @comment do %>
+  <div class="individual-comment-container">
+    <%= image_tag current_user.avatar, class: "profile-pic comment" %>
+    <div class="comment-details">
+      <div class="individual-comment-text-container">
+        <span class="comment-author"><%= @comment.author.name %></span>
+        <p class="comment-body"><%= @comment.body %></p>
+      </div>
+    </div>
+    <div class="ellipsis-container comment" data-controller="menu">
+      <span class="mdi mdi-dots-horizontal" data-action="click->menu#toggleMenu"></span>
+      <div class="ellipsis-dropdown-container" data-menu-target="menu">
+        <%= link_to "Edit", edit_post_comment_path(@comment), class: "item edit-post-link" %>
+        <%= button_to "Delete", post_comment_path(@comment), method: :delete, class: "item" %>
+      </div>
+    </div>
+  </div>
+<% end %>
