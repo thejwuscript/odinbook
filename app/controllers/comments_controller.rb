@@ -70,6 +70,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to root_path, notice: 'Comment was successfully deleted.' }
+    end
+  end
+
   def minimize
     @post = Post.find(params[:post_id])
     render "posts/comments/minimize"
