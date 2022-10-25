@@ -32,19 +32,15 @@ function showComments(e) {
           Accept: "application/json",
         },
       })
-        .then(async (res) => {
+        .then(async res => {
           if (res.ok) {
+            const commentData = await res.json();
             const commentsSection = e.target.closest(".comments-section");
-            const newComment = await buildIndividualComment(
-              {
-                authorId: data.currentUserId,
-                postId: data.post.id,
-                author: data.name,
-                body: form.elements["comment_body"].value,
-                createdAt: "now",
-              },
-              data
-            );
+            const newComment = await buildIndividualComment({
+              ...commentData,
+              author: data.name,
+              createdAt: "now",
+            }, data);
             let showCommentRegion = commentsSection.querySelector(
               ".show-comment-region"
             );
@@ -129,7 +125,6 @@ function showComments(e) {
   };
 
   const buildIndividualComment = async (comment, data) => {
-    console.log(comment);
     const div = document.createElement("div");
     div.classList.add("individual-comment-container");
     const avatar = await commentAvatar(data);
@@ -271,7 +266,7 @@ function removeCommentsSection(e) {
   commentCount && commentCount.addEventListener('click', showComments);
   commentButton.removeEventListener('click', removeCommentsSection);
   commentButton.addEventListener('click', showComments);
-}
+};
 
 function updateCommentCount(id, postContainer) {
   const commentCountContainer = postContainer.querySelector(
@@ -280,8 +275,7 @@ function updateCommentCount(id, postContainer) {
   fetch(`/posts/${id}/comments`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      let count = data.length;
+      let count = data.comments.length;
       if (count == 0) commentCountContainer.remove();
       else if (count == 1 && !commentCountContainer)
         initiateCommentCountContainer(id, postContainer);
@@ -300,4 +294,4 @@ function initiateCommentCountContainer(id, postContainer) {
   countsContainer.appendChild(span);
 }
 
-export { showComments };
+export { showComments, removeCommentsSection };
