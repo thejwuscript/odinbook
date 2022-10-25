@@ -38,6 +38,7 @@ function showComments(e) {
             const commentsSection = e.target.closest(".comments-section");
             const newComment = await buildIndividualComment({
               ...commentData,
+              authorId: commentData.author_id,
               author: data.name,
               createdAt: "now",
             }, data);

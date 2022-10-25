@@ -64,7 +64,7 @@ class CommentsController < ApplicationController
     @avatar = current_user.avatar
 
     if @comment.update(comment_params)
-      # redirect? turbo stream?
+      render :show
     else
       render :edit, status: :unprocessable_entity
     end
