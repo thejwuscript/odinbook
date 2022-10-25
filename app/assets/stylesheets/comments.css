@@ -18,6 +18,10 @@ input[name="comment[body]"] {
   border: none;
 }
 
+.field_with_errors input {
+  width: 100%;
+}
+
 .individual-comment-container {
   width: 80%;
   align-items: flex-start;
@@ -34,9 +38,9 @@ turbo-frame[id^="show-comment-region"] {
   width: 100%;
 }
 
-.individual-comment-container:first-child {
+/* .individual-comment-container:first-child {
   margin-top: 12px;
-}
+} */
 
 .individual-comment-text-container {
   display: flex;
@@ -66,6 +70,14 @@ turbo-frame[id^="show-comment-region"] {
   width: 100%;
 }
 
+.show-comment-region > turbo-frame {
+  width: 100%;
+}
+
+.show-comment-region > turbo-frame:first-child {
+  margin-top: 12px;
+}
+
 .comments-section {
   margin-top: 8px;
   margin-bottom: 14px;
@@ -83,4 +95,8 @@ turbo-frame[id^="show-comment-region"] {
   font-size: 0.75rem;
   color: #65676b;
   align-self: flex-end;
+}
+
+.new-comment-container form {
+  align-self: center;
 }

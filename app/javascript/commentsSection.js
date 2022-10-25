@@ -125,6 +125,9 @@ function showComments(e) {
   };
 
   const buildIndividualComment = async (comment, data) => {
+    const frame = document.createElement('turbo-frame');
+    frame.id = `comment_${comment.id}`;
+    
     const div = document.createElement("div");
     div.classList.add("individual-comment-container");
     const avatar = await commentAvatar(data);
@@ -147,7 +150,8 @@ function showComments(e) {
     div.appendChild(commentDetails);
     if (comment.authorId === data.currentUserId) div.appendChild(buildEllipsisMenu(comment));
 
-    return div;
+    frame.appendChild(div);
+    return frame;
   };
 
   const buildEllipsisMenu = (comment) => {

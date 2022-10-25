@@ -46,6 +46,24 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @avatar = current_user.avatar
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @avatar = current_user.avatar
+
+    if @comment.update(comment_params)
+      # redirect? turbo stream?
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def minimize
     @post = Post.find(params[:post_id])
     render "posts/comments/minimize"
