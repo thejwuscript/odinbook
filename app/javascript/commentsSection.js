@@ -37,6 +37,8 @@ function showComments(e) {
             const commentsSection = e.target.closest(".comments-section");
             const newComment = await buildIndividualComment(
               {
+                authorId: data.currentUserId,
+                postId: data.post.id,
                 author: data.name,
                 body: form.elements["comment_body"].value,
                 createdAt: "now",
@@ -83,15 +85,18 @@ function showComments(e) {
       if (errorMsg) errorMsg.remove();
     });
     form.appendChild(input);
-
-    const hiddenInput = document.createElement("input");
-    hiddenInput.type = "hidden";
-    hiddenInput.name = "authenticity_token";
-    hiddenInput.value = csrfToken;
-    form.appendChild(hiddenInput);
+    form.appendChild(authTokenInput(csrfToken));
 
     return form;
   };
+
+  const authTokenInput = (token) => {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "authenticity_token";
+    input.value = token;
+    return input;
+  }
 
   const commentAvatar = (data) => {
     return new Promise((resolve, reject) => {
@@ -124,6 +129,7 @@ function showComments(e) {
   };
 
   const buildIndividualComment = async (comment, data) => {
+    console.log(comment);
     const div = document.createElement("div");
     div.classList.add("individual-comment-container");
     const avatar = await commentAvatar(data);
@@ -144,8 +150,53 @@ function showComments(e) {
 
     div.appendChild(avatar);
     div.appendChild(commentDetails);
+    if (comment.authorId === data.currentUserId) div.appendChild(buildEllipsisMenu(comment));
+
     return div;
   };
+
+  const buildEllipsisMenu = (comment) => {
+    const id = comment.id;
+    const postId = comment.postId;
+    const ellipsisContainer = document.createElement('div');
+    ellipsisContainer.classList.add('ellipsis-container', 'comment');
+    ellipsisContainer.dataset.controller = "menu";
+
+    const ellipsisIcon = document.createElement('span');
+    ellipsisIcon.classList.add('mdi', 'mdi-dots-horizontal');
+    ellipsisIcon.dataset.action = "click->menu#toggleMenu";
+
+    const dropdownContainer = document.createElement('div');
+    dropdownContainer.classList.add('ellipsis-dropdown-container');
+    dropdownContainer.dataset.menuTarget = "menu";
+
+    const editLink = document.createElement('a');
+    editLink.classList.add('item', 'edit-post-link');
+    editLink.href = `/posts/${postId}/comments/${id}/edit`;
+    editLink.textContent = "Edit";
+
+    const form = document.createElement('form');
+    form.method = 'post';
+    form.action = `/posts/${postId}/comments/${id}`;
+
+    const methodInput = document.createElement('input');
+    methodInput.type = "hidden";
+    methodInput.name = "_method";
+    methodInput.value = "delete";
+
+    const tokenInput = authTokenInput(csrfToken);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add('item');
+    deleteBtn.type = "submit";
+
+    form.append(methodInput, tokenInput, deleteBtn);
+    dropdownContainer.append(editLink, form);
+
+    ellipsisContainer.append(ellipsisIcon, dropdownContainer);
+    return ellipsisContainer;
+  }
 
   const displayableTime = (commentTimeInString) => {
     if (commentTimeInString === "now") return "now";
@@ -229,6 +280,7 @@ function updateCommentCount(id, postContainer) {
   fetch(`/posts/${id}/comments`)
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
       let count = data.length;
       if (count == 0) commentCountContainer.remove();
       else if (count == 1 && !commentCountContainer)

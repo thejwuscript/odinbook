@@ -22,7 +22,6 @@ input[name="comment[body]"] {
   width: 80%;
   align-items: flex-start;
   display: flex;
-
   gap: 16px;
 }
 

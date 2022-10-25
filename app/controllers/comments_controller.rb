@@ -15,15 +15,18 @@ class CommentsController < ApplicationController
     @post_comments = @post.comments.all.order(created_at: :desc)
     @post_comments_data = @post_comments.to_a.map do |comment|
       hash = {}
+      hash[:id] = comment.id
+      hash[:authorId] = comment.author.id
       hash[:author] = comment.author.name
       hash[:body] = comment.body
+      hash[:postId] = comment.post.id
       hash[:createdAt] = comment.created_at
       hash
     end
     @avatar = current_user.avatar
     # render "posts/comments/new"
     respond_to do |format|
-      format.json { render json: {name: current_user.name, post: @post, imageUrl: url_for(@avatar), newComment: @comment, postComments: @post_comments_data }}
+      format.json { render json: { currentUserId: current_user.id, name: current_user.name, post: @post, imageUrl: url_for(@avatar), newComment: @comment, postComments: @post_comments_data }}
       format.html { render "posts/comments/new" }
     end
   end
@@ -35,7 +38,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       respond_to do |format|
-        format.json { head :ok }
+        format.json { render json: @comment }
         # format.turbo_stream { render "posts/comments/create" }
       end
     else

@@ -271,6 +271,17 @@ form #post_body {
   position: relative;
 }
 
+.ellipsis-container.comment {
+  margin-left: 0;
+  display: none;
+  align-self: center;
+  margin-bottom: 4px;
+}
+
+.individual-comment-container:hover .ellipsis-container.comment {
+  display: flex;
+}
+
 .ellipsis-container:hover {
   cursor: pointer;
   background-color: #eeedec;
