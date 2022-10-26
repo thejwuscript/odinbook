@@ -1,1 +1,13 @@
 <%= turbo_stream.remove @comment %>
+
+<% if @comments_count == 0 %>
+  <%= turbo_stream.remove_all "##{dom_id(@post)} > div.counts-container > span" %>
+<% elsif @comments_count == 1 %>
+  <%= turbo_stream.replace_all "##{dom_id(@post)} > div.counts-container > span" do %>
+    <%= tag.span "1 Comment", class: "comment-count-line", data: {postid: @post.id, comments_target: "commentsCount"} %>
+  <% end %>
+<% elsif @comments_count > 1 %>
+  <%= turbo_stream.replace_all "##{dom_id(@post)} > div.counts-container > span" do %>
+    <%= tag.span "#{@comments_count} Comments", class: "comment-count-line", data: {postid: @post.id, comments_target: "commentCount"} %>
+  <% end %>
+<% end %>

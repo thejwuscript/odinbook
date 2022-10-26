@@ -72,7 +72,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    @post = @comment.post
     @comment.destroy
+    @comments_count = @post.comments.count
 
     respond_to do |format|
       format.turbo_stream
