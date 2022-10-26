@@ -59,6 +59,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    authorize @post
 
     if @post.update(post_params)
       process_image_attachment
