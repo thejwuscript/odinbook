@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     @avatar = current_user.avatar
     # render "posts/comments/new"
     respond_to do |format|
-      format.json { render json: { currentUserId: current_user.id, name: current_user.name, post: @post, imageUrl: url_for(@avatar), newComment: @comment, postComments: @post_comments_data }}
+      format.json { render json: { currentUserId: current_user.id, name: current_user.name, imageUrl: url_for(@avatar), newComment: @comment, postComments: @post_comments_data }}
       format.html { render "posts/comments/new" }
     end
   end
