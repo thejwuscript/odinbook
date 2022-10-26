@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = current_user.posts.build(post_params.except(:image_data_url))
     process_image_attachment
 
     if @post.save
