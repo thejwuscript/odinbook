@@ -78,6 +78,7 @@
 .forgot-password-link {
   text-decoration: none;
   color: #003cff;
+  margin-bottom: 14px;
 }
 
 .field {
