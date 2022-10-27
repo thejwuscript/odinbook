@@ -43,7 +43,7 @@
 .users-page-content {
   background-color: #e9ebee;
   min-height: 100vh;
-  padding: 14px;
+  padding: 14px 32px 48px;
 }
 
 .profile {
