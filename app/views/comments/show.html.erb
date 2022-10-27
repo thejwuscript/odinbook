@@ -1,6 +1,6 @@
 <%= turbo_frame_tag @comment do %>
   <div class="individual-comment-container">
-    <%= image_tag current_user.avatar, class: "profile-pic comment" %>
+    <%= image_tag @comment.author.avatar, class: "profile-pic comment" %>
     <div class="comment-details">
       <div class="individual-comment-text-container">
         <span class="comment-author"><%= @comment.author.name %></span>

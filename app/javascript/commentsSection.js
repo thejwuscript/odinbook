@@ -40,6 +40,7 @@ function showComments(e) {
               ...commentData,
               authorId: commentData.author_id,
               author: data.name,
+              authorImageUrl: data.imageUrl,
               createdAt: "now",
             }, data);
             let showCommentRegion = commentsSection.querySelector(
@@ -95,13 +96,13 @@ function showComments(e) {
     return input;
   }
 
-  const commentAvatar = (data) => {
+  const commentAvatar = (url) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.classList.add("profile-pic", "comment");
       img.onload = () => resolve(img);
       img.onerror = reject;
-      img.src = data.imageUrl;
+      img.src = url;
     });
   };
 
@@ -109,7 +110,7 @@ function showComments(e) {
     const div = document.createElement("div");
     div.classList.add("new-comment-container");
     const form = buildNewCommentForm(data);
-    const avatar = await commentAvatar(data);
+    const avatar = await commentAvatar(data.imageUrl);
     div.appendChild(avatar);
     div.appendChild(form);
     return div;
@@ -131,7 +132,7 @@ function showComments(e) {
     
     const div = document.createElement("div");
     div.classList.add("individual-comment-container");
-    const avatar = await commentAvatar(data);
+    const avatar = await commentAvatar(comment.authorImageUrl);
 
     const commentDetails = document.createElement("div");
     commentDetails.classList.add("comment-details");

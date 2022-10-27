@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
       hash[:id] = comment.id
       hash[:authorId] = comment.author.id
       hash[:author] = comment.author.name
+      hash[:authorImageUrl] = url_for(comment.author.avatar)
       hash[:body] = comment.body
       hash[:postId] = comment.post.id
       hash[:createdAt] = comment.created_at
