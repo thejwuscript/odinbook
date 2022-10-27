@@ -6,6 +6,10 @@
   background-color: #e9ebee;
 }
 
+.forgot-password-page {
+  flex: 1;
+}
+
 .login-page,
 .sign-up-page {
   min-height: 100vh;
@@ -21,12 +25,16 @@
   background-color: #e9ebee;
 }
 
+.change-password-page {
+  flex: 1;
+}
+
 .sign-up-form,
 .forgot-password-form-container,
 .change-password-form-container {
   display: flex;
   flex-direction: column;
-  width: 360px;
+  width: min(360px, 100%);
   height: max-content;
   background-color: white;
   padding: 14px 16px;
@@ -34,7 +42,6 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
 }
 
 .login-form-container {
@@ -179,13 +186,15 @@
 }
 
 @media (max-width: 768px) {
-  .login-page,
-  .sign-up-page,
   .forgot-password-page,
   .change-password-page {
+    background-color: #d5d8db;
+  }
+
+  .login-page,
+  .sign-up-page {
     background-color: white;
   }
-  
   
   .login-page,
   .sign-up-page {
@@ -214,9 +223,9 @@
 
   .forgot-password-page,
   .change-password-page {
-    align-items: flex-start;
+    /* align-items: flex-start;
     height: auto;
-    margin-top: 200px;
+    margin-top: 200px; */
   }
 
   .forgot-password-form-container,

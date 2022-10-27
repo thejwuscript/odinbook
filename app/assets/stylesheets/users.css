@@ -62,6 +62,7 @@ li.user-card-item > div > div > a:hover {
     align-items: flex-start;
     box-shadow: none;
     padding: 16px 14px;
+    margin: 6px 0;
     border-radius: 0;
   }
 
