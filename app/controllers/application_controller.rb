@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
       end
       format.html do
         flash[:alert] = 'You are not authorized to perform this action.'
-        redirect_back(fallback_location: root_path)
+        redirect_back_or_to(root_path)
       end
     end
   end
