@@ -20,7 +20,7 @@
 
 <div class="separation-line-with-words">or</div>
 
-<%= button_to "Sign in as Test User", user_session_path, class: "test-login-button", form: {data: {turbo: false}}, params: {"user[login]" => 'test_user', "user[password]" => 'password'} %>
+<%= button_to "Sign in as Test User", user_session_path, class: "test-login-button", form: {data: {turbo: false}}, params: {"user[login]" => 'tester', "user[password]" => 'password'} %>
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
