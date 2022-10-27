@@ -66,7 +66,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize @post
 
-    if @post.update(post_params)
+    if @post.update(post_params.except(:image_data_url))
       process_image_attachment
 
       respond_to do |format|
