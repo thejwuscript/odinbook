@@ -54,12 +54,14 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    authorize @comment
     @post = @comment.post
     @avatar = current_user.avatar
   end
 
   def update
     @comment = Comment.find(params[:id])
+    authorize @comment
     @post = @comment.post
     @avatar = current_user.avatar
 
@@ -72,6 +74,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    authorize @comment
     @post = @comment.post
     @comment.destroy
     @comments_count = @post.comments.count
