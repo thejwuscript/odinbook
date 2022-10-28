@@ -35,7 +35,7 @@ class User < ApplicationRecord
   validates :email, length: { maximum: 50 }
 
   after_create :create_profile, unless: :facebook_provider?
-  # after_create :send_welcome_email
+  after_create :send_welcome_email
 
   scope :all_except, ->(user) { where.not(id: user) }
 
