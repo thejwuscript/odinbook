@@ -88,6 +88,15 @@ form #post_body {
   margin-left: auto;
 }
 
+.user-info-name-link {
+  color: black;
+  text-decoration: none;
+}
+
+.user-info-name-link:hover {
+  text-decoration: underline;
+}
+
 #posts {
   display: flex;
   flex-direction: column;

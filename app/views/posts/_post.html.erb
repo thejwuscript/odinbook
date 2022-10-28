@@ -6,7 +6,9 @@
       <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
     <% end %>
     <div class="user-info">
-      <p class="user-info-name"><%= post.author.name %></p>
+      <%= link_to user_path(username: post.author.username), class: 'user-info-name-link', data: {turbo: false} do %>
+        <p class="user-info-name"><%= post.author.name %></p>
+      <% end %>
       <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%l:%M %p - %b %d, %Y") %></p>
     </div>
     <%= render partial: "posts/options", locals: {post: post} if post.author == current_user %>
