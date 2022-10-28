@@ -53,6 +53,7 @@ function showComments(e) {
             showCommentRegion.appendChild(newComment);
             updateCommentCount(postId, postContainer);
             form.reset();
+            form.querySelector("input[type='text']").blur();
           } else if (res.status == 422) {
             res.json().then((data) => {
               if (form.querySelector(".comment-form-validation-error-message"))
