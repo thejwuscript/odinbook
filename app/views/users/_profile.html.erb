@@ -1,5 +1,5 @@
 <div class="profile-info">
-  <%= render partial: "users/edit_cover_photo_mobile", locals: { profile: @profile } if browser.device.mobile? %>
+  <%= render partial: "users/edit_cover_photo_mobile", locals: { profile: profile } if browser.device.mobile? && user == current_user %>
   <%= render partial: "users/avatar", locals: {profile: profile} %>
 
   <div class="profile-info-details">
@@ -29,7 +29,7 @@
         <%= tag.span profile.user.email, class: "email" %>
       </span>
       <% if profile.user == current_user %>
-        <%= link_to "Edit Profile", edit_profile_path, class: "edit-profile-button" %>
+        <%= link_to "Edit Profile", edit_profile_path(id: profile.id), class: "edit-profile-button" %>
       <% end %>
     <% end %>
   </div>

@@ -7,7 +7,7 @@
 		<% end %>
 	</div>
 
-	<%= render "profile", profile: @profile %>
+	<%= render "profile", profile: @profile, user: @user %>
 
 	<div class="profile-posts">
 	<% if @user == current_user && !browser.device.mobile? %>

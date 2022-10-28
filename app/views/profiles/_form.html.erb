@@ -1,8 +1,6 @@
 <%= form_with model: profile do |form| %>
-  <% if profile.errors.any? %>
-    <p>Something went wrong.</p>
-  <% end %>
-
+  <%= form.hidden_field :id, name: :id, value: profile.id %>
+  
   <div class="display-name-container">
     <%= form.label :display_name, "Name", style: "font-weight: bold" %>
     <%= form.text_field :display_name, maxlength: 30, placeholder: "Name" %>
