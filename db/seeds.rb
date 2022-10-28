@@ -1,4 +1,5 @@
 require 'down'
+require 'faker'
 
 USER_PASSWORD = ENV['USER_PASSWORD'].freeze
 
