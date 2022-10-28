@@ -60,11 +60,11 @@ gem 'omniauth-facebook'
 gem 'omniauth-rails_csrf_protection'
 gem 'prettier'
 gem 'pundit', '~> 2.2'
+gem 'faker'
 
 group :development, :test do
   gem 'capybara'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'rspec-rails'
   gem 'vcr'
   gem 'webdrivers'
