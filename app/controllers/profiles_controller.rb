@@ -10,11 +10,12 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find_by(user_id: current_user)
+    @profile = Profile.find(params[:id])
   end
 
   def update
-    @profile = Profile.find_by(user_id: current_user)
+    @profile = Profile.find(params[:id])
+    authorize @profile
 
     if @profile.update(profile_params)
       redirect_to user_path(username: current_user.username)
