@@ -6,6 +6,7 @@
     </div>
     <hr>
     <%= form_with model: profile do |form| %>
+      <%= form.hidden_field :id, name: :id, value: profile.id %>
       <div class="modal-middle" data-controller="image-preview">
       <div class="image-preview-window">Preview:
         <div><%= image_tag(profile.avatar, class: "preview-avatar", "data-image-preview-target" => "output") %></div>
