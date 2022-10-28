@@ -281,6 +281,7 @@ form #post_body {
   display: none;
   align-self: center;
   margin-bottom: 4px;
+  border-radius: 50%;
 }
 
 .individual-comment-container:hover .ellipsis-container.comment {
@@ -309,6 +310,7 @@ form #post_body {
 .ellipsis-dropdown-container.visible {
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
 .ellipsis-dropdown-container .item {
@@ -389,5 +391,14 @@ form #post_body {
 
   .post-text-placeholder {
     margin-right: 4px;
+  }
+
+  .individual-comment-container .ellipsis-container.comment {
+    display: flex;
+  }
+  
+  .ellipsis-container:active {
+    cursor: pointer;
+    background-color: #d4d6d6;
   }
 }

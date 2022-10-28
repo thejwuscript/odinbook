@@ -27,7 +27,7 @@ form label[for="post_image_file"]:hover {
 
 form label[for="profile_avatar"]:active,
 form label[for="post_image_file"]:active {
-  background-color: #d4d6d6
+  background-color: #d4d6d6;
 }
 
 form label[for="post_ximage_file"] {
