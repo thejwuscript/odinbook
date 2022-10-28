@@ -1,4 +1,4 @@
-require "down"
+require 'down'
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -14,11 +14,11 @@ class User < ApplicationRecord
   attr_writer :login
 
   has_many :sent_requests,
-           class_name: "FriendRequest",
+           class_name: 'FriendRequest',
            foreign_key: :requester_id,
            dependent: :destroy
   has_many :received_requests,
-           class_name: "FriendRequest",
+           class_name: 'FriendRequest',
            foreign_key: :requestee_id,
            dependent: :destroy
   has_many :friendships, dependent: :destroy
@@ -35,12 +35,12 @@ class User < ApplicationRecord
   validates :email, length: { maximum: 50 }
 
   after_create :create_profile, unless: :facebook_provider?
-  #after_create :send_welcome_email
+  # after_create :send_welcome_email
 
   scope :all_except, ->(user) { where.not(id: user) }
 
   def login
-    @login || self.username || self.email
+    @login || username || email
   end
 
   def self.find_for_database_authentication(warden_conditions)
@@ -48,7 +48,7 @@ class User < ApplicationRecord
     if (login = conditions.delete(:login))
       where(conditions.to_h).where(
         [
-          "lower(username) = :value OR lower(email) = :value",
+          'lower(username) = :value OR lower(email) = :value',
           { value: login.downcase }
         ]
       ).first
@@ -58,14 +58,14 @@ class User < ApplicationRecord
   end
 
   def not_friends
-    User.all_except(self).to_a.difference(self.friends.to_a)
+    User.all_except(self).to_a.difference(friends.to_a)
   end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.username = auth.info.name.downcase.gsub(/\s+/, ".")
+      user.username = auth.info.name.downcase.gsub(/\s+/, '.')
       user.create_profile(Down.download(auth.info.image), auth.info.first_name)
     end
   end
@@ -73,9 +73,9 @@ class User < ApplicationRecord
   def self.new_with_session(params, session)
     super.tap do |user|
       if (data =
-           session["devise.facebook_data"] &&
-             session["devise.facebook_data"]["extra"]["raw_info"])
-        user.email = data["email"] if user.email.blank?
+            session['devise.facebook_data'] &&
+              session['devise.facebook_data']['extra']['raw_info']) && user.email.blank?
+        user.email = data['email']
       end
     end
   end

@@ -33,8 +33,11 @@ class CommentsController < ApplicationController
     @avatar = current_user.avatar
     # render "posts/comments/new"
     respond_to do |format|
-      format.json { render json: { currentUserId: current_user.id, name: current_user.name, imageUrl: url_for(@avatar), newComment: @comment, postComments: @post_comments_data }}
-      format.html { render "posts/comments/new" }
+      format.json do
+        render json: { currentUserId: current_user.id, name: current_user.name, imageUrl: url_for(@avatar),
+                       newComment: @comment, postComments: @post_comments_data }
+      end
+      format.html { render 'posts/comments/new' }
     end
   end
 
@@ -88,7 +91,7 @@ class CommentsController < ApplicationController
 
   def minimize
     @post = Post.find(params[:post_id])
-    render "posts/comments/minimize"
+    render 'posts/comments/minimize'
   end
 
   private

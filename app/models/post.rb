@@ -15,6 +15,6 @@ class Post < ApplicationRecord
     return if image.content_type.in?(%w[image/jpeg image/png])
 
     image.purge
-    errors.add(:avatar, "Needs to be an image in .jpeg or .png format")
+    errors.add(:avatar, 'Needs to be an image in .jpeg or .png format')
   end
 end

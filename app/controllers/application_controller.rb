@@ -1,7 +1,6 @@
-require "browser"
+require 'browser'
 
 class ApplicationController < ActionController::Base
-
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -25,9 +24,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_no_cache_headers
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Tue, 01 Jan 2002 00:00:00 UTC"
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = 'Tue, 01 Jan 2002 00:00:00 UTC'
   end
 
   def after_sign_in_path_for(resource)

@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     @not_friends_list = current_user.not_friends
     @sent_requests_users =
       FriendRequest
-        .where(requester_id: current_user.id)
-        .includes(:requestee)
-        .map { |request| request.requestee }
+      .where(requester_id: current_user.id)
+      .includes(:requestee)
+      .map { |request| request.requestee }
     @received_requests = FriendRequest.where(requestee_id: current_user.id).includes(:requester)
     @received_requests_users = @received_requests.map { |request| request.requester }
     @potential_friends = @sent_requests_users + @received_requests_users

@@ -9,7 +9,7 @@ RSpec.describe 'Notifications', type: :system, js: true do
   before do
     allow(Headline).to receive(:create).and_return(headline1, headline2, headline3)
   end
-  
+
   context 'when notifications are unread' do
     before do
       VCR.use_cassette 'news headlines' do

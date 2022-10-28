@@ -5,14 +5,14 @@ class FriendRequestsController < ApplicationController
     @sent_requests =
       current_user.sent_requests.includes(:requester, :requestee)
   end
-  
+
   def create
     request = current_user.sent_requests.build
     request.requestee = User.find(params[:user])
     if request.save
-      redirect_to users_path, notice: "Friend request sent successfully."
+      redirect_to users_path, notice: 'Friend request sent successfully.'
     else
-      redirect_to users_path, alert: "Oops, something went wrong."
+      redirect_to users_path, alert: 'Oops, something went wrong.'
     end
   end
 
@@ -21,6 +21,6 @@ class FriendRequestsController < ApplicationController
     request.destroy
     redirect_to friend_requests_path,
                 status: :see_other,
-                notice: "Friend request deleted."
+                notice: 'Friend request deleted.'
   end
 end

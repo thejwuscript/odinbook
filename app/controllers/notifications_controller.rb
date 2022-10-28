@@ -1,9 +1,7 @@
 class NotificationsController < ApplicationController
-  def index
-  end
+  def index; end
 
-  def create
-  end
+  def create; end
 
   def destroy
     @notifications = Notification.where(id: params[:ids])

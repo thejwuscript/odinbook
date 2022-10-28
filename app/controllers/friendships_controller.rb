@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   def index
     @friendships = Friendship.where(user: current_user)
   end
-  
+
   def create
     friend = User.find(params[:friend_id])
     friendship_a = current_user.friendships.build(friend:)

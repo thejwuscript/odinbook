@@ -3,11 +3,9 @@ class ProfilesController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  def new
-  end
+  def new; end
 
-  def create
-  end
+  def create; end
 
   def edit
     @profile = Profile.find(params[:id])

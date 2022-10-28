@@ -1,4 +1,4 @@
-require "down"
+require 'down'
 require 'news-api'
 
 class PostsController < ApplicationController
@@ -10,13 +10,13 @@ class PostsController < ApplicationController
       current_user_posts = current_user.posts.includes(:likes)
       friends_posts =
         current_user
-          .friends
-          .includes(:posts)
-          .flat_map { |friend| friend.posts.includes(:likes) }
+        .friends
+        .includes(:posts)
+        .flat_map { |friend| friend.posts.includes(:likes) }
       @timeline_posts =
         (current_user_posts + friends_posts)
-          .sort_by { |post| post.created_at }
-          .reverse
+        .sort_by { |post| post.created_at }
+        .reverse
       unless Headline.first && ((Time.current - Headline.first.updated_at) / 1.hour).round < 12
         Headline.destroy_all
         news = News.new(ENV['NEWS_API_KEY'])
@@ -49,8 +49,8 @@ class PostsController < ApplicationController
 
     if @post.save
       respond_to do |format|
-        format.html { redirect_to root_path, notice: "New post created." }
-        format.turbo_stream { flash.now[:notice] = "New post created." }
+        format.html { redirect_to root_path, notice: 'New post created.' }
+        format.turbo_stream { flash.now[:notice] = 'New post created.' }
       end
     else
       render :new, status: :unprocessable_entity
@@ -70,8 +70,8 @@ class PostsController < ApplicationController
       process_image_attachment
 
       respond_to do |format|
-        format.html { redirect_to root_path, notice: "Post was successfully updated." }
-        format.turbo_stream { flash.now[:notice] = "Post was successfully updated." }
+        format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Post was successfully updated.' }
       end
     else
       render :edit, status: :unprocessable_entity

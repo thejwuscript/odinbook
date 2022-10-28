@@ -9,8 +9,8 @@ class LikesController < ApplicationController
         format.turbo_stream
       end
     else
-      flash.now[:alert] = "You can only like each post once."
-      render "/likes/create", status: :unprocessable_entity
+      flash.now[:alert] = 'You can only like each post once.'
+      render '/likes/create', status: :unprocessable_entity
     end
   end
 
