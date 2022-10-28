@@ -82,10 +82,10 @@ form #post_body {
   height: 56px;
 }
 
-.post-author-container > a {
+.post-author-container .close-link {
   color: black;
-  margin-left: auto;
   font-size: 1rem;
+  margin-left: auto;
 }
 
 #posts {

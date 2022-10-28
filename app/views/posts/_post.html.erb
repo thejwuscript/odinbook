@@ -2,7 +2,9 @@
 <%= tag.div class: "post-container published", data: {controller: "comments", comments_target: "publishedPost"}, id: dom_id(post) do %>
 
   <div class="post-author-container">
-    <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
+    <%= link_to user_path(username: post.author.username), class: 'post-avatar-link', data: {turbo: false} do %>
+      <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
+    <% end %>
     <div class="user-info">
       <p class="user-info-name"><%= post.author.name %></p>
       <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%l:%M %p - %b %d, %Y") %></p>
