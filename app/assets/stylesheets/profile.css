@@ -288,7 +288,7 @@ form > .location-container > input {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 600px;
+  max-width: 530px;
   position: absolute;
   top: -72px;
 }
@@ -376,5 +376,9 @@ form > .location-container > input {
     margin-top: 0;
     top: 132px;
     right: 24px;
+  }
+
+  .profile-info-details > #profile-details {
+    padding: 0 8px;
   }
 }

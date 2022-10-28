@@ -377,4 +377,8 @@ form #post_body {
   .turbo-frame-post:last-child {
     margin-bottom: 64px;
   }
+
+  .post-text-placeholder {
+    margin-right: 4px;
+  }
 }
