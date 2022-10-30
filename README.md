@@ -1,24 +1,41 @@
-# README
+# Odinbook
+A Facebook clone that replicates the core user functionality of Facebook.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Live demo](https://evening-sands-32189.herokuapp.com/) 👈
 
-Things you may want to cover:
+# Objectives
 
-- Ruby version
+- To take a set of high-level requirements and turn it into a functioning web application.
+- To apply my learning of backend development concepts, including but not limited to:
 
-- System dependencies
+  - Building a RESTful API
+  - Working with external APIs
+  - MVC design pattern
+  - Database design and queries
+  - Authentication and Authorization
+  - Deployment
 
-- Configuration
+# Features
 
-- Database creation
+- Sign in with Facebook
+- Create posts with image attachment
+- View relevant posts in chronological order
+- Create own Profile
+- Friends and Friend Requests
+- Likes and Comments
+- Notifications
+- View recent news headlines
+- Responsive design
 
-- Database initialization
+# Technologies used
 
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
+- HTML5
+- CSS3
+- JavaScript
+- Ruby
+- Ruby on Rails
+- Hotwire (Turbo & Stimulus)
+- PostgreSQL
+- AWS S3
+- RSpec + Capybara
+- Heroku
