@@ -8,7 +8,7 @@
       <%= form.hidden_field :id, name: "id", value: profile.id %>
       <%= form.label 'cover_photo' do %>
         <span class="mdi mdi-upload-outline"></span>Upload Photo
-        <%= form.file_field 'cover_photo', onchange: "this.form.submit()" %>
+        <%= form.file_field 'cover_photo', accept: 'image/png,image/jpeg', onchange: "this.form.submit()" %>
       <% end %>
     <% end %>
   <% if profile.cover_photo.attached? %>
