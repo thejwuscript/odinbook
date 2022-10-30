@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import Cropper from "cropper";
+import Cropper from "cropperjs";
 export default class extends Controller {
   static targets = [
     "output",
