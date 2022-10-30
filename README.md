@@ -3,6 +3,10 @@ A Facebook clone that replicates the core user functionality of Facebook.
 
 [Live demo](https://evening-sands-32189.herokuapp.com/) 👈
 
+# Preview
+
+<img src="https://user-images.githubusercontent.com/88938117/198888544-ab802c96-63f3-4493-9724-0e71ae80d218.gif" alt="preview">
+
 # Objectives
 
 - To take a set of high-level requirements and turn it into a functioning web application.
