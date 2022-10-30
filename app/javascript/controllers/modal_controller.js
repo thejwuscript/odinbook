@@ -200,6 +200,8 @@ export default class extends Controller {
   }
 
   showPageSpinner(e) {
+    if (!this.isValidForm()) return;
+
     const overlay = document.createElement('div');
     overlay.classList.add('page', 'overlay');
     overlay.id = 'page-overlay';
@@ -210,5 +212,9 @@ export default class extends Controller {
     overlay.appendChild(loading);
 
     document.body.appendChild(overlay);
+  }
+
+  isValidForm() {
+    return this.element.reportValidity();
   }
 }
