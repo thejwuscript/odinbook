@@ -5,19 +5,7 @@ A Facebook clone that replicates the core user functionality of Facebook.
 
 # Preview
 
-<img src="https://user-images.githubusercontent.com/88938117/198888544-ab802c96-63f3-4493-9724-0e71ae80d218.gif" alt="preview">
-
-# Objectives
-
-- To take a set of high-level requirements and turn it into a functioning web application.
-- To apply my learning of backend development concepts, including but not limited to:
-
-  - Building a RESTful API
-  - Working with external APIs
-  - MVC design pattern
-  - Database design and queries
-  - Authentication and Authorization
-  - Deployment
+![preview_gif](https://user-images.githubusercontent.com/88938117/199010744-a45cdf0e-be2f-420b-8e42-5265399d6206.gif)
 
 # Features
 
