@@ -39,9 +39,8 @@ I decided to create a separate table to store friendships after a confirmed frie
 
 <img src="https://user-images.githubusercontent.com/88938117/199243437-7f32a32e-d2b2-4042-af61-5a9c63c638a3.png" alt="friendship tables" width="80%">
 
-I went with creating two records per friendship despite the redundancy for a couple of reasons. First, I can use the query ```user.friends``` to retrive a list of friends for a particular user by leveraging Active Record associations. There would be no need to chain query methods or write raw SQL to perform the same task. As a result, the code is cleaner and easier to understand.
-
-```
+I went with creating two records per friendship despite the redundancy for a couple of reasons. First, I can use the query ```user.friends``` to retrive a list of friends for a particular user by leveraging Active Record associations.
+```ruby
 class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
@@ -52,4 +51,21 @@ class Friendship < ApplicationRecord
   belongs_to :friend, class_name: 'User'
 end
 ```
-Second, although friendships are mutual, each individual may view friendships differently than their counterpart. For example, User A may treat User B as a casual friend while User B sees User A as a close friend. This difference in perspective can be stored as a separate attribute for each record. Storing two records per friendship means that we can model the difference in perspective between two individuals. 
+There would be no need to write a custom method or write raw SQL to perform the same task. As a result, the code is cleaner and easier to understand.
+
+Second, although friendships are mutual, each individual may view friendships differently than their counterpart. For example, User A may treat User B as a casual friend while User B sees User A as a close friend. This difference in perspective can be stored as a separate attribute for each record. Storing two records per friendship means that we can model the difference in perspective between two individuals.
+### Custom Route
+I had a custom route defined like so:
+```ruby
+get ':username', to: 'users#show', as: :user
+```
+The route was working fine until the username "earlean.shoope" was passed as the parameter, to which the server responded with a status of 500. Surprised at the outcome, I started debugging the issue by looking at the server log. I found out that the username parameter had been cut off at the dot.
+```
+Parameters: {"username" => "earlean.shoope"}    # expected
+
+Parameters: {"username" => "earlean"}           # actual
+```
+It turns out that the parameter does not accept dots because the dot is used as a separator for formatted routes. As the [Rails documentation](https://guides.rubyonrails.org/routing.html#dynamic-segments) suggested, I added a constraint on the username to allow anything except a slash. The result:
+```ruby
+get ':username', to: 'users#show', constraints: { username: %r{[^/]+} }, as: :user
+```
