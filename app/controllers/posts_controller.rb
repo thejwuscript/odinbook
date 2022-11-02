@@ -96,7 +96,10 @@ class PostsController < ApplicationController
   end
 
   def process_image_attachment
-    if params[:post][:image_data_url].present?
+    image_data_url = params[:post][:image_data_url]
+    if image_data_url == 'attached'
+      return
+    elsif params[:post][:image_data_url].present?
       create_or_update_image_attachment
     elsif params[:post][:image_data_url].empty?
       delete_image_attachment
