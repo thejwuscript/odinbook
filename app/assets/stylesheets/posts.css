@@ -339,6 +339,12 @@ form #post_body {
   margin-left: 10px;
 }
 
+.post-error-message {
+  color: maroon;
+  margin-top: -8px;
+  font-size: 0.9rem;
+}
+
 .post-body-text {
   margin-bottom: 24px;
 }
