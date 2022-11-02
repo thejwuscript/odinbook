@@ -1,7 +1,7 @@
 <%= form_with model: post, data: { controller: 'modal image-preview' } do |form| %>
   <%= form.text_area :body, placeholder: "What's on your mind?", required: true %>
   <% post.errors.full_messages_for(:body).each do |message| %>
-    <div class="error-messages"><%= message %></div>
+    <span class="post-error-message"><%= message %></span>
   <% end %>
   <div class="image-preview" data-modal-target="output" data-image-preview-target="output" style=<%= "display:block;" if post.image.attached? || post.image_url.present? %>>
     <div class="overlay">
@@ -14,7 +14,7 @@
     <% end %>
   </div>
   <%= form.hidden_field :image_url, 'data-modal-target' => 'hiddenURLField' %>
-  <%= form.hidden_field :image_data_url, 'data-modal-target' => 'hiddenDataURLField', 'data-image-preview-target' => 'hiddenDataURLField' %>
+  <%= form.hidden_field :image_data_url, value: ("attached" if post.image.attached?), 'data-modal-target' => 'hiddenDataURLField', 'data-image-preview-target' => 'hiddenDataURLField' %>
   <div class="new-post-buttons-container">
     <span class="attach-image-link" data-action="click->modal#show" data-modal-target="showModalLink" data-image-preview-target="showModalLink">
       <span class="mdi mdi-image"></span> Attach image
