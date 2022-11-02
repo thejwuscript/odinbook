@@ -212,6 +212,7 @@ export default class extends Controller {
     overlay.appendChild(loading);
 
     document.body.appendChild(overlay);
+    document.addEventListener('turbo:frame-load', () => overlay.remove(), {once: true})
   }
 
   isValidForm() {
