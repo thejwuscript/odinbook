@@ -35,7 +35,7 @@ A Facebook clone that replicates the core user functionality of Facebook.
 # Challenges
 ### Storing Friendships in the Database
 
-I decided to create a separate table to store friendships after a confirmed friend request. A friendship between user A and user B would be stored as a record in the table, but I was not sure if I should create another record to represent the friendship in the other direction.
+I decided to create a separate table to store friendships for when friend requests were confirmed. I was met with the choice of storing one or two records per friendship. I considered the two options by weighing the pros and cons of each.
 
 <img src="https://user-images.githubusercontent.com/88938117/199243437-7f32a32e-d2b2-4042-af61-5a9c63c638a3.png" alt="friendship tables" width="80%">
 
@@ -69,3 +69,8 @@ It turns out that the parameter does not accept dots because the dot is used as 
 ```ruby
 get ':username', to: 'users#show', constraints: { username: %r{[^/]+} }, as: :user
 ```
+### Facebook OAuth2
+When Facebook Login was first implemented, the app would crash when users gave permission to name and profile picture but denied access to email address.  User registation could not be completed without an email address but my app proceeded to load a page that needed current user information. I considered several options to solve this problem:
+  1. Add a guard clause for denied access to email address
+  2. Change the default configuration of Devise
+  3. Switch to BCrypt or another authentication gem
