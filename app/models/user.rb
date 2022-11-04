@@ -1,4 +1,5 @@
 require 'down'
+require 'securerandom'
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -34,7 +35,8 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 50 }, uniqueness: true, presence: true
   validates :email, length: { maximum: 50 }
 
-  after_create :create_profile, unless: :facebook_provider?
+  after_create :create_profile, unless: :omniauth_provider?
+
   after_create :send_welcome_email
 
   scope :all_except, ->(user) { where.not(id: user) }
@@ -65,23 +67,27 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.username = auth.info.name.downcase.gsub(/\s+/, '.')
-      user.create_profile(Down.download(auth.info.image), auth.info.first_name)
+      user.username = "#{auth.info.name.downcase.gsub(/\s+/, '.')}#{SecureRandom.random_number(10_000)}"
     end
   end
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if (data =
-            session['devise.facebook_data'] &&
-              session['devise.facebook_data']['extra']['raw_info']) && user.email.blank?
-        user.email = data['email']
+      if (data = session['devise.facebook_data'])
+        user.provider = data['provider']
+        user.uid = data['uid']
+        profile = user.build_profile(display_name: data['info']['first_name'])
+        profile.avatar.attach(
+          io: Down.download(data['info']['image']),
+          filename: "fb_avatar_#{profile.id}",
+          content_type: 'image/jpeg'
+        )
       end
     end
   end
 
-  def facebook_provider?
-    provider == 'facebook'
+  def omniauth_provider?
+    provider
   end
 
   def create_profile(avatar_file = nil, display_name = nil)
