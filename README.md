@@ -69,8 +69,28 @@ It turns out that the parameter does not accept dots because the dot is used as 
 ```ruby
 get ':username', to: 'users#show', constraints: { username: %r{[^/]+} }, as: :user
 ```
-### Facebook OAuth2
-When Facebook Login was first implemented, the app would crash when users gave permission to name and profile picture but denied access to email address.  User registation could not be completed without an email address but my app proceeded to load a page that needed current user information. I considered several options to solve this problem:
-  1. Add a guard clause for denied access to email address
-  2. Change the default configuration of Devise
-  3. Switch to BCrypt or another authentication gem
+### Facebook OAuth
+When Facebook Login was first implemented, the app would crash when a user gave permission to their name and profile picture but denied access to their email address. What happened was the user was not saved to the database and the browser was redirected to load a page that needed the user's information. I considered several options to solve the problem:
+  1. Allow users to sign up using a different email
+  2. Redirect users back to the login page if they denied access to their email address
+  3. Allow the email attribute to be empty/null
+  4. Switch out Devise for the BCrypt gem
+
+Option #2 would be the easiest to implement without affecting other parts of the app; I would just need add a guard clause:
+```ruby
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_action :verify_authenticity_token, only: :facebook
+
+  def facebook
+    if request.env['omniauth.auth'].info.email.blank?
+      flash[:alert] = 'Please allow access to email address to sign in with Facebook.'
+      redirect_to root_path
+      return
+    end
+    ... # more code here
+  end
+end
+```
+However, forcing users to provide their facebook email would not be a great user experience and should be avoided if possible.
+Option #3 would break some built-in features of Devise that are useful such as password resets.
+Option #4 would mean rolling my own authentication system, which may not be advisable when a well-tested authentication gem like Devise is already available.
