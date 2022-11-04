@@ -2,12 +2,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_action :verify_authenticity_token, only: :facebook
 
   def facebook
-    # You need to implement the method below in your model (e.g. app/models/user.rb)
-    if request.env['omniauth.auth'].info.email.blank?
-      flash[:alert] = 'Please allow access to email address to sign in with Facebook.'
-      failure
-      return # be sure to include an return if there is code after this otherwise it will be executed
-    end
+    return back_to_homepage if request.env['omniauth.auth'].info.email.blank?
+
     @user = User.from_omniauth(request.env['omniauth.auth'])
 
     if @user.persisted?
@@ -21,7 +17,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  def failure
+  def back_to_homepage
+    flash[:alert] = 'Please allow access to email address to sign in with Facebook.'
     redirect_to root_path
   end
 end
