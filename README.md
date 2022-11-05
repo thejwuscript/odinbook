@@ -54,25 +54,10 @@ end
 There would be no need to write a custom method or write raw SQL to perform the same task. As a result, the code is cleaner and easier to understand.
 
 Second, although friendships are mutual, each individual may view friendships differently than their counterpart. For example, User A may treat User B as a casual friend while User B sees User A as a close friend. This difference in perspective can be stored as a separate attribute for each record. Storing two records per friendship means that we can model the difference in perspective between two individuals.
-### Custom Route
-I had a custom route defined like so:
-```ruby
-get ':username', to: 'users#show', as: :user
-```
-The route was working fine until the username "earlean.shoope" was passed as the parameter, to which the server responded with a status of 500. Surprised at the outcome, I started debugging the issue by looking at the server log. I found out that the username parameter had been cut off at the dot.
-```
-Parameters: {"username" => "earlean.shoope"}    # expected
-
-Parameters: {"username" => "earlean"}           # actual
-```
-It turns out that the parameter does not accept dots because the dot is used as a separator for formatted routes. As the [Rails documentation](https://guides.rubyonrails.org/routing.html#dynamic-segments) suggested, I added a constraint on the username to allow anything except a slash. The result:
-```ruby
-get ':username', to: 'users#show', constraints: { username: %r{[^/]+} }, as: :user
-```
 ### Facebook OAuth
-When Facebook Login was first implemented, the app would crash when a user gave permission to their name and profile picture but denied access to their email address. What happened was the user was not saved to the database and the browser was redirected to load a page that needed the user's information. I considered several options to solve the problem:
+When Facebook Login was first implemented, the app would crash whenever a user gave permission to their name and profile picture but denied access to their email address. What happened was the user was not saved to the database and the browser was redirected to load a page that needed the user's information. I considered several options to solve the problem:
   1. Allow users to sign up using a different email
-  2. Redirect users back to the login page if they denied access to their email address
+  2. Redirect users back to the login page if they denied access to their facebook email address
   3. Allow the email attribute to be empty/null
   4. Switch out Devise for the BCrypt gem
 
@@ -93,4 +78,21 @@ end
 ```
 However, forcing users to provide their facebook email would not be a great user experience and should be avoided if possible.
 Option #3 would break some built-in features of Devise that are useful such as password resets.
-Option #4 would mean rolling my own authentication system, which may not be advisable when a well-tested authentication gem like Devise is already available.
+Option #4 would mean rolling my own authentication system, which may not be advisable when a well-tested authentication gem like Devise was already available.
+
+The first option was the most flexible and secure solution. The [Devise documentation](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview) explains how to copy data from Facebook securely before a user creates an account. It is worth mentioning that Devise cleans up all session data starting with the "devise." key namespace whenever a user signs in.
+### Custom Route
+I had a custom route defined like so:
+```ruby
+get ':username', to: 'users#show', as: :user
+```
+The route was working fine until a username like "earlean.shoope" was passed as the parameter, to which the server responded with a status of 500. Surprised at the outcome, I started debugging the issue by looking at the server log. I found out that the username parameter had been cut off at the dot.
+```
+Parameters: {"username" => "earlean.shoope"}    # expected
+
+Parameters: {"username" => "earlean"}           # actual
+```
+It turns out that the parameter does not accept dots because the dot is used as a separator for formatted routes. As the [Rails documentation](https://guides.rubyonrails.org/routing.html#dynamic-segments) suggested, I added a constraint on the username to allow anything except a slash. The result:
+```ruby
+get ':username', to: 'users#show', constraints: { username: %r{[^/]+} }, as: :user
+```
