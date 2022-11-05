@@ -14,14 +14,12 @@ RSpec.describe 'Log in', type: :system do
 
   context 'when the user fills in the correct credentials' do
     it 'logs in user and redirects to homepage', :aggregate_failures do
-      VCR.use_cassette 'news headlines' do
-        visit root_path
-        fill_in 'user_login', with: user.login
-        fill_in 'user_password', with: user.password
-        click_on 'Log in'
-        expect(page).to have_current_path(root_path)
-        expect(page).to have_content('Signed in successfully.')
-      end
+      visit root_path
+      fill_in 'user_login', with: user.login
+      fill_in 'user_password', with: user.password
+      click_on 'Log in'
+      expect(page).to have_current_path(root_path)
+      expect(page).to have_content('Signed in successfully.')
     end
   end
 

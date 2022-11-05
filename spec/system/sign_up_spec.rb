@@ -7,19 +7,19 @@ RSpec.describe 'Sign up', type: :system do
 
   before do
     allow(Headline).to receive(:create).and_return(headline1, headline2, headline3)
+    stub_request(:get, /newsapi.org/).to_return(status: 200,
+                                                body: File.read(Rails.root.join('spec/support/assets/response.json')))
   end
 
   context 'when the user enters and submits valid credentials' do
     before do
-      VCR.use_cassette 'news headlines' do
-        visit root_path
-        click_on 'Create new account'
-        fill_in 'user_username', with: 'test_user'
-        fill_in 'user_email', with: 'test_user@example.com'
-        fill_in 'user_password', with: '123456'
-        fill_in 'user_password_confirmation', with: '123456'
-        click_on 'Sign up'
-      end
+      visit root_path
+      click_on 'Create new account'
+      fill_in 'user_username', with: 'test_user'
+      fill_in 'user_email', with: 'test_user@example.com'
+      fill_in 'user_password', with: '123456'
+      fill_in 'user_password_confirmation', with: '123456'
+      click_on 'Sign up'
     end
 
     it 'signs up successfully and redirects to homepage', :aggregate_failures do

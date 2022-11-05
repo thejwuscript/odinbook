@@ -8,14 +8,14 @@ RSpec.describe 'Notifications', type: :system, js: true do
 
   before do
     allow(Headline).to receive(:create).and_return(headline1, headline2, headline3)
+    stub_request(:get, /newsapi.org/).to_return(status: 200,
+                                                body: File.read(Rails.root.join('spec/support/assets/response.json')))
   end
 
   context 'when notifications are unread' do
     before do
-      VCR.use_cassette 'news headlines' do
-        sign_in notification.receiver
-        visit root_path
-      end
+      sign_in notification.receiver
+      visit root_path
     end
 
     it 'shows the number of unread notifications on the icon' do
@@ -27,11 +27,9 @@ RSpec.describe 'Notifications', type: :system, js: true do
 
   context 'when the notification icon is clicked' do
     before do
-      VCR.use_cassette 'news headlines' do
-        sign_in notification.receiver
-        visit root_path
-        find('button[title="Notifications"]').click
-      end
+      sign_in notification.receiver
+      visit root_path
+      find('button[title="Notifications"]').click
     end
 
     it 'removes the count' do
@@ -48,12 +46,10 @@ RSpec.describe 'Notifications', type: :system, js: true do
 
   context 'when the user clears all notifications by clicking the x icons' do
     before do
-      VCR.use_cassette 'news headlines' do
-        sign_in notification.receiver
-        visit root_path
-        find('button[title="Notifications"]').click
-        find('.notifications-list-item span.mdi-close').click
-      end
+      sign_in notification.receiver
+      visit root_path
+      find('button[title="Notifications"]').click
+      find('.notifications-list-item span.mdi-close').click
     end
 
     it "shows a 'no notifications to show' message" do
@@ -63,12 +59,10 @@ RSpec.describe 'Notifications', type: :system, js: true do
 
   context "when the user clicks on 'clear all'" do
     before do
-      VCR.use_cassette 'news headlines' do
-        sign_in notification.receiver
-        visit root_path
-        find('button[title="Notifications"]').click
-        find('.notification-dropdown-container .clear-all').click
-      end
+      sign_in notification.receiver
+      visit root_path
+      find('button[title="Notifications"]').click
+      find('.notification-dropdown-container .clear-all').click
     end
 
     it "shows a 'no notifications to show' message" do
@@ -78,11 +72,9 @@ RSpec.describe 'Notifications', type: :system, js: true do
 
   context 'when the user clicks on the notification icon twice' do
     before do
-      VCR.use_cassette 'news headlines' do
-        sign_in notification.receiver
-        visit root_path
-        2.times { find('button[title="Notifications"]').click }
-      end
+      sign_in notification.receiver
+      visit root_path
+      2.times { find('button[title="Notifications"]').click }
     end
 
     it 'expands and collapses the notification dropdown menu' do
