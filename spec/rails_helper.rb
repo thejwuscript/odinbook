@@ -10,7 +10,7 @@ require 'support/factory_bot'
 require 'support/time_helpers'
 require 'support/capybara'
 require 'support/webmock'
-require 'support/vcr'
+# require 'support/vcr'
 require 'support/devise'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
