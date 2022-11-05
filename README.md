@@ -96,3 +96,5 @@ It turns out that the parameter does not accept dots because the dot is used as 
 ```ruby
 get ':username', to: 'users#show', constraints: { username: %r{[^/]+} }, as: :user
 ```
+### Mocking API Calls
+It was necessary to mock network requests to the news API to test any functionalities involving the homepage for logged in users. At first, I used WebMock and VCR to record the response from the API as a snapshot that would be used for future requests. After I ran a few system tests however, I discovered that images were being downloaded from the web. This was not acceptable because downloading images slows down the test significantly, wastes network resources, and makes the test less deterministic. I also found out the cassette produced by VCR contained extraneous data for my needs; I only needed a sample of the response body. I decided to stop relying on VCR and created my own mocked response. 
