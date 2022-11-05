@@ -6,7 +6,7 @@ RSpec.describe Profile, type: :model do
   end
 
   after do
-    User.set_callback(:create, :after, :create_profile, unless: :facebook_provider?)
+    User.set_callback(:create, :after, :create_profile, unless: :omniauth_provider?)
   end
 
   context 'when an avatar is not attached' do
