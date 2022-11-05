@@ -8,6 +8,8 @@ RSpec.describe 'Log in', type: :system do
 
   before do
     allow(Headline).to receive(:create).and_return(headline1, headline2, headline3)
+    stub_request(:get, /newsapi.org/).to_return(status: 200,
+                                                body: File.read(Rails.root.join('spec/support/assets/response.json')))
   end
 
   context 'when the user fills in the correct credentials' do
