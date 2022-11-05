@@ -54,13 +54,13 @@ gem 'aws-sdk-s3', require: false
 gem 'browser'
 gem 'devise'
 gem 'down', '~> 5.0'
+gem 'faker'
 gem 'news-api'
 gem 'normalize-rails', '~> 8.0', '>= 8.0.1'
 gem 'omniauth-facebook'
 gem 'omniauth-rails_csrf_protection'
 gem 'prettier'
 gem 'pundit', '~> 2.2'
-gem 'faker'
 
 group :development, :test do
   gem 'capybara'
