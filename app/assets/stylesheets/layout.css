@@ -56,13 +56,9 @@
   padding-bottom: 24px;
 }
 
-.profile.mobile {
-  /* margin-bottom: 72px; */
-}
-
-main .friends-page-sidebar.mobile {
+/* main .friends-page-sidebar.mobile {
   border-bottom: none;
-}
+} */
 
 @media (max-width: 768px) {
   .main-homepage {
@@ -107,5 +103,6 @@ main .friends-page-sidebar.mobile {
 
   main .friends-page-sidebar {
     border-bottom: 4px solid #d5d8db;
+    padding-bottom: 32px;
   }
 }

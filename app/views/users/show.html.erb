@@ -1,4 +1,4 @@
-<%= tag.div class: browser.device.mobile? ? "profile mobile" : "profile", data: { controller: "modal"} do %>
+<%= tag.div class: "profile", data: { controller: "modal"} do %>
 	<div class="cover-photo-container">
 		<% if @profile.cover_photo.attached? %>
 			<%= image_tag @profile.cover_photo %>
@@ -10,11 +10,7 @@
 	<%= render "profile", profile: @profile, user: @user %>
 
 	<div class="profile-posts">
-	<% if @user == current_user && !browser.device.mobile? %>
 		<%= render partial: "users/edit_cover_photo", locals: { profile: @profile } %>
-	<% elsif @user == current_user && browser.device.mobile? %>
-		<%= render partial: "users/edit_cover_photo_mobile", locals: { profile: @profile } %>
-	<% end %>
 
 	<% if @user == current_user %>
 		<%= render "posts/new_post_placeholder" %>

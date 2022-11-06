@@ -1,5 +1,5 @@
-<%= tag.div class: browser.device.mobile? ? "friends-page-mobile" : "friends-page" do %>
-  <%= render "shared/sidebar" unless browser.device.mobile? %>
+<%= tag.div class: "friends-page" do %>
+  <%= render "shared/sidebar" %>
   <%= render partial: "content", locals: {friendships: @friendships} %>
 <% end %>
 

@@ -97,11 +97,11 @@ header {
   padding: 0 16px;
 }
 
-.header-mobile {
+/* .header-mobile {
   height: fit-content;
   box-shadow: none;
   padding: 6px 12px 6px 12px;
-}
+} */
 
 header > div.header-right {
   display: flex;

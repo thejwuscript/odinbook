@@ -1,6 +1,6 @@
 <div class="main-homepage">
 
-  <%= render "sidebar" unless browser.device.mobile? %>
+  <%= render "sidebar" %>
 
   <div class="main-homepage-center">
     <%= render "posts/new_post_placeholder" %>
@@ -12,10 +12,8 @@
     <% end %>
   </div>
 
-  <% unless browser.device.mobile? %>
-    <div class="main-homepage-right">
-      <%= render partial: "posts/headlines", locals: {headlines: @headlines} %>
-    </div>
-  <% end %>
+  <div class="main-homepage-right">
+    <%= render partial: "posts/headlines", locals: {headlines: @headlines} %>
+  </div>
 
 </div>

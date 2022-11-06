@@ -1,4 +1,4 @@
-<%= tag.div class: browser.device.mobile? ? "friends-page-sidebar mobile" : "friends-page-sidebar" do %>
+<%= tag.div class: "friends-page-sidebar" do %>
 
   <%= link_to friends_path, class: ("active" if current_page?(controller: 'friendships', action: 'index')) do %>
     <div class="icon-container">

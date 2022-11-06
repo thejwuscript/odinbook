@@ -187,7 +187,7 @@
   border-radius: 50%;
 }
 
-.topnav-mobile {
+/* .topnav-mobile {
   padding: 6px 0;
   background-color: white;
   justify-content: center;
@@ -199,7 +199,7 @@
 
 .topnav-mobile > ul a.active {
   border: none;
-}
+} */
 
 .topnav .friend-request-item {
   display: none;

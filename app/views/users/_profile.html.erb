@@ -1,19 +1,11 @@
 <div class="profile-info">
-  <%= render partial: "users/edit_cover_photo_mobile", locals: { profile: profile } if browser.device.mobile? && user == current_user %>
   <%= render partial: "users/avatar", locals: {profile: profile} %>
 
   <div class="profile-info-details">
     <%= turbo_frame_tag "profile-details" do %>
-      <% if browser.device.mobile? %>
-        <% if profile.display_name.present? %>
-          <%= tag.span profile.display_name, class: "display-name" %>
-        <% else %>
-          <%= tag.span profile.user.username, class: "username" %>
-        <% end %>
-      <% else %>
-        <%= tag.span profile.display_name, class: "display-name" %>
-        <%= tag.span profile.user.username, class: "username" %>
-      <% end %>
+      
+      <%= tag.span profile.display_name, class: "display-name" %>
+      <%= tag.span profile.user.username, class: "username" %>
       <%= tag.span profile.bio, class: "bio" %>
 
       <span class="show-company-container">

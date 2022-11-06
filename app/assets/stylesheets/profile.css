@@ -281,7 +281,7 @@ form > .location-container > input {
   width: 100%;
 }
 
-.profile-info .edit-cover-photo-container-mobile {
+/* .profile-info .edit-cover-photo-container-mobile {
   display: none;
 }
 
@@ -297,7 +297,7 @@ form > .location-container > input {
 .edit-cover-photo-container-mobile .add-cover-photo-button {
   border-radius: 50%;
   padding: 10px 11px;
-}
+} */
 
 .show-email-container .email {
   overflow: hidden;
@@ -363,7 +363,7 @@ form > .location-container > input {
     z-index: 1;
   }
 
-  .profile-info .edit-cover-photo-container-mobile {
+  /* .profile-info .edit-cover-photo-container-mobile {
     width: 100%;
     max-width: 600px;
     height: auto;
@@ -376,7 +376,7 @@ form > .location-container > input {
     justify-content: flex-start;
     background-color: transparent;
     gap: 1px;
-  }
+  } */
 
   .edit-cover-photo-container {
     margin-top: 0;

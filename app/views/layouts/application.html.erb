@@ -19,11 +19,7 @@
         <%= render "shared/flash" %>
       <% end %>
       <% if user_signed_in? %>
-        <% if browser.device.mobile? %>
-          <%= render "shared/header_mobile" %>
-        <% else %>
-          <%= render "shared/header" %>
-        <% end %>
+        <%= render "shared/header" %>
         <%= render "shared/topnav" %>
       <% end %>
       <main>

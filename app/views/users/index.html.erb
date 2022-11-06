@@ -1,4 +1,4 @@
-<%= tag.div class: browser.device.mobile? ? "users-page-mobile" : "users-page" do %>
-  <%= render "shared/sidebar" unless browser.device.mobile? %>
+<%= tag.div class: "users-page" do %>
+  <%= render "shared/sidebar" %>
   <%= render partial: "content",  locals: {users: @users, received_requests: @received_requests, sent_requests_users: @sent_requests_users, received_requests_users: @received_requests_users, not_friends_list: @not_friends_list, potential_friends: @potential_friends}%>
 <% end %>
