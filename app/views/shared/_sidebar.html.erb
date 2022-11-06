@@ -21,9 +21,8 @@
     All Users
   <% end %>
   
-  <% if browser.device.mobile? %>
-    <%= button_to destroy_user_session_path, method: :delete, class: "logout", form: {  data: { turbo: :false } } do %>
-      <div class="icon-container"><span class="mdi mdi-logout"></span></div>Log Out
-    <% end %>
+  <%= button_to destroy_user_session_path, method: :delete, class: "logout", form: {  data: { turbo: :false } } do %>
+    <div class="icon-container"><span class="mdi mdi-logout"></span></div>Log Out
   <% end %>
+  
 <% end %>
