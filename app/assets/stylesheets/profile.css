@@ -348,7 +348,6 @@ form > .location-container > input {
   .profile-info-details .display-name,
   .profile-info-details .username {
     align-self: center;
-    font-weight: bold;
     color: black;
   }
 
@@ -383,6 +382,7 @@ form > .location-container > input {
     margin-top: 0;
     top: 132px;
     right: 24px;
+    width: fit-content;
   }
 
   .profile-info-details > #profile-details {
