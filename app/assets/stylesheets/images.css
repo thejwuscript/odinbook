@@ -126,7 +126,7 @@
     height: 45px;
   }
 
-  .header-right .profile-pic-icon {
+  .header-right > div > .profile-pic-icon {
     display: none;
     position: absolute;
   }
