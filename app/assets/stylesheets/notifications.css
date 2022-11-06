@@ -111,7 +111,7 @@
   }
 
   .notification-dropdown-container {
-    width: 310px;
+    max-width: 285px;
     right: -52px;
   }
 
