@@ -399,6 +399,10 @@ form #post_body {
     margin-right: 4px;
   }
 
+  .post-text-placeholder .name {
+    display: none;
+  }
+
   .individual-comment-container .ellipsis-container.comment {
     display: flex;
   }
