@@ -8,22 +8,21 @@
 	</div>
 
 	<%= render "profile", profile: @profile, user: @user %>
-
+	
 	<div class="profile-posts">
-		<%= render partial: "users/edit_cover_photo", locals: { profile: @profile } %>
-
-	<% if @user == current_user %>
-		<%= render "posts/new_post_placeholder" %>
-	<% end %>
-
-	<%= turbo_frame_tag "posts" do %>
-		<% if @posts.empty? && @user != current_user %>
-			<div class="post-container empty">No posts to show.</div>
+		<% if @user == current_user %>
+			<%= render partial: "users/edit_cover_photo", locals: { profile: @profile } %>
+			<%= render "posts/new_post_placeholder" %>
 		<% end %>
-		<% @posts.each do |post| %>
-			<%= render partial: "posts/post", locals: { post: post, likes: post.likes.includes(:user) }%>
+
+		<%= turbo_frame_tag "posts" do %>
+			<% if @posts.empty? && @user != current_user %>
+				<div class="post-container empty">No posts to show.</div>
+			<% end %>
+			<% @posts.each do |post| %>
+				<%= render partial: "posts/post", locals: { post: post, likes: post.likes.includes(:user) }%>
+			<% end %>
 		<% end %>
-	<% end %>
 	</div>
 	<%= render partial: "users/edit_avatar", locals: {profile: @profile} %>
 <% end %>
