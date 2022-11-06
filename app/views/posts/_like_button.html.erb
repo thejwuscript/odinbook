@@ -1,0 +1,11 @@
+<% if likes.none? { |like| like.user == current_user } %>
+  <%= button_to likes_path, params: { id: post }, form: { data: {turbo: true}, id: "like-button-#{post.id}" } do %>
+    <span class="mdi mdi-thumb-up-outline"></span>
+    <span>Like</span>
+  <% end %>
+<% else %>
+  <%= button_to like_path(id: likes.where(user_id: current_user.id).first), method: :delete, params: { post_id: post.id, like_id: likes.where(user_id: current_user.id).first.id }, form: { id: "like-button-liked-#{post.id}" } do %>
+    <span class="mdi mdi-thumb-up"></span>
+    <span class="button-text">Like</span>
+  <% end %>
+<% end %>

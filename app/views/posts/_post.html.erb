@@ -1,61 +1,47 @@
 <%= turbo_frame_tag post, class: "turbo-frame-post" do %>
-<%= tag.div class: "post-container published", data: {controller: "comments", comments_target: "publishedPost"}, id: dom_id(post) do %>
+  <%= tag.div class: "post-container published", data: {controller: "comments", comments_target: "publishedPost"}, id: dom_id(post) do %>
 
-  <div class="post-author-container">
-    <%= link_to user_path(username: post.author.username), class: 'post-avatar-link', data: {turbo: false} do %>
-      <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
-    <% end %>
-    <div class="user-info">
-      <%= link_to user_path(username: post.author.username), class: 'user-info-name-link', data: {turbo: false} do %>
-        <p class="user-info-name"><%= post.author.name %></p>
+    <div class="post-author-container">
+      <%= link_to user_path(username: post.author.username), class: 'post-avatar-link', data: {turbo: false} do %>
+        <%= image_tag post.author.avatar, class: "profile-pic-icon" %>
       <% end %>
-      <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%l:%M %p - %b %d, %Y") %></p>
+      <div class="user-info">
+        <%= link_to user_path(username: post.author.username), class: 'user-info-name-link', data: {turbo: false} do %>
+          <p class="user-info-name"><%= post.author.name %></p>
+        <% end %>
+        <p class="user-info-date"><%= post.created_at.in_time_zone('Tokyo').strftime("%l:%M %p - %b %d, %Y") %></p>
+      </div>
+      <%= render partial: "posts/options", locals: {post: post} if post.author == current_user %>
     </div>
-    <%= render partial: "posts/options", locals: {post: post} if post.author == current_user %>
-  </div>
 
-  <p class="post-body-text"><%= post.body %></p>
+    <p class="post-body-text"><%= post.body %></p>
 
-   <% if post.image_url.present? %>
-    <%= link_to image_tag(post.image_url, class: 'post-image'), post.image_url, data: {turbo_action: 'advance'} %>
-  <% elsif post.image.attached? %>
-    <%= link_to image_tag(post.image, class: 'post-image'), post.image, data: { turbo_action: 'advance' } %>
+    <% if post.image_url.present? %>
+      <%= link_to image_tag(post.image_url, class: 'post-image'), post.image_url, data: {turbo_action: 'advance'} %>
+    <% elsif post.image.attached? %>
+      <%= link_to image_tag(post.image, class: 'post-image'), post.image, data: { turbo_action: 'advance' } %>
+    <% end %>
+
+    <hr>
+    
+    <%= tag.div class: "counts-container" do %>
+      <%= turbo_frame_tag "post-likes-#{post.id}" do %>
+        <%= render "posts/like_count_line", like_count: post.likes.count %>
+      <% end %>
+      <% if post.comments.present? %>
+        <% if post.comments.size == 1 %>
+          <%= tag.span "1 Comment", class: "comment-count-line", data: {postid: post.id, 'comments-target' => 'commentCount'} %>
+        <% else %>
+          <%= tag.span "#{post.comments.size} Comments", class: "comment-count-line", data: {postid: post.id, 'comments-target' => 'commentCount'} %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <hr>
+
+    <div class="post-buttons">
+      <%= render partial: "posts/like_button", locals: {post: post, likes: likes} %>
+      <%= render partial: "posts/comment_button", locals: {post: post} %>
+    </div>
   <% end %>
-
-  <hr>
-  <%= tag.div class: "counts-container" do %>
-    <%= turbo_frame_tag "post-likes-#{post.id}" do %>
-      <%= render "posts/like_count_line", like_count: post.likes.count %>
-    <% end %>
-    <% if post.comments.present? %>
-      <% if post.comments.size == 1 %>
-        <%= tag.span "1 Comment", class: "comment-count-line", data: {postid: post.id, 'comments-target' => 'commentCount'} %>
-      <% else %>
-        <%= tag.span "#{post.comments.size} Comments", class: "comment-count-line", data: {postid: post.id, 'comments-target' => 'commentCount'} %>
-      <% end %>
-    <% end %>
-  <% end %>
-
-  <hr>
-
-  <div class="post-buttons">
-
-    <% if likes.none? { |like| like.user == current_user } %>
-      <%= button_to likes_path, params: { id: post }, form: { data: {turbo: true}, id: "like-button-#{post.id}" } do %>
-        <span class="mdi mdi-thumb-up-outline"></span>
-        <span>Like</span>
-      <% end %>
-    <% else %>
-      <%= button_to like_path(id: likes.where(user_id: current_user.id).first), method: :delete, params: { post_id: post.id, like_id: likes.where(user_id: current_user.id).first.id }, form: { id: "like-button-liked-#{post.id}" } do %>
-        <span class="mdi mdi-thumb-up"></span>
-        <span>Like</span>
-      <% end %>
-    <% end %>
-
-    <%= tag.div class: "comment-button", 'data-postid' => post.id, 'data-comments-target' => 'commentsButton' do %>
-      <span class="mdi mdi-comment-outline"></span>
-      <span>Comment</span>
-    <% end %>
-  </div>
-<% end %>
 <% end %>
