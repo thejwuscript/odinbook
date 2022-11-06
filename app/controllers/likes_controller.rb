@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   def create
     @post = Post.find(params[:id])
+    @likes = @post.likes
     @like = @post.likes.build(user: current_user)
 
     if @like.save
@@ -19,6 +20,8 @@ class LikesController < ApplicationController
     @like = Like.find(params[:like_id])
 
     @like.destroy
+
+    @likes = @post.likes
 
     respond_to do |format|
       format.html {}
