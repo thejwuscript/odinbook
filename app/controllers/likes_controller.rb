@@ -6,7 +6,7 @@ class LikesController < ApplicationController
 
     if @like.save
       respond_to do |format|
-        format.html {}
+        format.html { redirect_back_or_to root_path }
         format.turbo_stream
       end
     else
@@ -24,7 +24,7 @@ class LikesController < ApplicationController
     @likes = @post.likes
 
     respond_to do |format|
-      format.html {}
+      format.html { redirect_back_or_to root_path }
       format.turbo_stream
     end
   end
