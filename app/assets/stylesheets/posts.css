@@ -411,4 +411,8 @@ form #post_body {
     cursor: pointer;
     background-color: #d4d6d6;
   }
+
+  .post-buttons .button-text {
+    display: none;
+  }
 }
