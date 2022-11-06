@@ -114,10 +114,12 @@
     max-width: 285px;
     right: -52px;
     margin-top: 0;
+    padding: 12px;
   }
 
   .notification-badge {
     top: -2px;
     right: -8px;
+    transform: scale(0.9);
   }
 }
