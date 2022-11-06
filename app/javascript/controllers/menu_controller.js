@@ -11,6 +11,14 @@ export default class extends Controller {
     event.preventDefault()
   }
 
+  menuTargetConnected() {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 768) {
+        this.menuTarget.classList.remove('visible');
+      };
+    });
+  };
+
   notificationMenuTargetConnected(element) {
     this.notificationButtonTarget.addEventListener('click', this.preventDefault)
     document.addEventListener('click', (event) => {
