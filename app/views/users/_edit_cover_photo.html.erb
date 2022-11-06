@@ -1,7 +1,7 @@
 <div class="edit-cover-photo-container" data-controller="cover-photo">
   <%= button_tag type: "button", class: "add-cover-photo-button", data: {action: "click->cover-photo#toggle"} do %>
     <span class="mdi mdi-camera"></span>
-    <%= tag.span "Edit" unless browser.device.mobile? %>
+    <%= tag.span "Edit", class: "text" unless browser.device.mobile? %>
   <% end %>
   <div class="edit-cover-photo-selection" data-cover-photo-target="menu">
     <%= form_with model: profile, data: {turbo: false} do |form| %>
