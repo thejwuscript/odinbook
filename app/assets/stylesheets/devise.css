@@ -222,6 +222,7 @@
   .login-logo-container {
     margin-top: 16px;
     text-align: center;
+    width: 120px;
   }
 
   .login-logo {

@@ -81,9 +81,10 @@ main .friends-page-sidebar.mobile {
   }
 
   .main-homepage-sidebar {
-    background-color: white;
+    display: none;
+    /* background-color: white;
     border-top: 8px solid white;
-    border-bottom: 4px solid white;
+    border-bottom: 4px solid white; */
   }
 
   main {

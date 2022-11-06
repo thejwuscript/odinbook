@@ -94,6 +94,7 @@ header {
   position: sticky;
   z-index: 2;
   top: 0;
+  padding: 0 16px;
 }
 
 .header-mobile {
@@ -105,7 +106,9 @@ header {
 header > div.header-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: flex-end;
+  gap: 16px;
+  width: 120px;
 }
 
 #root {
@@ -191,5 +194,12 @@ body > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  header {
+    box-shadow: none;
+    height: fit-content;
+    box-shadow: none;
+    padding: 6px 14px;
   }
 }

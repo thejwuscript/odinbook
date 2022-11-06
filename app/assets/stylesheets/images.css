@@ -1,6 +1,6 @@
 .profile-pic-icon {
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
   background-color: whitesmoke;
   object-fit: cover;
   border-radius: 50%;
@@ -124,5 +124,10 @@
   .post-container .profile-pic-icon {
     width: 45px;
     height: 45px;
+  }
+
+  .header-right .profile-pic-icon {
+    display: none;
+    position: absolute;
   }
 }

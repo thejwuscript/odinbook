@@ -113,18 +113,6 @@ li.friend-request-card-item > div > div > a:hover {
   font-weight: 400;
 }
 
-.friends-page-sidebar form button.logout {
-  background-color: white;
-  flex: 1;
-  border: none;
-  border-radius: 5px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 12px;
-  padding: 8px;
-}
-
 .friends-page-sidebar button:active {
   background-color: #e5e4e27d;
 }
@@ -141,6 +129,10 @@ li.friend-request-card-item > div > div > a:hover {
   height: 52px;
   color: black;
   margin-top: 36px;
+}
+
+.friends-page-sidebar form button.logout {
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -180,5 +172,30 @@ li.friend-request-card-item > div > div > a:hover {
 
   .friend-requests-heading + p {
     margin-top: 14px;
+  }
+
+  div > .friends-page-sidebar {
+    display: none;
+  }
+
+  main > .friends-page-sidebar {
+    display: flex;
+  }
+
+  .friends-page-sidebar form button.logout {
+    background-color: white;
+    flex: 1;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .friends-page-sidebar form button.logout:hover {
+    background-color: #F5F6F7;
   }
 }
