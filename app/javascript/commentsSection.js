@@ -1,4 +1,4 @@
-import { parseISO } from "date-fns";
+import parseISO from "parseISO";
 
 function showComments(e) {
   const postContainer = e.currentTarget.closest(".post-container.published");
