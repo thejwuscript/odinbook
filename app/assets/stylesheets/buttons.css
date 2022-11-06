@@ -196,4 +196,13 @@ button.add-friend:disabled {
   .unfriend > .mdi {
     font-size: 1.2rem;
   }
+
+  .add-cover-photo-button {
+    border-radius: 50%;
+    padding: 10px 11px;
+  }
+
+  .add-cover-photo-button .text {
+    display: none;
+  }
 }
