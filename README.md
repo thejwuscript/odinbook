@@ -37,7 +37,7 @@ A Facebook clone that replicates the core user functionality of Facebook.
 
 I decided to create a separate table to store friendships for when friend requests were confirmed. I was met with the choice of storing one or two records per friendship. I considered the two options by weighing the pros and cons of each.
 
-<img src="https://user-images.githubusercontent.com/88938117/199243437-7f32a32e-d2b2-4042-af61-5a9c63c638a3.png" alt="friendship tables" width="80%">
+<img src="https://user-images.githubusercontent.com/88938117/199243437-7f32a32e-d2b2-4042-af61-5a9c63c638a3.png" alt="friendship tables" width="700">
 
 I went with creating two records per friendship despite the redundancy for a couple of reasons. First, I can use the query ```user.friends``` to retrive a list of friends for a particular user by leveraging Active Record associations.
 ```ruby
@@ -51,7 +51,7 @@ class Friendship < ApplicationRecord
   belongs_to :friend, class_name: 'User'
 end
 ```
-There would be no need to write a custom method or write raw SQL to perform the same task. As a result, the code is cleaner and easier to understand.
+There would be no need to write a custom method or write raw SQL to perform the same task. As a result, the code is clean and easy to understand.
 
 Second, although friendships are mutual, each individual may view friendships differently than their counterpart. For example, User A may treat User B as a casual friend while User B sees User A as a close friend. This difference in perspective can be stored as a separate attribute for each record. Storing two records per friendship means that we can model the difference in perspective between two individuals.
 ### Facebook OAuth
@@ -61,7 +61,7 @@ When Facebook Login was first implemented, the app would crash whenever a user g
   3. Allow the email attribute to be empty/null
   4. Switch out Devise for the BCrypt gem
 
-Option #2 would be the easiest to implement without affecting other parts of the app; I would just need add a guard clause:
+Option #2 would be the easiest to implement without affecting other parts of the app. I would only need to add a guard clause to check if the user's email is present in the response from Facebook:
 ```ruby
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_action :verify_authenticity_token, only: :facebook
@@ -82,7 +82,7 @@ Option #4 would mean rolling my own authentication system, which may not be advi
 
 The first option was the most flexible and secure solution. The [Devise documentation](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview) explains how to copy data from Facebook securely before a user creates an account. It is worth mentioning that Devise cleans up all session data starting with the "devise." key namespace whenever a user signs in.
 ### Custom Route
-I had a custom route defined like so:
+I had a custom route defined as the following:
 ```ruby
 get ':username', to: 'users#show', as: :user
 ```
@@ -97,4 +97,4 @@ It turns out that the parameter does not accept dots because the dot is used as 
 get ':username', to: 'users#show', constraints: { username: %r{[^/]+} }, as: :user
 ```
 ### Mocking API Calls
-It was necessary to mock network requests to the [news API](https://newsapi.org/) to test any functionalities involving the homepage for logged in users. At first, I used [WebMock](https://github.com/bblimke/webmock) and [VCR](https://github.com/vcr/vcr) to record the response from the API as a snapshot that would be used for future requests. After I ran a few system tests however, I discovered that images were being downloaded from the web. This was not acceptable because downloading images slows down the test significantly, wastes network resources, and makes the test less deterministic. I also found out the cassette produced by VCR contained extraneous data for my needs; I only needed a sample of the response body. I decided to stop relying on VCR and created my own mocked response. 
+Because real HTTP requests are sent to the news API to render the homepage for logged in users, I needed to mock network requests for testing purposes. At first, I used [WebMock](https://github.com/bblimke/webmock) and [VCR](https://github.com/vcr/vcr) to record the response from the API as a snapshot that would be used for future requests. After I ran a few system tests however, I discovered that images were being downloaded from the web. This was not acceptable because downloading images slowed down the test significantly, wasted network resources, and made the test less deterministic. I also found out the cassette produced by VCR contained extraneous data for my needs; I only needed a sample of the response body. Instead of relying on external libraries that were counterproductive, I decided to create my own mocked response from the API to improve the quality of my tests.
