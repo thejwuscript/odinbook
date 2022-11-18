@@ -30,6 +30,7 @@ A Facebook clone that replicates the core user functionality of Facebook.
 - PostgreSQL
 - AWS S3
 - RSpec + Capybara
+- Postman
 - Heroku
 
 # Challenges
