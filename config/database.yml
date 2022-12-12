@@ -81,6 +81,8 @@ test:
 #
 production:
   <<: *default
-  database: odin_facebook_production
-  username: odin_facebook
-  password: <%= ENV["ODIN_FACEBOOK_DATABASE_PASSWORD"] %>
+  database: odinbook_db
+  username: odinbook_db_user
+  password: <%= ENV["ODINBOOK_DB_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  
