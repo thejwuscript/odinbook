@@ -1,7 +1,7 @@
 # Odinbook
 A Facebook clone that replicates the core user functionality of Facebook.
 
-[Live demo](https://evening-sands-32189.herokuapp.com/) 👈
+[Live demo](https://odinbook-xzzv.onrender.com/) 👈
 
 # Preview
 
