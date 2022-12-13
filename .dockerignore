@@ -1,0 +1,11 @@
+.git
+.env
+.rspec
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+config/initializers/secret_token.rb
+config/master.key
+/storage/*
+!/storage/.keep
