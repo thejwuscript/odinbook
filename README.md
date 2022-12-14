@@ -29,6 +29,7 @@ A Facebook clone that replicates the core user functionality of Facebook.
 - Hotwire (Turbo & Stimulus)
 - PostgreSQL
 - AWS S3
+- Docker
 - RSpec + Capybara
 - Postman
 - Heroku
