@@ -32,7 +32,6 @@ A Facebook clone that replicates the core user functionality of Facebook.
 - Docker
 - RSpec + Capybara
 - Postman
-- Heroku
 
 # Challenges
 ### Storing Friendships in the Database
