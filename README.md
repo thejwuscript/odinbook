@@ -24,13 +24,12 @@ A Facebook clone that replicates the core user functionality of Facebook.
 - HTML5
 - CSS3
 - JavaScript
-- Ruby
 - Ruby on Rails
-- Hotwire (Turbo & Stimulus)
+- Hotwire
 - PostgreSQL
 - AWS S3
 - Docker
-- RSpec + Capybara
+- RSpec & Capybara
 - Postman
 
 # Challenges
