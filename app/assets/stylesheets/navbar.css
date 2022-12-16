@@ -139,8 +139,8 @@
 
 .account-menu.visible {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   padding: 2px;
   z-index: 2;
 }
@@ -148,6 +148,7 @@
 .account-menu.visible > form {
   flex: 1;
   display: flex;
+  width: 100%;
 }
 
 .account-menu.visible > form > button {
@@ -156,7 +157,6 @@
   padding: 4px 8px;
   gap: 8px;
   background-color: white;
-  color: black;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -167,6 +167,11 @@
 .account-menu.visible > form > button:hover {
   background-color: #f5f6f7;
   cursor: pointer;
+}
+
+.delete-account {
+  margin-top: 8px;
+  color: maroon;
 }
 
 .mdi-menu {
