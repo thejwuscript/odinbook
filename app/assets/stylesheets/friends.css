@@ -131,7 +131,8 @@ li.friend-request-card-item > div > div > a:hover {
   margin-top: 36px;
 }
 
-.friends-page-sidebar form button.logout {
+.friends-page-sidebar form button.logout,
+.friends-page-sidebar form button.delete-account {
   display: none;
 }
 
@@ -182,7 +183,8 @@ li.friend-request-card-item > div > div > a:hover {
     display: flex;
   }
 
-  .friends-page-sidebar form button.logout {
+  .friends-page-sidebar form button.logout,
+  .friends-page-sidebar form button.delete-account {
     background-color: white;
     flex: 1;
     border: none;
@@ -194,8 +196,17 @@ li.friend-request-card-item > div > div > a:hover {
     padding: 8px;
     cursor: pointer;
   }
+
+  .friends-page-sidebar form button.delete-account {
+    margin-left: 4px;
+  }
+
+  .delete-account .mdi-account-remove {
+    font-size: 1.5rem;
+  }
   
-  .friends-page-sidebar form button.logout:hover {
+  .friends-page-sidebar form button.logout:hover,
+  .friends-page-sidebar form button.delete-account:hover {
     background-color: #F5F6F7;
   }
 }

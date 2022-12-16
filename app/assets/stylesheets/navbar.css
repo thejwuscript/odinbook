@@ -169,8 +169,11 @@
   cursor: pointer;
 }
 
-.delete-account {
+.account-menu.visible form:has(.delete-account) {
   margin-top: 8px;
+}
+
+.delete-account {
   color: maroon;
 }
 

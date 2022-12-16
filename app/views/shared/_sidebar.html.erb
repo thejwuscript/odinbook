@@ -25,4 +25,7 @@
     <div class="icon-container"><span class="mdi mdi-logout"></span></div>Log Out
   <% end %>
   
+  <%= button_to user_registration_path, data: { turbo: false }, method: :delete, class: "delete-account", onclick: "if (!window.confirm('Are you sure you want to delete your account?')) event.preventDefault()" do %>
+    <span class="mdi mdi-account-remove"></span>Delete Account
+  <% end %>
 <% end %>
