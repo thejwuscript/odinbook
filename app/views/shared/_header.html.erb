@@ -13,7 +13,9 @@
         <%= button_to destroy_user_session_path, method: :delete, class: "logout", data: { turbo: false } do %>
           <span class="mdi mdi-logout"></span>Log Out
         <% end %>
-        <%= button_to "Cancel my account", user_registration_path, data: { turbo: false }, method: :delete, onclick: "if (!window.confirm('Are you sure you want to cancel your account?')) event.preventDefault()" %>
+        <%= button_to user_registration_path, data: { turbo: false }, method: :delete, class: "delete-account", onclick: "if (!window.confirm('Are you sure you want to delete your account?')) event.preventDefault()" do %>
+          <span class="mdi mdi-account-remove"></span>Delete Account
+        <% end %>
       </div>
     <%= link_to menu_path, class: 'menu-link' do %>
       <span class="mdi mdi-menu"></span>
