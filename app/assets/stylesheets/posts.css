@@ -387,8 +387,6 @@ form #post_body {
   #posts {
     gap: 8px;
     margin-top: 8px;
-    /* padding-bottom: 4px; */
-    /* border-bottom: 72px solid white; */
   }
 
   .turbo-frame-post:last-child {

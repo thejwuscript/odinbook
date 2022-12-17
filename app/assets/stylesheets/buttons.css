@@ -186,12 +186,6 @@ button.add-friend:disabled {
 }
 
 @media (max-width: 768px) {
-  /* .unfriend {
-    border-radius: 50%;
-    border: none;
-    background-color: transparent;
-    padding: 2px 4px;
-  } */
 
   .unfriend > .mdi {
     font-size: 1.2rem;

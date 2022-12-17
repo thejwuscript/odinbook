@@ -56,10 +56,6 @@
   padding-bottom: 24px;
 }
 
-/* main .friends-page-sidebar.mobile {
-  border-bottom: none;
-} */
-
 @media (max-width: 768px) {
   .main-homepage {
     display: flex;
@@ -78,9 +74,6 @@
 
   .main-homepage-sidebar {
     display: none;
-    /* background-color: white;
-    border-top: 8px solid white;
-    border-bottom: 4px solid white; */
   }
 
   main {

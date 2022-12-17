@@ -39,10 +39,6 @@ turbo-frame[id^="show-comment-region"] {
   width: 100%;
 }
 
-/* .individual-comment-container:first-child {
-  margin-top: 12px;
-} */
-
 .individual-comment-text-container {
   display: flex;
   flex-direction: column;

@@ -195,20 +195,6 @@
   border-radius: 50%;
 }
 
-/* .topnav-mobile {
-  padding: 6px 0;
-  background-color: white;
-  justify-content: center;
-}
-
-.topnav-mobile ul {
-  font-size: 1.6rem;
-}
-
-.topnav-mobile > ul a.active {
-  border: none;
-} */
-
 .topnav .friend-request-item {
   display: none;
 }
