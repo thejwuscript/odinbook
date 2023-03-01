@@ -97,6 +97,9 @@ GEM
       msgpack (~> 1.2)
     browser (5.3.1)
     builder (3.2.4)
+    bullet (7.0.7)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     capybara (3.37.1)
       addressable
       matrix
@@ -395,6 +398,7 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.3.0)
+    uniform_notifier (1.16.0)
     vcr (6.1.0)
     version_gem (1.1.0)
     warden (1.2.9)
@@ -429,6 +433,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   browser
+  bullet
   capybara
   debug
   devise
