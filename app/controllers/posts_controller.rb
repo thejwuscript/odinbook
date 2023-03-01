@@ -7,12 +7,12 @@ class PostsController < ApplicationController
     if turbo_frame_request_id == 'new_post_frame'
       render partial: 'posts/new_post_placeholder'
     else
-      current_user_posts = current_user.posts.includes(:likes)
+      current_user_posts = Post.includes(:author, :image_attachment, :comments, :likes, likes: :user)
+                               .where(author: current_user)
       friends_posts =
         current_user
         .friends
-        .includes(:posts)
-        .flat_map { |friend| friend.posts.includes(:likes) }
+        .flat_map { |friend| friend.posts.includes(:author, :image_attachment, :comments, :likes, likes: :user) }
       @timeline_posts =
         (current_user_posts + friends_posts)
         .sort_by { |post| post.created_at }
