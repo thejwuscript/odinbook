@@ -7,7 +7,9 @@
         <%= tag.span headline.name, class: "name" %>
         <%= tag.span headline.title, class: "title" %>
       </div>
-      <%= image_tag headline.url_to_image, onerror: "this.style.display='none'" %>
+      <% if headline.url_to_image.present? %>
+        <%= image_tag headline.url_to_image, onerror: "this.style.display='none'" %>
+      <% end %>
     <% end %>
   <% end %>
   </div>
