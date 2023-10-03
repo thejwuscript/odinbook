@@ -2,7 +2,7 @@ require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { host: 'evening-sands-32189.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'odinbook-xzzv.onrender.com' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -12,7 +12,9 @@ Rails.application.configure do
     user_name: ENV['GMAIL_USERNAME'],
     password: ENV['GMAIL_APP_PASSWORD'],
     authentication: 'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    open_timeout: 5,
+    read_timeout: 5
   }
 
   # Code is not reloaded between requests.
