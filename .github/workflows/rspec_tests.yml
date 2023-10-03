@@ -1,0 +1,50 @@
+name: Run RSpec tests
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1.3 # replace this with your Ruby version
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get -yqq install libpq-dev
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+
+    - name: Run RSpec tests
+      env:
+        RAILS_ENV: test
+        DATABASE_URL: postgres://postgres:postgres@localhost/test
+      run: |
+        bundle exec rake db:create
+        bundle exec rake db:schema:load
+        bundle exec rspec --format RspecJunitFormatter --out rspec_results.xml
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      if: always() # this makes sure that the results are uploaded even if the test step fails
+      with:
+        name: rspec-results
+        path: rspec_results.xml
