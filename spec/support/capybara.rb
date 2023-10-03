@@ -1,5 +1,5 @@
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'webdrivers'
+require 'selenium-webdriver'
 
 Capybara.default_driver = :rack_test
