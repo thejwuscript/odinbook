@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users,
+    devise_for :users,
              controllers: {
                omniauth_callbacks: 'users/omniauth_callbacks'
              }
@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     unauthenticated { root to: 'devise/sessions#new', as: :root_url }
   end
   resources :users, only: :index
+
+  get 'healthcheck', to:'health_check#index'
 
   resources :posts do
     resources :comments
